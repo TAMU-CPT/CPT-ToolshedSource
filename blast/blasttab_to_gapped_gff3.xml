@@ -1,0 +1,36 @@
+<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="19.1.0.0">
+	<description>converts tabular blast results to a JBrowse-compatible file</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blasttab_to_gapped_gff3.py
+@BLAST_TSV@
+--min_gap $min_gap
+> $output]]></command>
+	<inputs>
+		<expand macro="blast_tsv" />
+		<param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>
+	</inputs>
+	<outputs>
+		<data format="gff3" name="output"/>
+	</outputs>
+	<tests>
+          <test>
+            <param name="blast_tsv" value="T7_NT_BLAST_FILTERED.tabular" />
+            <param name="min_gap" value="10" />
+            <output name="output" file="T7_NT_TO_GFF.gff3" />
+          </test>
+	</tests>
+	<help><![CDATA[
+**What it does**
+
+Convert BLASTn TSV results into GFF3 format.
+
+This tool assumes BLASTn input and is therefore NOT suitable for BLASTp data.
+
+]]></help>
+	<expand macro="citations" />
+</tool>

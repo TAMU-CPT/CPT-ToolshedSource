@@ -1,0 +1,102 @@
+<tool id="gff3.rebase" name="Rebase GFF3 features" version="19.1.0.0">
+  <description>against parent features</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[gff3_rebase.py
+$parent
+$child
+
+$interpro
+$protein2dna
+--map_by "$map_by"
+> $default]]></command>
+  <inputs>
+    <param label="Parent GFF3 annotations"                         name="parent" format="gff3" type="data"/>
+    <param label="Child GFF3 annotations to rebase against parent" name="child"  format="gff3" type="data"/>
+
+    <param label="Interpro specific modifications" name="interpro" type="boolean" truevalue="--interpro" falsevalue=""/>
+    <param label="Map protein translated results to original DNA data" name="protein2dna" type="boolean" truevalue="--protein2dna" falsevalue=""/>
+
+    <param label="Mapping Key" name="map_by" type="text" value="ID" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="parent" value="T7_CLEAN.gff3"/>
+          <param name="child" value="T7_TMHMM.gff3"/>
+          <param name="interpro" value="" />
+          <param name="protein2dna" value="--protein2dna" />
+          <param name="map_by" value="ID" />
+          <output name="default" file="T7_TMHMM_REBASE.gff3"/>
+      </test>
+      <test>
+          <param name="parent" value="parent.gff"/>
+          <param name="child" value="child.gff"/>
+	  <param name="interpro" value="" />
+          <param name="protein2dna" value="--protein2dna" />
+	  <param name="map_by" value="ID" />
+          <output name="default" file="proteins.gff"/>
+      </test>
+      <test>
+          <param name="parent" value="parent.gff"/>
+          <param name="child" value="child.gff"/>
+          <param name="interpro" value="" />
+          <param name="protein2dna" value="" />
+	  <param name="map_by" value="ID" />
+	  <output name="default" file="nonprotein.gff"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+The workflow in a genomic data analysis typically follows a process of feature 
+export, analysis and then mapping the results of the analysis back to the genome.
+
+For meaningful display in JBrowse, it is necessary to accurately map 
+analysis results back to their corresponding positions in the context of the entire 
+genome.
+
+This tool fills that gap, by *rebasing* (calculating parent genome coordinates) 
+features from analysis results against the parent features which 
+were originally used for the analysis.
+
+**Example Input/Output**
+
+For a *parent* set of annotations::
+
+	#gff-version 3
+	PhageBob    maker   cds     300     600     .       +       .       ID=cds42
+
+Where the analysis had exported the CDS (child) FASTA sequence:: 
+
+	>cds42
+	MRTNASC
+
+Then analyzed that feature, producing the *child* annotation file::
+
+	#gff-version 3
+	cds42       blastp  match_part      1       50      1e-40   .       .       ID=m00001;Notes=RNAse A Protein
+
+This tool will then localize the results properly against the parent and permit 
+proper visualization of the results in the correct location::
+
+	#gff-version 3
+	PhageBob    blastp  match_part      300     449     1e-40   +       .       ID=m00001;Notes=RNAse A Protein
+
+**Options**
+
+The **Interpro specific modifications** option selectively ignores *features* (*i.e.* polypeptide) and 
+qualifiers (status, Target) not needed in the output. 
+
+The **Map protein translated results to original DNA data** option indicates that the DNA sequences were translated into 
+protein sequence during the genomic export process. When this option is selected, 
+the tool will multiply the bases by three to obtain the correct DNA locations.
+
+]]></help>
+		<expand macro="citations" />
+</tool>
