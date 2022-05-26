@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.filter_type" name="GFF3 Feature Type Filter" version="19.1.0.0">
+  <description>selects features from a gff3 file based on feature type</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+#set repeat_data = '" "'.join([ str($var.type) for $var in $repeat_0 ])
+
+python $__tool_directory__/filter_type.py
+@INPUT_GFF@
+"$repeat_data"
+$invert
+> $output]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+    <repeat name="repeat_0" title="Feature Types">
+      <param label="Feature type" name="type" type="text"/>
+    </repeat>
+    <param checked="true" label="Invert the filter" name="invert" type="boolean" truevalue="--invert" falsevalue="" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+		<test>
+			<param name="gff3_data" value="Miro_FilterIn.gff3" />
+			<param name="repeat_0_0|type" value="CDS" />
+			<param name="invert" value="False" />
+			<output name="output" file="Miro_FilterOut1.gff3" />
+		</test>
+		<test>
+			<param name="gff3_data" value="Miro_FilterIn.gff3" />
+			<param name="repeat_0_0|type" value="CDS" />
+			<param name="invert" value="--invert" />
+			<output name="output" file="Miro_FilterOut2.gff3" />
+		</test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+The tool finds the specified feature type(s) in an input GFF3 and will output 
+**only** the specified feature type. By selecting the inversion, **everything except** 
+the specified feature type(s) will be included in the output GFF3.
+
+For example, user may output **only** ``Shine_Dalgarno_sequence`` type features, or,
+inverting that, output everything but ``Shine_Dalgarno_sequence`` type features. Any 
+feature type used in the input GFF3 can be filtered; typical options would include gene, 
+mRNA, CDS, tRNA, and terminator. The input name format must follow sequence ontology 
+convention (http://www.sequenceontology.org/).
+
+      ]]></help>
+		<expand macro="citations" />
+</tool>

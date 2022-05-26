@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff.start_codons" name="Start Codon Statistics" version="1.0">
+	<description>Summarise start codon usage</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/start_stats.py
+
+@GENOME_SELECTOR@
+$gff3_data
+> $default]]></command>
+	<inputs>
+		<expand macro="genome_selector" />
+		<expand macro="gff3_input" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="default" label="Start Codon Usage"/>
+	</outputs>
+	<tests>
+		<test>
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="miro.fa" />
+			<param name="gff3_data" value="miro.gff3" />
+
+			<output name="default" value="start-stats.tab" />
+		</test>
+	</tests>
+	<help><![CDATA[
+.. class:: warningmark
+
+This tool is deprecated. Please use `the new fasta-only tool <root?tool_id=edu.tamu.cpt.fasta.start_codons>`__.
+This change was made to make the tools less complicated and more obvious in
+their functionality. Currently this tool makes **assumptions** about your data
+which **may be wrong**.
+
+**What it does**
+
+This tool looks for CDS features and outputs summarizes the frequencies
+of their start codons.
+]]></help>
+		<expand macro="citations" />
+</tool>
