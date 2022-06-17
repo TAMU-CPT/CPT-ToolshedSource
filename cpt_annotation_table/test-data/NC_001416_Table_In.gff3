@@ -1,0 +1,476 @@
+##gff-version 3
+##sequence-region NC_001416.1_phage_lambda 1 48502
+NC_001416.1_phage_lambda	.	gene	14261	14875	.	+	.	owner=jolenerr@tamu.edu;ID=cdb58372-2440-4e07-bcc4-739e0aba461f;date_last_modified=2020-05-27;Name=tail tip assembly protein K;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	14261	14875	.	+	.	owner=jolenerr@tamu.edu;Parent=cdb58372-2440-4e07-bcc4-739e0aba461f;ID=c53587ff-12d9-4a3a-a7ac-e87e54c5232b;date_last_modified=2020-05-27;Name=tail tip assembly protein K;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	14276	14875	.	+	0	Parent=c53587ff-12d9-4a3a-a7ac-e87e54c5232b;ID=2d4171c3-93b5-4c30-afba-9a0969dd4a6f;Name=2d4171c3-93b5-4c30-afba-9a0969dd4a6f
+NC_001416.1_phage_lambda	.	exon	14276	14875	.	+	.	Parent=c53587ff-12d9-4a3a-a7ac-e87e54c5232b;ID=782a319b-3988-4cb2-aedf-47242382005c;Name=782a319b-3988-4cb2-aedf-47242382005c
+NC_001416.1_phage_lambda	.	exon	14261	14265	.	+	.	Parent=c53587ff-12d9-4a3a-a7ac-e87e54c5232b;ID=709a9728-db34-4010-bfc3-41b0687edb80;Name=709a9728-db34-4010-bfc3-41b0687edb80
+###
+NC_001416.1_phage_lambda	.	gene	47727	47944	.	+	.	owner=jolenerr@tamu.edu;ID=e3d29177-18a8-4bc0-8d91-15e5760f3bd3;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_60;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	47727	47944	.	+	.	owner=jolenerr@tamu.edu;Parent=e3d29177-18a8-4bc0-8d91-15e5760f3bd3;ID=90e550aa-f463-46d2-bec4-87aa38e63ee2;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_60-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	47738	47944	.	+	0	Parent=90e550aa-f463-46d2-bec4-87aa38e63ee2;ID=586909d5-f3a6-44bb-8e9e-5a5230b2127a;Name=586909d5-f3a6-44bb-8e9e-5a5230b2127a
+NC_001416.1_phage_lambda	.	exon	47727	47730	.	+	.	Parent=90e550aa-f463-46d2-bec4-87aa38e63ee2;ID=bf5e1837-0469-4372-9652-7677fee29843;Name=bf5e1837-0469-4372-9652-7677fee29843
+NC_001416.1_phage_lambda	.	exon	47738	47944	.	+	.	Parent=90e550aa-f463-46d2-bec4-87aa38e63ee2;ID=14232a86-ebfe-4f10-aa28-2910207542f7;Name=14232a86-ebfe-4f10-aa28-2910207542f7
+###
+NC_001416.1_phage_lambda	.	gene	13416	14127	.	+	.	owner=jolenerr@tamu.edu;ID=11a10b01-003c-4900-aae9-46139ae23652;date_last_modified=2020-05-27;Name=tail tip protein L;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	13416	14127	.	+	.	owner=jolenerr@tamu.edu;Parent=11a10b01-003c-4900-aae9-46139ae23652;ID=07cc76d7-d0f4-447f-a851-3aeaee1b71ac;date_last_modified=2020-05-27;Name=tail tip protein L;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	13429	14127	.	+	0	Parent=07cc76d7-d0f4-447f-a851-3aeaee1b71ac;ID=37a2e1ad-d49c-43d3-b33b-727c848e2a38;Name=37a2e1ad-d49c-43d3-b33b-727c848e2a38
+NC_001416.1_phage_lambda	.	exon	13429	14127	.	+	.	Parent=07cc76d7-d0f4-447f-a851-3aeaee1b71ac;ID=008fa66b-e5b3-489b-8d99-208103afde8f;Name=008fa66b-e5b3-489b-8d99-208103afde8f
+NC_001416.1_phage_lambda	.	exon	13416	13419	.	+	.	Parent=07cc76d7-d0f4-447f-a851-3aeaee1b71ac;ID=0a4ad3d9-21dc-4fab-badb-a94e4493c397;Name=0a4ad3d9-21dc-4fab-badb-a94e4493c397
+###
+NC_001416.1_phage_lambda	.	gene	19641	20855	.	+	.	owner=jolenerr@tamu.edu;ID=e7267f7d-4717-4e28-a1a0-564b10661248;date_last_modified=2020-05-27;Name=tail fiber protein stf;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	19641	20855	.	+	.	owner=jolenerr@tamu.edu;Parent=e7267f7d-4717-4e28-a1a0-564b10661248;ID=b7a5dc48-88c5-4edc-9081-091ef39ff3ea;date_last_modified=2020-05-27;Name=tail fiber protein stf;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	19641	19644	.	+	.	Parent=b7a5dc48-88c5-4edc-9081-091ef39ff3ea;ID=e794f054-733e-4b10-99df-128b37cd80e8;Name=e794f054-733e-4b10-99df-128b37cd80e8
+NC_001416.1_phage_lambda	.	CDS	19650	20855	.	+	0	Parent=b7a5dc48-88c5-4edc-9081-091ef39ff3ea;ID=f1584714-9cc6-4209-8730-0d7c199cff35;Name=f1584714-9cc6-4209-8730-0d7c199cff35
+NC_001416.1_phage_lambda	.	exon	19650	20855	.	+	.	Parent=b7a5dc48-88c5-4edc-9081-091ef39ff3ea;ID=b44a883e-e4e2-4432-b665-355a803943dc;Name=b44a883e-e4e2-4432-b665-355a803943dc
+###
+NC_001416.1_phage_lambda	.	gene	45953	46427	.	+	.	owner=jolenerr@tamu.edu;ID=4795342c-7959-44d9-925a-781f17371e7a;date_last_modified=2020-05-13;Name=i-spanin Rz;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	45953	46427	.	+	.	owner=jolenerr@tamu.edu;Parent=4795342c-7959-44d9-925a-781f17371e7a;ID=e23ef28c-7a93-4167-a654-fbae4011762c;date_last_modified=2020-05-13;Name=i-spanin Rz;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	45966	46427	.	+	.	Parent=e23ef28c-7a93-4167-a654-fbae4011762c;ID=4b15c521-70e8-47fb-8bda-112fa73dd79b;Name=4b15c521-70e8-47fb-8bda-112fa73dd79b
+NC_001416.1_phage_lambda	.	exon	45953	45955	.	+	.	Parent=e23ef28c-7a93-4167-a654-fbae4011762c;ID=aa58c9ad-faf2-4aad-a5ff-cbf537054bd4;Name=aa58c9ad-faf2-4aad-a5ff-cbf537054bd4
+NC_001416.1_phage_lambda	.	CDS	45966	46427	.	+	0	Parent=e23ef28c-7a93-4167-a654-fbae4011762c;ID=e3a9ad11-4408-46f9-944d-48720e656fa8;Name=e3a9ad11-4408-46f9-944d-48720e656fa8
+###
+NC_001416.1_phage_lambda	.	gene	41048	41953	.	+	.	owner=jolenerr@tamu.edu;ID=ccb0da66-e8f2-46c6-b6ce-f3d2fcbdea5e;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.orf00086;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	41048	41953	.	+	.	owner=jolenerr@tamu.edu;Parent=ccb0da66-e8f2-46c6-b6ce-f3d2fcbdea5e;ID=6b16d5ca-3a30-4f62-a281-c435015ba769;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.orf00086-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	41063	41953	.	+	0	Parent=6b16d5ca-3a30-4f62-a281-c435015ba769;ID=53110d0e-b12f-4938-8ebb-20ee6bde4f36;Name=53110d0e-b12f-4938-8ebb-20ee6bde4f36
+NC_001416.1_phage_lambda	.	exon	41048	41051	.	+	.	Parent=6b16d5ca-3a30-4f62-a281-c435015ba769;ID=44dc4a7f-693f-44a4-b080-efd0bf3bd124;Name=44dc4a7f-693f-44a4-b080-efd0bf3bd124
+NC_001416.1_phage_lambda	.	exon	41063	41953	.	+	.	Parent=6b16d5ca-3a30-4f62-a281-c435015ba769;ID=17e07310-76b7-4576-a57a-a56231971d0c;Name=17e07310-76b7-4576-a57a-a56231971d0c
+###
+NC_001416.1_phage_lambda	.	gene	31005	31206	.	-	.	owner=jolenerr@tamu.edu;Note=Contains InterPro domain IPR009814 with DUF1382;ID=97f8a88b-c50d-4710-9ae1-a8dad5ccc83f;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	31005	31206	.	-	.	owner=jolenerr@tamu.edu;Parent=97f8a88b-c50d-4710-9ae1-a8dad5ccc83f;ID=6f149b28-c6ce-4f8a-a842-8d537e5f1478;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	31005	31196	.	-	0	Parent=6f149b28-c6ce-4f8a-a842-8d537e5f1478;ID=dbffb4e7-553d-4b4b-a70a-8ca19028460e;Name=dbffb4e7-553d-4b4b-a70a-8ca19028460e
+NC_001416.1_phage_lambda	.	exon	31005	31196	.	-	.	Parent=6f149b28-c6ce-4f8a-a842-8d537e5f1478;ID=ef660edf-ce1f-4e4c-9a0f-217603922f0d;Name=ef660edf-ce1f-4e4c-9a0f-217603922f0d
+NC_001416.1_phage_lambda	.	exon	31203	31206	.	-	.	Parent=6f149b28-c6ce-4f8a-a842-8d537e5f1478;ID=a1e20567-150b-4181-91ea-783f4155a4ce;Name=a1e20567-150b-4181-91ea-783f4155a4ce
+###
+NC_001416.1_phage_lambda	.	gene	48109	48314	.	-	.	owner=jolenerr@tamu.edu;ID=e0b009e4-729e-4d97-b818-ec0cbebcb1f4;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.orf00102;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	48109	48314	.	-	.	owner=jolenerr@tamu.edu;Parent=e0b009e4-729e-4d97-b818-ec0cbebcb1f4;ID=0d475cfd-bd5b-4424-bb5c-6ba213b99053;date_last_modified=2021-12-20;Name=NC_001416.1_phage_lambda.orf00102;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	48109	48303	.	-	.	Parent=0d475cfd-bd5b-4424-bb5c-6ba213b99053;ID=9c532b82-37ea-405c-b264-bb9921e0da28;Name=9c532b82-37ea-405c-b264-bb9921e0da28
+NC_001416.1_phage_lambda	.	CDS	48109	48303	.	-	0	Parent=0d475cfd-bd5b-4424-bb5c-6ba213b99053;ID=811c5704-9880-4251-9607-9495f0918830;Name=811c5704-9880-4251-9607-9495f0918830
+NC_001416.1_phage_lambda	.	exon	48311	48314	.	-	.	Parent=0d475cfd-bd5b-4424-bb5c-6ba213b99053;ID=d6c66134-9b46-4cfd-bbdf-6832718a2f68;Name=d6c66134-9b46-4cfd-bbdf-6832718a2f68
+###
+NC_001416.1_phage_lambda	.	gene	31169	31365	.	-	.	owner=jolenerr@tamu.edu;Note=Contains InterPro domain IPR009750 DUF1317;ID=2cc7e0fe-b058-4773-ab3d-e94e32ff3c69;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	31169	31365	.	-	.	owner=jolenerr@tamu.edu;Parent=2cc7e0fe-b058-4773-ab3d-e94e32ff3c69;ID=4e1ee30d-2a4a-4832-a6ec-6429d877de0f;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	31169	31357	.	-	0	Parent=4e1ee30d-2a4a-4832-a6ec-6429d877de0f;ID=a4824d23-f1f7-4bb3-850d-456302c0cd3e;Name=a4824d23-f1f7-4bb3-850d-456302c0cd3e
+NC_001416.1_phage_lambda	.	exon	31169	31357	.	-	.	Parent=4e1ee30d-2a4a-4832-a6ec-6429d877de0f;ID=f21e1ef1-ed44-4edf-ba42-389aaac4eb1b;Name=f21e1ef1-ed44-4edf-ba42-389aaac4eb1b
+NC_001416.1_phage_lambda	.	exon	31363	31365	.	-	.	Parent=4e1ee30d-2a4a-4832-a6ec-6429d877de0f;ID=b055fa58-56b5-4a97-99ae-61b066b2e1d6;Name=b055fa58-56b5-4a97-99ae-61b066b2e1d6
+###
+NC_001416.1_phage_lambda	.	gene	4406	5737	.	+	.	owner=jolenerr@tamu.edu;ID=422aab41-ac49-4818-b87e-9331023dcacf;date_last_modified=2020-05-27;Name=capsid assembly protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	5023	5737	.	+	.	owner=jolenerr@tamu.edu;Parent=422aab41-ac49-4818-b87e-9331023dcacf;ID=2c7d9e50-178a-4b77-8cfa-ea15dffbf2fc;date_last_modified=2020-05-27;Name=capsid assembly protein;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	exon	5036	5737	.	+	.	Parent=2c7d9e50-178a-4b77-8cfa-ea15dffbf2fc;ID=9aa67988-0a1b-48f8-8ccc-73cbdc46fca1;Name=9aa67988-0a1b-48f8-8ccc-73cbdc46fca1
+NC_001416.1_phage_lambda	.	exon	5023	5026	.	+	.	Parent=2c7d9e50-178a-4b77-8cfa-ea15dffbf2fc;ID=fe02a19f-d8fb-4fde-aefe-a1dc1fa7fd42;Name=fe02a19f-d8fb-4fde-aefe-a1dc1fa7fd42
+NC_001416.1_phage_lambda	.	CDS	5036	5737	.	+	0	Parent=2c7d9e50-178a-4b77-8cfa-ea15dffbf2fc;ID=dc79c662-414a-45ff-9be1-e1b1320771b5;Name=dc79c662-414a-45ff-9be1-e1b1320771b5
+NC_001416.1_phage_lambda	.	mRNA	4406	5737	.	+	.	owner=jolenerr@tamu.edu;Parent=422aab41-ac49-4818-b87e-9331023dcacf;ID=db7af84b-f141-4d21-8855-58c4b0e2de87;date_last_modified=2020-05-27;Name=capsid assembly protease C;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	4406	4411	.	+	.	Parent=db7af84b-f141-4d21-8855-58c4b0e2de87;ID=b9ee44dc-54e3-4808-8758-6420ddce8608;Name=b9ee44dc-54e3-4808-8758-6420ddce8608
+NC_001416.1_phage_lambda	.	CDS	4418	5737	.	+	0	Parent=db7af84b-f141-4d21-8855-58c4b0e2de87;ID=f2387694-c049-4727-a5f5-4a1e8116007d;Name=f2387694-c049-4727-a5f5-4a1e8116007d
+NC_001416.1_phage_lambda	.	exon	4418	5737	.	+	.	Parent=db7af84b-f141-4d21-8855-58c4b0e2de87;ID=4ed5d996-6eec-4541-9cae-4489f57adab5;Name=4ed5d996-6eec-4541-9cae-4489f57adab5
+###
+NC_001416.1_phage_lambda	.	gene	7968	8555	.	+	.	owner=jolenerr@tamu.edu;ID=b541056e-bf91-4113-bce7-86bab4d27f76;date_last_modified=2020-05-27;Name=tail completion protein Z;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	7968	8555	.	+	.	owner=jolenerr@tamu.edu;Parent=b541056e-bf91-4113-bce7-86bab4d27f76;ID=475d1f26-3c59-41fd-bdfa-09f42a91766b;date_last_modified=2020-05-27;Name=tail completion protein Z;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	7977	8555	.	+	.	Parent=475d1f26-3c59-41fd-bdfa-09f42a91766b;ID=914541be-3506-4d06-9b08-6afec458c4eb;Name=914541be-3506-4d06-9b08-6afec458c4eb
+NC_001416.1_phage_lambda	.	CDS	7977	8555	.	+	0	Parent=475d1f26-3c59-41fd-bdfa-09f42a91766b;ID=87d278a9-95f1-49e8-a12c-0fe39a878c07;Name=87d278a9-95f1-49e8-a12c-0fe39a878c07
+NC_001416.1_phage_lambda	.	exon	7968	7971	.	+	.	Parent=475d1f26-3c59-41fd-bdfa-09f42a91766b;ID=da005004-2e06-4ec4-9442-5c5c9022e944;Name=da005004-2e06-4ec4-9442-5c5c9022e944
+###
+NC_001416.1_phage_lambda	.	gene	43135	43889	.	+	.	owner=jolenerr@tamu.edu;ID=8ce6427a-594a-4320-955b-be6dd71ab223;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_53;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	43212	43889	.	+	.	owner=jolenerr@tamu.edu;Parent=8ce6427a-594a-4320-955b-be6dd71ab223;ID=fc735705-5848-4ad7-9015-b0920014760c;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_53-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	43224	43889	.	+	0	Parent=fc735705-5848-4ad7-9015-b0920014760c;ID=c8a786e9-3ee5-4e0f-a249-04f38e7442f3;Name=c8a786e9-3ee5-4e0f-a249-04f38e7442f3
+NC_001416.1_phage_lambda	.	exon	43224	43889	.	+	.	Parent=fc735705-5848-4ad7-9015-b0920014760c;ID=1f9f83da-c5a6-4e57-b8ca-32a3b012f862;Name=1f9f83da-c5a6-4e57-b8ca-32a3b012f862
+NC_001416.1_phage_lambda	.	exon	43212	43215	.	+	.	Parent=fc735705-5848-4ad7-9015-b0920014760c;ID=9a79a6bf-4be1-467c-baed-d54b95b1cdce;Name=9a79a6bf-4be1-467c-baed-d54b95b1cdce
+###
+NC_001416.1_phage_lambda	.	gene	43032	43246	.	+	.	owner=jolenerr@tamu.edu;ID=0cea2875-2757-4c9b-97f5-7b0ec545394a;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_52;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	43032	43246	.	+	.	owner=jolenerr@tamu.edu;Parent=0cea2875-2757-4c9b-97f5-7b0ec545394a;ID=eb6de75f-182b-409a-b0ed-1bdd8641186a;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_52-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	43040	43246	.	+	.	Parent=eb6de75f-182b-409a-b0ed-1bdd8641186a;ID=830d2761-6b80-429c-9571-5331ab18e0da;Name=830d2761-6b80-429c-9571-5331ab18e0da
+NC_001416.1_phage_lambda	.	exon	43032	43034	.	+	.	Parent=eb6de75f-182b-409a-b0ed-1bdd8641186a;ID=a1fa76f5-0712-4fcd-9b04-e374f0870598;Name=a1fa76f5-0712-4fcd-9b04-e374f0870598
+NC_001416.1_phage_lambda	.	CDS	43040	43246	.	+	0	Parent=eb6de75f-182b-409a-b0ed-1bdd8641186a;ID=a730aa32-fd56-49cd-826d-e754e3812cdb;Name=a730aa32-fd56-49cd-826d-e754e3812cdb
+###
+NC_001416.1_phage_lambda	.	gene	31348	32038	.	-	.	owner=jolenerr@tamu.edu;ID=645d965c-2694-421e-8b95-d800a857c890;date_last_modified=2020-05-27;Name=exonuclease exo;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	31348	32038	.	-	.	owner=jolenerr@tamu.edu;Parent=645d965c-2694-421e-8b95-d800a857c890;ID=fc7222c4-b683-4557-ad4f-ddd744c99c65;date_last_modified=2020-05-27;Name=exonuclease exo;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	31348	32028	.	-	0	Parent=fc7222c4-b683-4557-ad4f-ddd744c99c65;ID=04ef47df-8b6c-4bf3-891b-8576e1819737;Name=04ef47df-8b6c-4bf3-891b-8576e1819737
+NC_001416.1_phage_lambda	.	exon	31348	32028	.	-	.	Parent=fc7222c4-b683-4557-ad4f-ddd744c99c65;ID=1fc98cde-2b28-4bf3-affb-6a9303d5ad98;Name=1fc98cde-2b28-4bf3-affb-6a9303d5ad98
+NC_001416.1_phage_lambda	.	exon	32035	32038	.	-	.	Parent=fc7222c4-b683-4557-ad4f-ddd744c99c65;ID=637638ea-4b0c-4299-b9db-4f6b540b8c93;Name=637638ea-4b0c-4299-b9db-4f6b540b8c93
+###
+NC_001416.1_phage_lambda	.	gene	28860	29090	.	-	.	owner=jolenerr@tamu.edu;ID=016016bc-f3b9-4c48-982e-b463960d3a59;date_last_modified=2020-05-27;Name=excisionase Xis;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	28860	29090	.	-	.	owner=jolenerr@tamu.edu;Parent=016016bc-f3b9-4c48-982e-b463960d3a59;ID=b2a5d312-69c7-463a-b15a-b832bf08566b;date_last_modified=2020-05-27;Name=excisionase Xis;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	29087	29090	.	-	.	Parent=b2a5d312-69c7-463a-b15a-b832bf08566b;ID=54e68471-9aeb-44d3-91ea-85bd5b737055;Name=54e68471-9aeb-44d3-91ea-85bd5b737055
+NC_001416.1_phage_lambda	.	exon	28860	29078	.	-	.	Parent=b2a5d312-69c7-463a-b15a-b832bf08566b;ID=5f5c0bc7-17f9-4845-aeb4-040d76496884;Name=5f5c0bc7-17f9-4845-aeb4-040d76496884
+NC_001416.1_phage_lambda	.	CDS	28860	29078	.	-	0	Parent=b2a5d312-69c7-463a-b15a-b832bf08566b;ID=4427c725-ba0d-4ced-8bb9-3f150766afbf;Name=4427c725-ba0d-4ced-8bb9-3f150766afbf
+###
+NC_001416.1_phage_lambda	.	gene	40628	41084	.	+	.	owner=jolenerr@tamu.edu;ID=ef111958-2be7-4828-8442-c2c376692e6b;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_49;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	40628	41084	.	+	.	owner=jolenerr@tamu.edu;Parent=ef111958-2be7-4828-8442-c2c376692e6b;ID=91989480-9b86-4a62-adbb-4f5a44a0ec45;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_49-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	40644	41084	.	+	0	Parent=91989480-9b86-4a62-adbb-4f5a44a0ec45;ID=751b73fd-c690-4444-ab99-b9333fcd9e2a;Name=751b73fd-c690-4444-ab99-b9333fcd9e2a
+NC_001416.1_phage_lambda	.	exon	40628	40632	.	+	.	Parent=91989480-9b86-4a62-adbb-4f5a44a0ec45;ID=0cdd7034-7c8f-41ba-9dbb-1bde690f9620;Name=0cdd7034-7c8f-41ba-9dbb-1bde690f9620
+NC_001416.1_phage_lambda	.	exon	40644	41084	.	+	.	Parent=91989480-9b86-4a62-adbb-4f5a44a0ec45;ID=bb130cc5-09d6-4c8a-a4d4-2e09d361f874;Name=bb130cc5-09d6-4c8a-a4d4-2e09d361f874
+###
+NC_001416.1_phage_lambda	.	gene	6099	7160	.	+	.	owner=jolenerr@tamu.edu;ID=4f815f9e-5092-4db3-b722-0d912c116293;date_last_modified=2020-05-27;Name=major capsid protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	6099	7160	.	+	.	owner=jolenerr@tamu.edu;Parent=4f815f9e-5092-4db3-b722-0d912c116293;ID=f7f8d414-558e-4fad-9402-2f4c644c3be6;date_last_modified=2020-05-27;Name=major capsid protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	6108	7160	.	+	.	Parent=f7f8d414-558e-4fad-9402-2f4c644c3be6;ID=04e5dcec-c34b-470c-a2c3-d166d6c719f4;Name=04e5dcec-c34b-470c-a2c3-d166d6c719f4
+NC_001416.1_phage_lambda	.	exon	6099	6101	.	+	.	Parent=f7f8d414-558e-4fad-9402-2f4c644c3be6;ID=bd03b34d-6d62-45cb-98fa-4f64b6539ee0;Name=bd03b34d-6d62-45cb-98fa-4f64b6539ee0
+NC_001416.1_phage_lambda	.	CDS	6108	7160	.	+	0	Parent=f7f8d414-558e-4fad-9402-2f4c644c3be6;ID=f3e04569-52b1-4a8c-8fca-d1ec2c4e184b;Name=f3e04569-52b1-4a8c-8fca-d1ec2c4e184b
+###
+NC_001416.1_phage_lambda	.	gene	33187	33344	.	-	.	owner=jolenerr@tamu.edu;ID=dedaa85a-5d65-4faf-a809-97c9a0ca52a8;date_last_modified=2020-05-27;Name=host-killing protein kil;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	33187	33344	.	-	.	owner=jolenerr@tamu.edu;Parent=dedaa85a-5d65-4faf-a809-97c9a0ca52a8;ID=f20645d1-d2a4-4b3f-b436-4b01b68e73e1;date_last_modified=2020-05-27;Name=host-killing protein kil;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	33340	33344	.	-	.	Parent=f20645d1-d2a4-4b3f-b436-4b01b68e73e1;ID=2e7b6a7a-b4d3-4e89-9c4a-072432ff7dd7;Name=2e7b6a7a-b4d3-4e89-9c4a-072432ff7dd7
+NC_001416.1_phage_lambda	.	CDS	33187	33330	.	-	0	Parent=f20645d1-d2a4-4b3f-b436-4b01b68e73e1;ID=0340b6aa-b09a-4551-a1b5-605336ec0aff;Name=0340b6aa-b09a-4551-a1b5-605336ec0aff
+NC_001416.1_phage_lambda	.	exon	33187	33330	.	-	.	Parent=f20645d1-d2a4-4b3f-b436-4b01b68e73e1;ID=928bfa37-5054-4748-9243-82f6478505ad;Name=928bfa37-5054-4748-9243-82f6478505ad
+###
+NC_001416.1_phage_lambda	.	gene	42080	42272	.	+	.	owner=jolenerr@tamu.edu;ID=61a0d8bd-5b58-4077-bc04-2bcf4dee8939;date_last_modified=2020-05-13;Name=CDS.0.2486_0.0832002363577;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	42080	42272	.	+	.	owner=jolenerr@tamu.edu;Parent=61a0d8bd-5b58-4077-bc04-2bcf4dee8939;ID=cfae866f-5007-4ae2-964a-d425c18712d8;date_last_modified=2020-05-13;Name=CDS.0.2486_0.0832002363577-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	42090	42272	.	+	.	Parent=cfae866f-5007-4ae2-964a-d425c18712d8;ID=b9445893-dd42-4a87-b451-f61dd30851ec;Name=b9445893-dd42-4a87-b451-f61dd30851ec
+NC_001416.1_phage_lambda	.	exon	42080	42084	.	+	.	Parent=cfae866f-5007-4ae2-964a-d425c18712d8;ID=8c1f8ca1-fd3e-47b0-828b-31d8845a7a43;Name=8c1f8ca1-fd3e-47b0-828b-31d8845a7a43
+NC_001416.1_phage_lambda	.	CDS	42090	42272	.	+	0	Parent=cfae866f-5007-4ae2-964a-d425c18712d8;ID=17e5fc2d-5d91-403b-afd1-805c4edf360a;Name=17e5fc2d-5d91-403b-afd1-805c4edf360a
+###
+NC_001416.1_phage_lambda	.	gene	8946	9695	.	+	.	owner=jolenerr@tamu.edu;ID=d9ee7b0e-b4a7-48cf-8c4b-aa95ca8863e0;date_last_modified=2020-05-27;Name=tail tube protein V;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	8946	9695	.	+	.	owner=jolenerr@tamu.edu;Parent=d9ee7b0e-b4a7-48cf-8c4b-aa95ca8863e0;ID=91671458-d428-452b-ae42-c8ae550f2f54;date_last_modified=2020-05-27;Name=tail tube protein V;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	8955	9695	.	+	0	Parent=91671458-d428-452b-ae42-c8ae550f2f54;ID=751b5251-2775-4f12-8ca4-80bc2cf7380f;Name=751b5251-2775-4f12-8ca4-80bc2cf7380f
+NC_001416.1_phage_lambda	.	exon	8955	9695	.	+	.	Parent=91671458-d428-452b-ae42-c8ae550f2f54;ID=e0902973-4d57-4fcc-b161-42b0f36030a1;Name=e0902973-4d57-4fcc-b161-42b0f36030a1
+NC_001416.1_phage_lambda	.	exon	8946	8949	.	+	.	Parent=91671458-d428-452b-ae42-c8ae550f2f54;ID=50d5630a-1b9b-4edd-aff3-339e326c7a60;Name=50d5630a-1b9b-4edd-aff3-339e326c7a60
+###
+NC_001416.1_phage_lambda	.	gene	10528	13103	.	+	.	owner=jolenerr@tamu.edu;ID=7ef9ffad-d420-4a1c-9a8d-2312dc04b558;date_last_modified=2020-05-27;Name=tape measure protein H;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	10528	13103	.	+	.	owner=jolenerr@tamu.edu;Parent=7ef9ffad-d420-4a1c-9a8d-2312dc04b558;ID=d8147a09-fa20-498d-90ae-5c8e620927c5;date_last_modified=2020-05-27;Name=tape measure protein H;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	10542	13103	.	+	.	Parent=d8147a09-fa20-498d-90ae-5c8e620927c5;ID=09b3d59c-0f22-4a59-abeb-b0f2c03a0d6d;Name=09b3d59c-0f22-4a59-abeb-b0f2c03a0d6d
+NC_001416.1_phage_lambda	.	CDS	10542	13103	.	+	0	Parent=d8147a09-fa20-498d-90ae-5c8e620927c5;ID=8179e2f8-7d1e-47ca-ba9a-249bdbac6ce6;Name=8179e2f8-7d1e-47ca-ba9a-249bdbac6ce6
+NC_001416.1_phage_lambda	.	exon	10528	10533	.	+	.	Parent=d8147a09-fa20-498d-90ae-5c8e620927c5;ID=c1804a26-c38e-47d8-9287-87901ce2629b;Name=c1804a26-c38e-47d8-9287-87901ce2629b
+###
+NC_001416.1_phage_lambda	.	gene	32816	33124	.	-	.	owner=jolenerr@tamu.edu;ID=411ff345-0c28-4335-a864-560ee4fc66c6;date_last_modified=2020-05-27;Name=host-nuclease inhibitor protein gam;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	32816	33124	.	-	.	owner=jolenerr@tamu.edu;Parent=411ff345-0c28-4335-a864-560ee4fc66c6;ID=d6522124-94e4-4c0d-901d-939f27706d76;date_last_modified=2020-05-27;Name=host-nuclease inhibitor protein gam;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	33120	33124	.	-	.	Parent=d6522124-94e4-4c0d-901d-939f27706d76;ID=a9c3ccd4-be76-44eb-a0f6-7054125bfb0d;Name=a9c3ccd4-be76-44eb-a0f6-7054125bfb0d
+NC_001416.1_phage_lambda	.	exon	32816	33112	.	-	.	Parent=d6522124-94e4-4c0d-901d-939f27706d76;ID=2e5f983e-f306-475b-b3f0-5c47d2b6f75c;Name=2e5f983e-f306-475b-b3f0-5c47d2b6f75c
+NC_001416.1_phage_lambda	.	CDS	32816	33112	.	-	0	Parent=d6522124-94e4-4c0d-901d-939f27706d76;ID=1733c812-6b38-4c6a-8a07-dac2d86a6e07;Name=1733c812-6b38-4c6a-8a07-dac2d86a6e07
+###
+NC_001416.1_phage_lambda	.	gene	2824	4437	.	+	.	owner=jolenerr@tamu.edu;ID=0695da41-cce8-4f07-a27a-eb42ac82ae56;date_last_modified=2020-05-27;Name=portal protein B;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	2824	4437	.	+	.	owner=jolenerr@tamu.edu;Parent=0695da41-cce8-4f07-a27a-eb42ac82ae56;ID=136ed72d-6ee9-44e5-906c-62b5554a59c5;date_last_modified=2020-05-27;Name=portal protein B;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	2836	4437	.	+	0	Parent=136ed72d-6ee9-44e5-906c-62b5554a59c5;ID=8febd960-3365-4445-8a2c-a6905489ed75;Name=8febd960-3365-4445-8a2c-a6905489ed75
+NC_001416.1_phage_lambda	.	exon	2824	2827	.	+	.	Parent=136ed72d-6ee9-44e5-906c-62b5554a59c5;ID=8332fd3f-52e9-4eea-abde-90afea727274;Name=8332fd3f-52e9-4eea-abde-90afea727274
+NC_001416.1_phage_lambda	.	exon	2836	4437	.	+	.	Parent=136ed72d-6ee9-44e5-906c-62b5554a59c5;ID=58a3b30b-2893-481c-9c9a-3bb5a2b52977;Name=58a3b30b-2893-481c-9c9a-3bb5a2b52977
+###
+NC_001416.1_phage_lambda	.	gene	46459	46763	.	-	.	owner=jolenerr@tamu.edu;ID=6eedd5c5-3c44-404a-af31-acee26522035;date_last_modified=2020-05-13;Name=bor;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	46459	46763	.	-	.	owner=jolenerr@tamu.edu;Parent=6eedd5c5-3c44-404a-af31-acee26522035;ID=f467c0ea-f52e-408f-96a7-2cc8e2ae261c;date_last_modified=2020-05-13;Name=bor;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	46761	46763	.	-	.	Parent=f467c0ea-f52e-408f-96a7-2cc8e2ae261c;ID=56b7f4ad-3e69-4f6e-a3c9-2f117d91f231;Name=56b7f4ad-3e69-4f6e-a3c9-2f117d91f231
+NC_001416.1_phage_lambda	.	exon	46459	46752	.	-	.	Parent=f467c0ea-f52e-408f-96a7-2cc8e2ae261c;ID=9a311dec-bc02-4857-9325-6f7ec4f784fe;Name=9a311dec-bc02-4857-9325-6f7ec4f784fe
+NC_001416.1_phage_lambda	.	CDS	46459	46752	.	-	0	Parent=f467c0ea-f52e-408f-96a7-2cc8e2ae261c;ID=b52dc69d-b399-4643-b352-8d442e3d9815;Name=b52dc69d-b399-4643-b352-8d442e3d9815
+###
+NC_001416.1_phage_lambda	.	gene	2622	2839	.	+	.	owner=jolenerr@tamu.edu;Note=InterPro domain IPR004174,PMID 22087227 solves structure by NMR;ID=38175e36-b9e9-48ea-9d1c-7f115fae7194;date_last_modified=2020-05-28;Name=head completion protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	2622	2839	.	+	.	owner=jolenerr@tamu.edu;Parent=38175e36-b9e9-48ea-9d1c-7f115fae7194;ID=1cb3bf11-562c-49a2-afe8-00cb51d4a4b5;date_last_modified=2020-05-27;Name=head completion protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	2622	2625	.	+	.	Parent=1cb3bf11-562c-49a2-afe8-00cb51d4a4b5;ID=937edf11-26e5-4972-88e5-75b7abf68890;Name=937edf11-26e5-4972-88e5-75b7abf68890
+NC_001416.1_phage_lambda	.	exon	2633	2839	.	+	.	Parent=1cb3bf11-562c-49a2-afe8-00cb51d4a4b5;ID=aca6c50f-6f2a-486c-a298-91e63e171a33;Name=aca6c50f-6f2a-486c-a298-91e63e171a33
+NC_001416.1_phage_lambda	.	CDS	2633	2839	.	+	0	Parent=1cb3bf11-562c-49a2-afe8-00cb51d4a4b5;ID=37e28230-a07a-4479-bad4-56fb0007bd59;Name=37e28230-a07a-4479-bad4-56fb0007bd59
+###
+NC_001416.1_phage_lambda	.	gene	10115	10549	.	+	.	owner=jolenerr@tamu.edu;frameshift=a;ID=c6a11d3b-7b9d-446f-ba16-3a642f3f6fbd;date_last_modified=2020-05-27;Name=tape measure chaperone GT;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	10115	10549	.	+	.	owner=jolenerr@tamu.edu;Parent=c6a11d3b-7b9d-446f-ba16-3a642f3f6fbd;ID=994d0df4-6d23-4adc-ad9b-307a13e9e96c;date_last_modified=2020-05-27;Name=tape measure chaperone GT;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	10115	10549	.	+	.	Parent=994d0df4-6d23-4adc-ad9b-307a13e9e96c;ID=e07568e3-3071-46f6-b537-9c6c90e7f4d8;Name=e07568e3-3071-46f6-b537-9c6c90e7f4d8
+NC_001416.1_phage_lambda	.	CDS	10115	10549	.	+	0	Parent=994d0df4-6d23-4adc-ad9b-307a13e9e96c;ID=c2fed17b-288c-4413-80e8-068f58cd559f;Name=c2fed17b-288c-4413-80e8-068f58cd559f
+###
+NC_001416.1_phage_lambda	.	gene	15493	18903	.	+	.	owner=jolenerr@tamu.edu;ID=af1a2402-fb19-4abe-9a0b-b3e9dc613524;date_last_modified=2020-05-27;Name=tip attachment protein J;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	15493	18903	.	+	.	owner=jolenerr@tamu.edu;Parent=af1a2402-fb19-4abe-9a0b-b3e9dc613524;ID=c0488c58-8117-4e4a-a8f5-86a12032ad25;date_last_modified=2020-05-27;Name=tip attachment protein J;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	15505	18903	.	+	0	Parent=c0488c58-8117-4e4a-a8f5-86a12032ad25;ID=daaa8146-6a47-4621-b657-a4126278d662;Name=daaa8146-6a47-4621-b657-a4126278d662
+NC_001416.1_phage_lambda	.	exon	15493	15496	.	+	.	Parent=c0488c58-8117-4e4a-a8f5-86a12032ad25;ID=78d80c78-392f-4a38-ac9e-60e1159d9c17;Name=78d80c78-392f-4a38-ac9e-60e1159d9c17
+NC_001416.1_phage_lambda	.	exon	15505	18903	.	+	.	Parent=c0488c58-8117-4e4a-a8f5-86a12032ad25;ID=80a77d2d-855c-42a1-b0bd-dd86636f3dcc;Name=80a77d2d-855c-42a1-b0bd-dd86636f3dcc
+###
+NC_001416.1_phage_lambda	.	gene	34271	34357	.	-	.	owner=jolenerr@tamu.edu;ID=819736c3-ac94-47f2-abdc-f6193a12b404;date_last_modified=2020-05-27;Name=orf28;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	mRNA	34271	34357	.	-	.	owner=jolenerr@tamu.edu;Parent=819736c3-ac94-47f2-abdc-f6193a12b404;ID=8be9f716-bbb9-4b5b-b90d-6e59e614785f;date_last_modified=2020-05-27;Name=orf28-00001;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	exon	34271	34357	.	-	.	Parent=8be9f716-bbb9-4b5b-b90d-6e59e614785f;ID=84501a32-631d-4ab3-8e15-568100260793;Name=84501a32-631d-4ab3-8e15-568100260793
+NC_001416.1_phage_lambda	.	CDS	34271	34357	.	-	0	Parent=8be9f716-bbb9-4b5b-b90d-6e59e614785f;ID=6ac3c562-8606-417f-8801-47d340be8f13;Name=6ac3c562-8606-417f-8801-47d340be8f13
+###
+NC_001416.1_phage_lambda	.	gene	29374	29667	.	-	.	owner=jolenerr@tamu.edu;Note=Contains CATH G3DSA:1.10.10.1920 with putative hydrolase domain;ID=375742bf-c4c9-46e2-b49c-3db72351ae5d;date_last_modified=2020-05-27;Name=protein ea8.5;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	29374	29667	.	-	.	owner=jolenerr@tamu.edu;Parent=375742bf-c4c9-46e2-b49c-3db72351ae5d;ID=f6da5c7f-0e9e-442f-9185-03a78b626069;date_last_modified=2020-05-27;Name=protein ea8.5;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	29663	29667	.	-	.	Parent=f6da5c7f-0e9e-442f-9185-03a78b626069;ID=7e6a22eb-fc64-4d7b-a23f-107328cde024;Name=7e6a22eb-fc64-4d7b-a23f-107328cde024
+NC_001416.1_phage_lambda	.	CDS	29374	29655	.	-	0	Parent=f6da5c7f-0e9e-442f-9185-03a78b626069;ID=d1966aba-05aa-4b28-bf9c-d20786258520;Name=d1966aba-05aa-4b28-bf9c-d20786258520
+NC_001416.1_phage_lambda	.	exon	29374	29655	.	-	.	Parent=f6da5c7f-0e9e-442f-9185-03a78b626069;ID=ade6501a-a05f-4a14-b680-3e91086c0d1e;Name=ade6501a-a05f-4a14-b680-3e91086c0d1e
+###
+NC_001416.1_phage_lambda	.	gene	47042	47463	.	-	.	owner=jolenerr@tamu.edu;ID=5d4e2403-4389-497c-a220-9740cd9935cc;date_last_modified=2020-05-13;Name=CDS.0.2625_0.768191840841;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	47042	47463	.	-	.	owner=jolenerr@tamu.edu;Parent=5d4e2403-4389-497c-a220-9740cd9935cc;ID=6a3b98a0-c7ad-404f-8476-f19bd2f4db4c;date_last_modified=2020-05-13;Name=CDS.0.2625_0.768191840841-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	47042	47452	.	-	.	Parent=6a3b98a0-c7ad-404f-8476-f19bd2f4db4c;ID=e58cc24e-6d9e-407a-ace6-c384766d404d;Name=e58cc24e-6d9e-407a-ace6-c384766d404d
+NC_001416.1_phage_lambda	.	CDS	47042	47452	.	-	0	Parent=6a3b98a0-c7ad-404f-8476-f19bd2f4db4c;ID=69439d46-dbb9-40da-a423-cd94742b3e05;Name=69439d46-dbb9-40da-a423-cd94742b3e05
+NC_001416.1_phage_lambda	.	exon	47460	47463	.	-	.	Parent=6a3b98a0-c7ad-404f-8476-f19bd2f4db4c;ID=fa87b275-81e8-404e-8104-787fb31b1966;Name=fa87b275-81e8-404e-8104-787fb31b1966
+###
+NC_001416.1_phage_lambda	.	gene	40268	40570	.	+	.	owner=jolenerr@tamu.edu;ID=a15b44d2-c0d8-4c0b-9837-2c3c986b6ff4;date_last_modified=2020-05-27;Name=ren exclusion protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	40268	40570	.	+	.	owner=jolenerr@tamu.edu;Parent=a15b44d2-c0d8-4c0b-9837-2c3c986b6ff4;ID=3de42f2d-f2ef-43b0-961b-ce9e2de4db80;date_last_modified=2020-05-27;Name=ren exclusion protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	40268	40272	.	+	.	Parent=3de42f2d-f2ef-43b0-961b-ce9e2de4db80;ID=525e8f0d-f2b1-492f-b066-ac740a69ce0c;Name=525e8f0d-f2b1-492f-b066-ac740a69ce0c
+NC_001416.1_phage_lambda	.	CDS	40280	40570	.	+	0	Parent=3de42f2d-f2ef-43b0-961b-ce9e2de4db80;ID=d64ff06e-a89a-409c-9bed-84e3be21fa85;Name=d64ff06e-a89a-409c-9bed-84e3be21fa85
+NC_001416.1_phage_lambda	.	exon	40280	40570	.	+	.	Parent=3de42f2d-f2ef-43b0-961b-ce9e2de4db80;ID=b729ffc3-ee89-49a6-8ba8-cd62fc0c4908;Name=b729ffc3-ee89-49a6-8ba8-cd62fc0c4908
+###
+NC_001416.1_phage_lambda	.	gene	27444	27569	.	-	.	owner=jolenerr@tamu.edu;ID=ae844fd4-9b05-485e-a49a-61b6ec9f291a;date_last_modified=2020-05-27;Name=CDS.0.4499_0.266127908605;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	mRNA	27444	27569	.	-	.	owner=jolenerr@tamu.edu;Parent=ae844fd4-9b05-485e-a49a-61b6ec9f291a;ID=59fd6074-cb7a-4ca3-aadb-7b8b40cd18f5;date_last_modified=2020-05-27;Name=CDS.0.4499_0.266127908605-00001;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	exon	27566	27569	.	-	.	Parent=59fd6074-cb7a-4ca3-aadb-7b8b40cd18f5;ID=8111d722-e5a1-40c6-8b87-6dcbc401d337;Name=8111d722-e5a1-40c6-8b87-6dcbc401d337
+NC_001416.1_phage_lambda	.	CDS	27444	27560	.	-	0	Parent=59fd6074-cb7a-4ca3-aadb-7b8b40cd18f5;ID=66e21d96-ea02-4ac6-9a44-d9cb14325318;Name=66e21d96-ea02-4ac6-9a44-d9cb14325318
+NC_001416.1_phage_lambda	.	exon	27444	27560	.	-	.	Parent=59fd6074-cb7a-4ca3-aadb-7b8b40cd18f5;ID=d11e7074-0963-4503-9f7d-313244d958bd;Name=d11e7074-0963-4503-9f7d-313244d958bd
+###
+NC_001416.1_phage_lambda	.	gene	34417	34534	.	+	.	owner=jolenerr@tamu.edu;ID=3bd258c3-0580-4bbd-9cbe-4c847adc452e;date_last_modified=2020-05-27;Name=CDS.0.1464_0.0965447626014;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	34417	34534	.	+	.	owner=jolenerr@tamu.edu;Parent=3bd258c3-0580-4bbd-9cbe-4c847adc452e;ID=3a389c79-fdb9-460d-82f9-9cb3d47992e1;date_last_modified=2020-05-13;Name=CDS.0.1464_0.0965447626014-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	34433	34534	.	+	0	Parent=3a389c79-fdb9-460d-82f9-9cb3d47992e1;ID=3d44c6b8-2643-4a9e-9c0a-c7d17a57a66c;Name=3d44c6b8-2643-4a9e-9c0a-c7d17a57a66c
+NC_001416.1_phage_lambda	.	exon	34433	34534	.	+	.	Parent=3a389c79-fdb9-460d-82f9-9cb3d47992e1;ID=5ecaa49d-849b-43d0-bc71-0f37158cf88a;Name=5ecaa49d-849b-43d0-bc71-0f37158cf88a
+NC_001416.1_phage_lambda	.	exon	34417	34419	.	+	.	Parent=3a389c79-fdb9-460d-82f9-9cb3d47992e1;ID=0c6ed2f9-9ea8-4c47-a3ff-b95dadd0968f;Name=0c6ed2f9-9ea8-4c47-a3ff-b95dadd0968f
+###
+NC_001416.1_phage_lambda	.	gene	13089	13429	.	+	.	owner=jolenerr@tamu.edu;ID=55fe46da-9e0e-4454-aff9-f9a12c0a2da4;date_last_modified=2020-05-27;Name=tail tip protein M;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	13089	13429	.	+	.	owner=jolenerr@tamu.edu;Parent=55fe46da-9e0e-4454-aff9-f9a12c0a2da4;ID=1463445e-4254-4b09-86f3-89a21ab2a2ab;date_last_modified=2020-05-27;Name=tail tip protein M;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	13100	13429	.	+	0	Parent=1463445e-4254-4b09-86f3-89a21ab2a2ab;ID=acce5e9e-48c3-4c5b-b0b7-0f76d353300e;Name=acce5e9e-48c3-4c5b-b0b7-0f76d353300e
+NC_001416.1_phage_lambda	.	exon	13100	13429	.	+	.	Parent=1463445e-4254-4b09-86f3-89a21ab2a2ab;ID=1775c91f-bb25-4b61-b703-6f102dd3eedc;Name=1775c91f-bb25-4b61-b703-6f102dd3eedc
+NC_001416.1_phage_lambda	.	exon	13089	13094	.	+	.	Parent=1463445e-4254-4b09-86f3-89a21ab2a2ab;ID=07188225-4692-4856-9ce6-b1ace3f6892b;Name=07188225-4692-4856-9ce6-b1ace3f6892b
+###
+NC_001416.1_phage_lambda	.	gene	45175	45509	.	+	.	owner=jolenerr@tamu.edu;ID=94064736-88a6-4e82-8c89-8226f57526e8;date_last_modified=2020-05-13;Name=antiholin S107;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	45175	45509	.	+	.	owner=jolenerr@tamu.edu;Parent=94064736-88a6-4e82-8c89-8226f57526e8;ID=56bb4ef4-7b98-43bd-b266-d213c88ae16f;date_last_modified=2020-05-13;Name=antiholin S107;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	45175	45179	.	+	.	Parent=56bb4ef4-7b98-43bd-b266-d213c88ae16f;ID=4f2c54ba-141b-4c5c-a37b-2906be78c50f;Name=4f2c54ba-141b-4c5c-a37b-2906be78c50f
+NC_001416.1_phage_lambda	.	exon	45186	45509	.	+	.	Parent=56bb4ef4-7b98-43bd-b266-d213c88ae16f;ID=b055a5e0-0195-4645-a856-7d8be1618b73;Name=b055a5e0-0195-4645-a856-7d8be1618b73
+NC_001416.1_phage_lambda	.	CDS	45186	45509	.	+	0	Parent=56bb4ef4-7b98-43bd-b266-d213c88ae16f;ID=6a8d644c-b1ac-4b73-a193-b13c7370e726;Name=6a8d644c-b1ac-4b73-a193-b13c7370e726
+NC_001416.1_phage_lambda	.	mRNA	45175	45509	.	+	.	owner=jolenerr@tamu.edu;Parent=94064736-88a6-4e82-8c89-8226f57526e8;ID=1810c0cc-6f9b-4cf5-9fb6-85b8a9eb2a7b;date_last_modified=2020-05-13;Name=holin S;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	45192	45509	.	+	0	Parent=1810c0cc-6f9b-4cf5-9fb6-85b8a9eb2a7b;ID=e02b3440-6447-4fe3-8e53-3cc76137ab9f;Name=e02b3440-6447-4fe3-8e53-3cc76137ab9f
+NC_001416.1_phage_lambda	.	exon	45175	45179	.	+	.	Parent=1810c0cc-6f9b-4cf5-9fb6-85b8a9eb2a7b;ID=28f3de2d-c6b8-4bb2-acb7-760106d94a60;Name=28f3de2d-c6b8-4bb2-acb7-760106d94a60
+NC_001416.1_phage_lambda	.	exon	45192	45509	.	+	.	Parent=1810c0cc-6f9b-4cf5-9fb6-85b8a9eb2a7b;ID=ad95e682-216f-439d-864f-32c5bdf5d70b;Name=ad95e682-216f-439d-864f-32c5bdf5d70b
+###
+NC_001416.1_phage_lambda	.	gene	9699	10133	.	+	.	owner=jolenerr@tamu.edu;frameshift=a;ID=0b5a859a-39f6-4c49-91b7-0b2def466374;date_last_modified=2020-05-27;Name=tape measure chaperone GT;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	9699	10133	.	+	.	owner=jolenerr@tamu.edu;Parent=0b5a859a-39f6-4c49-91b7-0b2def466374;ID=066626d8-a024-46ed-b197-7be854dfe58a;date_last_modified=2020-05-27;Name=tape measure chaperone G;date_creation=2020-05-27
+NC_001416.1_phage_lambda	.	exon	9699	9702	.	+	.	Parent=066626d8-a024-46ed-b197-7be854dfe58a;ID=fc54a6c4-6918-4f9f-a86b-e54e56e63456;Name=fc54a6c4-6918-4f9f-a86b-e54e56e63456
+NC_001416.1_phage_lambda	.	exon	9711	10133	.	+	.	Parent=066626d8-a024-46ed-b197-7be854dfe58a;ID=6cbab6c9-7263-4eaa-8a7a-a9aae7b38814;Name=6cbab6c9-7263-4eaa-8a7a-a9aae7b38814
+NC_001416.1_phage_lambda	.	CDS	9711	10133	.	+	0	Parent=066626d8-a024-46ed-b197-7be854dfe58a;ID=d9f2d580-8d3a-4674-bc89-68ec6242a770;Name=d9f2d580-8d3a-4674-bc89-68ec6242a770
+NC_001416.1_phage_lambda	.	mRNA	9699	10115	.	+	.	owner=jolenerr@tamu.edu;Parent=0b5a859a-39f6-4c49-91b7-0b2def466374;ID=0de4bbe3-fe4b-46d9-b547-9db2edc8bc19;date_last_modified=2020-05-27;Name=tape measure chaperone GT;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	9699	9702	.	+	.	Parent=0de4bbe3-fe4b-46d9-b547-9db2edc8bc19;ID=a0f81e00-a11e-4662-b946-e4d122bb1a91;Name=a0f81e00-a11e-4662-b946-e4d122bb1a91
+NC_001416.1_phage_lambda	.	exon	9711	10115	.	+	.	Parent=0de4bbe3-fe4b-46d9-b547-9db2edc8bc19;ID=3f523d5f-405a-4c26-aab5-1cf51041696a;Name=3f523d5f-405a-4c26-aab5-1cf51041696a
+NC_001416.1_phage_lambda	.	CDS	9711	10115	.	+	0	Parent=0de4bbe3-fe4b-46d9-b547-9db2edc8bc19;ID=cc616186-7484-421c-928c-4036c8fab9b4;Name=cc616186-7484-421c-928c-4036c8fab9b4
+###
+NC_001416.1_phage_lambda	.	gene	20852	21973	.	+	.	owner=jolenerr@tamu.edu;ID=9ffb2fcd-96b9-4606-8d3c-c1be0cf0fc5b;date_last_modified=2020-05-27;Name=tail fiber protein stf;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	20852	21973	.	+	.	owner=jolenerr@tamu.edu;Parent=9ffb2fcd-96b9-4606-8d3c-c1be0cf0fc5b;ID=90710d39-0dd2-434e-bca9-2dbd2d3fa4c3;date_last_modified=2020-05-27;Name=tail fiber protein stf;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	20852	21973	.	+	.	Parent=90710d39-0dd2-434e-bca9-2dbd2d3fa4c3;ID=cf1f8eef-2f85-49d9-bd9a-10be54ae41db;Name=cf1f8eef-2f85-49d9-bd9a-10be54ae41db
+NC_001416.1_phage_lambda	.	CDS	20852	21973	.	+	0	Parent=90710d39-0dd2-434e-bca9-2dbd2d3fa4c3;ID=198e0dc7-fba5-44fb-8a76-fd67353df314;Name=198e0dc7-fba5-44fb-8a76-fd67353df314
+###
+NC_001416.1_phage_lambda	.	gene	25396	26983	.	-	.	owner=jolenerr@tamu.edu;Note=PMID 8052130,Contains InterPro domain IPR003959;ID=27a0e836-ee65-4d75-9d88-2d63b4a28b93;date_last_modified=2020-05-27;Name=nuclease ea59;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	25396	26983	.	-	.	owner=jolenerr@tamu.edu;Parent=27a0e836-ee65-4d75-9d88-2d63b4a28b93;ID=f82638cf-a98d-4741-a3b4-d952eeed32a0;date_last_modified=2020-05-27;Name=nuclease ea59;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	25396	26973	.	-	0	Parent=f82638cf-a98d-4741-a3b4-d952eeed32a0;ID=98cc9ed4-07a9-4cb4-a212-df5ac7662494;Name=98cc9ed4-07a9-4cb4-a212-df5ac7662494
+NC_001416.1_phage_lambda	.	exon	25396	26973	.	-	.	Parent=f82638cf-a98d-4741-a3b4-d952eeed32a0;ID=3ca7095d-4be8-4558-bdf7-2dd560dd84fe;Name=3ca7095d-4be8-4558-bdf7-2dd560dd84fe
+NC_001416.1_phage_lambda	.	exon	26980	26983	.	-	.	Parent=f82638cf-a98d-4741-a3b4-d952eeed32a0;ID=c36e0f12-27ed-4286-b132-3c62984d968d;Name=c36e0f12-27ed-4286-b132-3c62984d968d
+###
+NC_001416.1_phage_lambda	.	gene	36275	37124	.	-	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=83e81e47-1e39-4cbf-a67d-57e808d97412;date_last_modified=2020-05-27;Name=exclusion protein rexA;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	36275	37124	.	-	.	owner=jason.gill@tamu.edu;Parent=83e81e47-1e39-4cbf-a67d-57e808d97412;ID=12f36271-9a46-4013-9f49-94473775f910;date_last_modified=2020-05-27;Name=exclusion protein rexA;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	CDS	36275	37114	.	-	0	Parent=12f36271-9a46-4013-9f49-94473775f910;ID=aa0e418f-ace1-4738-b698-92f5d162e5f3;Name=aa0e418f-ace1-4738-b698-92f5d162e5f3
+NC_001416.1_phage_lambda	.	exon	36275	37114	.	-	.	Parent=12f36271-9a46-4013-9f49-94473775f910;ID=1765ee36-7b9d-4cc2-bca7-5d2eb564d061;Name=1765ee36-7b9d-4cc2-bca7-5d2eb564d061
+NC_001416.1_phage_lambda	.	exon	37122	37124	.	-	.	Parent=12f36271-9a46-4013-9f49-94473775f910;ID=8189c63f-33aa-4934-8e90-f49593ba1e57;Name=8189c63f-33aa-4934-8e90-f49593ba1e57
+###
+NC_001416.1_phage_lambda	.	gene	701	2636	.	+	.	owner=jolenerr@tamu.edu;ID=6d452f5a-9508-40c1-9d43-d98831ca8919;date_last_modified=2020-05-27;Name=terminase large subunit;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	701	2636	.	+	.	owner=jolenerr@tamu.edu;Parent=6d452f5a-9508-40c1-9d43-d98831ca8919;ID=ff09bb40-341a-4351-9769-af6c08e01707;date_last_modified=2020-05-27;Name=terminase large subunit;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	701	704	.	+	.	Parent=ff09bb40-341a-4351-9769-af6c08e01707;ID=58fd69bd-480f-4212-99f8-ea311880e6d7;Name=58fd69bd-480f-4212-99f8-ea311880e6d7
+NC_001416.1_phage_lambda	.	exon	711	2636	.	+	.	Parent=ff09bb40-341a-4351-9769-af6c08e01707;ID=31f565a0-7be7-4e80-a5a4-34dc5fbc894a;Name=31f565a0-7be7-4e80-a5a4-34dc5fbc894a
+NC_001416.1_phage_lambda	.	CDS	711	2636	.	+	0	Parent=ff09bb40-341a-4351-9769-af6c08e01707;ID=031026d9-32df-4d8b-8048-f45a0d2712fb;Name=031026d9-32df-4d8b-8048-f45a0d2712fb
+###
+NC_001416.1_phage_lambda	.	gene	46896	47029	.	-	.	owner=jolenerr@tamu.edu;ID=2da1b434-7877-4aa2-b88b-24922f70988b;date_last_modified=2020-05-13;Name=CDS.0.3497_0.36888415839;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	46896	47008	.	-	.	owner=jolenerr@tamu.edu;Parent=2da1b434-7877-4aa2-b88b-24922f70988b;ID=30f56091-48e8-49bc-8279-b3ec633b742c;date_last_modified=2020-05-13;Name=CDS.0.3497_0.36888415839-00002;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	46896	46994	.	-	.	Parent=30f56091-48e8-49bc-8279-b3ec633b742c;ID=a8ab067a-00f8-4e00-98df-0f2ddbd2fc1d;Name=a8ab067a-00f8-4e00-98df-0f2ddbd2fc1d
+NC_001416.1_phage_lambda	.	exon	47005	47008	.	-	.	Parent=30f56091-48e8-49bc-8279-b3ec633b742c;ID=0bbb213e-3d2e-4395-9bfb-5644080da41e;Name=0bbb213e-3d2e-4395-9bfb-5644080da41e
+NC_001416.1_phage_lambda	.	CDS	46896	46994	.	-	0	Parent=30f56091-48e8-49bc-8279-b3ec633b742c;ID=a3a6bfa4-d24b-4149-856b-c6c0bdb9f28b;Name=a3a6bfa4-d24b-4149-856b-c6c0bdb9f28b
+###
+NC_001416.1_phage_lambda	.	gene	24509	25411	.	-	.	owner=jolenerr@tamu.edu;ID=a638e771-ca1f-4058-93a6-b9bddffd0bf8;date_last_modified=2020-05-27;Name=HNH endonuclease ea31;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	24509	25411	.	-	.	owner=jolenerr@tamu.edu;Parent=a638e771-ca1f-4058-93a6-b9bddffd0bf8;ID=cdc008e2-d2ef-404b-b3fd-b8d1b305883f;date_last_modified=2020-05-27;Name=HNH endonuclease ea31;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	24509	25399	.	-	.	Parent=cdc008e2-d2ef-404b-b3fd-b8d1b305883f;ID=2052dd81-1eb2-466e-99ed-8364be27bd15;Name=2052dd81-1eb2-466e-99ed-8364be27bd15
+NC_001416.1_phage_lambda	.	CDS	24509	25399	.	-	0	Parent=cdc008e2-d2ef-404b-b3fd-b8d1b305883f;ID=70233b7c-5f02-4674-8069-01a295d08e0f;Name=70233b7c-5f02-4674-8069-01a295d08e0f
+NC_001416.1_phage_lambda	.	exon	25408	25411	.	-	.	Parent=cdc008e2-d2ef-404b-b3fd-b8d1b305883f;ID=13c18339-b21f-453c-b6e2-a81ad9e52360;Name=13c18339-b21f-453c-b6e2-a81ad9e52360
+###
+NC_001416.1_phage_lambda	.	gene	181	736	.	+	.	owner=jolenerr@tamu.edu;ID=1185c0aa-14c4-45c3-ab0d-889bbfdbf137;date_last_modified=2020-05-27;Name=terminase small subunit;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	181	736	.	+	.	owner=jolenerr@tamu.edu;Parent=1185c0aa-14c4-45c3-ab0d-889bbfdbf137;ID=7305f517-52c0-451a-8a2a-dd5c4171d091;date_last_modified=2020-05-27;Name=terminase small subunit;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	181	183	.	+	.	Parent=7305f517-52c0-451a-8a2a-dd5c4171d091;ID=eface821-b1ca-4589-afcc-6e0cfeac6a7d;Name=eface821-b1ca-4589-afcc-6e0cfeac6a7d
+NC_001416.1_phage_lambda	.	exon	191	736	.	+	.	Parent=7305f517-52c0-451a-8a2a-dd5c4171d091;ID=cc7a2d53-ca33-4ada-85d8-b8dae5b5aced;Name=cc7a2d53-ca33-4ada-85d8-b8dae5b5aced
+NC_001416.1_phage_lambda	.	CDS	191	736	.	+	0	Parent=7305f517-52c0-451a-8a2a-dd5c4171d091;ID=bd324ade-329a-4973-8aa7-d889e65bf502;Name=bd324ade-329a-4973-8aa7-d889e65bf502
+###
+NC_001416.1_phage_lambda	.	gene	29847	30405	.	-	.	owner=jolenerr@tamu.edu;ID=c3708fda-012f-40ac-91d0-96ce2b9bc845;date_last_modified=2020-05-27;Name=protein ea22;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	29847	30405	.	-	.	owner=jolenerr@tamu.edu;Parent=c3708fda-012f-40ac-91d0-96ce2b9bc845;ID=dc13e0e1-15a9-46c1-8fea-5eb713a07e46;date_last_modified=2020-05-27;Name=protein ea22;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	29847	30395	.	-	.	Parent=dc13e0e1-15a9-46c1-8fea-5eb713a07e46;ID=d78d3aab-62ae-4929-9019-3e43aec9ac5d;Name=d78d3aab-62ae-4929-9019-3e43aec9ac5d
+NC_001416.1_phage_lambda	.	exon	30401	30405	.	-	.	Parent=dc13e0e1-15a9-46c1-8fea-5eb713a07e46;ID=e0bf3791-2f32-4313-bce1-2fe49064725d;Name=e0bf3791-2f32-4313-bce1-2fe49064725d
+NC_001416.1_phage_lambda	.	CDS	29847	30395	.	-	0	Parent=dc13e0e1-15a9-46c1-8fea-5eb713a07e46;ID=9df41302-3ec7-44cc-8380-5843972c25a2;Name=9df41302-3ec7-44cc-8380-5843972c25a2
+###
+NC_001416.1_phage_lambda	.	gene	8535	8947	.	+	.	owner=jolenerr@tamu.edu;ID=fca8745c-c433-4845-9430-c8a9dd4dc37b;date_last_modified=2020-05-27;Name=tail tube terminator protein U;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	8535	8947	.	+	.	owner=jolenerr@tamu.edu;Parent=fca8745c-c433-4845-9430-c8a9dd4dc37b;ID=b859eb4d-a967-40d8-969e-7e94d83683f5;date_last_modified=2020-05-27;Name=tail tube terminator protein U;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	8552	8947	.	+	.	Parent=b859eb4d-a967-40d8-969e-7e94d83683f5;ID=11a7161a-66ca-4f90-9bac-7206aa4ca39f;Name=11a7161a-66ca-4f90-9bac-7206aa4ca39f
+NC_001416.1_phage_lambda	.	CDS	8552	8947	.	+	0	Parent=b859eb4d-a967-40d8-969e-7e94d83683f5;ID=9d1355f7-3bd4-4f2d-ac8f-3cc954d7ed1c;Name=9d1355f7-3bd4-4f2d-ac8f-3cc954d7ed1c
+NC_001416.1_phage_lambda	.	exon	8535	8538	.	+	.	Parent=b859eb4d-a967-40d8-969e-7e94d83683f5;ID=9fdc9a26-b154-47fa-813a-2c8fedba80c0;Name=9fdc9a26-b154-47fa-813a-2c8fedba80c0
+###
+NC_001416.1_phage_lambda	.	gene	42419	43043	.	+	.	owner=jolenerr@tamu.edu;ID=a8c3d9d2-cc66-4394-a821-ec0db2e411de;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_51;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	42419	43043	.	+	.	owner=jolenerr@tamu.edu;Parent=a8c3d9d2-cc66-4394-a821-ec0db2e411de;ID=69c025b3-b1b8-4145-b744-edbfa8fc8fb3;date_last_modified=2020-05-13;Name=NC_001416.1_phage_lambda.gene_51-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	42429	43043	.	+	.	Parent=69c025b3-b1b8-4145-b744-edbfa8fc8fb3;ID=a9a47ee3-0e4a-48f8-948b-22ff77582290;Name=a9a47ee3-0e4a-48f8-948b-22ff77582290
+NC_001416.1_phage_lambda	.	exon	42419	42422	.	+	.	Parent=69c025b3-b1b8-4145-b744-edbfa8fc8fb3;ID=68ee08e1-a978-474f-9d75-9f8b6e9f030e;Name=68ee08e1-a978-474f-9d75-9f8b6e9f030e
+NC_001416.1_phage_lambda	.	CDS	42429	43043	.	+	0	Parent=69c025b3-b1b8-4145-b744-edbfa8fc8fb3;ID=33e3ac90-49c3-4b85-9702-9be46b7ff28d;Name=33e3ac90-49c3-4b85-9702-9be46b7ff28d
+###
+NC_001416.1_phage_lambda	.	gene	35037	35451	.	-	.	owner=jason.gill@tamu.edu;ID=b8e42f64-15ef-4fb6-b491-5f68bc0bfecd;date_last_modified=2020-05-27;Name=antitermination protein N;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	35037	35451	.	-	.	owner=jason.gill@tamu.edu;Parent=b8e42f64-15ef-4fb6-b491-5f68bc0bfecd;ID=f734e825-99e5-42ce-ae66-dc94f95b8aa4;date_last_modified=2020-05-27;Name=antitermination protein N;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	exon	35037	35438	.	-	.	Parent=f734e825-99e5-42ce-ae66-dc94f95b8aa4;ID=eeaea0ca-fa74-4b62-ac92-7d1a9c300ecb;Name=eeaea0ca-fa74-4b62-ac92-7d1a9c300ecb
+NC_001416.1_phage_lambda	.	exon	35449	35451	.	-	.	Parent=f734e825-99e5-42ce-ae66-dc94f95b8aa4;ID=976a2782-0c59-439a-a981-16a409ea9dbe;Name=976a2782-0c59-439a-a981-16a409ea9dbe
+NC_001416.1_phage_lambda	.	CDS	35037	35438	.	-	0	Parent=f734e825-99e5-42ce-ae66-dc94f95b8aa4;ID=b297f79a-701e-4c92-8773-872dd72554c7;Name=b297f79a-701e-4c92-8773-872dd72554c7
+###
+NC_001416.1_phage_lambda	.	gene	35825	36269	.	-	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=79c4329a-2551-40cf-85bc-ec2ee1425459;date_last_modified=2020-05-27;Name=exclusion protein rexB;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	35825	36269	.	-	.	owner=jason.gill@tamu.edu;Parent=79c4329a-2551-40cf-85bc-ec2ee1425459;ID=50146c6a-018d-4e95-be21-126217a541fd;date_last_modified=2020-05-27;Name=exclusion protein rexB;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	exon	36265	36269	.	-	.	Parent=50146c6a-018d-4e95-be21-126217a541fd;ID=0c9976f4-e0ae-49e6-8d98-32ee36e3ebcd;Name=0c9976f4-e0ae-49e6-8d98-32ee36e3ebcd
+NC_001416.1_phage_lambda	.	exon	35825	36259	.	-	.	Parent=50146c6a-018d-4e95-be21-126217a541fd;ID=245432f1-8787-4fd3-bb29-e2d54f2cac24;Name=245432f1-8787-4fd3-bb29-e2d54f2cac24
+NC_001416.1_phage_lambda	.	CDS	35825	36259	.	-	0	Parent=50146c6a-018d-4e95-be21-126217a541fd;ID=0681032b-0845-45d3-8107-27bf36ef0b3c;Name=0681032b-0845-45d3-8107-27bf36ef0b3c
+###
+NC_001416.1_phage_lambda	.	gene	29118	29296	.	-	.	owner=jolenerr@tamu.edu;ID=e15c9216-cdbd-4539-879b-9ab30db54d25;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	29118	29296	.	-	.	owner=jolenerr@tamu.edu;Parent=e15c9216-cdbd-4539-879b-9ab30db54d25;ID=e8eef5b8-2983-4afb-8180-65601db335e6;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	29118	29285	.	-	.	Parent=e8eef5b8-2983-4afb-8180-65601db335e6;ID=a40fb99b-afcb-4eb0-88bc-1b54788c6bd4;Name=a40fb99b-afcb-4eb0-88bc-1b54788c6bd4
+NC_001416.1_phage_lambda	.	exon	29293	29296	.	-	.	Parent=e8eef5b8-2983-4afb-8180-65601db335e6;ID=58d8fe51-c8b9-449b-858a-abb2b02a0cb1;Name=58d8fe51-c8b9-449b-858a-abb2b02a0cb1
+NC_001416.1_phage_lambda	.	CDS	29118	29285	.	-	0	Parent=e8eef5b8-2983-4afb-8180-65601db335e6;ID=06c62815-06cb-41aa-811b-07009faa18b1;Name=06c62815-06cb-41aa-811b-07009faa18b1
+###
+NC_001416.1_phage_lambda	.	gene	7603	7965	.	+	.	owner=jolenerr@tamu.edu;ID=638d1ac5-aea4-4988-b46d-01cf79793dfb;date_last_modified=2020-05-27;Name=head-tail connector protein FII;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	7603	7965	.	+	.	owner=jolenerr@tamu.edu;Parent=638d1ac5-aea4-4988-b46d-01cf79793dfb;ID=10cff28f-6e50-45ad-91e5-b9567de32642;date_last_modified=2020-05-27;Name=head-tail connector protein FII;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	7603	7606	.	+	.	Parent=10cff28f-6e50-45ad-91e5-b9567de32642;ID=5763dd34-4f0b-4b71-825b-c3faba4bf021;Name=5763dd34-4f0b-4b71-825b-c3faba4bf021
+NC_001416.1_phage_lambda	.	CDS	7612	7965	.	+	0	Parent=10cff28f-6e50-45ad-91e5-b9567de32642;ID=f2790e9e-43f4-4def-83ad-eec13fcf30f2;Name=f2790e9e-43f4-4def-83ad-eec13fcf30f2
+NC_001416.1_phage_lambda	.	exon	7612	7965	.	+	.	Parent=10cff28f-6e50-45ad-91e5-b9567de32642;ID=11643ed9-d29e-4279-b282-26ee90c0ac3e;Name=11643ed9-d29e-4279-b282-26ee90c0ac3e
+###
+NC_001416.1_phage_lambda	.	gene	34487	35036	.	+	.	owner=jolenerr@tamu.edu;ID=8ce03ed0-ef00-4c52-a0a9-2b2a86bca875;date_last_modified=2020-05-27;Name=superinfection exclusion protein B;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	34544	35036	.	+	.	owner=jolenerr@tamu.edu;Parent=8ce03ed0-ef00-4c52-a0a9-2b2a86bca875;ID=c39a5288-122f-4efe-ad2b-fa21f0321dc5;date_last_modified=2020-05-27;Name=superinfection exclusion protein B;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	34554	35036	.	+	.	Parent=c39a5288-122f-4efe-ad2b-fa21f0321dc5;ID=d36c5568-095f-41c4-8241-e925f56455a7;Name=d36c5568-095f-41c4-8241-e925f56455a7
+NC_001416.1_phage_lambda	.	CDS	34554	35036	.	+	0	Parent=c39a5288-122f-4efe-ad2b-fa21f0321dc5;ID=9ffea9bc-fb7e-4e31-937e-42831bc3df66;Name=9ffea9bc-fb7e-4e31-937e-42831bc3df66
+NC_001416.1_phage_lambda	.	exon	34544	34547	.	+	.	Parent=c39a5288-122f-4efe-ad2b-fa21f0321dc5;ID=39f1c372-c9fd-4fae-a474-a60313c0c624;Name=39f1c372-c9fd-4fae-a474-a60313c0c624
+###
+NC_001416.1_phage_lambda	.	gene	39572	40283	.	+	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=07f1dc2a-8b99-4403-b2a1-6f6b1a97a8bf;date_last_modified=2020-05-27;Name=DNA replication protein P;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	39572	40283	.	+	.	owner=jason.gill@tamu.edu;Parent=07f1dc2a-8b99-4403-b2a1-6f6b1a97a8bf;ID=c093d83e-8530-4a14-8bd8-c53b8a910833;date_last_modified=2020-05-27;Name=DNA replication protein P;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	CDS	39582	40283	.	+	0	Parent=c093d83e-8530-4a14-8bd8-c53b8a910833;ID=a88b53d4-d4fe-486b-8c84-8398b48e1f6f;Name=a88b53d4-d4fe-486b-8c84-8398b48e1f6f
+NC_001416.1_phage_lambda	.	exon	39572	39575	.	+	.	Parent=c093d83e-8530-4a14-8bd8-c53b8a910833;ID=cedc0d32-5263-4455-bd0f-d764693f70ed;Name=cedc0d32-5263-4455-bd0f-d764693f70ed
+NC_001416.1_phage_lambda	.	exon	39582	40283	.	+	.	Parent=c093d83e-8530-4a14-8bd8-c53b8a910833;ID=82b6f563-6f89-43d1-b98d-f78274587f69;Name=82b6f563-6f89-43d1-b98d-f78274587f69
+###
+NC_001416.1_phage_lambda	.	gene	37227	37957	.	-	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=a7d2cdab-7fda-4061-8472-1764694f0cd2;date_last_modified=2020-05-27;Name=repressor protein cI;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	37227	37957	.	-	.	owner=jason.gill@tamu.edu;Parent=a7d2cdab-7fda-4061-8472-1764694f0cd2;ID=2a6b70fd-ae85-42e9-9036-c28e3c2db97d;date_last_modified=2020-05-27;Name=repressor protein cI;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	CDS	37227	37940	.	-	0	Parent=2a6b70fd-ae85-42e9-9036-c28e3c2db97d;ID=fe515895-1460-4165-a3da-9a54c3af8c8b;Name=fe515895-1460-4165-a3da-9a54c3af8c8b
+NC_001416.1_phage_lambda	.	exon	37227	37940	.	-	.	Parent=2a6b70fd-ae85-42e9-9036-c28e3c2db97d;ID=e39fb5aa-6d49-410c-b866-59176ba7f58e;Name=e39fb5aa-6d49-410c-b866-59176ba7f58e
+NC_001416.1_phage_lambda	.	exon	37955	37957	.	-	.	Parent=2a6b70fd-ae85-42e9-9036-c28e3c2db97d;ID=ed4d4e34-4a7e-445e-8ed9-0398e79e4cca;Name=ed4d4e34-4a7e-445e-8ed9-0398e79e4cca
+###
+NC_001416.1_phage_lambda	.	gene	34087	34299	.	-	.	owner=jolenerr@tamu.edu;ID=2a518c27-1014-4987-8c6d-c77d9bd51018;date_last_modified=2020-05-27;Name=restriction alleviation protein ral;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	34087	34299	.	-	.	owner=jolenerr@tamu.edu;Parent=2a518c27-1014-4987-8c6d-c77d9bd51018;ID=49194677-2490-40bd-b0fb-3fb98cc52cf1;date_last_modified=2020-05-27;Name=restriction alleviation protein ral;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	34296	34299	.	-	.	Parent=49194677-2490-40bd-b0fb-3fb98cc52cf1;ID=dff21bf7-bbe3-436e-8f5b-f6d912c0f551;Name=dff21bf7-bbe3-436e-8f5b-f6d912c0f551
+NC_001416.1_phage_lambda	.	CDS	34087	34287	.	-	0	Parent=49194677-2490-40bd-b0fb-3fb98cc52cf1;ID=6328d99f-2767-4c98-b5ee-437a5966f8a4;Name=6328d99f-2767-4c98-b5ee-437a5966f8a4
+NC_001416.1_phage_lambda	.	exon	34087	34287	.	-	.	Parent=49194677-2490-40bd-b0fb-3fb98cc52cf1;ID=e193bc85-70b1-40fd-a6e9-3db37a3342ec;Name=e193bc85-70b1-40fd-a6e9-3db37a3342ec
+###
+NC_001416.1_phage_lambda	.	gene	43875	44509	.	+	.	owner=jolenerr@tamu.edu;ID=1653554c-4be1-453b-a377-86e20759321a;date_last_modified=2020-05-27;Name=late gene regulator;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	43875	44509	.	+	.	owner=jolenerr@tamu.edu;Parent=1653554c-4be1-453b-a377-86e20759321a;ID=8b9e1d18-cb36-449b-a9ae-8e8c3236a4c5;date_last_modified=2020-05-27;Name=late gene regulator;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	43886	44509	.	+	.	Parent=8b9e1d18-cb36-449b-a9ae-8e8c3236a4c5;ID=31c8e3da-388b-423c-b1e0-623182772e8e;Name=31c8e3da-388b-423c-b1e0-623182772e8e
+NC_001416.1_phage_lambda	.	CDS	43886	44509	.	+	0	Parent=8b9e1d18-cb36-449b-a9ae-8e8c3236a4c5;ID=2582ce2f-6414-47d7-b648-fa198a5806bb;Name=2582ce2f-6414-47d7-b648-fa198a5806bb
+NC_001416.1_phage_lambda	.	exon	43875	43878	.	+	.	Parent=8b9e1d18-cb36-449b-a9ae-8e8c3236a4c5;ID=b627b58f-ab61-40c2-ae58-964ee6ef0323;Name=b627b58f-ab61-40c2-ae58-964ee6ef0323
+###
+NC_001416.1_phage_lambda	.	gene	27812	28893	.	-	.	owner=jolenerr@tamu.edu;ID=e5536357-eca7-4860-9cc2-daa21051df98;date_last_modified=2020-05-27;Name=integrase int;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	27812	28893	.	-	.	owner=jolenerr@tamu.edu;Parent=e5536357-eca7-4860-9cc2-daa21051df98;ID=4b5c622d-ca3d-4df9-a124-56790bf573df;date_last_modified=2020-05-27;Name=integrase int;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	27812	28882	.	-	.	Parent=4b5c622d-ca3d-4df9-a124-56790bf573df;ID=1afc9e39-cd6d-4ff4-ab77-f007887e4219;Name=1afc9e39-cd6d-4ff4-ab77-f007887e4219
+NC_001416.1_phage_lambda	.	CDS	27812	28882	.	-	0	Parent=4b5c622d-ca3d-4df9-a124-56790bf573df;ID=e47fbbbf-ebfb-43b0-9d74-86b88bd26453;Name=e47fbbbf-ebfb-43b0-9d74-86b88bd26453
+NC_001416.1_phage_lambda	.	exon	28890	28893	.	-	.	Parent=4b5c622d-ca3d-4df9-a124-56790bf573df;ID=c519ae64-93a1-4258-a0b6-9037a38dcc29;Name=c519ae64-93a1-4258-a0b6-9037a38dcc29
+###
+NC_001416.1_phage_lambda	.	gene	33536	33918	.	-	.	owner=jolenerr@tamu.edu;ID=ac07bd3f-9aff-48b0-a2ec-73ce870dbd62;date_last_modified=2020-05-27;Name=single-stranded DNA binding protein ea10;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	33536	33918	.	-	.	owner=jolenerr@tamu.edu;Parent=ac07bd3f-9aff-48b0-a2ec-73ce870dbd62;ID=36b4a477-56ee-4ad0-8594-2cd30d71e973;date_last_modified=2020-05-27;Name=single-stranded DNA binding protein ea10;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	33915	33918	.	-	.	Parent=36b4a477-56ee-4ad0-8594-2cd30d71e973;ID=bb83a0b4-5396-4f2d-833a-2f6f08cd1af4;Name=bb83a0b4-5396-4f2d-833a-2f6f08cd1af4
+NC_001416.1_phage_lambda	.	CDS	33536	33904	.	-	0	Parent=36b4a477-56ee-4ad0-8594-2cd30d71e973;ID=c1212ac5-d27d-456e-8ca6-364d9d7ce65e;Name=c1212ac5-d27d-456e-8ca6-364d9d7ce65e
+NC_001416.1_phage_lambda	.	exon	33536	33904	.	-	.	Parent=36b4a477-56ee-4ad0-8594-2cd30d71e973;ID=e7c2364d-2ce2-49ac-b92d-e16d8dcb49f3;Name=e7c2364d-2ce2-49ac-b92d-e16d8dcb49f3
+###
+NC_001416.1_phage_lambda	.	gene	45483	45969	.	+	.	owner=jolenerr@tamu.edu;ID=f8ba23df-ca21-4307-8f5a-ef8243f01acc;date_last_modified=2020-05-13;Name=endolysin R;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	45483	45969	.	+	.	owner=jolenerr@tamu.edu;Parent=f8ba23df-ca21-4307-8f5a-ef8243f01acc;ID=768343f7-a182-4995-9cc8-51cfcca69037;date_last_modified=2020-05-13;Name=endolysin R;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	45493	45969	.	+	0	Parent=768343f7-a182-4995-9cc8-51cfcca69037;ID=a6425c60-0983-46cb-9073-3e4a15b6b451;Name=a6425c60-0983-46cb-9073-3e4a15b6b451
+NC_001416.1_phage_lambda	.	exon	45483	45486	.	+	.	Parent=768343f7-a182-4995-9cc8-51cfcca69037;ID=35d1231f-abe9-48d6-aed3-a7e0a6f48aa2;Name=35d1231f-abe9-48d6-aed3-a7e0a6f48aa2
+NC_001416.1_phage_lambda	.	exon	45493	45969	.	+	.	Parent=768343f7-a182-4995-9cc8-51cfcca69037;ID=399ec6b8-bb00-4d25-9512-41196eb41ae0;Name=399ec6b8-bb00-4d25-9512-41196eb41ae0
+###
+NC_001416.1_phage_lambda	.	gene	5739	6079	.	+	.	owner=jolenerr@tamu.edu;ID=274304d3-079e-4e08-aa11-219235e1aacb;date_last_modified=2020-05-28;Name=capsid decoration protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	5739	6079	.	+	.	owner=jolenerr@tamu.edu;Parent=274304d3-079e-4e08-aa11-219235e1aacb;ID=5291abf0-0be2-4ca3-b473-c5d9549fd211;date_last_modified=2020-05-28;Name=capsid decoration protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	5747	6079	.	+	.	Parent=5291abf0-0be2-4ca3-b473-c5d9549fd211;ID=a2fa2799-0e90-48ed-bf7f-787510296e98;Name=a2fa2799-0e90-48ed-bf7f-787510296e98
+NC_001416.1_phage_lambda	.	CDS	5747	6079	.	+	0	Parent=5291abf0-0be2-4ca3-b473-c5d9549fd211;ID=c0b0cccc-6c4f-40e6-a0cc-a26f912095af;Name=c0b0cccc-6c4f-40e6-a0cc-a26f912095af
+NC_001416.1_phage_lambda	.	exon	5739	5741	.	+	.	Parent=5291abf0-0be2-4ca3-b473-c5d9549fd211;ID=83533bb7-60ed-4f77-8f11-fe4fd4973280;Name=83533bb7-60ed-4f77-8f11-fe4fd4973280
+###
+NC_001416.1_phage_lambda	.	gene	21961	22557	.	+	.	owner=jolenerr@tamu.edu;ID=8f5752d0-2f43-4b81-94a6-e2bcf0119d63;date_last_modified=2020-05-27;Name=tail fiber assembly protein tfa;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	21961	22557	.	+	.	owner=jolenerr@tamu.edu;Parent=8f5752d0-2f43-4b81-94a6-e2bcf0119d63;ID=e89cf686-4697-4a40-b3d0-f52dedf6aa66;date_last_modified=2020-05-27;Name=tail fiber assembly protein tfa;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	21973	22557	.	+	.	Parent=e89cf686-4697-4a40-b3d0-f52dedf6aa66;ID=420813b5-5e3f-406c-9559-59a368b53626;Name=420813b5-5e3f-406c-9559-59a368b53626
+NC_001416.1_phage_lambda	.	CDS	21973	22557	.	+	0	Parent=e89cf686-4697-4a40-b3d0-f52dedf6aa66;ID=76b16353-7dde-4879-98a3-6d2b585f354c;Name=76b16353-7dde-4879-98a3-6d2b585f354c
+NC_001416.1_phage_lambda	.	exon	21961	21964	.	+	.	Parent=e89cf686-4697-4a40-b3d0-f52dedf6aa66;ID=323f0a04-b051-48e2-9594-ba051d331bfc;Name=323f0a04-b051-48e2-9594-ba051d331bfc
+###
+NC_001416.1_phage_lambda	.	gene	41950	42123	.	+	.	owner=jolenerr@tamu.edu;ID=c402b694-7971-451b-aa24-4e70550eef2d;date_last_modified=2020-05-13;Name=NinD;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	41950	42123	.	+	.	owner=jolenerr@tamu.edu;Parent=c402b694-7971-451b-aa24-4e70550eef2d;ID=e60d828b-b3ad-420d-b6a3-bb4379c52368;date_last_modified=2020-05-13;Name=NinD-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	41950	42123	.	+	.	Parent=e60d828b-b3ad-420d-b6a3-bb4379c52368;ID=1f833602-0050-4fa0-9b4c-a65801ce7d07;Name=1f833602-0050-4fa0-9b4c-a65801ce7d07
+NC_001416.1_phage_lambda	.	CDS	41950	42123	.	+	0	Parent=e60d828b-b3ad-420d-b6a3-bb4379c52368;ID=fb4c57c5-eceb-458a-879a-bc3731364776;Name=fb4c57c5-eceb-458a-879a-bc3731364776
+###
+NC_001416.1_phage_lambda	.	gene	47518	47652	.	+	.	owner=jolenerr@tamu.edu;ID=752f31a0-018a-4223-a7f9-72685604b7a3;date_last_modified=2020-05-13;Name=CDS.0.864_0.667986446525;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	47518	47652	.	+	.	owner=jolenerr@tamu.edu;Parent=752f31a0-018a-4223-a7f9-72685604b7a3;ID=3d0dbb37-9edd-4cb8-b2e1-ff7b67a0aeb0;date_last_modified=2020-05-13;Name=CDS.0.864_0.667986446525-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	47530	47652	.	+	0	Parent=3d0dbb37-9edd-4cb8-b2e1-ff7b67a0aeb0;ID=8828d5c3-ad44-47e3-ad5b-e27bf11a2330;Name=8828d5c3-ad44-47e3-ad5b-e27bf11a2330
+NC_001416.1_phage_lambda	.	exon	47518	47520	.	+	.	Parent=3d0dbb37-9edd-4cb8-b2e1-ff7b67a0aeb0;ID=d96be208-50dc-411f-90b4-3122998995aa;Name=d96be208-50dc-411f-90b4-3122998995aa
+NC_001416.1_phage_lambda	.	exon	47530	47652	.	+	.	Parent=3d0dbb37-9edd-4cb8-b2e1-ff7b67a0aeb0;ID=30e5068d-a5e7-4eac-8574-4018f387dfd7;Name=30e5068d-a5e7-4eac-8574-4018f387dfd7
+###
+NC_001416.1_phage_lambda	.	gene	22686	23928	.	-	.	owner=jolenerr@tamu.edu;ID=89aa3485-6819-4bee-a970-3661cfed1c7a;date_last_modified=2020-05-27;Name=protein ea47;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	22686	23928	.	-	.	owner=jolenerr@tamu.edu;Parent=89aa3485-6819-4bee-a970-3661cfed1c7a;ID=e73930b6-5663-4ff7-846e-8f97cbeaf348;date_last_modified=2020-05-27;Name=protein ea47;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	22686	23918	.	-	0	Parent=e73930b6-5663-4ff7-846e-8f97cbeaf348;ID=b94c5716-41b7-45a6-ab35-0c33701186d9;Name=b94c5716-41b7-45a6-ab35-0c33701186d9
+NC_001416.1_phage_lambda	.	exon	23925	23928	.	-	.	Parent=e73930b6-5663-4ff7-846e-8f97cbeaf348;ID=a47ef493-6a83-47f1-b234-34c65ca6dc12;Name=a47ef493-6a83-47f1-b234-34c65ca6dc12
+NC_001416.1_phage_lambda	.	exon	22686	23918	.	-	.	Parent=e73930b6-5663-4ff7-846e-8f97cbeaf348;ID=5b1267a0-d83d-4826-96d2-db3b324411b9;Name=5b1267a0-d83d-4826-96d2-db3b324411b9
+###
+NC_001416.1_phage_lambda	.	gene	33299	33474	.	-	.	owner=jolenerr@tamu.edu;ID=00bbe7b0-4092-4355-ba1e-7204fd13953f;date_last_modified=2020-05-27;Name=protease inhibitor cIII;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	33299	33474	.	-	.	owner=jolenerr@tamu.edu;Parent=00bbe7b0-4092-4355-ba1e-7204fd13953f;ID=376b98ed-a1a0-455d-8bce-2ac01e318b81;date_last_modified=2020-05-27;Name=protease inhibitor cIII;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	33299	33463	.	-	0	Parent=376b98ed-a1a0-455d-8bce-2ac01e318b81;ID=eed5de14-9eeb-4627-827e-6164039db457;Name=eed5de14-9eeb-4627-827e-6164039db457
+NC_001416.1_phage_lambda	.	exon	33470	33474	.	-	.	Parent=376b98ed-a1a0-455d-8bce-2ac01e318b81;ID=e3aa8106-b39b-4fcc-bb58-2b5119f2c0c2;Name=e3aa8106-b39b-4fcc-bb58-2b5119f2c0c2
+NC_001416.1_phage_lambda	.	exon	33299	33463	.	-	.	Parent=376b98ed-a1a0-455d-8bce-2ac01e318b81;ID=c9b7b672-cf54-4805-a74d-667c06f91556;Name=c9b7b672-cf54-4805-a74d-667c06f91556
+###
+NC_001416.1_phage_lambda	.	gene	18955	19585	.	+	.	owner=jolenerr@tamu.edu;ID=118de905-477c-4bf5-bb2d-1f5b336820bb;date_last_modified=2020-05-27;Name=outer membrane protein lom;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	18955	19585	.	+	.	owner=jolenerr@tamu.edu;Parent=118de905-477c-4bf5-bb2d-1f5b336820bb;ID=5c442aaa-2584-47b7-9d76-b41904dac22c;date_last_modified=2020-05-27;Name=outer membrane protein lom;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	18955	18959	.	+	.	Parent=5c442aaa-2584-47b7-9d76-b41904dac22c;ID=643a2ecb-88cb-492e-9180-8c8050484d0b;Name=643a2ecb-88cb-492e-9180-8c8050484d0b
+NC_001416.1_phage_lambda	.	CDS	18965	19585	.	+	0	Parent=5c442aaa-2584-47b7-9d76-b41904dac22c;ID=f4957e8b-58a9-4b10-a71f-f2b66c7fdfa9;Name=f4957e8b-58a9-4b10-a71f-f2b66c7fdfa9
+NC_001416.1_phage_lambda	.	exon	18965	19585	.	+	.	Parent=5c442aaa-2584-47b7-9d76-b41904dac22c;ID=35e21ecd-297b-4bf0-a720-39937f6266a6;Name=35e21ecd-297b-4bf0-a720-39937f6266a6
+###
+NC_001416.1_phage_lambda	.	gene	24095	24298	.	-	.	owner=jolenerr@tamu.edu;ID=f04bb9e0-6bb0-48d2-8ac8-8c5eb517d555;date_last_modified=2020-10-08;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	24095	24298	.	-	.	owner=jolenerr@tamu.edu;Parent=f04bb9e0-6bb0-48d2-8ac8-8c5eb517d555;ID=58dd1552-be77-465d-964e-6b545e3d36ed;date_last_modified=2020-05-27;Name=hypothetical protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	24296	24298	.	-	.	Parent=58dd1552-be77-465d-964e-6b545e3d36ed;ID=8d2474f6-3fab-48ba-8fd1-c2237f12abe8;Name=8d2474f6-3fab-48ba-8fd1-c2237f12abe8
+NC_001416.1_phage_lambda	.	CDS	24095	24286	.	-	0	Parent=58dd1552-be77-465d-964e-6b545e3d36ed;ID=04c56909-8c23-4041-beaf-3e88907317ba;Name=04c56909-8c23-4041-beaf-3e88907317ba
+NC_001416.1_phage_lambda	.	exon	24095	24286	.	-	.	Parent=58dd1552-be77-465d-964e-6b545e3d36ed;ID=5e4ab25a-8d24-4f9e-832d-b375efc0c119;Name=5e4ab25a-8d24-4f9e-832d-b375efc0c119
+###
+NC_001416.1_phage_lambda	.	gene	32025	32824	.	-	.	owner=jolenerr@tamu.edu;ID=cd896736-3fb2-4826-b8db-d3966b3b8606;date_last_modified=2020-05-27;Name=recombination protein bet;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	32025	32824	.	-	.	owner=jolenerr@tamu.edu;Parent=cd896736-3fb2-4826-b8db-d3966b3b8606;ID=421c0b04-05b7-4ab9-886c-45e26cd44c3c;date_last_modified=2020-05-27;Name=recombination protein bet;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	32820	32824	.	-	.	Parent=421c0b04-05b7-4ab9-886c-45e26cd44c3c;ID=3c504bc4-41c5-4c83-813c-2eca78772290;Name=3c504bc4-41c5-4c83-813c-2eca78772290
+NC_001416.1_phage_lambda	.	exon	32025	32810	.	-	.	Parent=421c0b04-05b7-4ab9-886c-45e26cd44c3c;ID=387bfbdc-7e3e-4900-bffc-ea8accad2acf;Name=387bfbdc-7e3e-4900-bffc-ea8accad2acf
+NC_001416.1_phage_lambda	.	CDS	32025	32810	.	-	0	Parent=421c0b04-05b7-4ab9-886c-45e26cd44c3c;ID=a402c855-b812-408c-adfa-b7d0caf2c2d3;Name=a402c855-b812-408c-adfa-b7d0caf2c2d3
+###
+NC_001416.1_phage_lambda	.	gene	38676	39585	.	+	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=3e912c73-4cba-4590-8d03-357bbef2da31;date_last_modified=2020-05-27;Name=DNA replication protein O;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	38676	39585	.	+	.	owner=jason.gill@tamu.edu;Parent=3e912c73-4cba-4590-8d03-357bbef2da31;ID=8babdb56-7c98-4fd6-ba93-b089e963de4a;date_last_modified=2020-05-27;Name=DNA replication protein O;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	exon	38686	39585	.	+	.	Parent=8babdb56-7c98-4fd6-ba93-b089e963de4a;ID=012dab8a-a670-490a-a6fe-6fba4f1ac62d;Name=012dab8a-a670-490a-a6fe-6fba4f1ac62d
+NC_001416.1_phage_lambda	.	exon	38676	38680	.	+	.	Parent=8babdb56-7c98-4fd6-ba93-b089e963de4a;ID=15ce9184-a982-4a2c-83fb-50221a792594;Name=15ce9184-a982-4a2c-83fb-50221a792594
+NC_001416.1_phage_lambda	.	CDS	38686	39585	.	+	0	Parent=8babdb56-7c98-4fd6-ba93-b089e963de4a;ID=6e430049-fd3c-4024-9054-671faeb12174;Name=6e430049-fd3c-4024-9054-671faeb12174
+###
+NC_001416.1_phage_lambda	.	gene	42230	42439	.	+	.	owner=jolenerr@tamu.edu;ID=49135134-fa86-4df5-a0d7-b629ff152305;date_last_modified=2020-05-13;Name=CDS.0.1596_0.0419290277112;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	42230	42439	.	+	.	owner=jolenerr@tamu.edu;Parent=49135134-fa86-4df5-a0d7-b629ff152305;ID=24a9d5e2-d328-4063-8d42-b31682095a8b;date_last_modified=2020-05-13;Name=CDS.0.1596_0.0419290277112-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	42239	42439	.	+	0	Parent=24a9d5e2-d328-4063-8d42-b31682095a8b;ID=d1f227de-1e98-4c30-93b4-4ace8c4cc792;Name=d1f227de-1e98-4c30-93b4-4ace8c4cc792
+NC_001416.1_phage_lambda	.	exon	42230	42232	.	+	.	Parent=24a9d5e2-d328-4063-8d42-b31682095a8b;ID=9c545899-d7d5-4b58-b8db-e170d172cee2;Name=9c545899-d7d5-4b58-b8db-e170d172cee2
+NC_001416.1_phage_lambda	.	exon	42239	42439	.	+	.	Parent=24a9d5e2-d328-4063-8d42-b31682095a8b;ID=2669ee80-51fb-478b-b72e-cd4c8234bd7b;Name=2669ee80-51fb-478b-b72e-cd4c8234bd7b
+###
+NC_001416.1_phage_lambda	.	gene	14758	15444	.	+	.	owner=jolenerr@tamu.edu;ID=8a865779-0ec1-43bd-a34a-ab74912cf03a;date_last_modified=2020-05-27;Name=tail tip assembly protein I;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	14758	15444	.	+	.	owner=jolenerr@tamu.edu;Parent=8a865779-0ec1-43bd-a34a-ab74912cf03a;ID=b5e527ae-aa6e-4aa1-883f-3086a433dc43;date_last_modified=2020-05-27;Name=tail tip assembly protein I;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	14773	15444	.	+	0	Parent=b5e527ae-aa6e-4aa1-883f-3086a433dc43;ID=d30e4704-8c19-43ea-9c50-697ff1b9c846;Name=d30e4704-8c19-43ea-9c50-697ff1b9c846
+NC_001416.1_phage_lambda	.	exon	14758	14762	.	+	.	Parent=b5e527ae-aa6e-4aa1-883f-3086a433dc43;ID=a5410317-0a11-4033-9acd-5532665ab594;Name=a5410317-0a11-4033-9acd-5532665ab594
+NC_001416.1_phage_lambda	.	exon	14773	15444	.	+	.	Parent=b5e527ae-aa6e-4aa1-883f-3086a433dc43;ID=b558d0ff-dc6a-4575-a56a-e7950f194b35;Name=b558d0ff-dc6a-4575-a56a-e7950f194b35
+###
+NC_001416.1_phage_lambda	.	gene	7173	7600	.	+	.	owner=jolenerr@tamu.edu;ID=4da662d1-028a-43e2-9b50-f48ad03bdd64;date_last_modified=2020-05-27;Name=DNA packaging protein FI;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	7173	7600	.	+	.	owner=jolenerr@tamu.edu;Parent=4da662d1-028a-43e2-9b50-f48ad03bdd64;ID=f24b7879-d169-451b-9c3f-063e60b202c6;date_last_modified=2020-05-27;Name=DNA packaging protein FI;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	7190	7600	.	+	.	Parent=f24b7879-d169-451b-9c3f-063e60b202c6;ID=5917612c-ffa3-493d-bc8b-b63edc24233d;Name=5917612c-ffa3-493d-bc8b-b63edc24233d
+NC_001416.1_phage_lambda	.	CDS	7190	7600	.	+	0	Parent=f24b7879-d169-451b-9c3f-063e60b202c6;ID=64c7400f-98fa-43c2-947f-80da6c0f906b;Name=64c7400f-98fa-43c2-947f-80da6c0f906b
+NC_001416.1_phage_lambda	.	exon	7173	7176	.	+	.	Parent=f24b7879-d169-451b-9c3f-063e60b202c6;ID=3458a11e-8e51-4ca6-9469-6afda43de4a7;Name=3458a11e-8e51-4ca6-9469-6afda43de4a7
+###
+NC_001416.1_phage_lambda	.	gene	30712	30894	.	-	.	owner=jolenerr@tamu.edu;ID=3302e865-ca96-48ab-a043-66d0b2d464a9;date_last_modified=2020-05-27;Name=hypothetical membrane protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	30712	30894	.	-	.	owner=jolenerr@tamu.edu;Parent=3302e865-ca96-48ab-a043-66d0b2d464a9;ID=45f32120-73fd-43f4-9158-bc933b4816de;date_last_modified=2020-05-27;Name=hypothetical membrane protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	30712	30894	.	-	.	Parent=45f32120-73fd-43f4-9158-bc933b4816de;ID=c02fdc79-ed03-481d-a8d0-e469c1afcc1f;Name=c02fdc79-ed03-481d-a8d0-e469c1afcc1f
+NC_001416.1_phage_lambda	.	CDS	30712	30894	.	-	0	Parent=45f32120-73fd-43f4-9158-bc933b4816de;ID=811436d3-a80b-470a-979d-5516b6169cfd;Name=811436d3-a80b-470a-979d-5516b6169cfd
+###
+NC_001416.1_phage_lambda	.	gene	44612	44815	.	+	.	owner=jolenerr@tamu.edu;ID=6c3ab9c5-a407-47b8-89df-fa997262a409;date_last_modified=2020-05-13;Name=CDS.0.1630_0.132755174165;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	44612	44815	.	+	.	owner=jolenerr@tamu.edu;Parent=6c3ab9c5-a407-47b8-89df-fa997262a409;ID=fb56134e-8d15-4270-90d9-47546f3c30ff;date_last_modified=2020-05-13;Name=CDS.0.1630_0.132755174165-00001;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	44612	44614	.	+	.	Parent=fb56134e-8d15-4270-90d9-47546f3c30ff;ID=5a605a7b-70a8-4e29-a08b-3d9079d2dd24;Name=5a605a7b-70a8-4e29-a08b-3d9079d2dd24
+NC_001416.1_phage_lambda	.	CDS	44621	44815	.	+	0	Parent=fb56134e-8d15-4270-90d9-47546f3c30ff;ID=6e1b8591-07a8-478c-97ea-2a14334f5805;Name=6e1b8591-07a8-478c-97ea-2a14334f5805
+NC_001416.1_phage_lambda	.	exon	44621	44815	.	+	.	Parent=fb56134e-8d15-4270-90d9-47546f3c30ff;ID=2579ead4-8ff6-46c3-847d-707c54e05797;Name=2579ead4-8ff6-46c3-847d-707c54e05797
+###
+NC_001416.1_phage_lambda	.	gene	30839	31024	.	-	.	owner=jolenerr@tamu.edu;ID=4a0ceaca-089f-42a3-9185-c5e89f11b935;date_last_modified=2020-05-27;Name=hypothetical protein orf61;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	30839	31011	.	-	.	owner=jolenerr@tamu.edu;Parent=4a0ceaca-089f-42a3-9185-c5e89f11b935;ID=aba10fe1-f543-455d-b740-acd3d5fddcce;date_last_modified=2020-05-27;Name=hypothetical protein orf61;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	30839	30994	.	-	0	Parent=aba10fe1-f543-455d-b740-acd3d5fddcce;ID=e17c9145-eece-4771-8d5f-bf2342e0f550;Name=e17c9145-eece-4771-8d5f-bf2342e0f550
+NC_001416.1_phage_lambda	.	exon	30839	30994	.	-	.	Parent=aba10fe1-f543-455d-b740-acd3d5fddcce;ID=255ac835-10e5-4756-ae1e-c2d8f80ffa6d;Name=255ac835-10e5-4756-ae1e-c2d8f80ffa6d
+NC_001416.1_phage_lambda	.	exon	31009	31011	.	-	.	Parent=aba10fe1-f543-455d-b740-acd3d5fddcce;ID=a0806ba0-7f44-4bbb-a5ab-8a21d00ba1e0;Name=a0806ba0-7f44-4bbb-a5ab-8a21d00ba1e0
+###
+NC_001416.1_phage_lambda	.	gene	38031	38241	.	+	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=d731b2bf-e9f9-484f-8851-814510c6a5ec;date_last_modified=2020-05-27;Name=regulatory protein cro;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	38031	38241	.	+	.	owner=jason.gill@tamu.edu;Parent=d731b2bf-e9f9-484f-8851-814510c6a5ec;ID=5cfd706b-b814-43f9-b604-fc8c179f853a;date_last_modified=2020-05-27;Name=regulatory protein cro;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	exon	38031	38035	.	+	.	Parent=5cfd706b-b814-43f9-b604-fc8c179f853a;ID=041be549-96a8-42a3-b5eb-258ebb4ffd5f;Name=041be549-96a8-42a3-b5eb-258ebb4ffd5f
+NC_001416.1_phage_lambda	.	CDS	38041	38241	.	+	0	Parent=5cfd706b-b814-43f9-b604-fc8c179f853a;ID=97688d3e-13d8-48fd-9e05-2d919293f914;Name=97688d3e-13d8-48fd-9e05-2d919293f914
+NC_001416.1_phage_lambda	.	exon	38041	38241	.	+	.	Parent=5cfd706b-b814-43f9-b604-fc8c179f853a;ID=e6686b84-108a-4c8f-a5b9-64b92b6dc5b5;Name=e6686b84-108a-4c8f-a5b9-64b92b6dc5b5
+###
+NC_001416.1_phage_lambda	.	gene	38345	38653	.	+	.	owner=jason.gill@tamu.edu;Note=added by JJG;ID=1b331cf3-0897-4489-aa55-b14669ea5998;date_last_modified=2020-05-27;Name=regulatory protein cII;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	mRNA	38345	38653	.	+	.	owner=jason.gill@tamu.edu;Parent=1b331cf3-0897-4489-aa55-b14669ea5998;ID=b970dd3f-9787-459c-84ed-5b839b85b9e7;date_last_modified=2020-05-27;Name=regulatory protein cII;date_creation=2019-02-07
+NC_001416.1_phage_lambda	.	CDS	38360	38653	.	+	0	Parent=b970dd3f-9787-459c-84ed-5b839b85b9e7;ID=c4ae3e6a-4e56-412d-8ece-0036053910ef;Name=c4ae3e6a-4e56-412d-8ece-0036053910ef
+NC_001416.1_phage_lambda	.	exon	38360	38653	.	+	.	Parent=b970dd3f-9787-459c-84ed-5b839b85b9e7;ID=c29fe89e-348d-4da7-b313-85c362f92307;Name=c29fe89e-348d-4da7-b313-85c362f92307
+NC_001416.1_phage_lambda	.	exon	38345	38348	.	+	.	Parent=b970dd3f-9787-459c-84ed-5b839b85b9e7;ID=b2199555-1cbb-443c-92d3-fa5a0a17670e;Name=b2199555-1cbb-443c-92d3-fa5a0a17670e
+###
+NC_001416.1_phage_lambda	.	gene	30392	30626	.	-	.	owner=jolenerr@tamu.edu;Note=Contains InterPro domain IPR000962;ID=4fba3f9c-cbc0-4454-b278-efe088695fef;date_last_modified=2020-05-27;Name=DksA/TraR C4-type zinc finger domain-containing protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	30392	30626	.	-	.	owner=jolenerr@tamu.edu;Parent=4fba3f9c-cbc0-4454-b278-efe088695fef;ID=7dfc2c2d-a50d-4e77-b673-2dcd16c2ef3b;date_last_modified=2020-05-27;Name=DksA/TraR C4-type zinc finger domain-containing protein;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	exon	30624	30626	.	-	.	Parent=7dfc2c2d-a50d-4e77-b673-2dcd16c2ef3b;ID=cbf0bbe9-fdae-426f-a6ce-40926606c1ca;Name=cbf0bbe9-fdae-426f-a6ce-40926606c1ca
+NC_001416.1_phage_lambda	.	CDS	30392	30613	.	-	0	Parent=7dfc2c2d-a50d-4e77-b673-2dcd16c2ef3b;ID=1fa7e4a7-9200-45d9-b9fd-21e36b254897;Name=1fa7e4a7-9200-45d9-b9fd-21e36b254897
+NC_001416.1_phage_lambda	.	exon	30392	30613	.	-	.	Parent=7dfc2c2d-a50d-4e77-b673-2dcd16c2ef3b;ID=529064a4-a072-48ec-bd67-0eb3011ae53c;Name=529064a4-a072-48ec-bd67-0eb3011ae53c
+###
+NC_001416.1_phage_lambda	.	gene	46174	46368	.	+	.	owner=jolenerr@tamu.edu;ID=18e578e1-38cb-4846-96e8-0190a5a26369;date_last_modified=2020-05-13;Name=o-spanin Rz1;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	mRNA	46174	46368	.	+	.	owner=jolenerr@tamu.edu;Parent=18e578e1-38cb-4846-96e8-0190a5a26369;ID=b4c199b2-1838-43c0-a09d-77718a49dbe2;date_last_modified=2020-05-13;Name=o-spanin Rz1;date_creation=2020-05-13
+NC_001416.1_phage_lambda	.	CDS	46186	46368	.	+	0	Parent=b4c199b2-1838-43c0-a09d-77718a49dbe2;ID=7ac7bb1c-0d6d-4476-8a02-8ad963da6156;Name=7ac7bb1c-0d6d-4476-8a02-8ad963da6156
+NC_001416.1_phage_lambda	.	exon	46174	46178	.	+	.	Parent=b4c199b2-1838-43c0-a09d-77718a49dbe2;ID=668e24d1-fcea-459e-bbf3-6132bbb9854e;Name=668e24d1-fcea-459e-bbf3-6132bbb9854e
+NC_001416.1_phage_lambda	.	exon	46186	46368	.	+	.	Parent=b4c199b2-1838-43c0-a09d-77718a49dbe2;ID=f8d07a76-6f8d-4100-9ba6-cec0e3a033f9;Name=f8d07a76-6f8d-4100-9ba6-cec0e3a033f9

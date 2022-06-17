@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Phage QC on AY216660.2 - 76</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <style type="text/css">
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+h3:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+td.moron {
+    font-size: 150%;
+    padding: 0px;
+    color: gray;
+}
+.strand_emph {
+    text-decoration: underline;
+    color: black;
+}
+
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Phage QC on AY216660.2</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="#main"><b>Overview</b></a></li>
+            <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
+            <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
+            <li><a href="#weird_starts"><small>Unusual Start Codons</small></a></li>
+            <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
+            <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
+            <!--<li><a href="#coding_density"><small>Coding Density</small></a></li>-->
+            <li><a href="#antisense"><b>Antisense Genes</b></a></li>
+            <li><a href="#morons"><small>Possible Morons</small></a></li>
+            <li><a href="#annotations"><b>Annotation Issues</b></a></li>
+            <li><a href="#missing_product"><small>Missing Product Tags</small></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h1>Phage AY216660.2</h1>
+                        <!--<h2>Score: 76/100</h2>-->
+                    </div>
+                    <!--<div class="col-sm-5">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Missing RBS</td><td>0%</td></tr>
+                                <tr><td>Excessive Gaps</td><td>76%</td></tr>
+                                <tr><td>Excessive Overlap</td><td>76%</td></tr>
+                                <tr><td>Coding Density Score</td><td>99%</td></tr>
+                                <tr><td>Possible Morons</td><td>98%</td></tr>
+                                <tr><td>Missing Product Tags</td><td>100%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>-->
+                </div>
+            </div>
+
+          <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
+          <h3 id="missing_rbs">Genes missing RBS <small>0 / 79</small></h3>
+          <p>The following genes have issues with their RBS.</p>
+          <p>
+            Since you have not annotated any possible RBSs, this does not count off from your overall score.
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Error</th>
+                  <th>Upstream (-15 .. -5)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_001.gene</td>
+                    <td>40..576 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">taaatgttaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_002.gene</td>
+                    <td>589..2184 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">taacttt AGG </span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_003.gene</td>
+                    <td>2230..3522 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">acggcccttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_004.gene</td>
+                    <td>3496..4273 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">cc GGAG ccgg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_005.gene</td>
+                    <td>4264..5388 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tccagacttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_006.gene</td>
+                    <td>5389..5876 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">agcaaagtaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_007.gene</td>
+                    <td>5926..6705 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tagtcctttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_008.gene</td>
+                    <td>6784..7755 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ttttttatta</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_009.gene</td>
+                    <td>7794..8093 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gtcccttttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_010.gene</td>
+                    <td>8127..8548 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">agcgcctttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_011.gene</td>
+                    <td>8534..8919 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">atgac AGGA c</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_012.gene</td>
+                    <td>8897..9355 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">atcgtccagt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_013.gene</td>
+                    <td>9332..9743 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gcaatcaagc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_014.gene</td>
+                    <td>9733..10414 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">tac GAG taga</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_015.gene</td>
+                    <td>10516..10845 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgctatcaac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_016.gene</td>
+                    <td>10516..11162 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgctatcaac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_017.gene</td>
+                    <td>11192..14076 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gttttttcgt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_018.gene</td>
+                    <td>14067..14432 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">cattc AGGA a</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_019.gene</td>
+                    <td>14500..15294 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">gttgc AGGT a</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_020.gene</td>
+                    <td>15279..16025 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgtcgcttca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_021.gene</td>
+                    <td>16009..16621 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">taatcgttcg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_022.gene</td>
+                    <td>16688..20217 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ataaatagca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_023.gene</td>
+                    <td>20251..20568 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">atgccctttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_024.gene</td>
+                    <td>20556..21257 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cttaatagca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_025.gene</td>
+                    <td>21279..21518 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">aatcacacta</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_026.gene</td>
+                    <td>21755..21906 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgtatatcgt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_027.gene</td>
+                    <td>22020..23098 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">attcatcgta</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_028.gene</td>
+                    <td>23129..23820 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">aaacaaataa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_029.gene</td>
+                    <td>23854..24289 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcgcccataa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_030.gene</td>
+                    <td>24351..26550 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cgtgctattt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_031.gene</td>
+                    <td>26447..26600 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgcccattgc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_032.gene</td>
+                    <td>26638..27585 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cgcgtttttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_033.gene</td>
+                    <td>27635..28098 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gcaaaaagtg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_034.gene</td>
+                    <td>28168..30199 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gttacaacga</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_035.gene</td>
+                    <td>30181..30612 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">caaagacttc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_036.gene</td>
+                    <td>30669..31393 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">atctcaccaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_037.gene</td>
+                    <td>31377..31641 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">aaaacaaacg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_038.gene</td>
+                    <td>31695..31917 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcatagaaac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_039.gene</td>
+                    <td>31881..32167 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cttcatctct</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_040.gene</td>
+                    <td>32099..32399 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace"> GAG ttttacc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_041.gene</td>
+                    <td>32467..33611 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tttcattatc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_042.gene</td>
+                    <td>33673..34166 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ttttatagaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_043.gene</td>
+                    <td>34226..34415 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">accacatcga</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_044.gene</td>
+                    <td>34525..34749 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gttcaaaaaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_045.gene</td>
+                    <td>34739..35237 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace"> AGG cgcttaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_046.gene</td>
+                    <td>35227..35638 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">acgcatattg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_047.gene</td>
+                    <td>35761..36179 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">caatcctcga</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_048.gene</td>
+                    <td>36173..37755 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcacgccgtc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_049.gene</td>
+                    <td>37741..38294 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gacggcacaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_050.gene</td>
+                    <td>38277..38706 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcaagataac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_051.gene</td>
+                    <td>38774..38994 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tttacattaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_052.gene</td>
+                    <td>38987..39222 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">taccaaacaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_053.gene</td>
+                    <td>39289..39444 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ggcatatcaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_054.gene</td>
+                    <td>39429..39758 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tatcctgact</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_055.gene</td>
+                    <td>39766..39978 [-1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">tagc GGA tcg</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_056.gene</td>
+                    <td>39959..40342 [-1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">acatcaacag</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_057.gene</td>
+                    <td>41020..41606 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tgtatattga</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_058.gene</td>
+                    <td>41606..41945 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">aaaatgt GGA </span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_059.gene</td>
+                    <td>42013..42254 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">ac GAG atacc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_060.gene</td>
+                    <td>42247..42487 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcagcacttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_061.gene</td>
+                    <td>42473..42594 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ggcgacaaca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_062.gene</td>
+                    <td>42580..42764 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ttgctactgt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_063.gene</td>
+                    <td>42824..43324 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ccatcgacaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_064.gene</td>
+                    <td>43385..43881 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">acatcaacca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_065.gene</td>
+                    <td>43870..44030 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">actcttgtcc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_066.gene</td>
+                    <td>44098..44485 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gcacgacaac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_067.gene</td>
+                    <td>44527..44649 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gttccccttt</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_068.gene</td>
+                    <td>44625..44852 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gacattatct</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_069.gene</td>
+                    <td>44898..45356 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cctacaccaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_070.gene</td>
+                    <td>45428..45970 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ttaagcaacc</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_071.gene</td>
+                    <td>45941..46451 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gcctgtgata</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_072.gene</td>
+                    <td>46444..47026 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">tcacaaaaag</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_073.gene</td>
+                    <td>47085..47308 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ctcatcgaca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_074.gene</td>
+                    <td>47293..47649 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">cccgatcgaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_075.gene</td>
+                    <td>47637..47879 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">aagtttttca</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_076.gene</td>
+                    <td>47864..48082 [1]</td>
+                    <td>Unannotated but valid RBS</td>
+                    <td><span style="font-family:monospace">cgt AGGT aac</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_077.gene</td>
+                    <td>48235..48408 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">gcggcaacaa</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_078.gene</td>
+                    <td>48377..48574 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">ctggcgttat</span></td>
+                </tr>
+                <tr>
+                    <td>gene</td>
+                    <td>CPT-T1_079.gene</td>
+                    <td>48564..48803 [1]</td>
+                    <td>No RBS annotated, None found</td>
+                    <td><span style="font-family:monospace">atattgaatt</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="weird_starts">Start Codon Usage</h3>
+          <p>This section covers genes with unusual start codons</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Start Codon</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr><td>ATG</td><td>74</td></tr>
+                  <tr><td>GTG</td><td>3</td></tr>
+                  <tr><td>TTG</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Error</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_gaps">Intergenic Gaps</h3>
+          <p>Phage genomes are under pressure to maintain high coding density. Large intergenic gaps may be a sign of incorrect gene starts or missing genes.</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Size</th>
+                  <th>Bounding Gene Transcription Direction</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>2184 .. 2238</td>
+                    <td>54</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5876 .. 5937</td>
+                    <td>61</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6705 .. 6795</td>
+                    <td>90</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10414 .. 10527</td>
+                    <td>113</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>14432 .. 14511</td>
+                    <td>79</td>
+                    <td>→ →</td>
+                    <td>
+                        2 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>16621 .. 16698</td>
+                    <td>77</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>21506 .. 21765</td>
+                    <td>259</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>21906 .. 22033</td>
+                    <td>127</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>24289 .. 24350</td>
+                    <td>61</td>
+                    <td>→ →</td>
+                    <td>
+                        1 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>27573 .. 27634</td>
+                    <td>61</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>28087 .. 28180</td>
+                    <td>93</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>30612 .. 30679</td>
+                    <td>67</td>
+                    <td>→ →</td>
+                    <td>
+                        1 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>31641 .. 31707</td>
+                    <td>66</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>32399 .. 32477</td>
+                    <td>78</td>
+                    <td>→ →</td>
+                    <td>
+                        1 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>33611 .. 33683</td>
+                    <td>72</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>34166 .. 34238</td>
+                    <td>72</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>34415 .. 34533</td>
+                    <td>118</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>35638 .. 35760</td>
+                    <td>122</td>
+                    <td>→ →</td>
+                    <td>
+                        2 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>38693 .. 38773</td>
+                    <td>80</td>
+                    <td>→ →</td>
+                    <td>
+                        2 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>39211 .. 39288</td>
+                    <td>77</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>40330 .. 41030</td>
+                    <td>700</td>
+                    <td>→ →</td>
+                    <td>
+                        7 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>41945 .. 42023</td>
+                    <td>78</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>42764 .. 42835</td>
+                    <td>71</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>43324 .. 43395</td>
+                    <td>71</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>44030 .. 44110</td>
+                    <td>80</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>44485 .. 44538</td>
+                    <td>53</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>44852 .. 44909</td>
+                    <td>57</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>45356 .. 45439</td>
+                    <td>83</td>
+                    <td>→ →</td>
+                    <td>
+                        6 ORFs found in this region
+                    </td>
+                </tr>
+                <tr>
+                    <td>47026 .. 47098</td>
+                    <td>72</td>
+                    <td>→ →</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>48082 .. 48246</td>
+                    <td>164</td>
+                    <td>→ →</td>
+                    <td>
+                        2 ORFs found in this region
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_overlap">Overlapping Genes </h3>
+          <p>Large gene overlaps may indicate an incorrect gene start or miscalled gene.</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature A</th>
+                  <th>Feature B</th>
+                  <th>Shared Region</th>
+                  <th>Overlap Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>CPT-T1_015.gene ([10516:10845](+))</td>
+                    <td>CPT-T1_016.gene ([10516:11162](+))</td>
+                    <td>10527..10844</td>
+                    <td>317 bp</td>
+                </tr>
+                <tr>
+                    <td>CPT-T1_030.gene ([24351:26550](-))</td>
+                    <td>CPT-T1_031.gene ([26447:26600](-))</td>
+                    <td>26446..26536</td>
+                    <td>90 bp</td>
+                </tr>
+                <tr>
+                    <td>CPT-T1_039.gene ([31881:32167](+))</td>
+                    <td>CPT-T1_040.gene ([32099:32399](+))</td>
+                    <td>32111..32166</td>
+                    <td>55 bp</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--<h3 id="coding_density">Coding Density Issues <small>99 / 100</small></h3>
+          <div class="table-responsive">
+            <p>
+            You have a coding density of 93 which scores
+            99 / 100. Most genomes should be in the 90% to
+            100% coding density range
+            </p>
+          </div>-->
+
+          <h2 class="sub-header" id="antisense">Antisense Genes</h2>
+          <h3 id="morons">Possible Morons <small>78 / 79 (Doesn't count towards score)</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>RBS</th>
+                  <th>Surrounding Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>CPT-T1_025.gene</td>
+                    <td>No RBS Available</td>
+                    <td class="moron">
+                            →
+                            →
+                        <span class="strand_emph">←</span>
+                            →
+                            →
+                        </div>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <h2 class="sub-header" id="annotations">Annotation Issues</h2>
+          <h3 id="missing_product">Missing Product Tags <small>79 / 79</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Qualifiers</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Annotation Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <style type="text/css">
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+h3:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+td.moron {
+    font-size: 150%;
+    padding: 0px;
+    color: gray;
+}
+.strand_emph {
+    text-decoration: underline;
+    color: black;
+}
+
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Annotation Table</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 main" id="main">
+            <ul class="nav nav-tabs" role="tablist" id="myTabs">
+                <li role="presentation" class="active"><a href="#overview" role="tab" data-toggle="tab">Overview</a></li>
+                <li role="presentation"><a href="#NC_001416-1_phage_lambda" role="tab" data-toggle="tab">NC_001416-1_phage_lambda</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="overview">
+                    Data on each organism will be accessible from the tabs above.
+                </div>
+                    <div role="tabpanel" class="tab-pane" id="NC_001416-1_phage_lambda">
+                        <table class="table table-striped" id="data">
+                            <thead>
+                                <tr>
+                                    <th>Organism ID</th>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Name</th>
+                                    <th>Location</th>
+                                    <th>Boundary</th>
+                                    <th>Boundary</th>
+                                    <th>Strand</th>
+                                    <th>CDS Length (AA)</th>
+                                    <th>Shine-Dalgarno sequence</th>
+                                    <th>Shine-Dalgarno spacing</th>
+                                    <th>Start Codon</th>
+                                    <th>Stop Codon</th>
+                                    <th>Distance to next upstream gene on same strand</th>
+                                    <th>Next gene upstream</th>
+                                    <th>Owner</th>
+                                    <th>Created</th>
+                                    <th>Last Modified</th>
+                                    <th>User entered Notes</th>
+                                    <th>Description</th>
+                                    <th>Product</th>
+                                    <th>DBxrefs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>1185c0aa-14c4-45c3-ab0d-889bbfdbf137</td>
+                                    <td>gene</td>
+                                    <td>terminase small subunit</td>
+                                    <td>181..736</td>
+                                    <td>181</td>
+                                    <td>736</td>
+                                    <td>+</td>
+                                    <td>181</td>
+                                    <td>GGA</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>6d452f5a-9508-40c1-9d43-d98831ca8919</td>
+                                    <td>gene</td>
+                                    <td>terminase large subunit</td>
+                                    <td>701..2636</td>
+                                    <td>701</td>
+                                    <td>2636</td>
+                                    <td>+</td>
+                                    <td>641</td>
+                                    <td>GGGT</td>
+                                    <td>6</td>
+                                    <td>GTG</td>
+                                    <td>TGA</td>
+                                    <td>-36</td>
+                                    <td>1185c0aa-14c4-45c3-ab0d-889bbfdbf137</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>38175e36-b9e9-48ea-9d1c-7f115fae7194</td>
+                                    <td>gene</td>
+                                    <td>head completion protein</td>
+                                    <td>2622..2839</td>
+                                    <td>2622</td>
+                                    <td>2839</td>
+                                    <td>+</td>
+                                    <td>68</td>
+                                    <td>GGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-15</td>
+                                    <td>6d452f5a-9508-40c1-9d43-d98831ca8919</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-28</td>
+                                    <td>InterPro domain IPR004174</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>0695da41-cce8-4f07-a27a-eb42ac82ae56</td>
+                                    <td>gene</td>
+                                    <td>portal protein B</td>
+                                    <td>2824..4437</td>
+                                    <td>2824</td>
+                                    <td>4437</td>
+                                    <td>+</td>
+                                    <td>533</td>
+                                    <td>AGGA</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-16</td>
+                                    <td>38175e36-b9e9-48ea-9d1c-7f115fae7194</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>422aab41-ac49-4818-b87e-9331023dcacf</td>
+                                    <td>gene</td>
+                                    <td>capsid assembly protein</td>
+                                    <td>4406..5737</td>
+                                    <td>4406</td>
+                                    <td>5737</td>
+                                    <td>+</td>
+                                    <td>673</td>
+                                    <td><ul><li>GGAG, AGGAGG</li></ul></td>
+                                    <td><ul><li>-609, 6</li></ul></td>
+                                    <td><ul><li>GTG (4417..5737:1), GTG (5035..5737:1)</li></ul></td>
+                                    <td>TAA</td>
+                                    <td>-32</td>
+                                    <td>0695da41-cce8-4f07-a27a-eb42ac82ae56</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>274304d3-079e-4e08-aa11-219235e1aacb</td>
+                                    <td>gene</td>
+                                    <td>capsid decoration protein</td>
+                                    <td>5739..6079</td>
+                                    <td>5739</td>
+                                    <td>6079</td>
+                                    <td>+</td>
+                                    <td>110</td>
+                                    <td>GGA</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>1</td>
+                                    <td>422aab41-ac49-4818-b87e-9331023dcacf</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-28</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>4f815f9e-5092-4db3-b722-0d912c116293</td>
+                                    <td>gene</td>
+                                    <td>major capsid protein</td>
+                                    <td>6099..7160</td>
+                                    <td>6099</td>
+                                    <td>7160</td>
+                                    <td>+</td>
+                                    <td>350</td>
+                                    <td>AGG</td>
+                                    <td>6</td>
+                                    <td>GTG</td>
+                                    <td>TAA</td>
+                                    <td>19</td>
+                                    <td>274304d3-079e-4e08-aa11-219235e1aacb</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>4da662d1-028a-43e2-9b50-f48ad03bdd64</td>
+                                    <td>gene</td>
+                                    <td>DNA packaging protein FI</td>
+                                    <td>7173..7600</td>
+                                    <td>7173</td>
+                                    <td>7600</td>
+                                    <td>+</td>
+                                    <td>136</td>
+                                    <td>GGGG</td>
+                                    <td>13</td>
+                                    <td>GTG</td>
+                                    <td>TAA</td>
+                                    <td>12</td>
+                                    <td>4f815f9e-5092-4db3-b722-0d912c116293</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>638d1ac5-aea4-4988-b46d-01cf79793dfb</td>
+                                    <td>gene</td>
+                                    <td>head-tail connector protein FII</td>
+                                    <td>7603..7965</td>
+                                    <td>7603</td>
+                                    <td>7965</td>
+                                    <td>+</td>
+                                    <td>117</td>
+                                    <td>GGAG</td>
+                                    <td>5</td>
+                                    <td>GTG</td>
+                                    <td>TGA</td>
+                                    <td>2</td>
+                                    <td>4da662d1-028a-43e2-9b50-f48ad03bdd64</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>b541056e-bf91-4113-bce7-86bab4d27f76</td>
+                                    <td>gene</td>
+                                    <td>tail completion protein Z</td>
+                                    <td>7968..8555</td>
+                                    <td>7968</td>
+                                    <td>8555</td>
+                                    <td>+</td>
+                                    <td>192</td>
+                                    <td>GGGG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>2</td>
+                                    <td>638d1ac5-aea4-4988-b46d-01cf79793dfb</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>fca8745c-c433-4845-9430-c8a9dd4dc37b</td>
+                                    <td>gene</td>
+                                    <td>tail tube terminator protein U</td>
+                                    <td>8535..8947</td>
+                                    <td>8535</td>
+                                    <td>8947</td>
+                                    <td>+</td>
+                                    <td>131</td>
+                                    <td>AGGA</td>
+                                    <td>13</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-21</td>
+                                    <td>b541056e-bf91-4113-bce7-86bab4d27f76</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>d9ee7b0e-b4a7-48cf-8c4b-aa95ca8863e0</td>
+                                    <td>gene</td>
+                                    <td>tail tube protein V</td>
+                                    <td>8946..9695</td>
+                                    <td>8946</td>
+                                    <td>9695</td>
+                                    <td>+</td>
+                                    <td>246</td>
+                                    <td>GAGG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-2</td>
+                                    <td>fca8745c-c433-4845-9430-c8a9dd4dc37b</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>0b5a859a-39f6-4c49-91b7-0b2def466374</td>
+                                    <td>gene</td>
+                                    <td>tape measure chaperone GT</td>
+                                    <td>9699..10133</td>
+                                    <td>9699</td>
+                                    <td>10133</td>
+                                    <td>+</td>
+                                    <td>275</td>
+                                    <td><ul><li>GGAG, GGAG</li></ul></td>
+                                    <td><ul><li>8, 8</li></ul></td>
+                                    <td><ul><li>ATG (9710..10133:1), ATG (9710..10115:1)</li></ul></td>
+                                    <td>TGA</td>
+                                    <td>3</td>
+                                    <td>d9ee7b0e-b4a7-48cf-8c4b-aa95ca8863e0</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>c6a11d3b-7b9d-446f-ba16-3a642f3f6fbd</td>
+                                    <td>gene</td>
+                                    <td>tape measure chaperone GT</td>
+                                    <td>10115..10549</td>
+                                    <td>10115</td>
+                                    <td>10549</td>
+                                    <td>+</td>
+                                    <td>144</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>GTG</td>
+                                    <td>TGA</td>
+                                    <td>-19</td>
+                                    <td>0b5a859a-39f6-4c49-91b7-0b2def466374</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>7ef9ffad-d420-4a1c-9a8d-2312dc04b558</td>
+                                    <td>gene</td>
+                                    <td>tape measure protein H</td>
+                                    <td>10528..13103</td>
+                                    <td>10528</td>
+                                    <td>13103</td>
+                                    <td>+</td>
+                                    <td>853</td>
+                                    <td>AGGAGG</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-22</td>
+                                    <td>c6a11d3b-7b9d-446f-ba16-3a642f3f6fbd</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>55fe46da-9e0e-4454-aff9-f9a12c0a2da4</td>
+                                    <td>gene</td>
+                                    <td>tail tip protein M</td>
+                                    <td>13089..13429</td>
+                                    <td>13089</td>
+                                    <td>13429</td>
+                                    <td>+</td>
+                                    <td>109</td>
+                                    <td>GGAGGT</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-15</td>
+                                    <td>7ef9ffad-d420-4a1c-9a8d-2312dc04b558</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>11a10b01-003c-4900-aae9-46139ae23652</td>
+                                    <td>gene</td>
+                                    <td>tail tip protein L</td>
+                                    <td>13416..14127</td>
+                                    <td>13416</td>
+                                    <td>14127</td>
+                                    <td>+</td>
+                                    <td>232</td>
+                                    <td>AGGT</td>
+                                    <td>9</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-14</td>
+                                    <td>55fe46da-9e0e-4454-aff9-f9a12c0a2da4</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>cdb58372-2440-4e07-bcc4-739e0aba461f</td>
+                                    <td>gene</td>
+                                    <td>tail tip assembly protein K</td>
+                                    <td>14261..14875</td>
+                                    <td>14261</td>
+                                    <td>14875</td>
+                                    <td>+</td>
+                                    <td>199</td>
+                                    <td>GGAGG</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>133</td>
+                                    <td>11a10b01-003c-4900-aae9-46139ae23652</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>8a865779-0ec1-43bd-a34a-ab74912cf03a</td>
+                                    <td>gene</td>
+                                    <td>tail tip assembly protein I</td>
+                                    <td>14758..15444</td>
+                                    <td>14758</td>
+                                    <td>15444</td>
+                                    <td>+</td>
+                                    <td>223</td>
+                                    <td>GAGGT</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-118</td>
+                                    <td>cdb58372-2440-4e07-bcc4-739e0aba461f</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>af1a2402-fb19-4abe-9a0b-b3e9dc613524</td>
+                                    <td>gene</td>
+                                    <td>tip attachment protein J</td>
+                                    <td>15493..18903</td>
+                                    <td>15493</td>
+                                    <td>18903</td>
+                                    <td>+</td>
+                                    <td>1132</td>
+                                    <td>GGAG</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>48</td>
+                                    <td>8a865779-0ec1-43bd-a34a-ab74912cf03a</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>118de905-477c-4bf5-bb2d-1f5b336820bb</td>
+                                    <td>gene</td>
+                                    <td>outer membrane protein lom</td>
+                                    <td>18955..19585</td>
+                                    <td>18955</td>
+                                    <td>19585</td>
+                                    <td>+</td>
+                                    <td>206</td>
+                                    <td>GAGGT</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>51</td>
+                                    <td>af1a2402-fb19-4abe-9a0b-b3e9dc613524</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>e7267f7d-4717-4e28-a1a0-564b10661248</td>
+                                    <td>gene</td>
+                                    <td>tail fiber protein stf</td>
+                                    <td>19641..20855</td>
+                                    <td>19641</td>
+                                    <td>20855</td>
+                                    <td>+</td>
+                                    <td>401</td>
+                                    <td>GGGG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>55</td>
+                                    <td>118de905-477c-4bf5-bb2d-1f5b336820bb</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>9ffb2fcd-96b9-4606-8d3c-c1be0cf0fc5b</td>
+                                    <td>gene</td>
+                                    <td>tail fiber protein stf</td>
+                                    <td>20852..21973</td>
+                                    <td>20852</td>
+                                    <td>21973</td>
+                                    <td>+</td>
+                                    <td>373</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>CTG</td>
+                                    <td>TAA</td>
+                                    <td>-4</td>
+                                    <td>e7267f7d-4717-4e28-a1a0-564b10661248</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>8f5752d0-2f43-4b81-94a6-e2bcf0119d63</td>
+                                    <td>gene</td>
+                                    <td>tail fiber assembly protein tfa</td>
+                                    <td>21961..22557</td>
+                                    <td>21961</td>
+                                    <td>22557</td>
+                                    <td>+</td>
+                                    <td>194</td>
+                                    <td>GAGG</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-13</td>
+                                    <td>9ffb2fcd-96b9-4606-8d3c-c1be0cf0fc5b</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>89aa3485-6819-4bee-a970-3661cfed1c7a</td>
+                                    <td>gene</td>
+                                    <td>protein ea47</td>
+                                    <td>22686..23928</td>
+                                    <td>22686</td>
+                                    <td>23928</td>
+                                    <td>-</td>
+                                    <td>410</td>
+                                    <td>GGAG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>166</td>
+                                    <td>f04bb9e0-6bb0-48d2-8ac8-8c5eb517d555</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>f04bb9e0-6bb0-48d2-8ac8-8c5eb517d555</td>
+                                    <td>gene</td>
+                                    <td>hypothetical protein</td>
+                                    <td>24095..24298</td>
+                                    <td>24095</td>
+                                    <td>24298</td>
+                                    <td>-</td>
+                                    <td>63</td>
+                                    <td>GGT</td>
+                                    <td>9</td>
+                                    <td>GTG</td>
+                                    <td>TAA</td>
+                                    <td>210</td>
+                                    <td>a638e771-ca1f-4058-93a6-b9bddffd0bf8</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-10-08</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>a638e771-ca1f-4058-93a6-b9bddffd0bf8</td>
+                                    <td>gene</td>
+                                    <td>HNH endonuclease ea31</td>
+                                    <td>24509..25411</td>
+                                    <td>24509</td>
+                                    <td>25411</td>
+                                    <td>-</td>
+                                    <td>296</td>
+                                    <td>AGGT</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TAG</td>
+                                    <td>-16</td>
+                                    <td>27a0e836-ee65-4d75-9d88-2d63b4a28b93</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>27a0e836-ee65-4d75-9d88-2d63b4a28b93</td>
+                                    <td>gene</td>
+                                    <td>nuclease ea59</td>
+                                    <td>25396..26983</td>
+                                    <td>25396</td>
+                                    <td>26983</td>
+                                    <td>-</td>
+                                    <td>525</td>
+                                    <td>GGGT</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>460</td>
+                                    <td>ae844fd4-9b05-485e-a49a-61b6ec9f291a</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>PMID 8052130</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>ae844fd4-9b05-485e-a49a-61b6ec9f291a</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.4499_0.266127908605</td>
+                                    <td>27444..27569</td>
+                                    <td>27444</td>
+                                    <td>27569</td>
+                                    <td>-</td>
+                                    <td>38</td>
+                                    <td>AGGT</td>
+                                    <td>5</td>
+                                    <td>TTG</td>
+                                    <td>TAA</td>
+                                    <td>242</td>
+                                    <td>e5536357-eca7-4860-9cc2-daa21051df98</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-27</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>e5536357-eca7-4860-9cc2-daa21051df98</td>
+                                    <td>gene</td>
+                                    <td>integrase int</td>
+                                    <td>27812..28893</td>
+                                    <td>27812</td>
+                                    <td>28893</td>
+                                    <td>-</td>
+                                    <td>356</td>
+                                    <td>GAGG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-34</td>
+                                    <td>016016bc-f3b9-4c48-982e-b463960d3a59</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>016016bc-f3b9-4c48-982e-b463960d3a59</td>
+                                    <td>gene</td>
+                                    <td>excisionase Xis</td>
+                                    <td>28860..29090</td>
+                                    <td>28860</td>
+                                    <td>29090</td>
+                                    <td>-</td>
+                                    <td>72</td>
+                                    <td>GGAG</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>27</td>
+                                    <td>e15c9216-cdbd-4539-879b-9ab30db54d25</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>e15c9216-cdbd-4539-879b-9ab30db54d25</td>
+                                    <td>gene</td>
+                                    <td>hypothetical protein</td>
+                                    <td>29118..29296</td>
+                                    <td>29118</td>
+                                    <td>29296</td>
+                                    <td>-</td>
+                                    <td>55</td>
+                                    <td>GGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>77</td>
+                                    <td>375742bf-c4c9-46e2-b49c-3db72351ae5d</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>375742bf-c4c9-46e2-b49c-3db72351ae5d</td>
+                                    <td>gene</td>
+                                    <td>protein ea8.5</td>
+                                    <td>29374..29667</td>
+                                    <td>29374</td>
+                                    <td>29667</td>
+                                    <td>-</td>
+                                    <td>93</td>
+                                    <td>AGGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>179</td>
+                                    <td>c3708fda-012f-40ac-91d0-96ce2b9bc845</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>Contains CATH G3DSA:1.10.10.1920 with putative hydrolase domain</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>c3708fda-012f-40ac-91d0-96ce2b9bc845</td>
+                                    <td>gene</td>
+                                    <td>protein ea22</td>
+                                    <td>29847..30405</td>
+                                    <td>29847</td>
+                                    <td>30405</td>
+                                    <td>-</td>
+                                    <td>182</td>
+                                    <td>GAGGT</td>
+                                    <td>5</td>
+                                    <td>GTG</td>
+                                    <td>TGA</td>
+                                    <td>-14</td>
+                                    <td>4fba3f9c-cbc0-4454-b278-efe088695fef</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>4fba3f9c-cbc0-4454-b278-efe088695fef</td>
+                                    <td>gene</td>
+                                    <td>DksA/TraR C4-type zinc finger domain-containing protein</td>
+                                    <td>30392..30626</td>
+                                    <td>30392</td>
+                                    <td>30626</td>
+                                    <td>-</td>
+                                    <td>73</td>
+                                    <td>GGA</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>85</td>
+                                    <td>3302e865-ca96-48ab-a043-66d0b2d464a9</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>Contains InterPro domain IPR000962</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>3302e865-ca96-48ab-a043-66d0b2d464a9</td>
+                                    <td>gene</td>
+                                    <td>hypothetical membrane protein</td>
+                                    <td>30712..30894</td>
+                                    <td>30712</td>
+                                    <td>30894</td>
+                                    <td>-</td>
+                                    <td>60</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>TTG</td>
+                                    <td>TGA</td>
+                                    <td>-56</td>
+                                    <td>4a0ceaca-089f-42a3-9185-c5e89f11b935</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>4a0ceaca-089f-42a3-9185-c5e89f11b935</td>
+                                    <td>gene</td>
+                                    <td>hypothetical protein orf61</td>
+                                    <td>30839..31024</td>
+                                    <td>30839</td>
+                                    <td>31024</td>
+                                    <td>-</td>
+                                    <td>51</td>
+                                    <td>GGT</td>
+                                    <td>14</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-20</td>
+                                    <td>97f8a88b-c50d-4710-9ae1-a8dad5ccc83f</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>97f8a88b-c50d-4710-9ae1-a8dad5ccc83f</td>
+                                    <td>gene</td>
+                                    <td>hypothetical protein</td>
+                                    <td>31005..31206</td>
+                                    <td>31005</td>
+                                    <td>31206</td>
+                                    <td>-</td>
+                                    <td>63</td>
+                                    <td>GAGG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-38</td>
+                                    <td>2cc7e0fe-b058-4773-ab3d-e94e32ff3c69</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>Contains InterPro domain IPR009814 with DUF1382</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>2cc7e0fe-b058-4773-ab3d-e94e32ff3c69</td>
+                                    <td>gene</td>
+                                    <td>hypothetical protein</td>
+                                    <td>31169..31365</td>
+                                    <td>31169</td>
+                                    <td>31365</td>
+                                    <td>-</td>
+                                    <td>62</td>
+                                    <td>GGG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-18</td>
+                                    <td>645d965c-2694-421e-8b95-d800a857c890</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>Contains InterPro domain IPR009750 DUF1317</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>645d965c-2694-421e-8b95-d800a857c890</td>
+                                    <td>gene</td>
+                                    <td>exonuclease exo</td>
+                                    <td>31348..32038</td>
+                                    <td>31348</td>
+                                    <td>32038</td>
+                                    <td>-</td>
+                                    <td>226</td>
+                                    <td>AGGT</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-14</td>
+                                    <td>cd896736-3fb2-4826-b8db-d3966b3b8606</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>cd896736-3fb2-4826-b8db-d3966b3b8606</td>
+                                    <td>gene</td>
+                                    <td>recombination protein bet</td>
+                                    <td>32025..32824</td>
+                                    <td>32025</td>
+                                    <td>32824</td>
+                                    <td>-</td>
+                                    <td>261</td>
+                                    <td>GAGGT</td>
+                                    <td>9</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-9</td>
+                                    <td>411ff345-0c28-4335-a864-560ee4fc66c6</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>411ff345-0c28-4335-a864-560ee4fc66c6</td>
+                                    <td>gene</td>
+                                    <td>host-nuclease inhibitor protein gam</td>
+                                    <td>32816..33124</td>
+                                    <td>32816</td>
+                                    <td>33124</td>
+                                    <td>-</td>
+                                    <td>98</td>
+                                    <td>AGGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>62</td>
+                                    <td>dedaa85a-5d65-4faf-a809-97c9a0ca52a8</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>dedaa85a-5d65-4faf-a809-97c9a0ca52a8</td>
+                                    <td>gene</td>
+                                    <td>host-killing protein kil</td>
+                                    <td>33187..33344</td>
+                                    <td>33187</td>
+                                    <td>33344</td>
+                                    <td>-</td>
+                                    <td>47</td>
+                                    <td>AGGAG</td>
+                                    <td>9</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-46</td>
+                                    <td>00bbe7b0-4092-4355-ba1e-7204fd13953f</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>00bbe7b0-4092-4355-ba1e-7204fd13953f</td>
+                                    <td>gene</td>
+                                    <td>protease inhibitor cIII</td>
+                                    <td>33299..33474</td>
+                                    <td>33299</td>
+                                    <td>33474</td>
+                                    <td>-</td>
+                                    <td>54</td>
+                                    <td>AGGAG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>61</td>
+                                    <td>ac07bd3f-9aff-48b0-a2ec-73ce870dbd62</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>ac07bd3f-9aff-48b0-a2ec-73ce870dbd62</td>
+                                    <td>gene</td>
+                                    <td>single-stranded DNA binding protein ea10</td>
+                                    <td>33536..33918</td>
+                                    <td>33536</td>
+                                    <td>33918</td>
+                                    <td>-</td>
+                                    <td>122</td>
+                                    <td>GAGG</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>168</td>
+                                    <td>2a518c27-1014-4987-8c6d-c77d9bd51018</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>2a518c27-1014-4987-8c6d-c77d9bd51018</td>
+                                    <td>gene</td>
+                                    <td>restriction alleviation protein ral</td>
+                                    <td>34087..34299</td>
+                                    <td>34087</td>
+                                    <td>34299</td>
+                                    <td>-</td>
+                                    <td>66</td>
+                                    <td>AGGA</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-29</td>
+                                    <td>819736c3-ac94-47f2-abdc-f6193a12b404</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>819736c3-ac94-47f2-abdc-f6193a12b404</td>
+                                    <td>gene</td>
+                                    <td>orf28</td>
+                                    <td>34271..34357</td>
+                                    <td>34271</td>
+                                    <td>34357</td>
+                                    <td>-</td>
+                                    <td>28</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>679</td>
+                                    <td>b8e42f64-15ef-4fb6-b491-5f68bc0bfecd</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-27</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>3bd258c3-0580-4bbd-9cbe-4c847adc452e</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.1464_0.0965447626014</td>
+                                    <td>34417..34534</td>
+                                    <td>34417</td>
+                                    <td>34534</td>
+                                    <td>+</td>
+                                    <td>33</td>
+                                    <td>AGG</td>
+                                    <td>13</td>
+                                    <td>GTG</td>
+                                    <td>TAA</td>
+                                    <td>11859</td>
+                                    <td>8f5752d0-2f43-4b81-94a6-e2bcf0119d63</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>8ce03ed0-ef00-4c52-a0a9-2b2a86bca875</td>
+                                    <td>gene</td>
+                                    <td>superinfection exclusion protein B</td>
+                                    <td>34487..35036</td>
+                                    <td>34487</td>
+                                    <td>35036</td>
+                                    <td>+</td>
+                                    <td>160</td>
+                                    <td>GGAG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-48</td>
+                                    <td>3bd258c3-0580-4bbd-9cbe-4c847adc452e</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>b8e42f64-15ef-4fb6-b491-5f68bc0bfecd</td>
+                                    <td>gene</td>
+                                    <td>antitermination protein N</td>
+                                    <td>35037..35451</td>
+                                    <td>35037</td>
+                                    <td>35451</td>
+                                    <td>-</td>
+                                    <td>133</td>
+                                    <td>GGA</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TAG</td>
+                                    <td>373</td>
+                                    <td>79c4329a-2551-40cf-85bc-ec2ee1425459</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>79c4329a-2551-40cf-85bc-ec2ee1425459</td>
+                                    <td>gene</td>
+                                    <td>exclusion protein rexB</td>
+                                    <td>35825..36269</td>
+                                    <td>35825</td>
+                                    <td>36269</td>
+                                    <td>-</td>
+                                    <td>144</td>
+                                    <td>AGGAG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>5</td>
+                                    <td>83e81e47-1e39-4cbf-a67d-57e808d97412</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>83e81e47-1e39-4cbf-a67d-57e808d97412</td>
+                                    <td>gene</td>
+                                    <td>exclusion protein rexA</td>
+                                    <td>36275..37124</td>
+                                    <td>36275</td>
+                                    <td>37124</td>
+                                    <td>-</td>
+                                    <td>279</td>
+                                    <td>GGA</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>102</td>
+                                    <td>a7d2cdab-7fda-4061-8472-1764694f0cd2</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>a7d2cdab-7fda-4061-8472-1764694f0cd2</td>
+                                    <td>gene</td>
+                                    <td>repressor protein cI</td>
+                                    <td>37227..37957</td>
+                                    <td>37227</td>
+                                    <td>37957</td>
+                                    <td>-</td>
+                                    <td>237</td>
+                                    <td>GGT</td>
+                                    <td>14</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>8501</td>
+                                    <td>6eedd5c5-3c44-404a-af31-acee26522035</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>d731b2bf-e9f9-484f-8851-814510c6a5ec</td>
+                                    <td>gene</td>
+                                    <td>regulatory protein cro</td>
+                                    <td>38031..38241</td>
+                                    <td>38031</td>
+                                    <td>38241</td>
+                                    <td>+</td>
+                                    <td>66</td>
+                                    <td>AGGAG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>2994</td>
+                                    <td>8ce03ed0-ef00-4c52-a0a9-2b2a86bca875</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>1b331cf3-0897-4489-aa55-b14669ea5998</td>
+                                    <td>gene</td>
+                                    <td>regulatory protein cII</td>
+                                    <td>38345..38653</td>
+                                    <td>38345</td>
+                                    <td>38653</td>
+                                    <td>+</td>
+                                    <td>97</td>
+                                    <td>AGGA</td>
+                                    <td>11</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>103</td>
+                                    <td>d731b2bf-e9f9-484f-8851-814510c6a5ec</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>3e912c73-4cba-4590-8d03-357bbef2da31</td>
+                                    <td>gene</td>
+                                    <td>DNA replication protein O</td>
+                                    <td>38676..39585</td>
+                                    <td>38676</td>
+                                    <td>39585</td>
+                                    <td>+</td>
+                                    <td>299</td>
+                                    <td>AGGAG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>22</td>
+                                    <td>1b331cf3-0897-4489-aa55-b14669ea5998</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>07f1dc2a-8b99-4403-b2a1-6f6b1a97a8bf</td>
+                                    <td>gene</td>
+                                    <td>DNA replication protein P</td>
+                                    <td>39572..40283</td>
+                                    <td>39572</td>
+                                    <td>40283</td>
+                                    <td>+</td>
+                                    <td>233</td>
+                                    <td>GGGT</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-14</td>
+                                    <td>3e912c73-4cba-4590-8d03-357bbef2da31</td>
+                                    <td>jason.gill@tamu.edu</td>
+                                    <td>2019-02-07</td>
+                                    <td>2020-05-27</td>
+                                    <td>added by JJG</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>a15b44d2-c0d8-4c0b-9837-2c3c986b6ff4</td>
+                                    <td>gene</td>
+                                    <td>ren exclusion protein</td>
+                                    <td>40268..40570</td>
+                                    <td>40268</td>
+                                    <td>40570</td>
+                                    <td>+</td>
+                                    <td>96</td>
+                                    <td>AGGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-16</td>
+                                    <td>07f1dc2a-8b99-4403-b2a1-6f6b1a97a8bf</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>ef111958-2be7-4828-8442-c2c376692e6b</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.gene_49</td>
+                                    <td>40628..41084</td>
+                                    <td>40628</td>
+                                    <td>41084</td>
+                                    <td>+</td>
+                                    <td>146</td>
+                                    <td>GGGGG</td>
+                                    <td>11</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>57</td>
+                                    <td>a15b44d2-c0d8-4c0b-9837-2c3c986b6ff4</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>ccb0da66-e8f2-46c6-b6ce-f3d2fcbdea5e</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.orf00086</td>
+                                    <td>41048..41953</td>
+                                    <td>41048</td>
+                                    <td>41953</td>
+                                    <td>+</td>
+                                    <td>296</td>
+                                    <td>GGAG</td>
+                                    <td>11</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-37</td>
+                                    <td>ef111958-2be7-4828-8442-c2c376692e6b</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>c402b694-7971-451b-aa24-4e70550eef2d</td>
+                                    <td>gene</td>
+                                    <td>NinD</td>
+                                    <td>41950..42123</td>
+                                    <td>41950</td>
+                                    <td>42123</td>
+                                    <td>+</td>
+                                    <td>57</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>-4</td>
+                                    <td>ccb0da66-e8f2-46c6-b6ce-f3d2fcbdea5e</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>61a0d8bd-5b58-4077-bc04-2bcf4dee8939</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.2486_0.0832002363577</td>
+                                    <td>42080..42272</td>
+                                    <td>42080</td>
+                                    <td>42272</td>
+                                    <td>+</td>
+                                    <td>60</td>
+                                    <td>AGGAG</td>
+                                    <td>5</td>
+                                    <td>GTG</td>
+                                    <td>TGA</td>
+                                    <td>-44</td>
+                                    <td>c402b694-7971-451b-aa24-4e70550eef2d</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>49135134-fa86-4df5-a0d7-b629ff152305</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.1596_0.0419290277112</td>
+                                    <td>42230..42439</td>
+                                    <td>42230</td>
+                                    <td>42439</td>
+                                    <td>+</td>
+                                    <td>66</td>
+                                    <td>GGA</td>
+                                    <td>6</td>
+                                    <td>GTG</td>
+                                    <td>TAA</td>
+                                    <td>-43</td>
+                                    <td>61a0d8bd-5b58-4077-bc04-2bcf4dee8939</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>a8c3d9d2-cc66-4394-a821-ec0db2e411de</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.gene_51</td>
+                                    <td>42419..43043</td>
+                                    <td>42419</td>
+                                    <td>43043</td>
+                                    <td>+</td>
+                                    <td>204</td>
+                                    <td>GAGG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-21</td>
+                                    <td>49135134-fa86-4df5-a0d7-b629ff152305</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>0cea2875-2757-4c9b-97f5-7b0ec545394a</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.gene_52</td>
+                                    <td>43032..43246</td>
+                                    <td>43032</td>
+                                    <td>43246</td>
+                                    <td>+</td>
+                                    <td>68</td>
+                                    <td>GAG</td>
+                                    <td>5</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-12</td>
+                                    <td>a8c3d9d2-cc66-4394-a821-ec0db2e411de</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>8ce6427a-594a-4320-955b-be6dd71ab223</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.gene_53</td>
+                                    <td>43135..43889</td>
+                                    <td>43135</td>
+                                    <td>43889</td>
+                                    <td>+</td>
+                                    <td>221</td>
+                                    <td>GGAG</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-112</td>
+                                    <td>0cea2875-2757-4c9b-97f5-7b0ec545394a</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>1653554c-4be1-453b-a377-86e20759321a</td>
+                                    <td>gene</td>
+                                    <td>late gene regulator</td>
+                                    <td>43875..44509</td>
+                                    <td>43875</td>
+                                    <td>44509</td>
+                                    <td>+</td>
+                                    <td>207</td>
+                                    <td>GGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAG</td>
+                                    <td>-15</td>
+                                    <td>8ce6427a-594a-4320-955b-be6dd71ab223</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-27</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>6c3ab9c5-a407-47b8-89df-fa997262a409</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.1630_0.132755174165</td>
+                                    <td>44612..44815</td>
+                                    <td>44612</td>
+                                    <td>44815</td>
+                                    <td>+</td>
+                                    <td>64</td>
+                                    <td>GGT</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>102</td>
+                                    <td>1653554c-4be1-453b-a377-86e20759321a</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>94064736-88a6-4e82-8c89-8226f57526e8</td>
+                                    <td>gene</td>
+                                    <td>antiholin S107</td>
+                                    <td>45175..45509</td>
+                                    <td>45175</td>
+                                    <td>45509</td>
+                                    <td>+</td>
+                                    <td>213</td>
+                                    <td><ul><li>GGGGG, GGGGG</li></ul></td>
+                                    <td><ul><li>6, 6</li></ul></td>
+                                    <td><ul><li>ATG (45185..45509:1), ATG (45191..45509:1)</li></ul></td>
+                                    <td>TAA</td>
+                                    <td>359</td>
+                                    <td>6c3ab9c5-a407-47b8-89df-fa997262a409</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>f8ba23df-ca21-4307-8f5a-ef8243f01acc</td>
+                                    <td>gene</td>
+                                    <td>endolysin R</td>
+                                    <td>45483..45969</td>
+                                    <td>45483</td>
+                                    <td>45969</td>
+                                    <td>+</td>
+                                    <td>158</td>
+                                    <td>GGAG</td>
+                                    <td>6</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-27</td>
+                                    <td>94064736-88a6-4e82-8c89-8226f57526e8</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>4795342c-7959-44d9-925a-781f17371e7a</td>
+                                    <td>gene</td>
+                                    <td>i-spanin Rz</td>
+                                    <td>45953..46427</td>
+                                    <td>45953</td>
+                                    <td>46427</td>
+                                    <td>+</td>
+                                    <td>153</td>
+                                    <td>GAG</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TAG</td>
+                                    <td>-17</td>
+                                    <td>f8ba23df-ca21-4307-8f5a-ef8243f01acc</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>18e578e1-38cb-4846-96e8-0190a5a26369</td>
+                                    <td>gene</td>
+                                    <td>o-spanin Rz1</td>
+                                    <td>46174..46368</td>
+                                    <td>46174</td>
+                                    <td>46368</td>
+                                    <td>+</td>
+                                    <td>60</td>
+                                    <td>AGGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>-254</td>
+                                    <td>4795342c-7959-44d9-925a-781f17371e7a</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>6eedd5c5-3c44-404a-af31-acee26522035</td>
+                                    <td>gene</td>
+                                    <td>bor</td>
+                                    <td>46459..46763</td>
+                                    <td>46459</td>
+                                    <td>46763</td>
+                                    <td>-</td>
+                                    <td>97</td>
+                                    <td>GGA</td>
+                                    <td>8</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>132</td>
+                                    <td>2da1b434-7877-4aa2-b88b-24922f70988b</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>2da1b434-7877-4aa2-b88b-24922f70988b</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.3497_0.36888415839</td>
+                                    <td>46896..47029</td>
+                                    <td>46896</td>
+                                    <td>47029</td>
+                                    <td>-</td>
+                                    <td>32</td>
+                                    <td>GGGG</td>
+                                    <td>10</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>12</td>
+                                    <td>5d4e2403-4389-497c-a220-9740cd9935cc</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>5d4e2403-4389-497c-a220-9740cd9935cc</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.2625_0.768191840841</td>
+                                    <td>47042..47463</td>
+                                    <td>47042</td>
+                                    <td>47463</td>
+                                    <td>-</td>
+                                    <td>136</td>
+                                    <td>AGGT</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TAA</td>
+                                    <td>645</td>
+                                    <td>e0b009e4-729e-4d97-b818-ec0cbebcb1f4</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>752f31a0-018a-4223-a7f9-72685604b7a3</td>
+                                    <td>gene</td>
+                                    <td>CDS.0.864_0.667986446525</td>
+                                    <td>47518..47652</td>
+                                    <td>47518</td>
+                                    <td>47652</td>
+                                    <td>+</td>
+                                    <td>40</td>
+                                    <td>GGT</td>
+                                    <td>9</td>
+                                    <td>TTG</td>
+                                    <td>TAA</td>
+                                    <td>1149</td>
+                                    <td>18e578e1-38cb-4846-96e8-0190a5a26369</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>e3d29177-18a8-4bc0-8d91-15e5760f3bd3</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.gene_60</td>
+                                    <td>47727..47944</td>
+                                    <td>47727</td>
+                                    <td>47944</td>
+                                    <td>+</td>
+                                    <td>68</td>
+                                    <td>GGAG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>74</td>
+                                    <td>752f31a0-018a-4223-a7f9-72685604b7a3</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                                    <tr>
+                                    <td>NC_001416-1_phage_lambda</td>
+                                    <td>e0b009e4-729e-4d97-b818-ec0cbebcb1f4</td>
+                                    <td>gene</td>
+                                    <td>NC_001416.1_phage_lambda.orf00102</td>
+                                    <td>48109..48314</td>
+                                    <td>48109</td>
+                                    <td>48314</td>
+                                    <td>-</td>
+                                    <td>64</td>
+                                    <td>GGGG</td>
+                                    <td>7</td>
+                                    <td>ATG</td>
+                                    <td>TGA</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>jolenerr@tamu.edu</td>
+                                    <td>2020-05-13</td>
+                                    <td>2020-05-13</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+
+
+
+$('#myTabs a').click(function (e) {
+	e.preventDefault()
+	$(this).tab('show')
+})
+
+
+
+jQuery.fn.dataTable.ext.type.detect.unshift( function ( data ) {
+    if ( typeof data !== 'string' ) {
+        return null;
+    }
+
+    var matches = data.match(/^(\d+)\.\.(\d+)/);
+    return matches ? 'genomic' : null;
+} );
+
+
+
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "genomic-pre": function ( a ) {
+        var matches = a.match(/^(\d+)\.\.(\d+)/);
+        console.log(a + " " + matches[1]);
+        return parseInt(matches[1]);
+    },
+
+    "genomic-asc": function ( a, b ) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+
+    "genomic-desc": function ( a, b ) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+} );
+
+            $('table').DataTable();
+        });
+    </script>
+  </body>
+</html>

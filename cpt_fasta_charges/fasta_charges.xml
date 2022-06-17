@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tools.charges" name="Charges" version="2.0">
+	<description>colour sequences based on rules</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_charges.py
+$svg
+@SEQUENCE@
+
+--width $width
+
+#if $scheme.cs == "default":
+--aa HSQTNCY AVILMPFWG ERDK
+--fgColor "#000000" "#000000" "#ffffff"
+--bgColor "#ffffff" "#999999" "#000000"
+#elif $scheme.cs == "rb":
+--aa KR ED HSQTNCYAVILMPFWG
+--fgColor "#ffffff" "#ffffff" "#000000"
+--bgColor "#00b0f0" "#fc0000" "#ffffff"
+#elif $scheme.cs == "rbgb":
+--aa KR ED P C HSQTNYAVILMFWG
+--fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
+--bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"
+#else:
+	--aa
+	#for group in $scheme.groups:
+		"$group.aminoAcids"
+	#end for
+	--fgColor
+	#for group in $scheme.groups:
+		"$group.fgColour"
+	#end for
+	--bgColor
+	#for group in $scheme.groups:
+		"$group.bgColour"
+	#end for
+#end if
+
+> $html
+</command>
+	<inputs>
+		<expand macro="input/fasta/protein" />
+                <param label="Output format" name="svg" type="select">
+			<option value="">HTML</option>
+			<option value="--svg">SVG</option>
+		</param>
+		<conditional name="scheme">
+			<param label="Colour scheme" name="cs" type="select">
+				<option value="default">Default hyrophobic/polar/charged</option>
+				<option value="rb">Positives Blue, Negatives Red</option>
+                <option value="rbgb">Positives Blue, Negatives Red, Prolines Green, Cysteines Brown</option>
+				<option value="custom">Custom Colour Scheme</option>
+			</param>
+			<when value="default" />
+                        <when value="rb" />
+			<when value="custom">
+				<repeat name="groups" title="Colour Group">
+					<param name="aminoAcids" type="text" label="Amino Acids"
+						help="Amino acids to colour a specific colour"/>
+					<param name="fgColour" type="color" label="Foreground Color"/>
+					<param name="bgColour" type="color" label="Background Color"/>
+				</repeat>
+			</when>
+		</conditional>
+		<param label="Plot width" name="width" type="integer" value="120" />
+	</inputs>
+	<outputs>
+		<data format="html" name="html">
+                  <change_format>
+                    <when input="svg" value="--svg" format="svg" />
+                  </change_format>
+                </data>
+	</outputs>
+	<tests>
+		<test>
+			<param name="sequences" value="prot.fa"/>
+			<param name="cs" value="default" />
+			<param name="width" value="120" />
+			<output name="html" file="charges.html" />
+		</test>
+	</tests>
+	<help>
+**What it does**
+
+Colors fasta (protein) sequences based on rules, and displays outputs as HTML.
+</help>
+		<expand macro="citations" />
+</tool>

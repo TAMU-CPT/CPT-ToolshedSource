@@ -1,0 +1,185 @@
+##gff-version 3
+AY216660.2	feature	gene	25	34	.	+	.	note=Missing RBS;ID=CPT-T1_001.gene;Name=
+AY216660.2	feature	gene	574	583	.	+	.	note=Missing RBS;ID=CPT-T1_002.gene;Name=
+AY216660.2	feature	gene	2215	2224	.	+	.	note=Missing RBS;ID=CPT-T1_003.gene;Name=
+AY216660.2	feature	gene	3481	3490	.	+	.	note=Missing RBS;ID=CPT-T1_004.gene;Name=
+AY216660.2	feature	gene	4249	4258	.	+	.	note=Missing RBS;ID=CPT-T1_005.gene;Name=
+AY216660.2	feature	gene	5374	5383	.	+	.	note=Missing RBS;ID=CPT-T1_006.gene;Name=
+AY216660.2	feature	gene	5911	5920	.	+	.	note=Missing RBS;ID=CPT-T1_007.gene;Name=
+AY216660.2	feature	gene	6769	6778	.	+	.	note=Missing RBS;ID=CPT-T1_008.gene;Name=
+AY216660.2	feature	gene	7779	7788	.	+	.	note=Missing RBS;ID=CPT-T1_009.gene;Name=
+AY216660.2	feature	gene	8112	8121	.	+	.	note=Missing RBS;ID=CPT-T1_010.gene;Name=
+AY216660.2	feature	gene	8519	8528	.	+	.	note=Missing RBS;ID=CPT-T1_011.gene;Name=
+AY216660.2	feature	gene	8882	8891	.	+	.	note=Missing RBS;ID=CPT-T1_012.gene;Name=
+AY216660.2	feature	gene	9317	9326	.	+	.	note=Missing RBS;ID=CPT-T1_013.gene;Name=
+AY216660.2	feature	gene	9718	9727	.	+	.	note=Missing RBS;ID=CPT-T1_014.gene;Name=
+AY216660.2	feature	gene	10501	10510	.	+	.	note=Missing RBS;ID=CPT-T1_015.gene;Name=
+AY216660.2	feature	gene	10501	10510	.	+	.	note=Missing RBS;ID=CPT-T1_016.gene;Name=
+AY216660.2	feature	gene	11177	11186	.	+	.	note=Missing RBS;ID=CPT-T1_017.gene;Name=
+AY216660.2	feature	gene	14052	14061	.	+	.	note=Missing RBS;ID=CPT-T1_018.gene;Name=
+AY216660.2	feature	gene	14485	14494	.	+	.	note=Missing RBS;ID=CPT-T1_019.gene;Name=
+AY216660.2	feature	gene	15264	15273	.	+	.	note=Missing RBS;ID=CPT-T1_020.gene;Name=
+AY216660.2	feature	gene	15994	16003	.	+	.	note=Missing RBS;ID=CPT-T1_021.gene;Name=
+AY216660.2	feature	gene	16673	16682	.	+	.	note=Missing RBS;ID=CPT-T1_022.gene;Name=
+AY216660.2	feature	gene	20236	20245	.	+	.	note=Missing RBS;ID=CPT-T1_023.gene;Name=
+AY216660.2	feature	gene	20541	20550	.	+	.	note=Missing RBS;ID=CPT-T1_024.gene;Name=
+AY216660.2	feature	gene	21524	21533	.	-	.	note=Missing RBS;ID=CPT-T1_025.gene;Name=
+AY216660.2	feature	gene	21740	21749	.	+	.	note=Missing RBS;ID=CPT-T1_026.gene;Name=
+AY216660.2	feature	gene	22005	22014	.	+	.	note=Missing RBS;ID=CPT-T1_027.gene;Name=
+AY216660.2	feature	gene	23114	23123	.	+	.	note=Missing RBS;ID=CPT-T1_028.gene;Name=
+AY216660.2	feature	gene	23839	23848	.	+	.	note=Missing RBS;ID=CPT-T1_029.gene;Name=
+AY216660.2	feature	gene	26556	26565	.	-	.	note=Missing RBS;ID=CPT-T1_030.gene;Name=
+AY216660.2	feature	gene	26606	26615	.	-	.	note=Missing RBS;ID=CPT-T1_031.gene;Name=
+AY216660.2	feature	gene	27591	27600	.	-	.	note=Missing RBS;ID=CPT-T1_032.gene;Name=
+AY216660.2	feature	gene	28104	28113	.	-	.	note=Missing RBS;ID=CPT-T1_033.gene;Name=
+AY216660.2	feature	gene	28153	28162	.	+	.	note=Missing RBS;ID=CPT-T1_034.gene;Name=
+AY216660.2	feature	gene	30166	30175	.	+	.	note=Missing RBS;ID=CPT-T1_035.gene;Name=
+AY216660.2	feature	gene	30654	30663	.	+	.	note=Missing RBS;ID=CPT-T1_036.gene;Name=
+AY216660.2	feature	gene	31362	31371	.	+	.	note=Missing RBS;ID=CPT-T1_037.gene;Name=
+AY216660.2	feature	gene	31680	31689	.	+	.	note=Missing RBS;ID=CPT-T1_038.gene;Name=
+AY216660.2	feature	gene	31866	31875	.	+	.	note=Missing RBS;ID=CPT-T1_039.gene;Name=
+AY216660.2	feature	gene	32084	32093	.	+	.	note=Missing RBS;ID=CPT-T1_040.gene;Name=
+AY216660.2	feature	gene	32452	32461	.	+	.	note=Missing RBS;ID=CPT-T1_041.gene;Name=
+AY216660.2	feature	gene	33658	33667	.	+	.	note=Missing RBS;ID=CPT-T1_042.gene;Name=
+AY216660.2	feature	gene	34211	34220	.	+	.	note=Missing RBS;ID=CPT-T1_043.gene;Name=
+AY216660.2	feature	gene	34510	34519	.	+	.	note=Missing RBS;ID=CPT-T1_044.gene;Name=
+AY216660.2	feature	gene	34724	34733	.	+	.	note=Missing RBS;ID=CPT-T1_045.gene;Name=
+AY216660.2	feature	gene	35212	35221	.	+	.	note=Missing RBS;ID=CPT-T1_046.gene;Name=
+AY216660.2	feature	gene	36185	36194	.	-	.	note=Missing RBS;ID=CPT-T1_047.gene;Name=
+AY216660.2	feature	gene	37761	37770	.	-	.	note=Missing RBS;ID=CPT-T1_048.gene;Name=
+AY216660.2	feature	gene	38300	38309	.	-	.	note=Missing RBS;ID=CPT-T1_049.gene;Name=
+AY216660.2	feature	gene	38712	38721	.	-	.	note=Missing RBS;ID=CPT-T1_050.gene;Name=
+AY216660.2	feature	gene	39000	39009	.	-	.	note=Missing RBS;ID=CPT-T1_051.gene;Name=
+AY216660.2	feature	gene	39228	39237	.	-	.	note=Missing RBS;ID=CPT-T1_052.gene;Name=
+AY216660.2	feature	gene	39450	39459	.	-	.	note=Missing RBS;ID=CPT-T1_053.gene;Name=
+AY216660.2	feature	gene	39764	39773	.	-	.	note=Missing RBS;ID=CPT-T1_054.gene;Name=
+AY216660.2	feature	gene	39984	39993	.	-	.	note=Missing RBS;ID=CPT-T1_055.gene;Name=
+AY216660.2	feature	gene	40348	40357	.	-	.	note=Missing RBS;ID=CPT-T1_056.gene;Name=
+AY216660.2	feature	gene	41005	41014	.	+	.	note=Missing RBS;ID=CPT-T1_057.gene;Name=
+AY216660.2	feature	gene	41591	41600	.	+	.	note=Missing RBS;ID=CPT-T1_058.gene;Name=
+AY216660.2	feature	gene	41998	42007	.	+	.	note=Missing RBS;ID=CPT-T1_059.gene;Name=
+AY216660.2	feature	gene	42232	42241	.	+	.	note=Missing RBS;ID=CPT-T1_060.gene;Name=
+AY216660.2	feature	gene	42458	42467	.	+	.	note=Missing RBS;ID=CPT-T1_061.gene;Name=
+AY216660.2	feature	gene	42565	42574	.	+	.	note=Missing RBS;ID=CPT-T1_062.gene;Name=
+AY216660.2	feature	gene	42809	42818	.	+	.	note=Missing RBS;ID=CPT-T1_063.gene;Name=
+AY216660.2	feature	gene	43370	43379	.	+	.	note=Missing RBS;ID=CPT-T1_064.gene;Name=
+AY216660.2	feature	gene	43855	43864	.	+	.	note=Missing RBS;ID=CPT-T1_065.gene;Name=
+AY216660.2	feature	gene	44083	44092	.	+	.	note=Missing RBS;ID=CPT-T1_066.gene;Name=
+AY216660.2	feature	gene	44512	44521	.	+	.	note=Missing RBS;ID=CPT-T1_067.gene;Name=
+AY216660.2	feature	gene	44610	44619	.	+	.	note=Missing RBS;ID=CPT-T1_068.gene;Name=
+AY216660.2	feature	gene	44883	44892	.	+	.	note=Missing RBS;ID=CPT-T1_069.gene;Name=
+AY216660.2	feature	gene	45413	45422	.	+	.	note=Missing RBS;ID=CPT-T1_070.gene;Name=
+AY216660.2	feature	gene	45926	45935	.	+	.	note=Missing RBS;ID=CPT-T1_071.gene;Name=
+AY216660.2	feature	gene	46429	46438	.	+	.	note=Missing RBS;ID=CPT-T1_072.gene;Name=
+AY216660.2	feature	gene	47070	47079	.	+	.	note=Missing RBS;ID=CPT-T1_073.gene;Name=
+AY216660.2	feature	gene	47278	47287	.	+	.	note=Missing RBS;ID=CPT-T1_074.gene;Name=
+AY216660.2	feature	gene	47622	47631	.	+	.	note=Missing RBS;ID=CPT-T1_075.gene;Name=
+AY216660.2	feature	gene	47849	47858	.	+	.	note=Missing RBS;ID=CPT-T1_076.gene;Name=
+AY216660.2	feature	gene	48220	48229	.	+	.	note=Missing RBS;ID=CPT-T1_077.gene;Name=
+AY216660.2	feature	gene	48362	48371	.	+	.	note=Missing RBS;ID=CPT-T1_078.gene;Name=
+AY216660.2	feature	gene	48549	48558	.	+	.	note=Missing RBS;ID=CPT-T1_079.gene;Name=
+AY216660.2	feature	gene	2185	2238	.	.	.	note=Excessive gap%2C 54 bases;
+AY216660.2	feature	gene	5877	5937	.	.	.	note=Excessive gap%2C 61 bases;
+AY216660.2	feature	gene	6706	6795	.	.	.	note=Excessive gap%2C 90 bases;
+AY216660.2	feature	gene	10415	10527	.	.	.	note=Excessive gap%2C 113 bases;
+AY216660.2	feature	gene	14433	14511	.	.	.	note=Excessive gap%2C 79 bases;
+AY216660.2	feature	gene	14424	14540	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	14424	14433	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	14439	14540	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	14447	14451	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	14452	14461	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	14447	14524	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	16622	16698	.	.	.	note=Excessive gap%2C 77 bases;
+AY216660.2	feature	gene	21507	21765	.	.	.	note=Excessive gap%2C 259 bases;
+AY216660.2	feature	gene	21907	22033	.	.	.	note=Excessive gap%2C 127 bases;
+AY216660.2	feature	gene	24290	24350	.	.	.	note=Excessive gap%2C 61 bases;
+AY216660.2	feature	gene	24286	24390	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	24286	24295	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	24301	24390	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	27574	27634	.	.	.	note=Excessive gap%2C 61 bases;
+AY216660.2	feature	gene	28088	28180	.	.	.	note=Excessive gap%2C 93 bases;
+AY216660.2	feature	gene	30613	30679	.	.	.	note=Excessive gap%2C 67 bases;
+AY216660.2	feature	gene	30629	30718	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	30629	30638	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	30644	30718	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	31642	31707	.	.	.	note=Excessive gap%2C 66 bases;
+AY216660.2	feature	gene	32400	32477	.	.	.	note=Excessive gap%2C 78 bases;
+AY216660.2	feature	gene	32385	32492	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	32385	32394	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	32400	32492	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	33612	33683	.	.	.	note=Excessive gap%2C 72 bases;
+AY216660.2	feature	gene	34167	34238	.	.	.	note=Excessive gap%2C 72 bases;
+AY216660.2	feature	gene	34416	34533	.	.	.	note=Excessive gap%2C 118 bases;
+AY216660.2	feature	gene	35639	35760	.	.	.	note=Excessive gap%2C 122 bases;
+AY216660.2	feature	gene	35674	35678	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	35679	35688	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	35674	35754	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	35674	35678	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	35679	35688	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	35674	35766	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	38694	38773	.	.	.	note=Excessive gap%2C 80 bases;
+AY216660.2	feature	gene	38719	38814	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	38719	38728	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	38734	38814	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	38725	38814	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	38725	38734	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	38740	38814	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	39212	39288	.	.	.	note=Excessive gap%2C 77 bases;
+AY216660.2	feature	gene	40331	41030	.	.	.	note=Excessive gap%2C 700 bases;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40496	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40511	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40541	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40559	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40595	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40416	40420	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40421	40430	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40416	40637	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	40817	40921	.	+	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	40817	40826	.	+	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	40832	40921	.	+	0	Parent=<unknown id>;
+AY216660.2	feature	gene	41946	42023	.	.	.	note=Excessive gap%2C 78 bases;
+AY216660.2	feature	gene	42765	42835	.	.	.	note=Excessive gap%2C 71 bases;
+AY216660.2	feature	gene	43325	43395	.	.	.	note=Excessive gap%2C 71 bases;
+AY216660.2	feature	gene	44031	44110	.	.	.	note=Excessive gap%2C 80 bases;
+AY216660.2	feature	gene	44486	44538	.	.	.	note=Excessive gap%2C 53 bases;
+AY216660.2	feature	gene	44853	44909	.	.	.	note=Excessive gap%2C 57 bases;
+AY216660.2	feature	gene	45357	45439	.	.	.	note=Excessive gap%2C 83 bases;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45445	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45463	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45466	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45475	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45478	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	45368	45372	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	45373	45382	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	45368	45481	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	47027	47098	.	.	.	note=Excessive gap%2C 72 bases;
+AY216660.2	feature	gene	48083	48246	.	.	.	note=Excessive gap%2C 164 bases;
+AY216660.2	feature	gene	48086	48090	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	48091	48100	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	48086	48169	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	48160	48164	.	-	.	note=Possible gene;
+AY216660.2	feature	Shine_Dalgarno_sequence	48165	48174	.	-	.	Parent=<unknown id>;
+AY216660.2	feature	CDS	48160	48255	.	-	0	Parent=<unknown id>;
+AY216660.2	feature	gene	10528	10844	.	.	.	note=Excessive Overlap;ID=CPT-T1_015.gene;Name=
+AY216660.2	feature	gene	26447	26536	.	.	.	note=Excessive Overlap;ID=CPT-T1_030.gene;Name=
+AY216660.2	feature	gene	32112	32166	.	.	.	note=Excessive Overlap;ID=CPT-T1_039.gene;Name=

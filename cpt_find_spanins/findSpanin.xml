@@ -1,0 +1,44 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.spanin.findSpanin" name="Find Spanin" version="1.0">
+    <description>With the outputs from the ISP and OSP candidate tools, cull the list down to candidate pairs</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/findSpanin.py
+$putative_isp_fasta_file
+$putative_osp_fasta_file
+--max_isp_osp_distance $max_isp_osp_distance
+--embedded_txt $embedded_txt
+--overlap_txt $overlap_txt
+--separate_txt $separate_txt
+--summary_txt $summary_txt
+]]></command>
+    <inputs>
+        <param label="(putative) i-spanin FASTA file" name="putative_isp_fasta_file" type="data" format="fasta"/>
+        <param label="(putative) o-spanin FASTA file" name="putative_osp_fasta_file" type="data" format="fasta"/>
+        <param label="max distance from end of i-spanin to beginning of o-spanin (measured in AAs)" name="max_isp_osp_distance" type="integer" value="10" />
+    </inputs>
+    <outputs>
+          <data format="txt" name="summary_txt" label="FindSpanin_summary.txt"/>
+          <data format="tabular" name="embedded_txt" label="embedded_results.txt"/>
+          <data format="tabular" name="overlap_txt" label="overlap_results.txt"/>
+          <data format="tabular" name="separate_txt" label="separate_results.txt"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+Compares the protein FASTA files with candidate i-spanins and o-spanins from a genome and matches them into candidate pairs based on position in a strand-aware fashion.
+
+**INPUT** --> Putative i-spanin and o-spanin protein multiFASTAs (generated from the ISP/OSP Candidate Tools). 
+
+**METHODOLOGY** 
+Does a pairwise comparison between candidate i-spanins and o-spanins based on their genomic location, and classifies them into the known bimolecular spanin genetic architectures. Classes are: embedded, overlapping, separated, or NOT a potential pair.
+
+**OUTPUT** --> File with candidate pairs for each bimolecular spanin class and a basic summary statistics file. 
+
+]]></help>
+        <expand macro="citations-2020" />
+</tool>

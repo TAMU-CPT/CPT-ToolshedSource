@@ -1,0 +1,3 @@
+##gff-version 3
+Miro.v2	gffSeqFeature	gene	1	910	.	-	.	ID=8861dd01-d426-40d4-96b5-f8e4b81c93d2;Name=Miro.gene_1;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis@tamu.edu;
+Miro.v2	gffSeqFeature	gene	1019	1264	.	-	.	ID=b8da12d7-fe5c-42bd-b020-6a8ab205a133;Name=Miroa;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis@tamu.edu;
