@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<macros>
+	<xml name="requirements">
+		<requirements>
+                        <requirement type="package" version="5.26.2">perl</requirement>
+			<requirement type="package" version="3.8.13">python</requirement>
+			<requirement type="package" version="1.79">biopython</requirement>
+			<requirement type="package" version="1.2.2">cpt_gffparser</requirement>  
+			<yield/>
+		</requirements>
+	</xml>
+	<xml name="genome_selector">
+		<param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+	</xml>
+	<xml name="gff3_input">
+		<param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+	</xml>
+	<xml name="input/gff3+fasta">
+		<expand macro="gff3_input" />
+		<expand macro="genome_selector" />
+	</xml>
+	<token name="@INPUT_GFF@">
+	"$gff3_data"
+	</token>
+	<token name="@INPUT_FASTA@">
+		genomeref.fa
+	</token>
+	<token name="@GENOME_SELECTOR_PRE@">
+		ln -s $genome_fasta genomeref.fa;
+	</token>
+	<token name="@GENOME_SELECTOR@">
+		genomeref.fa
+	</token>
+        <xml name="input/fasta">
+		<param label="Fasta file" name="sequences" type="data" format="fasta"/>
+	</xml>
+
+	<token name="@SEQUENCE@">
+		"$sequences"
+	</token>
+	<xml name="input/fasta/protein">
+		<param label="Protein fasta file" name="sequences" type="data" format="fasta"/>
+	</xml>
+</macros>
