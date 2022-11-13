@@ -5,10 +5,22 @@
         <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
-            <requirement type="package" version="2022.1.18">regex</requirement>
-        </expand>
-    <command interpreter="python" detect_errors="aggressive">
-get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "closed" -m "all" --min_len $min_len --strand $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
+        <requirement type="package" version="2022.1.18">regex</requirement>
+    </expand>
+    <command detect_errors="aggressive">
+get_orfs_or_cdss.py
+'$input_file'
+-f $input_file.ext
+--table $table
+-t $ftype
+-e "closed"
+-m "all"
+--min_len $min_len
+--strand $strand
+--on '$out_nuc_file'
+--op '$out_prot_file'
+--ob '$out_bed_file'
+--og '$out_gff3_file'
     </command>
     <inputs>
         <param name="input_file" type="data" format="fasta,fastq,sff" label="Sequence file (nucleotides)" help="FASTA, FASTQ, or SFF format." />
@@ -36,8 +48,9 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
             <option value="ORF">Look for ORFs (check for stop codons only, ignore start codons)</option>
             <option value="CDS">Look for CDSs (with start and stop codons)</option>
         </param>
-        <param name="min_len" type="integer" size="5" value="30" label="Minimum length ORF/CDS (in amino acids, e.g. 30 aa = 90 bp plus any stop codon)" />
-        <param name="strand" type="select" label="Strand to search" help="Use the forward only option if your sequence directionality is known (e.g. from poly-A tails, or strand specific RNA sequencing).">
+        <param name="min_len" type="integer" value="30" label="Minimum length ORF/CDS (in amino acids, e.g. 30 aa = 90 bp plus any stop codon)" />
+        <param name="strand" type="select" label="Strand to search"
+            help="Use the forward only option if your sequence directionality is known (e.g. from poly-A tails, or strand specific RNA sequencing).">
             <option value="both">Search both the forward and reverse strand</option>
             <option value="forward">Only search the forward strand</option>
             <option value="reverse">Only search the reverse strand</option>
@@ -81,9 +94,11 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
             <output name="out_nuc_file" file="Orf_Out2T11_Nuc.fasta" />
             <output name="out_prot_file" file="Orf_Out2T11_AA.fasta" />
             <output name="out_bed_file" file="Orf_Out2T11_Bed.bed" />
-            <output name="out_gff3_file" file="Orf_Out2T11_Gff.gff3" />        </test>
+            <output name="out_gff3_file" file="Orf_Out2T11_Gff.gff3" />
+        </test>
     </tests>
     <help>
+
 **What it does**
 
 Takes an input file of nucleotide sequences (typically FASTA, but also FASTQ
