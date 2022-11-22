@@ -7,9 +7,9 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/fix-aragorn-gff3.py
+'$__tool_directory__/fix-aragorn-gff3.py'
 @INPUT_GFF@
-> $default]]></command>
+> '$default']]></command>
   <inputs>
       <expand macro="gff3_input" />
   </inputs>

@@ -9,7 +9,7 @@
 		</requirements>
 		<version_command>
 		<![CDATA[
-			cd $__tool_directory__ && git rev-parse HEAD
+			cd' $__tool_directory__' && git rev-parse HEAD
 		]]>
 		</version_command>
 	</xml>

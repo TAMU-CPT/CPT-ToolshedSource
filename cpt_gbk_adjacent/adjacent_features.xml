@@ -7,20 +7,20 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/adjacent_features.py
-#set repeat_var_1 = '" "'.join([ str($var) for $var in $gbkIn ])
-#set repeat_var_2 = '" "'.join([ str($var) for $var in $fastaIn ])
+python '$__tool_directory__/adjacent_features.py'
+#set repeat_var_1 = '" "'.join([ str('$var') for '$var' in '$gbkIn' ])
+#set repeat_var_2 = '" "'.join([ str('$var') for '$var' in '$fastaIn' ])
 -genbankFiles "$repeat_var_1"
 -fastaFiles "$repeat_var_2"
--tTable $tTable
--fTable $fTable
--upOut $upstreamOut
--downOut $downstreamOut
-$translate
-$forceID
-$mode
---forward $ahead
---behind $back
+-tTable '$tTable'
+-fTable '$fTable'
+-upOut '$upstreamOut'
+-downOut '$downstreamOut'
+'$translate'
+'$forceID'
+'$mode'
+--forward '$ahead'
+--behind '$back'
 ]]></command>
   <inputs>
     <param label="Genbank file" name="gbkIn" type="data" format="genbank" multiple="True"/>

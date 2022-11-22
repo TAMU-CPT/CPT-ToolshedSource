@@ -15,10 +15,10 @@
       <requirement type="package" version="1.74">biopython</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-perl -Mlib=$__tool_directory__/lib $__tool_directory__/cpt_psm_0_prep.pl
+perl -Mlib='$__tool_directory__/lib' '$__tool_directory__/cpt_psm_0_prep.pl'
 --galaxy
---outfile_supporting $__new_file_path__
-#for $item in $repeat_file:
+--outfile_supporting '$__new_file_path__'
+#for '$item 'in '$repeat_file':
 --file "${item.file}"
 #end for
 
@@ -38,9 +38,9 @@ mkdir tmp_002
 
 &&
 
-perl -Mlib=$__tool_directory__/lib $__tool_directory__/cpt_psm_2_gentable.pl
+perl -Mlib='$__tool_directory__/lib' '$__tool_directory__/cpt_psm_2_gentable.pl'
 --galaxy
---outfile_supporting $__new_file_path__
+--outfile_supporting '$__new_file_path__'
 --file "${cpt_psm_object}"
 
 #if $evalue and $evalue is not "None":
@@ -75,7 +75,7 @@ perl -Mlib=$__tool_directory__/lib $__tool_directory__/cpt_psm_2_gentable.pl
 
 &&
 
-$__tool_directory__/PSM_Recombine.py
+'$__tool_directory__/PSM_Recombine.py'
 ./tmpDiff.tsv
 #for $item in $repeat_file:
 "${item.file}"

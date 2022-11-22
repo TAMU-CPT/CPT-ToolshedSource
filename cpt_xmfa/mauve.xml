@@ -45,15 +45,15 @@
 @GENOME_SELECTOR_PRE@
 mkdir -p "$output.files_path";
 
-python $__tool_directory__/xmfa_process.py
+python '$__tool_directory__/xmfa_process.py'
 @INPUT_GFF@
 @INPUT_FASTA@
 @XMFA_INPUT@
 "out" > "$output.files_path/data.json";
 mv out "$output.files_path/";
 
-cp $__tool_directory__/mauve.js $output.files_path/;
-cp $index "$output"
+cp '$__tool_directory__/mauve.js' '$output.files_path/';
+cp '$index' "$output"
 ]]></command>
 	<inputs>
 		<expand macro="input/gff3+fasta" />

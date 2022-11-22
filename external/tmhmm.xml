@@ -9,18 +9,18 @@
 		<requirement type="package" version="0.6.4">bcbiogff</requirement>
 	</requirements>
 	<command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
+'$__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64'
 
-$__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model
--f $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.options
+'$__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model'
+-f '$__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.options'
 -plp
-< $infile
+< '$infile'
 
-| python $__tool_directory__/parse_decodeanhmm2gff3.py
---bw_i $bw_i
---bw_o $bw_o
---bw_m $bw_m
-> $output
+| python '$__tool_directory__/parse_decodeanhmm2gff3.py'
+--bw_i '$bw_i'
+--bw_o '$bw_o'
+--bw_m '$bw_m'
+> '$output'
 ]]>
 	</command>
 	<inputs>

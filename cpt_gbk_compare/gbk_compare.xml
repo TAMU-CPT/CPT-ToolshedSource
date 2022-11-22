@@ -10,14 +10,14 @@
       <requirement type="package" version="1.74">biopython</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/gbk_compare.py
-$annotation_1
-$annotation_2
---match_identity_threshold $match_identity_threshold
---allowed_skipped_genes $allowed_skipped_genes
-$addNotes
--sumOut $sumOut
-> $repOut]]></command>
+python '$__tool_directory__/gbk_compare.py'
+'$annotation_1'
+'$annotation_2'
+--match_identity_threshold '$match_identity_threshold'
+--allowed_skipped_genes '$allowed_skipped_genes'
+'$addNotes'
+-sumOut '$sumOut'
+> '$repOut']]></command>
   <inputs>
     <param label="First annotated genome (Genbank)" name="annotation_1" type="data" format="genbank"/>
     <param label="Second annotated genome (Genbank)" name="annotation_2" type="data" format="genbank"/>

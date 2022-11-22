@@ -6,9 +6,9 @@
         <requirement type="package" version="1.0.5">pandas</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-python3.8 $__tool_directory__/bprom_gff3_converter.py
--f $txtIn
-> $gffOut]]></command>
+python3.8 '$__tool_directory__/bprom_gff3_converter.py'
+-f '$txtIn'
+> '$gffOut']]></command>
   <inputs>
     <param name="txtIn" type="data" label="BPROM Results" format="txt"/>
   </inputs>

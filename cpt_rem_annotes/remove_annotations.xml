@@ -7,11 +7,11 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/remove_annotations.py
-$gff3_data
-$remark
-$region
-> $default]]></command>
+'python $__tool_directory__/remove_annotations.py'
+'$gff3_data'
+'$remark'
+'$region'
+> '$default']]></command>
   <inputs>
       <expand macro="gff3_input" />
       <param checked="true" label="Remove 'remark' features" name="remark" type="boolean" truevalue="--remark" falsevalue="" />

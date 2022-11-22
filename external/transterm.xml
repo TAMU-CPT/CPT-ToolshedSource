@@ -13,11 +13,11 @@
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-$__tool_directory__/transterm.py
+'$__tool_directory__/transterm.py'
 @GENOME_SELECTOR@
-$gff3_data
+'$gff3_data'
 
-> $output
+> '$output'
 
 ]]>
 	</command>

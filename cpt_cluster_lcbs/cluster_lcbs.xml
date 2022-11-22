@@ -7,10 +7,10 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/cluster_lcbs.py
+'python $__tool_directory__/cluster_lcbs.py'
 @XMFA_INPUT@
-$threshold
-> $output
+'$threshold'
+> '$output'
 ]]></command>
 	<inputs>
 		<expand macro="xmfa_input" />

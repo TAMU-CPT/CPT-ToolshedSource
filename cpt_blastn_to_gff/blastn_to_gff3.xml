@@ -6,11 +6,11 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blast_to_gff3.py
-$input_type.blast_input
-#if $input_type.input_type_selector == "xml":
+'$__tool_directory__/blast_to_gff3.py'
+'$input_type.blast_input'
+#if '$input_type.input_type_selector' == "xml":
   --blastxml
-#elif $input_type.input_type_selector == "tsv":
+#elif '$input_type.input_type_selecto'r == "tsv":
   --blasttab
 #end if
 > $output]]></command>

@@ -7,9 +7,9 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/tRNAscan_to_gff_SE_format.py
-< $trnascan
-> $output
+python '$__tool_directory__/tRNAscan_to_gff_SE_format.py'
+< '$trnascan'
+> '$output'
 ]]></command>
 	<inputs>
 			<param format="tabular" type="data" name="trnascan" label="tRNAscan table" />

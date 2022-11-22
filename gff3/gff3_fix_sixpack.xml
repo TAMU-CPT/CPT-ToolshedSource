@@ -7,9 +7,9 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/gff3_fix_sixpack.py
+'$__tool_directory__/gff3_fix_sixpack.py'
 @INPUT_GFF@
-> $output]]></command>
+> '$output']]></command>
   <inputs>
       <expand macro="gff3_input" />
   </inputs>

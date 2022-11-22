@@ -8,12 +8,12 @@
   <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/gff3_require_sd.py
+python '$__tool_directory__/gff3_require_sd.py'
 
 @GENOME_SELECTOR@
 @INPUT_GFF@
 
-> $stdout
+> '$stdout'
 
 ]]></command>
   <inputs>

@@ -13,9 +13,9 @@
       <requirement type="package">perl-getopt-long-descriptive</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-perl -Mlib=$__tool_directory__/lib $__tool_directory__/cpt_psm_1_plot.pl
+perl -Mlib='$__tool_directory__/lib' '$__tool_directory__/cpt_psm_1_plot.pl'
 --galaxy
---outfile_supporting $__new_file_path__
+--outfile_supporting '$__new_file_path__'
 --file "${file}"
 
 --user_ordering "${user_ordering}"

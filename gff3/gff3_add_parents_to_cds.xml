@@ -7,9 +7,9 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/gff3_add_parents_to_cds.py
+'$__tool_directory__/gff3_add_parents_to_cds.py'
 @INPUT_GFF@
-> $output]]></command>
+> '$output']]></command>
   <inputs>
       <expand macro="gff3_input" />
   </inputs>

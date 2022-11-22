@@ -8,21 +8,21 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/generate-putative-osp.py
-$fasta_file
---strand $strand
---switch $switch
---osp_on $osp_on
---osp_op $osp_op
---osp_ob $osp_ob
---osp_og $osp_og
---osp_min_len $osp_min_len
---putative_osp $putative_osp
---summary_osp_txt $summary_osp
---putative_osp_gff $putative_osp_gff
---min_lipo_after $lipo_min
---max_lipo_after $lipo_max
---osp_max $osp_max
+'$__tool_directory__/generate-putative-osp.py'
+'$fasta_file'
+--strand '$strand'
+--switch '$switch'
+--osp_on '$osp_on'
+--osp_op '$osp_op'
+--osp_ob '$osp_ob'
+--osp_og '$osp_og'
+--osp_min_len '$osp_min_len'
+--putative_osp '$putative_osp'
+--summary_osp_txt '$summary_osp'
+--putative_osp_gff '$putative_osp_gff'
+--min_lipo_after '$lipo_min'
+--max_lipo_after '$lipo_max'
+--osp_max '$osp_max'
 ]]></command>
     <inputs>
         <param type="select" label="Strand Choice" name="strand">

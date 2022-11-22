@@ -7,11 +7,11 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/lcb_split.py
+'python $__tool_directory__/lcb_split.py'
 @XMFA_INPUT@
---window_size $window_size
---threshold $threshold
-> $output
+--window_size '$window_size'
+--threshold '$threshold'
+> '$output'
 ]]></command>
 	<inputs>
 		<expand macro="xmfa_input" />

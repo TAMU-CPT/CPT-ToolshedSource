@@ -6,13 +6,13 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/SAR_finder.py
-$fa
---sar_min $sar_min
---sar_max $sar_max
---out_fa $out_fa
---out_gff3 $out_gff3
---out_stat $out_stat
+python '$__tool_directory__/SAR_finder.py'
+'$fa'
+--sar_min '$sar_min'
+--sar_max '$sar_max'
+--out_fa '$out_fa'
+--out_gff3 '$out_gff3'
+--out_stat '$out_stat'
     ]]></command>
     <inputs>
         <param label="Multi FASTA File" name="fa" type="data" format="fasta" />

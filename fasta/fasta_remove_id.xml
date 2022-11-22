@@ -7,9 +7,9 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/fasta_remove_id.py
+'$__tool_directory__/fasta_remove_id.py'
 @SEQUENCE@
-> $out
+> '$out'
 </command>
 	<inputs>
 		<expand macro="input/fasta" />

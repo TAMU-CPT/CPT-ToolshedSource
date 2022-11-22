@@ -8,21 +8,21 @@
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/shinefind.py
+python '$__tool_directory__/shinefind.py'
 
 @GENOME_SELECTOR@
-$gff3_data
+'$gff3_data'
 
---table_output $default_output
---gff3_output $gff3_output
+--table_output '$default_output'
+--gff3_output '$gff3_output'
 
---lookahead_min $lookahead_min
---lookahead_max $lookahead_max
-$add
-$top_only
+--lookahead_min '$lookahead_min'
+--lookahead_max '$lookahead_max'
+'$add'
+'$top_only'
 
 
-> $stdout
+> '$stdout'
 
 ]]></command>
 	<inputs>

@@ -7,16 +7,16 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/relatedness.py
-${blastIn.blast}
-$__tool_directory__/TaxID_List.txt
-$access
-$filter
---hits $hits
+'$__tool_directory__/relatedness.py'
+'${blastIn.blast}'
+'$__tool_directory__/TaxID_List.txt'
+'$access'
+'$filter'
+--hits '$hits'
 #if $blastIn.blastType == "XML":
 --xmlMode
 #end if
-> $accession_list
+> '$accession_list'
 </command>
 	<inputs>
 	<conditional name="blastIn">

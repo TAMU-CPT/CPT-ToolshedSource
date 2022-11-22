@@ -13,12 +13,12 @@
         <requirement type="package">matplotlib</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generateHelicalWheel.py
---sequence $sequence
---seqRange $seqRange
---t_size $t_size
---rotation $rotation
-$numbering
+python '$__tool_directory__/generateHelicalWheel.py'
+--sequence '$sequence'
+--seqRange '$seqRange'
+--t_size '$t_size'
+--rotation '$rotation'
+'$numbering'
 --f_A "$sec_B.f_A"
 --f_C "$sec_C.f_C"
 --f_D "$sec_D.f_D"
@@ -59,7 +59,7 @@ $numbering
 --t_V "$sec_B.t_V"
 --t_W "$sec_B.t_W"
 --t_Y "$sec_C.t_Y"
---output $output
+--output '$output'
 ]]></command>
     <inputs>
         <param label="Paste in exact sequence to be plotted" name="sequence" type="text" />

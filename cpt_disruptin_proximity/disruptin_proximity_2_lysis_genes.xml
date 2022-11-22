@@ -9,17 +9,17 @@
       	<requirement type="package" version="3.0.2">intervaltree</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/disruptin_proximity_2_lysis_genes.py
-$lgc
-$tmhmm
-$ipro
-$genome
-$window
-$enzyme
---oa $oa
---ob $ob
---oc $oc
---od $od
+python '$__tool_directory__/disruptin_proximity_2_lysis_genes.py'
+'$lgc'
+'$tmhmm'
+'$ipro'
+'$genome'
+'$window'
+'$enzyme'
+--oa '$oa'
+--ob '$ob'
+--oc '$oc'
+--od '$od'
 
 ]]></command>
     <inputs>

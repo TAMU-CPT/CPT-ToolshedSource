@@ -8,13 +8,13 @@
 	    <requirement type="package" version="0.10.1">gffutils</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python2.7 $__tool_directory__/searchFile.py
+python2.7 '$__tool_directory__/searchFile.py'
     #if $check is not None:
     --dbaseTerms "$check"
     #end if
-    #if $term_add.term_selector == "customtxt":
+    #if '$term_add.term_selector' == "customtxt":
     --custom_txt "$term_add.custom_txt"
-    #elif $term_add.term_selector == "customfile":
+    #elif '$term_add.term_selector' == "customfile":
     --custom_file "$term_add.custom_file"
     #else:
     #pass
@@ -40,7 +40,7 @@ python2.7 $__tool_directory__/searchFile.py
     #if $prox:
         --prox
     #end if
-    --output $output
+    --output '$output'
     ]]></command>
         <inputs>
             <param label="Using Proximity to Lysis Pipeline?" name="prox" type="boolean" truevalue="--prox" falsevalue="" checked="false" help="required GFF3 input"/>

@@ -7,15 +7,15 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/renumber.py
-  $file
+'python $__tool_directory__/renumber.py'
+  '$file'
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
 --leading_zeros "${leading_zeros}"
-$forceMatch
---change_table $change_table
+'$forceMatch'
+--change_table '$change_table'
 
-> $output
+> '$output'
 
 ]]></command>
   <inputs>

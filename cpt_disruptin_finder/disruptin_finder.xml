@@ -7,14 +7,14 @@
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/disruptin_finder.py
-$fasta_file
---thresh_net_charge $thresh_net_charge
---thresh_size $thresh_size
---thresh_charge_ratio $thresh_charge_ratio
---selection_criteria $selection_criteria
+python '$__tool_directory__/disruptin_finder.py'
+'$fasta_file'
+--thresh_net_charge '$thresh_net_charge'
+--thresh_size '$thresh_size'
+--thresh_charge_ratio '$thresh_charge_ratio'
+--selection_criteria '$selection_criteria'
 
-> $output]]></command>
+> '$output']]></command>
     <inputs>
         <param label="Fasta" name="fasta_file" type="data" format="fasta" />
 	<param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4" />

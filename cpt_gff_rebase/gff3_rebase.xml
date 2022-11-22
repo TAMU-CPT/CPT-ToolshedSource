@@ -6,13 +6,13 @@
   </macros>
   <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[gff3_rebase.py
-$parent
-$child
+'$parent'
+'$child'
 
-$interpro
-$protein2dna
+'$interpro'
+'$protein2dna'
 --map_by "$map_by"
-> $default]]></command>
+> '$default']]></command>
   <inputs>
     <param label="Parent GFF3 annotations"                         name="parent" format="gff3" type="data"/>
     <param label="Child GFF3 annotations to rebase against parent" name="child"  format="gff3" type="data"/>

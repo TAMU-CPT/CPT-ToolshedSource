@@ -7,11 +7,11 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/gff3_splitgff.py
-$input
+'python $__tool_directory__/gff3_splitgff.py'
+'$input'
 
---gff $gff_out
---fasta $fasta_out
+--gff '$gff_out'
+--fasta '$fasta_out'
 ]]></command>
   <inputs>
     <param label="Combined GFF3/Fasta File" name="input" type="data" format="gff,gff3"/>

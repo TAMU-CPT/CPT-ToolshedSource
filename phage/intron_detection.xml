@@ -11,14 +11,14 @@
 	<requirement type="package" version="0.6.4">bcbiogff</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/intron_detection.py
+python '$__tool_directory__/intron_detection.py'
 
 "$gff3_data"
 "$blast"
---minimum $minimum
---maximum $maximum
---idThresh $idThresh
-> $output]]></command>
+--minimum '$minimum'
+--maximum '$maximum'
+--idThresh '$idThresh'
+> '$output']]></command>
   <inputs>
     <expand macro="gff3_input" />
     <param label="Blastp Results" name="blast" type="data" format="blastxml"/>

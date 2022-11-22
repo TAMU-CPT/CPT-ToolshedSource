@@ -18,32 +18,32 @@
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/phage_annotation_validator.py
-$gff3_data
+'python $__tool_directory__/phage_annotation_validator.py'
+'$gff3_data'
 @GENOME_SELECTOR@
 
---gff3 $gff3
+--gff3 '$gff3'
 
---sd_min $sd_min
---sd_max $sd_max
+--sd_min '$sd_min'
+--sd_max '$sd_max'
 
---min_gene_length $min_gene
+--min_gene_length '$min_gene'
 
---excessive_overlap_dist $eod
---excessive_overlap_divergent_dist $eodd
+--excessive_overlap_dist '$eod'
+--excessive_overlap_divergent_dist '$eodd'
 
---excessive_gap_dist $egd
---excessive_gap_divergent_dist $egdd
+--excessive_gap_dist '$egd'
+--excessive_gap_divergent_dist '$egdd'
 
---reportTemplateName $report_format
+--reportTemplateName '$report_format'
 
-> $output;
+> '$output';
 
-#if ".tex" in str($report_format):
-    mv $output tmp.tex;
+#if ".tex" in str('$report_format'):
+    mv '$output' tmp.tex;
     docker run --rm -i --user="1002:1002" --net=none -v \$PWD:/data blang/latex pdflatex tmp.tex &&
     docker run --rm -i --user="1002:1002" --net=none -v \$PWD:/data blang/latex pdflatex tmp.tex &&
-    mv tmp.pdf $output;
+    mv tmp.pdf '$output';
 #end if
 ]]></command>
     <inputs>

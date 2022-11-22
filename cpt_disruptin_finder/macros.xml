@@ -15,7 +15,7 @@
     <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
   </xml>
   <token name="@GENOME_SELECTOR_PRE@">
-		ln -s $genome_fasta genomeref.fa;
+		ln -s '$genome_fasta' genomeref.fa;
 	</token>
 	<token name="@GENOME_SELECTOR@">
 		genomeref.fa

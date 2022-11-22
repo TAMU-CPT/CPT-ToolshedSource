@@ -13,10 +13,10 @@
       <requirement type="package">perl-getopt-long-descriptive</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-perl -Mlib=$__tool_directory__/lib $__tool_directory__/cpt_psm_0_prep.pl
+perl -Mlib='$__tool_directory__/lib' '$__tool_directory__/cpt_psm_0_prep.pl'
 --galaxy
---outfile_supporting $__new_file_path__
-#for $item in $repeat_file:
+--outfile_supporting '$__new_file_path__'
+#for '$item' in '$repeat_file':
 --file "${item.file}"
 #end for
 

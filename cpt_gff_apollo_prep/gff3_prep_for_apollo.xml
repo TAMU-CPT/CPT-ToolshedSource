@@ -7,9 +7,9 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/gff3_prep_for_apollo.py
+'$__tool_directory__/gff3_prep_for_apollo.py'
 @INPUT_GFF@
-> $output]]></command>
+> '$output']]></command>
   <inputs>
       <expand macro="gff3_input" />
   </inputs>

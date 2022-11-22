@@ -6,9 +6,9 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/linear_genome_plot.py
-$input_file
---plot_width $plot_width
+python '$__tool_directory__/linear_genome_plot.py'
+'$input_file'
+--plot_width '$plot_width'
 --common_features_excluded  "$common_features_excluded"
 --features_excluded "$features_excluded"
 --common_ignore_feature_labels "$common_ignore_feature_labels"
@@ -19,13 +19,13 @@ $input_file
 --title "$title"
 $label_algo
 $label_box
-#if $selectregion.custom_region:
-    --sz $selectregion.start_zoom
-    --ez $selectregion.end_zoom
+#if '$selectregion.custom_region':
+    --sz '$selectregion.start_zoom'
+    --ez '$selectregion.end_zoom'
 #end if
-#if $multiline.multi_line:
+#if '$multiline.multi_line':
     --multiline
-    --nucl_per_line $multiline.nucl_per_line
+    --nucl_per_line '$multiline.nucl_per_line'
 #end if
 #for $feature_color in $feature_colors:
     #if $feature_color.feature_color_selector.feature_color_options == "add_colors":
@@ -43,8 +43,8 @@ $label_box
             "${gene_col}" #end for
     #end if
 #end for
---file_stats $file_stats
---out_img $out_img
+--file_stats '$file_stats'
+--out_img '$out_img'
     ]]></command>
     <inputs>
         <param label="Annotated Genome File (Gbk)" name="input_file" type="data" format="genbank" />

@@ -8,11 +8,11 @@
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/gff2gb.py
+'python $__tool_directory__/gff2gb.py'
 @INPUT_GFF@
 @INPUT_FASTA@
---transltbl $transltbl
-> $output]]></command>
+--transltbl '$transltbl'
+> '$output']]></command>
 	<inputs>
 	<expand macro="input/gff3+fasta" />
     <param label="Translation Table" name="transltbl" type="select">

@@ -6,13 +6,13 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/lipoP_to_gff3.py
+python '$__tool_directory__/lipoP_to_gff3.py'
 
 "$lipoIn"
 "$gff3In"
 --jBrowseOut "$jBrowseOut"
-$filterSP2
-> $stdout
+'$filterSP2'
+> '$stdout'
 
 ]]></command>
   <inputs>

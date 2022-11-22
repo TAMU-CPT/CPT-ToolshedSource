@@ -6,10 +6,10 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blasttab_dice_filter.py
+'$__tool_directory__/blasttab_dice_filter.py'
 @BLAST_TSV@
 --min_dice $min_dice
-> $output]]></command>
+> '$output']]></command>
 	<inputs>
 		<expand macro="blast_tsv" />
 		<param label="Minimum dice score" help="Blast results with a dice score below this value will be removed"

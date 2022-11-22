@@ -9,15 +9,15 @@
   <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-$__tool_directory__/gff3_extract_sequence.py
+'$__tool_directory__/gff3_extract_sequence.py'
 @GENOME_SELECTOR@
 
 @INPUT_GFF@
 
 --feature_filter unique_cds
-$nodesc
-> $default
-2> $gff3
+'$nodesc'
+> '$default'
+2> '$gff3'
 ]]></command>
   <inputs>
     <expand macro="genome_selector" />

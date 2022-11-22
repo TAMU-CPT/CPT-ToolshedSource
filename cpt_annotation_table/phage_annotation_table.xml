@@ -11,17 +11,17 @@
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/phage_annotation_table.py
-$gff3_data
+python '$__tool_directory__/phage_annotation_table.py'
+'$gff3_data'
 @GENOME_SELECTOR@
 --types "$extraTypes"
 --reportTemplateName "$report_format"
 --annotationTableCols "$cols,$gaf_cols"
-#if $gaf_data:
+#if '$gaf_data':
 --gafData "$gaf_data"
 #end if
-$checkSubfeats
-> $output]]></command>
+'$checkSubfeats'
+> '$output']]></command>
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />

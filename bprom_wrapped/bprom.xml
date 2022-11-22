@@ -6,8 +6,8 @@
 		<requirement type="package">libgcc</requirement>
 	</requirements>
 	<command detect_errors="aggressive">
-export TSS_DATA=$__tool_directory__/bprom_libFiles;
-$__tool_directory__/bprom $inFile $outFile
+export TSS_DATA='$__tool_directory__/bprom_libFiles';
+'$__tool_directory__/bprom' '$inFile' '$outFile'
 </command>
 	<inputs>
                 <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   

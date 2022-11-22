@@ -7,35 +7,35 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/fasta_charges.py
-$svg
+'$__tool_directory__/fasta_charges.py'
+'$svg'
 @SEQUENCE@
 
---width $width
+--width '$width'
 
-#if $scheme.cs == "default":
+#if '$scheme.cs' == "default":
 --aa HSQTNCY AVILMPFWG ERDK
 --fgColor "#000000" "#000000" "#ffffff"
 --bgColor "#ffffff" "#999999" "#000000"
-#elif $scheme.cs == "rb":
+#elif '$scheme.cs' == "rb":
 --aa KR ED HSQTNCYAVILMPFWG
 --fgColor "#ffffff" "#ffffff" "#000000"
 --bgColor "#00b0f0" "#fc0000" "#ffffff"
-#elif $scheme.cs == "rbgb":
+#elif '$scheme.cs' == "rbgb":
 --aa KR ED P C HSQTNYAVILMFWG
 --fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
 --bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"
 #else:
 	--aa
-	#for group in $scheme.groups:
+	#for group in '$scheme.groups':
 		"$group.aminoAcids"
 	#end for
 	--fgColor
-	#for group in $scheme.groups:
+	#for group in '$scheme.groups':
 		"$group.fgColour"
 	#end for
 	--bgColor
-	#for group in $scheme.groups:
+	#for group in '$scheme.groups':
 		"$group.bgColour"
 	#end for
 #end if

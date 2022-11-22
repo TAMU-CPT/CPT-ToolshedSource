@@ -8,14 +8,14 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/findSpanin.py
-$putative_isp_fasta_file
-$putative_osp_fasta_file
---max_isp_osp_distance $max_isp_osp_distance
---embedded_txt $embedded_txt
---overlap_txt $overlap_txt
---separate_txt $separate_txt
---summary_txt $summary_txt
+python '$__tool_directory__/findSpanin.py'
+'$putative_isp_fasta_file'
+'$putative_osp_fasta_file'
+--max_isp_osp_distance '$max_isp_osp_distance'
+--embedded_txt '$embedded_txt'
+--overlap_txt '$overlap_txt'
+--separate_txt '$separate_txt'
+--summary_txt '$summary_txt'
 ]]></command>
     <inputs>
         <param label="(putative) i-spanin FASTA file" name="putative_isp_fasta_file" type="data" format="fasta"/>

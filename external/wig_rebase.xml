@@ -6,13 +6,13 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/wig_rebase.py
-$parent
-$wigFile
+python '$__tool_directory__/wig_rebase.py'
+'$parent'
+'$wigFile'
 
-$protein2dna
+'$protein2dna'
 --map_by "$map_by"
-> $output ]]></command>
+> '$output' ]]></command>
   <inputs>
     <param label="Parent GFF3 annotations" name="parent" format="gff3" type="data"/>
     <param label="Wig Results" name="wigFile" format="wig" type="data"/>

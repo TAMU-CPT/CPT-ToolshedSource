@@ -6,13 +6,13 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blastxml_to_gapped_gff3.py
+'$__tool_directory__/blastxml_to_gapped_gff3.py'
 @BLAST_XML@
 
---min_gap $min_gap
-$trim
-$include_seq
-> $output]]></command>
+--min_gap '$min_gap'
+'$trim'
+'$include_seq'
+> '$output']]></command>
   <inputs>
     <expand macro="blast_xml" />
     <param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>

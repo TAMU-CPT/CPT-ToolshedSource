@@ -7,9 +7,9 @@
     </macros>
     <expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/Disruptin_hydrophobicity_helicity_table_package.py
-$garnier_file
-$fasta_file
+python '$__tool_directory__/Disruptin_hydrophobicity_helicity_table_package.py'
+'$garnier_file'
+'$fasta_file'
 
 
 

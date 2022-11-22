@@ -7,9 +7,9 @@
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/gff3_remove_fasta_sequences.py
-$gff3
---ogff3 $ogff3
+'python $__tool_directory__/gff3_remove_fasta_sequences.py'
+'$gff3'
+--ogff3 '$ogff3'
 
 ]]></command>
     <inputs>

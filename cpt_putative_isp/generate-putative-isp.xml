@@ -8,25 +8,25 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generate-putative-isp.py
-$fasta_file
---strand $strand
---switch $switch
---isp_on $isp_on
---isp_op $isp_op
---isp_ob $isp_ob
---isp_og $isp_og
---isp_min_len $isp_min_len
---isp_min_dist $isp_min_dist
---isp_max_dist $isp_max_dist
---min_tmd_size $min_tmd_size
---max_tmd_size $max_tmd_size
---putative_isp $putative_isp
---summary_isp_txt $summary_isp
---putative_isp_gff $putative_isp_gff
---isp_max $isp_max
---peri_min $peri_min
---peri_max $peri_max
+python '$__tool_directory__/generate-putative-isp.py'
+'$fasta_file'
+--strand '$strand'
+--switch '$switch'
+--isp_on '$isp_on'
+--isp_op '$isp_op'
+--isp_ob '$isp_ob'
+--isp_og '$isp_og'
+--isp_min_len '$isp_min_len'
+--isp_min_dist '$isp_min_dist'
+--isp_max_dist '$isp_max_dist'
+--min_tmd_size '$min_tmd_size'
+--max_tmd_size '$max_tmd_size'
+--putative_isp '$putative_isp'
+--summary_isp_txt '$summary_isp'
+--putative_isp_gff '$putative_isp_gff'
+--isp_max '$isp_max'
+--peri_min '$peri_min'
+--peri_max '$peri_max'
 
 ]]></command>
     <inputs>

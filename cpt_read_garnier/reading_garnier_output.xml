@@ -7,11 +7,11 @@
     </macros>
     <expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/reading_garnier_output.py
-$tagseq_file
+python '$__tool_directory__/reading_garnier_output.py'
+'$tagseq_file'
 
 
->$output]]></command>
+>'$output']]></command>
     <inputs>
         <param label="Tagseq" name="tagseq_file" type="data" format="tagseq" />
     </inputs>

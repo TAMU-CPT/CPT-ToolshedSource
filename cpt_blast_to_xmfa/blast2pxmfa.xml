@@ -9,11 +9,11 @@
     <requirement type="package" version="2.1">clustalw</requirement>
   </expand>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blast2pxmfa.py
+'$__tool_directory__/blast2pxmfa.py'
 @BLAST_TSV@
-$fasta
-$gff3
-$output
+'$fasta'
+'$gff3'
+'$output'
 ]]></command>
   <inputs>
     <expand macro="blast_tsv" />

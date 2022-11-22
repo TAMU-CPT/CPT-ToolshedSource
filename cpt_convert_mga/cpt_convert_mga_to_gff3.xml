@@ -9,10 +9,10 @@
 	<command detect_errors="aggressive">
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/cpt_convert_mga_to_gff3.py
-$mga
+python '$__tool_directory__/cpt_convert_mga_to_gff3.py'
+'$mga'
 @GENOME_SELECTOR@
-> $data
+> '$data'
 
 </command>
 	<inputs>

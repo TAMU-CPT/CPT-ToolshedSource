@@ -6,10 +6,10 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blasttab_to_gapped_gff3.py
+'$__tool_directory__/blasttab_to_gapped_gff3.py'
 @BLAST_TSV@
---min_gap $min_gap
-> $output]]></command>
+--min_gap '$min_gap'
+> '$output']]></command>
 	<inputs>
 		<expand macro="blast_tsv" />
 		<param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>

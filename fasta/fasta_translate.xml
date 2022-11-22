@@ -6,18 +6,18 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/fasta_translate.py
+'$__tool_directory__/fasta_translate.py'
 @SEQUENCE@
 
---target ${output.format_select}
+--target '${output.format_select}'
 
-#if str($output.format_select) == "protein":
-		--table $output.table
-		$output.strip_stops
-		$output.met
+#if str('$output.format_select') == "protein":
+		--table '$output.table'
+		'$output.strip_stops'
+		'$output.met'
 #end if
 
-> $default]]></command>
+> '$default']]></command>
 	<inputs>
 		<expand macro="input/fasta" />
 		<conditional name="output">

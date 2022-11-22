@@ -9,13 +9,13 @@
     <requirement type="package" version="2022.1.18">regex</requirement>
   </expand>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[lipory.py
-$positional_1
-$positional_2
+'$positional_1'
+'$positional_2'
 
---lipobox_mindist $lipobox_mindist
---lipobox_maxdist $lipobox_maxdist
+--lipobox_mindist '$lipobox_mindist'
+--lipobox_maxdist '$lipobox_maxdist'
 
-> $default]]></command>
+> '$default']]></command>
   <inputs>
     <param label="Naive orf calls" name="positional_1" type="data" format="gff3"/>
     <param label="Genome" name="positional_2" type="data" format="fasta"/>

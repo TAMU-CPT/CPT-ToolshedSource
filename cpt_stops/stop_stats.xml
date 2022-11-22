@@ -9,11 +9,11 @@
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-$__tool_directory__/stop_stats.py
+'$__tool_directory__/stop_stats.py'
 
 @GENOME_SELECTOR@
-$gff3_data
-> $default]]></command>
+'$gff3_data'
+> '$default']]></command>
 	<inputs>
 		<expand macro="genome_selector" />
 		<expand macro="gff3_input" />
