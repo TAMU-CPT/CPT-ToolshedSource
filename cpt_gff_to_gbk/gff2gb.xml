@@ -1,11 +1,11 @@
 <tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="4.0">
-	<description>convert gff3 to GenBank</description>
-	<macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-	</macros>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive"><![CDATA[
+    <description>convert gff3 to GenBank</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
 'python $__tool_directory__/gff2gb.py'
@@ -13,49 +13,50 @@
 @INPUT_FASTA@
 --transltbl '$transltbl'
 > '$output']]></command>
-	<inputs>
-	<expand macro="input/gff3+fasta" />
-    <param label="Translation Table" name="transltbl" type="select">
-      <option value="1">1. The Standard Code</option>
-      <option value="2">2. The Vertebrate Mitochondrial Code</option>
-      <option value="3">3. The Yeast Mitochondrial Code</option>
-      <option value="4">4. The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
-      <option value="5">5. The Invertebrate Mitochondrial Code</option>
-      <option value="6">6. The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
-      <option value="9">9. The Echinoderm and Flatworm Mitochondrial Code</option>
-      <option value="10">10. The Euplotid Nuclear Code</option>
-      <option value="11" selected="true">11. The Bacterial, Archaeal and Plant Plastid Code</option>
-      <option value="12">12. The Alternative Yeast Nuclear Code</option>
-      <option value="13">13. The Ascidian Mitochondrial Code</option>
-      <option value="14">14. The Alternative Flatworm Mitochondrial Code</option>
-      <option value="16">16. Chlorophycean Mitochondrial Code</option>
-      <option value="21">21. Trematode Mitochondrial Code</option>
-      <option value="22">22. Scenedesmus obliquus Mitochondrial Code</option>
-      <option value="23">23. Thraustochytrium Mitochondrial Code</option>
-      <option value="24">24. Pterobranchia Mitochondrial Code</option>
-      <option value="25">25. Candidate Division SR1 and Gracilibacteria Code</option>
-   </param>
-	</inputs>
-	<outputs>
-		<data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
-	</outputs>
-	<tests>
-		<!-- There have been issues running the diffs for the files -->
-		<!-- Going to use asserts and run ONE (or no) diffs -->
-		<test> <!-- ORIGINAL TEST FILE, regenerated 10.12.2020 -->
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro_from_tool.gbk" compare="sim_size" delta_frac="0.05">
-				<assert_contents>
-					<has_text text="RBS" />
-					<has_text text="gene" />
-					<has_text text="CDS" />
-				</assert_contents>
-			</output>
-		</test>
-	</tests>
-	<help><![CDATA[
+    <inputs>
+        <expand macro="input/gff3+fasta"/>
+        <param label="Translation Table" name="transltbl" type="select">
+            <option value="1">1. The Standard Code</option>
+            <option value="2">2. The Vertebrate Mitochondrial Code</option>
+            <option value="3">3. The Yeast Mitochondrial Code</option>
+            <option value="4">4. The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+            <option value="5">5. The Invertebrate Mitochondrial Code</option>
+            <option value="6">6. The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+            <option value="9">9. The Echinoderm and Flatworm Mitochondrial Code</option>
+            <option value="10">10. The Euplotid Nuclear Code</option>
+            <option value="11" selected="true">11. The Bacterial, Archaeal and Plant Plastid Code</option>
+            <option value="12">12. The Alternative Yeast Nuclear Code</option>
+            <option value="13">13. The Ascidian Mitochondrial Code</option>
+            <option value="14">14. The Alternative Flatworm Mitochondrial Code</option>
+            <option value="16">16. Chlorophycean Mitochondrial Code</option>
+            <option value="21">21. Trematode Mitochondrial Code</option>
+            <option value="22">22. Scenedesmus obliquus Mitochondrial Code</option>
+            <option value="23">23. Thraustochytrium Mitochondrial Code</option>
+            <option value="24">24. Pterobranchia Mitochondrial Code</option>
+            <option value="25">25. Candidate Division SR1 and Gracilibacteria Code</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
+    </outputs>
+    <tests>
+        <!-- There have been issues running the diffs for the files -->
+        <!-- Going to use asserts and run ONE (or no) diffs -->
+        <test>
+            <!-- ORIGINAL TEST FILE, regenerated 10.12.2020 -->
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="miro.fa"/>
+            <param name="gff3_data" value="miro.gff3"/>
+            <output name="output" file="miro_from_tool.gbk" compare="sim_size" delta_frac="0.05">
+                <assert_contents>
+                    <has_text text="RBS"/>
+                    <has_text text="gene"/>
+                    <has_text text="CDS"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
 .. class:: warningmark
 
 This is a LOSSY conversion. This tool **TRUNCATES** genbank file identifiers if
@@ -73,5 +74,5 @@ Convert gff3 data to genbank. There are many WebApollo specific conventions. A r
 - terminator
 
 ]]></help>
-	<expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

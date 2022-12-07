@@ -2,7 +2,7 @@
   <description>ensures start is ATG, TTG, or GTG</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -17,27 +17,25 @@ python '$__tool_directory__/gff3_require_phage_start.py'
 
 ]]></command>
   <inputs>
-    <expand macro="genome_selector" />
-    <expand macro="gff3_input" />
+    <expand macro="genome_selector"/>
+    <expand macro="gff3_input"/>
   </inputs>
   <outputs>
     <data format="gff3" name="stdout" label="$gff3_data.name filtered for start codon"/>
   </outputs>
   <tests>
-      <test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="T7_ReqPhageIn.fasta" />
-			<param name="gff3_data" value="T7_ReqPhageIn.gff3" />
-
-          <output name="stdout" file="T7_ReqPhageOut.gff3" />
-      </test>
-      <test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="Miro_ReqPhageIn.fa" />
-			<param name="gff3_data" value="Miro_ReqPhageIn.gff3" />
-
-          <output name="stdout" file="Miro_ReqPhageOut.gff3" />
-      </test>
+    <test>
+      <param name="reference_genome_source" value="history"/>
+      <param name="genome_fasta" value="T7_ReqPhageIn.fasta"/>
+      <param name="gff3_data" value="T7_ReqPhageIn.gff3"/>
+      <output name="stdout" file="T7_ReqPhageOut.gff3"/>
+    </test>
+    <test>
+      <param name="reference_genome_source" value="history"/>
+      <param name="genome_fasta" value="Miro_ReqPhageIn.fa"/>
+      <param name="gff3_data" value="Miro_ReqPhageIn.gff3"/>
+      <output name="stdout" file="Miro_ReqPhageOut.gff3"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -48,5 +46,5 @@ Removes any CDS from the GFF3 whose start codon is **not** ATG, TTG, or GTG.
 
 The tool only retains *gene* and *CDS* features that pass this filter. 
       ]]></help>
-		<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>

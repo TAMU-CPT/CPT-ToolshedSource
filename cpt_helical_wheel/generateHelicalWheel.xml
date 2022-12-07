@@ -1,9 +1,8 @@
-<?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.helicalWheel.generateHelicalWheel" name="Helical Wheel" version="1.0">
     <description>Generate and Plot a Protein Helical Wheel</description>
     <macros>
-		<import>cpt-macros.xml</import>
-                <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+        <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
         <requirement type="package">numpy</requirement>
@@ -62,302 +61,302 @@ python '$__tool_directory__/generateHelicalWheel.py'
 --output '$output'
 ]]></command>
     <inputs>
-        <param label="Paste in exact sequence to be plotted" name="sequence" type="text" />
-        <param label="Label Start Number" name="seqRange" type="integer" value="1" help="starting residue number to use for labels" />
-        <param label="Amino Acid Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
-        <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
+        <param label="Paste in exact sequence to be plotted" name="sequence" type="text"/>
+        <param label="Label Start Number" name="seqRange" type="integer" value="1" help="starting residue number to use for labels"/>
+        <param label="Amino Acid Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32"/>
+        <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90"/>
         <param label="Label Numbering Text" name="numbering" type="boolean" help="number schema subscripts" truevalue="--numbering" falsevalue=""/>
-            <section name="sec_B" title="nonpolar ; hydrophobic">
-                <param name="f_A" type="color" label="Color for A" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_A" type="color" label="Text color for A" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_F" type="color" label="Color for F" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_F" type="color" label="Text color for F" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_I" type="color" label="Color for I" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_I" type="color" label="Text color for I" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_L" type="color" label="Color for L" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_L" type="color" label="Text color for L" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_M" type="color" label="Color for M" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_M" type="color" label="Text color for M" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_P" type="color" label="Color for P" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_P" type="color" label="Text color for P" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_V" type="color" label="Color for V" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_V" type="color" label="Text color for V" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_W" type="color" label="Color for W" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_W" type="color" label="Text color for W" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_C" title="polar ; uncharged">
-                <param name="f_C" type="color" label="Color for C" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_C" type="color" label="Text color for C" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_G" type="color" label="Color for G" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_G" type="color" label="Text color for G" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_N" type="color" label="Color for N" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_N" type="color" label="Text color for N" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_Q" type="color" label="Color for Q" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_Q" type="color" label="Text color for Q" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_S" type="color" label="Color for S" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_S" type="color" label="Text color for S" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_T" type="color" label="Color for T" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_T" type="color" label="Text color for T" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_Y" type="color" label="Color for Y" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_Y" type="color" label="Text color for Y" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_D" title="polar ; acidic (negatively charged)">
-                <param name="f_D" type="color" label="Color for D" value="#db270f">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_D" type="color" label="Text color for D" value="#FFFFFF">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_E" type="color" label="Color for E" value="#db270f">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_E" type="color" label="Text color for E" value="#FFFFFF">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_E" title="polar ; basic (positive charge)">
-                <param name="f_H" type="color" label="Color for H" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_H" type="color" label="Text color for H" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_K" type="color" label="Color for K" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_K" type="color" label="Text color for K" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_R" type="color" label="Color for R" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_R" type="color" label="Text color for R" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
+        <section name="sec_B" title="nonpolar ; hydrophobic">
+            <param name="f_A" type="color" label="Color for A" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_A" type="color" label="Text color for A" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_F" type="color" label="Color for F" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_F" type="color" label="Text color for F" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_I" type="color" label="Color for I" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_I" type="color" label="Text color for I" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_L" type="color" label="Color for L" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_L" type="color" label="Text color for L" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_M" type="color" label="Color for M" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_M" type="color" label="Text color for M" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_P" type="color" label="Color for P" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_P" type="color" label="Text color for P" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_V" type="color" label="Color for V" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_V" type="color" label="Text color for V" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_W" type="color" label="Color for W" value="#ffcc33">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_W" type="color" label="Text color for W" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+        </section>
+        <section name="sec_C" title="polar ; uncharged">
+            <param name="f_C" type="color" label="Color for C" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_C" type="color" label="Text color for C" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_G" type="color" label="Color for G" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_G" type="color" label="Text color for G" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_N" type="color" label="Color for N" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_N" type="color" label="Text color for N" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_Q" type="color" label="Color for Q" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_Q" type="color" label="Text color for Q" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_S" type="color" label="Color for S" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_S" type="color" label="Text color for S" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_T" type="color" label="Color for T" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_T" type="color" label="Text color for T" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_Y" type="color" label="Color for Y" value="#b5b5b5">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_Y" type="color" label="Text color for Y" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+        </section>
+        <section name="sec_D" title="polar ; acidic (negatively charged)">
+            <param name="f_D" type="color" label="Color for D" value="#db270f">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_D" type="color" label="Text color for D" value="#FFFFFF">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_E" type="color" label="Color for E" value="#db270f">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_E" type="color" label="Text color for E" value="#FFFFFF">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+        </section>
+        <section name="sec_E" title="polar ; basic (positive charge)">
+            <param name="f_H" type="color" label="Color for H" value="#12d5fc">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_H" type="color" label="Text color for H" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_K" type="color" label="Color for K" value="#12d5fc">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_K" type="color" label="Text color for K" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="f_R" type="color" label="Color for R" value="#12d5fc">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+            <param name="t_R" type="color" label="Text color for R" value="#000000">
+                <sanitizer>
+                    <valid initial="string.ascii_letters,string.digits">
+                        <add value="#"/>
+                    </valid>
+                </sanitizer>
+            </param>
+        </section>
     </inputs>
     <outputs>
-        <data format="png" name="output" label="_helicalWheel.png" />
+        <data format="png" name="output" label="_helicalWheel.png"/>
     </outputs>
     <help><![CDATA[
 **What it does**

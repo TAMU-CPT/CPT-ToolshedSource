@@ -1,42 +1,31 @@
-<?xml version="1.0"?>
 <macros>
   <xml name="requirements">
     <requirements>
-	<requirement type="package" version="3.8.13">python</requirement>
-	<requirement type="package" version="1.79">biopython</requirement>
-	<requirement type="package" version="1.2.2">cpt_gffparser</requirement>  
-	<yield/>
+      <requirement type="package" version="3.8.13">python</requirement>
+      <requirement type="package" version="1.79">biopython</requirement>
+      <requirement type="package" version="1.2.2">cpt_gffparser</requirement>
+      <yield/>
     </requirements>
   </xml>
-  <xml name="ldap_ref"
-    token_name="dn_ref"
-    token_label="Pick a DN"
-    token_fromfile="ldap_people.loc">
-        <repeat name="repeat_@NAME@" title="@LABEL@">
-          <param name="@NAME@" label="Select a @LABEL@" type="select">
-            <options from_file="@FROMFILE@">
-                <column name="name" index="0"/>
-                <column name="value" index="1"/>
-            </options>
-          </param>
-        </repeat>
-    </xml>
-  <xml name="ldap_ref_single"
-    token_name="dn_ref"
-    token_label="Pick a DN"
-    token_fromfile="ldap_people.loc">
-          <param name="@NAME@" label="Select a @LABEL@" type="select">
-            <options from_file="@FROMFILE@">
-                <column name="name" index="0"/>
-                <column name="value" index="1"/>
-            </options>
-          </param>
-    </xml>
-	<xml name="gbk_feature_type"
-		token_label="Feature type to remove"
-		token_multiple="True"
-		token_optional="False"
-		token_name="positional_2">
+  <xml name="ldap_ref" token_name="dn_ref" token_label="Pick a DN" token_fromfile="ldap_people.loc">
+    <repeat name="repeat_@NAME@" title="@LABEL@">
+      <param name="@NAME@" label="Select a @LABEL@" type="select">
+        <options from_file="@FROMFILE@">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    </repeat>
+  </xml>
+  <xml name="ldap_ref_single" token_name="dn_ref" token_label="Pick a DN" token_fromfile="ldap_people.loc">
+    <param name="@NAME@" label="Select a @LABEL@" type="select">
+      <options from_file="@FROMFILE@">
+        <column name="name" index="0"/>
+        <column name="value" index="1"/>
+      </options>
+    </param>
+  </xml>
+  <xml name="gbk_feature_type" token_label="Feature type to remove" token_multiple="True" token_optional="False" token_name="positional_2">
     <param label="@LABEL@" optional="@TOKEN_OPTIONAL" multiple="@MULTIPLE@" name="feature_type" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
@@ -101,5 +90,5 @@
       <option value="unsure">unsure</option>
       <option value="variation">variation</option>
     </param>
-	</xml>
+  </xml>
 </macros>

@@ -1,12 +1,11 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="19.1.0.0">
-  <description>Export corresponding sequence in genome from GFF3</description>
-  <macros>
-    <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive"><![CDATA[
+    <description>Export corresponding sequence in genome from GFF3</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
 '$__tool_directory__/gff3_extract_sequence.py'
@@ -19,43 +18,42 @@
 #end if
 '$nodesc'
 > '$default']]></command>
-  <inputs>
-    <expand macro="genome_selector" />
-    <expand macro="gff3_input" />
-	<param label="Filter for specific feature types" name="feature_filter" type="text"
-		help="Use 'nice_cds' if your features are coming from Apollo, however this will fail on non-Apollo data"/>
-    <param label="Remove description (use if blasting)" name="nodesc" type="boolean" truevalue="--nodesc" falsevalue=""/>
-  </inputs>
-  <outputs>
-    <data format="fasta" hidden="false" name="default"/>
-  </outputs>
-  <tests>
-		<test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="T7_ExtSeqIn.fasta" />
-			<param name="gff3_data" value="T7_ExtSeqIn.gff3" />
-			<param name="nodesc" value="" />
-			<param name="feature_filter" value="CDS" />
-			<output name="output" file="T7_ExtSeqOut.fasta" />
-		</test>
-                <test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="Miro_ExtSeqIn.fa" />
-			<param name="gff3_data" value="Miro_ExtSeqIn.gff3" />
-			<param name="nodesc" value="" />
-			<param name="feature_filter" value="CDS" />
-			<output name="output" file="Miro_ExtSeqOut1.fa" />
-		</test>
-		<test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="Miro_ExtSeqIn.fa" />
-			<param name="gff3_data" value="Miro_ExtSeqIn.gff3" />
-			<param name="feature_filter" value="CDS" />
-			<param name="nodesc" value="--nodesc" />
-			<output name="output" file="Miro_ExtSeqOut2.fa" />
-		</test>
-  </tests>
-  <help><![CDATA[
+    <inputs>
+        <expand macro="genome_selector"/>
+        <expand macro="gff3_input"/>
+        <param label="Filter for specific feature types" name="feature_filter" type="text" help="Use 'nice_cds' if your features are coming from Apollo, however this will fail on non-Apollo data"/>
+        <param label="Remove description (use if blasting)" name="nodesc" type="boolean" truevalue="--nodesc" falsevalue=""/>
+    </inputs>
+    <outputs>
+        <data format="fasta" hidden="false" name="default"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="T7_ExtSeqIn.fasta"/>
+            <param name="gff3_data" value="T7_ExtSeqIn.gff3"/>
+            <param name="nodesc" value=""/>
+            <param name="feature_filter" value="CDS"/>
+            <output name="output" file="T7_ExtSeqOut.fasta"/>
+        </test>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="Miro_ExtSeqIn.fa"/>
+            <param name="gff3_data" value="Miro_ExtSeqIn.gff3"/>
+            <param name="nodesc" value=""/>
+            <param name="feature_filter" value="CDS"/>
+            <output name="output" file="Miro_ExtSeqOut1.fa"/>
+        </test>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="Miro_ExtSeqIn.fa"/>
+            <param name="gff3_data" value="Miro_ExtSeqIn.gff3"/>
+            <param name="feature_filter" value="CDS"/>
+            <param name="nodesc" value="--nodesc"/>
+            <output name="output" file="Miro_ExtSeqOut2.fa"/>
+        </test>
+    </tests>
+    <help><![CDATA[
 **What it does**
 
 From the FASTA sequence for a genome, extracts the *nucleotide* sequences for 
@@ -67,5 +65,5 @@ the sequence only for CDS features with a start codon (recommended). If a gene f
 Apollo has multiple CDSs, the tool will append a "_##" to the end of subsequent genes.
 
       ]]></help>
-		<expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

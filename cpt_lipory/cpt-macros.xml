@@ -1,46 +1,45 @@
-<?xml version="1.0"?>
 <macros>
-	<xml name="gff_requirements">
-		<requirements>
-			<requirement type="package" version="2.7">python</requirement>
-			<requirement type="package" version="1.65">biopython</requirement>
-			<requirement type="package" version="2.12.1">requests</requirement>
-			<yield/>
-		</requirements>
-		<version_command>
+    <xml name="gff_requirements">
+        <requirements>
+            <requirement type="package" version="2.7">python</requirement>
+            <requirement type="package" version="1.65">biopython</requirement>
+            <requirement type="package" version="2.12.1">requests</requirement>
+            <yield/>
+        </requirements>
+        <version_command>
 		<![CDATA[
 			cd $__tool_directory__ && git rev-parse HEAD
 		]]>
 		</version_command>
-	</xml>
-	<xml name="citation/mijalisrasche">
-		<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-		<citation type="bibtex">@unpublished{galaxyTools,
+    </xml>
+    <xml name="citation/mijalisrasche">
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+        <citation type="bibtex">@unpublished{galaxyTools,
 		author = {E. Mijalis, H. Rasche},
 		title = {CPT Galaxy Tools},
 		year = {2013-2017},
 		note = {https://github.com/tamu-cpt/galaxy-tools/}
 		}
 		</citation>
-	</xml>
-	<xml name="citations">
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-			<citation type="bibtex">
+    </xml>
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {E. Mijalis, H. Rasche},
 				title = {CPT Galaxy Tools},
 				year = {2013-2017},
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
-			</citation> 
-		<yield/>
-		</citations>
-	</xml>
-    	<xml name="citations-crr">
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-			<citation type="bibtex">
+			</citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-crr">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Ross},
 				title = {CPT Galaxy Tools},
@@ -48,13 +47,13 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-		<yield/>
-		</citations>
-	</xml>
-        <xml name="citations-2020">
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-			<citation type="bibtex">
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-2020">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {E. Mijalis, H. Rasche},
 				title = {CPT Galaxy Tools},
@@ -62,7 +61,7 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-                        <citation type="bibtex">
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
@@ -70,13 +69,13 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
                         </citation>
-                        <yield/>
-		</citations>
-	</xml>
-        <xml name="citations-2020-AJC-solo">
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-                        <citation type="bibtex">
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-2020-AJC-solo">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
@@ -84,13 +83,13 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
                         </citation>
-                        <yield/>
-		</citations>
-	</xml>
-        <xml name="citations-clm">
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-			<citation type="bibtex">
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-clm">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Maughmer},
 				title = {CPT Galaxy Tools},
@@ -98,11 +97,11 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-                        <yield/>
-		</citations>
-	</xml>
-        <xml name="sl-citations-clm">
-			<citation type="bibtex">
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="sl-citations-clm">
+        <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Maughmer},
 				title = {CPT Galaxy Tools},
@@ -110,6 +109,6 @@
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-                        <yield/>
-	</xml>
+        <yield/>
+    </xml>
 </macros>

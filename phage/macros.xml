@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <macros>
   <xml name="requirements">
     <requirements>
@@ -13,19 +12,19 @@
     </requirements>
   </xml>
   <xml name="genome_selector">
-      <conditional name="reference_genome">
-          <param name="reference_genome_source" type="select" label="Reference Genome">
-              <option value="history" selected="True">From History</option>
-              <option value="cached">Locally Cached</option>
-          </param>
-          <when value="cached">
-            <param name="fasta_indexes" type="select" label="Source FASTA Sequence">
-                <options from_data_table="all_fasta"/>
-            </param>
-        </when>
-        <when value="history">
-            <param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
-        </when>
+    <conditional name="reference_genome">
+      <param name="reference_genome_source" type="select" label="Reference Genome">
+        <option value="history" selected="True">From History</option>
+        <option value="cached">Locally Cached</option>
+      </param>
+      <when value="cached">
+        <param name="fasta_indexes" type="select" label="Source FASTA Sequence">
+          <options from_data_table="all_fasta"/>
+        </param>
+      </when>
+      <when value="history">
+        <param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+      </when>
     </conditional>
   </xml>
   <xml name="gff3_input">

@@ -1,33 +1,32 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.remove_desc" name="Remove Description" version="19.1.0.0">
-	<description>from fasta file</description>
-	<macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-	</macros>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive">
+    <description>from fasta file</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive">
 '$__tool_directory__/fasta_remove_id.py'
 @SEQUENCE@
-> '$out'
+&gt; '$out'
 </command>
-	<inputs>
-		<expand macro="input/fasta" />
-	</inputs>
-	<outputs>
-		<data format="fasta" name="out" />
-	</outputs>
-	<tests>
-                <test>
-                        <param name="sequences" value="T7_RemIDIn.fasta"/>
-			<output name="out" file="T7_RemIDOut.fasta" />
-		</test>
-	</tests>
-	<help>
+    <inputs>
+        <expand macro="input/fasta"/>
+    </inputs>
+    <outputs>
+        <data format="fasta" name="out"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="sequences" value="T7_RemIDIn.fasta"/>
+            <output name="out" file="T7_RemIDOut.fasta"/>
+        </test>
+    </tests>
+    <help>
 **What it does**
 
 From an input FASTA file, removes the "description" field (all characters after
-the first space in the top line until a return) after the FASTA ID (from the > 
+the first space in the top line until a return) after the FASTA ID (from the &gt; 
 to the first space).
 		
 This is a permanent removal of the description. It is useful for tools that 
@@ -37,17 +36,17 @@ behave in unexpected ways if it is present, e.g. Glimmer/GeneMarkS.
 
 For an input FASTA file::
 
-	>1|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 288 bp
+	&gt;1|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 288 bp
 	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
-	>2|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 232 bp
+	&gt;2|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 232 bp
 	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
 
 The resulting FASTA will contain only IDs without a description::
 
-	>1|random
+	&gt;1|random
 	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
-	>2|random
+	&gt;2|random
 	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
 	</help>
-		<expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

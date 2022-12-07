@@ -1,9 +1,8 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.fixsixpack" name="GFF3 Add Gene to CDS for Sixpack" version="19.1.0.0">
   <description>Properly formats naive ORF caller output for Apollo</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -11,20 +10,20 @@
 @INPUT_GFF@
 > '$output']]></command>
   <inputs>
-      <expand macro="gff3_input" />
+    <expand macro="gff3_input"/>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
   </outputs>
   <tests>
-      <test>
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.6pfix.gff3" />
-		</test>
-		<test>
-			<param name="gff3_data" value="miro.cds.gff3" />
-			<output name="output" file="miro.cds6pfix.gff3" />
-        </test>
+    <test>
+      <param name="gff3_data" value="miro.gff3"/>
+      <output name="output" file="miro.6pfix.gff3"/>
+    </test>
+    <test>
+      <param name="gff3_data" value="miro.cds.gff3"/>
+      <output name="output" file="miro.cds6pfix.gff3"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -34,5 +33,5 @@ the output of the naïve ORF call Sixpack such that it will be compatible with
 Apollo via JBrowse.
 
       ]]></help>
-		<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>

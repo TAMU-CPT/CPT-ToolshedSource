@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.gbk_compare" name="Compare Genbanks" version="20.1.0">
   <description>, compare the identity of two genbank files</description>
   <macros>
@@ -6,8 +5,8 @@
     <import>cpt-macros.xml</import>
   </macros>
   <requirements>
-      <requirement type="package" version="3.7">python</requirement>
-      <requirement type="package" version="1.74">biopython</requirement>
+    <requirement type="package" version="3.7">python</requirement>
+    <requirement type="package" version="1.74">biopython</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/gbk_compare.py'
@@ -30,10 +29,10 @@ python '$__tool_directory__/gbk_compare.py'
     <data format="tsv" name="repOut" label="Comparison Report of Two Genomes"/>
   </outputs>
   <tests>
-      <param name="annotation_1" value="related.gbk" />
-      <param name="annotation_2" value="related.1-2000.gbk" />
-      <output name="sumOut" value="gbkCompare_summaryOut.tsv" />
-      <output name="repOut" value="gbkCompare_reportOut.tsv" />
+    <param name="annotation_1" value="related.gbk"/>
+    <param name="annotation_2" value="related.1-2000.gbk"/>
+    <output name="sumOut" value="gbkCompare_summaryOut.tsv"/>
+    <output name="repOut" value="gbkCompare_reportOut.tsv"/>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -71,7 +70,7 @@ The tool only looks at CDS features in the genome.
       note = {https://github.com/rrwick/Compare-annotations}
       }
     </citation>
-    			<citation type="bibtex">
+    <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Ross},
 				title = {CPT Galaxy Tools},
@@ -79,7 +78,7 @@ The tool only looks at CDS features in the genome.
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-                            <citation type="bibtex">
+    <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},

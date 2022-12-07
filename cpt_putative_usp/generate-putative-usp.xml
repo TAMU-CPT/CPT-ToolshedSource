@@ -30,17 +30,17 @@ python '$__tool_directory__/generate-putative-usp.py'
 --switch '$switch'
     ]]></command>
     <inputs>
-        <param label="FASTA" name="fa" type="data" format="fasta" />
+        <param label="FASTA" name="fa" type="data" format="fasta"/>
         <param type="select" label="Strand Choice" name="strand">
             <option value="both">both</option>
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="u-spanin minimal length" type="integer" name="min_size" value="100" />
-        <param label="u-spanin maximum length" type="integer" name="max_size" value="200" />
+        <param label="u-spanin minimal length" type="integer" name="min_size" value="100"/>
+        <param label="u-spanin maximum length" type="integer" name="max_size" value="200"/>
         <param label="Range Selection; default is all; slices are based on NT. Separated by a colon (eg. #:#)" name="switch" type="text" value="all"/>
-        <param label="TMD minimal distance from start codon" type="integer" name="tmd_min_start" value="75" />
-        <param label="TMD maximum distance from start codon" type="integer" name="tmd_max_start" value="200" />
+        <param label="TMD minimal distance from start codon" type="integer" name="tmd_min_start" value="75"/>
+        <param label="TMD maximum distance from start codon" type="integer" name="tmd_max_start" value="200"/>
         <param label="TMD minimal size" type="integer" name="tmd_min_size" value="15"/>
         <param label="TMD maximum size" type="integer" name="tmd_max_size" value="25"/>
         <param label="Lipobox minimal distance from start codon" type="integer" name="lipo_min_start" value="10"/>
@@ -49,38 +49,38 @@ python '$__tool_directory__/generate-putative-usp.py'
         <param label="Maximum amount of periplasmic residues after Lipobox" type="integer" name="max_lipo_after" value="160"/>
     </inputs>
     <outputs>
-        <data format="fasta" name="usp_on" label="NucSequences.fa" hidden = "true"/>
-        <data format="fasta" name="usp_op" label="ProtSequences.fa" hidden = "true"/>
-        <data format="bed" name="usp_ob" label="BED_Output.bed" hidden = "true"/>
-        <data format="gff3" name="usp_og" label="GFF_Output.gff" hidden = "true"/>
+        <data format="fasta" name="usp_on" label="NucSequences.fa" hidden="true"/>
+        <data format="fasta" name="usp_op" label="ProtSequences.fa" hidden="true"/>
+        <data format="bed" name="usp_ob" label="BED_Output.bed" hidden="true"/>
+        <data format="gff3" name="usp_og" label="GFF_Output.gff" hidden="true"/>
         <data format="fasta" name="putative_usp" label="putative_usp.fa"/>
         <data format="txt" name="summary_usp" label="summary_usp.txt"/>
         <data format="gff3" name="putative_usp_gff" label="putative_usp.gff3"/>
     </outputs>
-        <tests>
-            <test>
-                <param name="fa" value="t1.fa" />
-                <param name="min-size" value="100" />
-                <param name="max-size" value="200" />
-                <param name="switch" value="all"/>
-                <param name="tmd_min_start" value="75" />
-                <param name="tmd_max_start" value="200" />
-                <param name="tmd_min_size" value="15" />
-                <param name="tmd_max_size" value="25" />
-                <param name="lipo_min_start" value="15" />
-                <param name="lipo_max_start" value="30" />
-                <param name="min_lipo_after" value="60" />
-                <param name="max_lipo_after" value="160" />
-                <param name="select" value="1" />
-                <output name="usp_on" file="_out_usp.fna"/>
-                <output name="usp_op" file="_out_usp.fa"/>
-                <output name="usp_ob" file="_out_usp.bed"/>
-                <output name="usp_og" file="_out_usp.gff3"/>
-                <output name="putative_usp" file="_putative_usp.fa"/>
-                <output name="summary_usp" file="_summary_usp.txt"/>
-                <output name="putative_usp_gff" file="_putative_usp.gff3"/>
-            </test>
-        </tests>
+    <tests>
+        <test>
+            <param name="fa" value="t1.fa"/>
+            <param name="min-size" value="100"/>
+            <param name="max-size" value="200"/>
+            <param name="switch" value="all"/>
+            <param name="tmd_min_start" value="75"/>
+            <param name="tmd_max_start" value="200"/>
+            <param name="tmd_min_size" value="15"/>
+            <param name="tmd_max_size" value="25"/>
+            <param name="lipo_min_start" value="15"/>
+            <param name="lipo_max_start" value="30"/>
+            <param name="min_lipo_after" value="60"/>
+            <param name="max_lipo_after" value="160"/>
+            <param name="select" value="1"/>
+            <output name="usp_on" file="_out_usp.fna"/>
+            <output name="usp_op" file="_out_usp.fa"/>
+            <output name="usp_ob" file="_out_usp.bed"/>
+            <output name="usp_og" file="_out_usp.gff3"/>
+            <output name="putative_usp" file="_putative_usp.fa"/>
+            <output name="summary_usp" file="_summary_usp.txt"/>
+            <output name="putative_usp_gff" file="_putative_usp.gff3"/>
+        </test>
+    </tests>
     <help><![CDATA[
 
 **What it does**

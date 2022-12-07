@@ -1,8 +1,8 @@
 <tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="19.1.0.0">
   <description>converts blast results to a JBrowse-compatible file</description>
   <macros>
-	<import>macros.xml</import>
-	<import>cpt-macros.xml</import>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -14,35 +14,33 @@
 '$include_seq'
 > '$output']]></command>
   <inputs>
-    <expand macro="blast_xml" />
+    <expand macro="blast_xml"/>
     <param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>
-
     <param type="select" label="Trim sides of blast hits" name="trim">
-        <option value="">Neither</option>
-        <option value="--trim">Trim start and end</option>
-        <option value="--trim_end" selected="true">Trim only end</option>
+      <option value="">Neither</option>
+      <option value="--trim">Trim start and end</option>
+      <option value="--trim_end" selected="true">Trim only end</option>
     </param>
-
-	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
+    <param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
   </outputs>
   <tests>
-      <test>
-          <param name="blastxml" value="T7_NR.blastxml"/>
-          <param name="min_gap" value="10"/>
-          <param name="trim" value="--trim"/>
-          <param name="include_seq" value="--include_seq"/>
-          <output name="output" file="T7_NR_TO_GFF3.gff3"/>
-      </test>
-      <test>
-          <param name="blastxml" value="input.xml"/>
-	  <param name="min_gap" value="10"/>
-          <param name="trim" value=""/>
-          <param name="include_seq" value=""/>
-          <output name="output" file="blast.gff"/>
-      </test>
+    <test>
+      <param name="blastxml" value="T7_NR.blastxml"/>
+      <param name="min_gap" value="10"/>
+      <param name="trim" value="--trim"/>
+      <param name="include_seq" value="--include_seq"/>
+      <output name="output" file="T7_NR_TO_GFF3.gff3"/>
+    </test>
+    <test>
+      <param name="blastxml" value="input.xml"/>
+      <param name="min_gap" value="10"/>
+      <param name="trim" value=""/>
+      <param name="include_seq" value=""/>
+      <output name="output" file="blast.gff"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -84,6 +82,5 @@ By selecting **Include protein alignment…**, the actual sequence alignment wil
 in the pop-up BLAST view in Apollo/JBrowse.
 
 ]]></help>
-	<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>
-

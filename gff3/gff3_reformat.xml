@@ -1,9 +1,8 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.reformat" name="Reformat GFF3 File" version="19.1.0.0">
   <description>by passing it through biopython</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -11,21 +10,21 @@
 @INPUT_GFF@
 > '$default']]></command>
   <inputs>
-    <expand macro="gff3_input" />
+    <expand macro="gff3_input"/>
   </inputs>
   <outputs>
     <data format="gff3" hidden="false" name="default"/>
   </outputs>
   <tests>
-                <test>
-			<param name="gff3_data" value="T7_GFF_FROM_GBK.gff3" />
-			<output name="output" file="T7_CLEAN.gff3" />
-		</test>
-		<test>
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.reformat.gff3" />
-		</test>
-	</tests>
+    <test>
+      <param name="gff3_data" value="T7_GFF_FROM_GBK.gff3"/>
+      <output name="output" file="T7_CLEAN.gff3"/>
+    </test>
+    <test>
+      <param name="gff3_data" value="miro.gff3"/>
+      <output name="output" file="miro.reformat.gff3"/>
+    </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
@@ -34,5 +33,5 @@ This includes reformatting the GFF3 file header and properly displaying special
 characters.      
 	
 	]]></help>
-		<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>
