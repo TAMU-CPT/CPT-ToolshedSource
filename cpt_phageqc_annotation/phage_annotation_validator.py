@@ -56,14 +56,13 @@ def gen_qc_feature(start, end, message, strand=0, id_src=None, type_src="gene"):
     kwargs = {"qualifiers": {"note": [message]}}
     kwargs["type"] = type_src
     kwargs["strand"] = strand
-    kwargs["phase"]=0
-    kwargs["score"]=0.0
-    kwargs["source"]="feature"
+    kwargs["phase"] = 0
+    kwargs["score"] = 0.0
+    kwargs["source"] = "feature"
     if id_src is not None:
         kwargs["id"] = id_src.id
         kwargs["qualifiers"]["ID"] = [id_src.id]
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
-	
 
     if end >= start:
         return gffSeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
@@ -142,13 +141,22 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
             qc_features.append(
                 gen_qc_feature(
-                    start, end, "Missing RBS", strand=gene.strand, id_src=gene, type_src="gene"
+                    start,
+                    end,
+                    "Missing RBS",
+                    strand=gene.strand,
+                    id_src=gene,
+                    type_src="gene",
                 )
             )
 
             bad += 1
             results.append(gene)
-            results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand)
+            results[-1].location = FeatureLocation(
+                results[-1].location.start + 1,
+                results[-1].location.end,
+                results[-1].location.strand,
+            )
         else:
             if len(rbss) > 1:
                 log.warn("%s RBSs found for gene %s", rbss[0].id, get_gff3_id(gene))
@@ -174,13 +182,17 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                         gene.__message,
                         strand=gene.strand,
                         id_src=gene,
-                        type_src="gene"
+                        type_src="gene",
                     )
                 )
 
                 bad += 1
                 results.append(gene)
-                results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand)
+                results[-1].location = FeatureLocation(
+                    results[-1].location.start + 1,
+                    results[-1].location.end,
+                    results[-1].location.strand,
+                )
             else:
                 good += 1
 
@@ -275,7 +287,7 @@ def excessive_gap(
             b = contiguous_regions[i]
 
         gap_size = abs(b[0] - a[1])
-        
+
         if gap_size > min(excess, excess_divergent):
             a_feat_l = itertools.islice(
                 feature_lambda(
@@ -337,7 +349,9 @@ def excessive_gap(
     for result_obj in results:
         start = result_obj[0]
         end = result_obj[1]
-        f = gen_qc_feature(start, end, "Excessive gap, %s bases" % abs(end - start), type_src="gene")
+        f = gen_qc_feature(
+            start, end, "Excessive gap, %s bases" % abs(end - start), type_src="gene"
+        )
         qc_features.append(f)
         putative_genes = of.putative_genes_in_sequence(
             str(record[start - slop : end + slop].seq)
@@ -360,7 +374,9 @@ def excessive_gap(
             else:
                 possible_cds = gffSeqFeature(
                     FeatureLocation(
-                        possible_gene_end, possible_gene_start, strand=putative_gene[2],
+                        possible_gene_end,
+                        possible_gene_start,
+                        strand=putative_gene[2],
                     ),
                     type="CDS",
                 )
@@ -382,7 +398,9 @@ def excessive_gap(
             else:
                 possible_rbs = gffSeqFeature(
                     FeatureLocation(
-                        putative_gene[6], putative_gene[5], strand=putative_gene[2],
+                        putative_gene[6],
+                        putative_gene[5],
+                        strand=putative_gene[2],
                     ),
                     type="Shine_Dalgarno_sequence",
                 )
@@ -398,7 +416,9 @@ def excessive_gap(
             else:
                 possible_gene = gffSeqFeature(
                     FeatureLocation(
-                        possible_gene_end, possible_gene_start, strand=putative_gene[2],
+                        possible_gene_end,
+                        possible_gene_start,
+                        strand=putative_gene[2],
                     ),
                     type="gene",
                     qualifiers={"note": ["Possible gene"]},
@@ -506,7 +526,13 @@ def excessive_overlap(record, excess=15, excess_divergent=30):
         ):
             bad += float(len(ix)) / float(min(excess, excess_divergent))
             qc_features.append(
-                gen_qc_feature(min(ix), max(ix), "Excessive Overlap", id_src=gene_a, type_src="gene")
+                gen_qc_feature(
+                    min(ix),
+                    max(ix),
+                    "Excessive Overlap",
+                    id_src=gene_a,
+                    type_src="gene",
+                )
             )
             results.append((gene_a, gene_b, min(ix), max(ix)))
 
@@ -520,8 +546,7 @@ def excessive_overlap(record, excess=15, excess_divergent=30):
 
 
 def get_encouragement(score):
-    """Some text telling the user how they did
-    """
+    """Some text telling the user how they did"""
     for encouragement in ENCOURAGEMENT:
         if score > encouragement[0]:
             return encouragement[1]
@@ -529,8 +554,7 @@ def get_encouragement(score):
 
 
 def genome_overview(record):
-    """Genome overview
-    """
+    """Genome overview"""
     data = {
         "genes": {
             "count": 0,
@@ -553,11 +577,19 @@ def genome_overview(record):
     data["genes"]["count"] = len(gene_features)
 
     for feat in gene_features:
-        data["genes"]["comp"]["A"] += feat.extract(record).seq.count("A") + feat.extract(record).seq.count("a")
-        data["genes"]["comp"]["C"] += feat.extract(record).seq.count("C") + feat.extract(record).seq.count("c")
-        data["genes"]["comp"]["T"] += feat.extract(record).seq.count("T") + feat.extract(record).seq.count("t")
-        data["genes"]["comp"]["G"] += feat.extract(record).seq.count("G") + feat.extract(record).seq.count("g")
-        #data["genes"]["bases"] += len(feat)
+        data["genes"]["comp"]["A"] += feat.extract(record).seq.count(
+            "A"
+        ) + feat.extract(record).seq.count("a")
+        data["genes"]["comp"]["C"] += feat.extract(record).seq.count(
+            "C"
+        ) + feat.extract(record).seq.count("c")
+        data["genes"]["comp"]["T"] += feat.extract(record).seq.count(
+            "T"
+        ) + feat.extract(record).seq.count("t")
+        data["genes"]["comp"]["G"] += feat.extract(record).seq.count(
+            "G"
+        ) + feat.extract(record).seq.count("g")
+        # data["genes"]["bases"] += len(feat)
         data["genes"]["avg_len"].append(len(feat))
 
     data["genes"]["avg_len"] = float(sum(data["genes"]["avg_len"])) / len(gene_features)
@@ -602,8 +634,7 @@ def find_morons(record):
 
 
 def bad_gene_model(record):
-    """Find features without product
-    """
+    """Find features without product"""
     results = []
     good = 0
     bad = 0
@@ -630,8 +661,8 @@ def bad_gene_model(record):
                         gene.location.end,
                         "Mismatched number of exons and CDSs in gff3 representation",
                         strand=gene.strand,
-                        id_src=gene, 
-                        type_src="gene"
+                        id_src=gene,
+                        type_src="gene",
                     )
                 )
                 bad += 1
@@ -655,8 +686,8 @@ def bad_gene_model(record):
                                 exon.location.end,
                                 "CDS does not extend to full length of gene",
                                 strand=exon.strand,
-                                id_src=gene, 
-                                type_src="CDS"
+                                id_src=gene,
+                                type_src="CDS",
                             )
                         )
                         bad += 1
@@ -677,8 +708,7 @@ def bad_gene_model(record):
 
 
 def weird_starts(record):
-    """Find features without product
-    """
+    """Find features without product"""
     good = 0
     bad = 0
     qc_features = []
@@ -696,26 +726,28 @@ def weird_starts(record):
         seq_str = str(seq.extract(record.seq))
         start_codon = seq_str[0:3]
         if len(seq_str) < 3:
-            sys.stderr.write("Fatal Error: CDS of length less than 3 at " + str(seq.location) + '\n')
+            sys.stderr.write(
+                "Fatal Error: CDS of length less than 3 at " + str(seq.location) + "\n"
+            )
             exit(2)
-#        if len(seq_str) % 3 != 0:
-#            if len(seq_str) < 3:
-#                stop_codon = seq_str[-(len(seq_str))]
-#            else:
-#                stop_codon = seq_str[-3]
-#            
-#            log.warn("CDS at %s length is not a multiple of three (Length = %d)", get_gff3_id(gene), len(seq_str))
-#            seq.__error = "Bad CDS Length"
-#            results.append(seq)
-#            qc_features.append(
-#                gen_qc_feature(
-#                    s, e, "Bad Length", strand=seq.strand, id_src=gene
-#                )
-#            )
-#            bad += 1
-#            seq.__start = start_codon
-#            seq.__stop = stop_codon
-#            continue 
+        #        if len(seq_str) % 3 != 0:
+        #            if len(seq_str) < 3:
+        #                stop_codon = seq_str[-(len(seq_str))]
+        #            else:
+        #                stop_codon = seq_str[-3]
+        #
+        #            log.warn("CDS at %s length is not a multiple of three (Length = %d)", get_gff3_id(gene), len(seq_str))
+        #            seq.__error = "Bad CDS Length"
+        #            results.append(seq)
+        #            qc_features.append(
+        #                gen_qc_feature(
+        #                    s, e, "Bad Length", strand=seq.strand, id_src=gene
+        #                )
+        #            )
+        #            bad += 1
+        #            seq.__start = start_codon
+        #            seq.__stop = stop_codon
+        #            continue
 
         stop_codon = seq_str[-3]
         seq.__start = start_codon
@@ -739,10 +771,19 @@ def weird_starts(record):
                 e = seq.location.end - 3
 
             results.append(seq)
-            results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand) 
+            results[-1].location = FeatureLocation(
+                results[-1].location.start + 1,
+                results[-1].location.end,
+                results[-1].location.strand,
+            )
             qc_features.append(
                 gen_qc_feature(
-                    s, e, "Weird start codon", strand=seq.strand, id_src=gene, type_src="gene"
+                    s,
+                    e,
+                    "Weird start codon",
+                    strand=seq.strand,
+                    id_src=gene,
+                    type_src="gene",
                 )
             )
             bad += 1
@@ -753,8 +794,7 @@ def weird_starts(record):
 
 
 def missing_genes(record):
-    """Find features without product
-    """
+    """Find features without product"""
     results = []
     good = 0
     bad = 0
@@ -804,8 +844,8 @@ def gene_model_correction_issues(record):
                         gene.location.start,
                         gene.location.end,
                         "Gene is missing a locus_tag",
-                        strand=gene.strand, 
-                        type_src="gene"
+                        strand=gene.strand,
+                        type_src="gene",
                     )
                 )
 
@@ -830,8 +870,8 @@ def gene_model_correction_issues(record):
                                 cds.location.start,
                                 cds.location.end,
                                 "CDS is missing a locus_tag",
-                                strand=cds.strand, 
-                                type_src="CDS"
+                                strand=cds.strand,
+                                type_src="CDS",
                             )
                         )
                         local_qc_features.append(
@@ -839,8 +879,8 @@ def gene_model_correction_issues(record):
                                 gene.location.start,
                                 gene.location.end,
                                 "Gene is missing a locus_tag",
-                                strand=gene.strand, 
-                                type_src="gene"
+                                strand=gene.strand,
+                                type_src="gene",
                             )
                         )
                     elif problem == "Different locus tag from associated gene.":
@@ -854,8 +894,8 @@ def gene_model_correction_issues(record):
                                 gene.location.start,
                                 gene.location.end,
                                 "Gene and CDS have differing locus tags",
-                                strand=gene.strand, 
-                                type_src="gene"
+                                strand=gene.strand,
+                                type_src="gene",
                             )
                         )
                     elif problem == "Missing Locus Tag":
@@ -869,8 +909,8 @@ def gene_model_correction_issues(record):
                                 cds.location.start,
                                 cds.location.end,
                                 "CDS is missing a locus_tag",
-                                strand=cds.strand, 
-                                type_src="CDS"
+                                strand=cds.strand,
+                                type_src="CDS",
                             )
                         )
                     else:
@@ -887,8 +927,7 @@ def gene_model_correction_issues(record):
 
 
 def missing_tags(record):
-    """Find features without product
-    """
+    """Find features without product"""
     results = []
     good = 0
     bad = 0
@@ -910,7 +949,7 @@ def missing_tags(record):
                     cds.location.end,
                     "Missing product tag",
                     strand=cds.strand,
-                    type_src="CDS"
+                    type_src="CDS",
                 )
             )
             results.append(cds)
@@ -944,9 +983,9 @@ def evaluate_and_report(
     # TODO: support multiple GFF3 files.
     mostFeat = 0
     for rec in list(gffParse(annotations, base_dict=seq_dict)):
-      if len(rec.features) > mostFeat:
-        mostFeat = len(rec.features)
-        record = rec
+        if len(rec.features) > mostFeat:
+            mostFeat = len(rec.features)
+            record = rec
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
@@ -1132,15 +1171,15 @@ def evaluate_and_report(
     def nice_strand(direction):
         # It is somehow possible for whole gffSeqFeature objects to end up in here, apparently at the gene level
         if "SeqFeature" in str(type(direction)):
-          direction = direction.location.strand
+            direction = direction.location.strand
         if direction > 0:
-            return "→"#.decode("utf-8")
+            return "→"  # .decode("utf-8")
         else:
-            return "←"#.decode("utf-8")
+            return "←"  # .decode("utf-8")
 
     def nice_strand_tex(direction):
         if "SeqFeature" in str(type(direction)):
-          direction = direction.location.strand
+            direction = direction.location.strand
         if direction > 0:
             return "$\\rightarrow$"
         else:
@@ -1153,13 +1192,13 @@ def evaluate_and_report(
         return len(data)
 
     def my_encode(data):
-        return str(data)#.encode("utf-8")
+        return str(data)  # .encode("utf-8")
 
     def my_decode(data):
         # For production
-        return str(data)#.decode("utf-8")
+        return str(data)  # .decode("utf-8")
         # For local testing. No, I do not understand.
-        return str(data)#.encode("utf-8")).decode("utf-8")
+        return str(data)  # .encode("utf-8")).decode("utf-8")
 
     env = Environment(
         loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True
@@ -1176,7 +1215,7 @@ def evaluate_and_report(
         }
     )
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs)#.encode("utf-8")
+    return tpl.render(**kwargs)  # .encode("utf-8")
 
 
 if __name__ == "__main__":

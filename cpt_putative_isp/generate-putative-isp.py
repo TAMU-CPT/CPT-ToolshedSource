@@ -173,24 +173,20 @@ if __name__ == "__main__":
         type=int,
     )
 
-    parser.add_argument(
-        "--isp_mode",
-        action="store_true",
-        default=True
-    )
+    parser.add_argument("--isp_mode", action="store_true", default=True)
 
     parser.add_argument(
         "--peri_min",
         type=int,
         default=18,
-        help="amount of residues after TMD is found min"
+        help="amount of residues after TMD is found min",
     )
 
     parser.add_argument(
         "--peri_max",
         type=int,
         default=206,
-        help="amount of residues after TMD is found max"
+        help="amount of residues after TMD is found max",
     )
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
@@ -258,7 +254,7 @@ if __name__ == "__main__":
     with args.putative_isp_fa as f:
         for desc, s in candidate_dict.items():  # description / sequence
             f.write(">" + str(desc))
-            f.write("\n" + lineWrapper(str(s).replace("*","")) + "\n")
+            f.write("\n" + lineWrapper(str(s).replace("*", "")) + "\n")
             length.append(len(s))
             # ORF.append(desc)
     if not length:
@@ -274,31 +270,30 @@ if __name__ == "__main__":
     else:
         i = n // 2
         med = (length[i - 1] + length[i]) / 2
-    
+
     #### Extra statistics
     args.out_isp_prot.close()
     all_orfs = open(args.out_isp_prot.name, "r")
     all_isps = open(args.putative_isp_fa.name, "r")
-    #record = SeqIO.read(all_orfs, "fasta")
-    #print(len(record))
+    # record = SeqIO.read(all_orfs, "fasta")
+    # print(len(record))
     n = 0
     for line in all_orfs:
         if line.startswith(">"):
             n += 1
     all_orfs_counts = n
-    
+
     c = 0
     for line in all_isps:
         if line.startswith(">"):
             c += 1
     all_isps_counts = c
 
-    #print(f"{n} -> {c}")
-    #count = 0
-    #for feature in record.features:
+    # print(f"{n} -> {c}")
+    # count = 0
+    # for feature in record.features:
     #    count += 1
-    #print(count)
-
+    # print(count)
 
     with args.summary_isp_txt as f:
         f.write("total potential o-spanins: " + str(total_isp) + "\n")
@@ -306,11 +301,13 @@ if __name__ == "__main__":
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
         f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
-        f.write("ratio of isps found from naive orfs: " + str(c) + "/" +str(n))
+        f.write("ratio of isps found from naive orfs: " + str(c) + "/" + str(n))
 
     # Output the putative list in gff3 format
     args.putative_isp_fa = open(args.putative_isp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_isp_fa, spanin_type="isp",org=args.fasta_file)
+    gff_data = prep_a_gff3(
+        fa=args.putative_isp_fa, spanin_type="isp", org=args.fasta_file
+    )
     write_gff3(data=gff_data, output=args.putative_isp_gff)
 
     """https://docs.python.org/3.4/library/subprocess.html"""

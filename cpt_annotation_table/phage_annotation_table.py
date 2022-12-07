@@ -2,7 +2,14 @@
 # vim: set fileencoding=utf-8
 import os
 import argparse
-from gff3 import genes, get_gff3_id, get_rbs_from, feature_test_true, feature_lambda, feature_test_type
+from gff3 import (
+    genes,
+    get_gff3_id,
+    get_rbs_from,
+    feature_test_true,
+    feature_lambda,
+    feature_test_type,
+)
 from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
@@ -15,6 +22,7 @@ log = logging.getLogger(name="pat")
 # Path to script, required because of Galaxy.
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
+
 
 def genes_all(feature_list, feature_type=["gene"], sort=False):
     """
@@ -32,27 +40,29 @@ def genes_all(feature_list, feature_type=["gene"], sort=False):
         for x in data:
             yield x
 
+
 def checkSubs(feature, qualName):
     subFeats = []
     res = ""
     subFeats = feature.sub_features
-    while (len(subFeats) > 0):
-      for feat in subFeats:
-        for i in feat.qualifiers.keys():
-          for j in qualName:
-            if i == j:
-              if res == "":
-                res = feat.qualifiers[i][0]
-              else:
-                res += "; " + feat.qualifiers[i][0]
-      if res != "":
-        return res 
-      tempFeats = []
-      for feat in subFeats: # Should be breadth-first results
-        for x in feat.sub_features:
-          tempFeats.append(x)
-      subFeats = tempFeats
-    return res  
+    while len(subFeats) > 0:
+        for feat in subFeats:
+            for i in feat.qualifiers.keys():
+                for j in qualName:
+                    if i == j:
+                        if res == "":
+                            res = feat.qualifiers[i][0]
+                        else:
+                            res += "; " + feat.qualifiers[i][0]
+        if res != "":
+            return res
+        tempFeats = []
+        for feat in subFeats:  # Should be breadth-first results
+            for x in feat.sub_features:
+                tempFeats.append(x)
+        subFeats = tempFeats
+    return res
+
 
 def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
     getTypes = []
@@ -65,73 +75,66 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
     useSubs = searchSubs
 
     def rid(record, feature):
-        """Organism ID
-        """
+        """Organism ID"""
         return record.id
 
     def id(record, feature):
-        """ID
-        """
+        """ID"""
         return feature.id
 
     def featureType(record, feature):
-        """Type
-        """
+        """Type"""
         return feature.type
 
     def name(record, feature):
-        """Name
-        """
+        """Name"""
         for x in ["Name", "name"]:
-          for y in feature.qualifiers.keys():
-            if x == y:
-              return feature.qualifiers[x][0]
+            for y in feature.qualifiers.keys():
+                if x == y:
+                    return feature.qualifiers[x][0]
         if useSubs:
-          res = checkSubs(feature, ["Name", "name"])
-          if res != "":
-            return res 
+            res = checkSubs(feature, ["Name", "name"])
+            if res != "":
+                return res
         return "None"
+
     def start(record, feature):
-        """Boundary
-        """
+        """Boundary"""
         return str(feature.location.start + 1)
 
     def end(record, feature):
-        """Boundary
-        """
+        """Boundary"""
         return str(feature.location.end)
 
     def location(record, feature):
-        """Location
-        """
+        """Location"""
         return str(feature.location.start + 1) + "..{0.end}".format(feature.location)
 
     def length(record, feature):
-        """CDS Length (AA)
-        """
-        
+        """CDS Length (AA)"""
+
         if feature.type == "CDS":
-          cdss = [feature]
+            cdss = [feature]
         else:
-          cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
-        
+            cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+
         if cdss == []:
-          return "None"
+            return "None"
         res = (sum([len(cds) for cds in cdss]) / 3) - 1
         if floor(res) == res:
-          res = int(res)
+            res = int(res)
         return str(res)
 
     def notes(record, feature):
         """User entered Notes"""
         for x in ["Note", "note", "Notes", "notes"]:
-          for y in feature.qualifiers.keys():
-            if x == y:
-              return feature.qualifiers[x][0]
+            for y in feature.qualifiers.keys():
+                if x == y:
+                    return feature.qualifiers[x][0]
         if useSubs:
-          res = checkSubs(feature, ["Note", "note", "Notes", "notes"])
-          if res != "":
-            return res 
+            res = checkSubs(feature, ["Note", "note", "Notes", "notes"])
+            if res != "":
+                return res
         return "None"
 
     def date_created(record, feature):
@@ -142,22 +145,22 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         """Last Modified"""
         res = feature.qualifiers.get("date_last_modified", ["None"])[0]
         if res != "None":
-          return res
-        if useSubs:
-          res = checkSubs(feature, ["date_last_modified"])
-          if res != "":
             return res
+        if useSubs:
+            res = checkSubs(feature, ["date_last_modified"])
+            if res != "":
+                return res
         return "None"
 
     def description(record, feature):
         """Description"""
         res = feature.qualifiers.get("description", ["None"])[0]
         if res != "None":
-          return res
-        if useSubs:
-          res = checkSubs(feature, ["description"])
-          if res != "":
             return res
+        if useSubs:
+            res = checkSubs(feature, ["description"])
+            if res != "":
+                return res
         return "None"
 
     def owner(record, feature):
@@ -166,13 +169,13 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         User who created the feature. In a 464 scenario this may be one of
         the TAs."""
         for x in ["Owner", "owner"]:
-          for y in feature.qualifiers.keys():
-            if x == y:
-              return feature.qualifiers[x][0]
+            for y in feature.qualifiers.keys():
+                if x == y:
+                    return feature.qualifiers[x][0]
         if useSubs:
-          res = checkSubs(feature, ["Owner", "owner"])
-          if res != "":
-            return res 
+            res = checkSubs(feature, ["Owner", "owner"])
+            if res != "":
+                return res
         return "None"
 
     def product(record, feature):
@@ -182,13 +185,13 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         entries)"""
         """User entered Notes"""
         for x in ["product", "Product"]:
-          for y in feature.qualifiers.keys():
-            if x == y:
-              return feature.qualifiers[x][0]
+            for y in feature.qualifiers.keys():
+                if x == y:
+                    return feature.qualifiers[x][0]
         if useSubs:
-          res = checkSubs(feature, ["product", "Product"])
-          if res != "":
-            return res 
+            res = checkSubs(feature, ["product", "Product"])
+            if res != "":
+                return res
         return "None"
 
     def note(record, feature):
@@ -198,13 +201,11 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         return feature.qualifiers.get("Note", [])
 
     def strand(record, feature):
-        """Strand
-        """
+        """Strand"""
         return "+" if feature.location.strand > 0 else "-"
 
     def sd_spacing(record, feature):
-        """Shine-Dalgarno spacing
-        """
+        """Shine-Dalgarno spacing"""
         rbss = get_rbs_from(gene)
         if len(rbss) == 0:
             return "None"
@@ -213,7 +214,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
             for rbs in rbss:
                 cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
                 if len(cdss) == 0:
-                  return "No CDS"
+                    return "No CDS"
                 if rbs.location.strand > 0:
                     distance = min(
                         cdss, key=lambda x: x.location.start - rbs.location.end
@@ -232,8 +233,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
             return resp
 
     def sd_seq(record, feature):
-        """Shine-Dalgarno sequence
-        """
+        """Shine-Dalgarno sequence"""
         rbss = get_rbs_from(gene)
         if len(rbss) == 0:
             return "None"
@@ -247,13 +247,12 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
                 return resp
 
     def start_codon(record, feature):
-        """Start Codon
-        """
+        """Start Codon"""
         if feature.type == "CDS":
-          cdss = [feature]
+            cdss = [feature]
         else:
-          cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
-        
+            cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+
         data = [x for x in cdss]
         if len(data) == 1:
             return str(data[0].extract(record).seq[0:3])
@@ -266,58 +265,68 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
             ]
 
     def stop_codon(record, feature):
-        """Stop Codon
-        """
+        """Stop Codon"""
         return str(feature.extract(record).seq[-3:])
 
     def dbxrefs(record, feature):
-        """DBxrefs
-        """
+        """DBxrefs"""
         """User entered Notes"""
         for x in ["Dbxref", "db_xref", "DB_xref", "DBxref", "DB_Xref", "DBXref"]:
-          for y in feature.qualifiers.keys():
-            if x == y:
-              return feature.qualifiers[x][0]
+            for y in feature.qualifiers.keys():
+                if x == y:
+                    return feature.qualifiers[x][0]
         return "None"
 
     def upstream_feature(record, feature):
         """Next gene upstream"""
         if feature.strand > 0:
             upstream_features = [
-                x for x in sorted_features if (x.location.start < feature.location.start and x.type == "gene" and x.strand == feature.strand)
+                x
+                for x in sorted_features
+                if (
+                    x.location.start < feature.location.start
+                    and x.type == "gene"
+                    and x.strand == feature.strand
+                )
             ]
             if len(upstream_features) > 0:
                 foundSelf = False
                 featCheck = upstream_features[-1].sub_features
                 for x in featCheck:
-                  if x == feature:
-                    foundSelf = True
-                    break
-                  featCheck = featCheck + x.sub_features
+                    if x == feature:
+                        foundSelf = True
+                        break
+                    featCheck = featCheck + x.sub_features
                 if foundSelf:
-                  if len(upstream_features) > 1:
-                    return upstream_features[-2]
-                  return None
+                    if len(upstream_features) > 1:
+                        return upstream_features[-2]
+                    return None
                 return upstream_features[-1]
             else:
                 return None
         else:
             upstream_features = [
-                x for x in sorted_features if (x.location.end > feature.location.end and x.type == "gene" and x.strand == feature.strand)
+                x
+                for x in sorted_features
+                if (
+                    x.location.end > feature.location.end
+                    and x.type == "gene"
+                    and x.strand == feature.strand
+                )
             ]
 
             if len(upstream_features) > 0:
                 foundSelf = False
                 featCheck = upstream_features[0].sub_features
                 for x in featCheck:
-                  if x == feature:
-                    foundSelf = True
-                    break
-                  featCheck = featCheck + x.sub_features
+                    if x == feature:
+                        foundSelf = True
+                        break
+                    featCheck = featCheck + x.sub_features
                 if foundSelf:
-                  if len(upstream_features) > 1:
-                    return upstream_features[1]
-                  return None
+                    if len(upstream_features) > 1:
+                        return upstream_features[1]
+                    return None
                 return upstream_features[0]
             else:
                 return None
@@ -369,58 +378,47 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         return _main_gaf_func(record, feature, gaf_data, "aspect")
 
     def gaf_assigned_by(record, feature, gaf_data):
-        """GAF Creating Organisation
-        """
+        """GAF Creating Organisation"""
         return _main_gaf_func(record, feature, gaf_data, "assigned_by")
 
     def gaf_date(record, feature, gaf_data):
-        """GAF Creation Date
-        """
+        """GAF Creation Date"""
         return _main_gaf_func(record, feature, gaf_data, "date")
 
     def gaf_db(record, feature, gaf_data):
-        """GAF DB
-        """
+        """GAF DB"""
         return _main_gaf_func(record, feature, gaf_data, "db")
 
     def gaf_db_reference(record, feature, gaf_data):
-        """GAF DB Reference
-        """
+        """GAF DB Reference"""
         return _main_gaf_func(record, feature, gaf_data, "db_reference")
 
     def gaf_evidence_code(record, feature, gaf_data):
-        """GAF Evidence Code
-        """
+        """GAF Evidence Code"""
         return _main_gaf_func(record, feature, gaf_data, "evidence_code")
 
     def gaf_go_id(record, feature, gaf_data):
-        """GAF GO ID
-        """
+        """GAF GO ID"""
         return _main_gaf_func(record, feature, gaf_data, "go_id")
 
     def gaf_go_term(record, feature, gaf_data):
-        """GAF GO Term
-        """
+        """GAF GO Term"""
         return _main_gaf_func(record, feature, gaf_data, "go_term")
 
     def gaf_id(record, feature, gaf_data):
-        """GAF ID
-        """
+        """GAF ID"""
         return _main_gaf_func(record, feature, gaf_data, "id")
 
     def gaf_notes(record, feature, gaf_data):
-        """GAF Notes
-        """
+        """GAF Notes"""
         return _main_gaf_func(record, feature, gaf_data, "notes")
 
     def gaf_owner(record, feature, gaf_data):
-        """GAF Creator
-        """
+        """GAF Creator"""
         return _main_gaf_func(record, feature, gaf_data, "owner")
 
     def gaf_with_or_from(record, feature, gaf_data):
-        """GAF With/From
-        """
+        """GAF With/From"""
         return _main_gaf_func(record, feature, gaf_data, "with_or_from")
 
     cols = []
@@ -431,7 +429,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
         if not x:
             continue
         if x == "type":
-          x = "featureType"
+            x = "featureType"
         if x in lcl:
             funcs.append(lcl[x])
             # Keep track of docs
@@ -473,9 +471,9 @@ def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
 
             if isinstance(value, list):
                 collapsed_value = ", ".join(value)
-                value = [str(collapsed_value)]#.encode("unicode_escape")]
+                value = [str(collapsed_value)]  # .encode("unicode_escape")]
             else:
-                value = str(value)#.encode("unicode_escape")
+                value = str(value)  # .encode("unicode_escape")
 
             row.append(value)
         # print row
@@ -512,7 +510,7 @@ def parseGafData(file):
             line = row.strip().split("\t")
             tmp = dict(zip(cols, line))
             if "gene" not in tmp.keys():
-              continue
+                continue
             if tmp["gene"] not in data:
                 data[tmp["gene"]] = []
 
@@ -527,7 +525,7 @@ def evaluate_and_report(
     reportTemplateName="phage_annotation_validator.html",
     annotationTableCols="",
     gafData=None,
-    searchSubs = False,
+    searchSubs=False,
 ):
     """
     Generate our HTML evaluation of the genome
@@ -600,7 +598,9 @@ if __name__ == "__main__":
         "--gafData", help="CPT GAF-like table", type=argparse.FileType("r")
     )
     parser.add_argument(
-        "--searchSubs", help="Attempt to populate fields from sub-features if qualifier is empty", action="store_true"
+        "--searchSubs",
+        help="Attempt to populate fields from sub-features if qualifier is empty",
+        action="store_true",
     )
 
     args = parser.parse_args()

@@ -7,8 +7,7 @@ from CPT_GFFParser import gffParse, gffWrite
 
 
 def parse_xmfa(xmfa):
-    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544
-    """
+    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544"""
     current_lcb = []
     current_seq = {}
     for line in xmfa.readlines():
@@ -48,8 +47,7 @@ def parse_xmfa(xmfa):
 
 
 def percent_identity(a, b):
-    """Calculate % identity, ignoring gaps in the host sequence
-    """
+    """Calculate % identity, ignoring gaps in the host sequence"""
     match = 0
     mismatch = 0
     for char_a, char_b in zip(list(a), list(b)):
@@ -66,8 +64,7 @@ def percent_identity(a, b):
 
 
 def get_fasta_ids(sequences):
-    """Returns a list of fasta records in the order they appear
-    """
+    """Returns a list of fasta records in the order they appear"""
     ids = []
     for seq in SeqIO.parse(sequences, "fasta"):
         ids.append(seq.id)

@@ -53,10 +53,10 @@ class NaiveSDCaller(object):
         for regex in self.sd_reg:
             for match in regex.finditer(sequence):
                 spacing = len(sequence) - len(match.group()) - match.start()
-                if sd_max >= spacing+sd_min and spacing+sd_min >= sd_min:
-                    #if the spacing is within gap limits, add 
-                    #(search space is [sd_max+7 .. sd_min] so actual gap is spacing+sd_min)
-                    #print('min %d max %d - adding SD with gap %d' % (sd_min, sd_max, spacing+sd_min))
+                if sd_max >= spacing + sd_min and spacing + sd_min >= sd_min:
+                    # if the spacing is within gap limits, add
+                    # (search space is [sd_max+7 .. sd_min] so actual gap is spacing+sd_min)
+                    # print('min %d max %d - adding SD with gap %d' % (sd_min, sd_max, spacing+sd_min))
                     hits.append(
                         {
                             "spacing": spacing,
@@ -66,7 +66,7 @@ class NaiveSDCaller(object):
                             "len": len(match.group()),
                         }
                     )
-        hits = sorted(hits, key= lambda x: (-x['len'],x['spacing']))
+        hits = sorted(hits, key=lambda x: (-x["len"], x["spacing"]))
         return hits
 
     @classmethod
@@ -80,7 +80,16 @@ class NaiveSDCaller(object):
         )
 
     @classmethod
-    def to_features(cls, hits, strand, parent_start, parent_end, feature_id=None, sd_min=3, sd_max=17):
+    def to_features(
+        cls,
+        hits,
+        strand,
+        parent_start,
+        parent_end,
+        feature_id=None,
+        sd_min=3,
+        sd_max=17,
+    ):
         results = []
         for idx, hit in enumerate(hits):
             # gene            complement(124..486)
@@ -90,7 +99,7 @@ class NaiveSDCaller(object):
             # -1      491     501     2       3       5
             # -1      491     501     1       3       5
             # -1      491     501     0       3       5
-            
+
             qualifiers = {
                 "source": "CPT_ShineFind",
                 "ID": "%s.rbs-%s" % (feature_id, idx),
@@ -108,7 +117,7 @@ class NaiveSDCaller(object):
             # minimum absolute value of these two will be the proper gap regardless of strand
             tmp = gffSeqFeature(
                 FeatureLocation(min(start, end), max(start, end), strand=strand),
-                #FeatureLocation(min(start, end), max(start, end), strand=strand),
+                # FeatureLocation(min(start, end), max(start, end), strand=strand),
                 type="Shine_Dalgarno_sequence",
                 qualifiers=qualifiers,
             )
@@ -133,7 +142,10 @@ class NaiveSDCaller(object):
 
         # Create our temp feature used to obtain correct portion of
         # genome
-        tmp = gffSeqFeature(FeatureLocation(min(start, end), max(start, end), strand=strand), type="domain")
+        tmp = gffSeqFeature(
+            FeatureLocation(min(start, end), max(start, end), strand=strand),
+            type="domain",
+        )
         seq = str(tmp.extract(record.seq))
         return self.list_sds(seq, sd_min, sd_max), start, end, seq
 
@@ -174,6 +186,7 @@ def fix_gene_boundaries(feature):
     else:
         feature.location = FeatureLocation(fmin, fmax, strand=-1)
     return feature
+
 
 def shinefind(
     fasta,

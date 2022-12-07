@@ -6,14 +6,14 @@ class explodeJSON:
         self.file = file
 
     def readJSON(self):
-        """ returns dictionary object for reading a JSON """
+        """returns dictionary object for reading a JSON"""
         with open(self.file) as j:
             myObj = json.load(j)
 
         return myObj
 
     def explode(self):
-        """ Makes a list of each embedded list from the database JSON """
+        """Makes a list of each embedded list from the database JSON"""
 
         data = self.readJSON()
 
@@ -24,8 +24,9 @@ class explodeJSON:
 
         return terms
 
+
 ### Dictionary Functions
-def save_dict_to_json(obj,filename="output.json"):
+def save_dict_to_json(obj, filename="output.json"):
     with open(filename, "w") as js:
         print("saved {} as json".format(filename))
         json.dump(obj, js, indent=4)
@@ -47,6 +48,6 @@ if __name__ == "__main__":
     terms = e.explode()
     print(terms)
 
-    test = {"math":["algebra","calculus"]}
+    test = {"math": ["algebra", "calculus"]}
     print(type(test))
-    save_dict_to_json(obj=test,filename="test-output.json")
+    save_dict_to_json(obj=test, filename="test-output.json")

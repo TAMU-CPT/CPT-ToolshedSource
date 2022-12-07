@@ -11,7 +11,8 @@ import copy
 import itertools
 import logging
 from Bio import SeqIO
-#from Bio.Alphabet import generic_dna
+
+# from Bio.Alphabet import generic_dna
 from Bio.SeqFeature import CompoundLocation, FeatureLocation
 from CPT_GFFParser import gffParse, gffWrite
 from gff3 import (
@@ -48,7 +49,7 @@ def rename_key(ds, k_f, k_t):
 
 
 def gff3_to_genbank(gff_file, fasta_file, transltbl):
-    fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta"))#, generic_dna))
+    fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta"))  # , generic_dna))
     gff_iter = gffParse(gff_file, fasta_input)
 
     for record in gff_iter:
@@ -63,11 +64,11 @@ def handle_non_gene_features(features):
         {"type": "gene"},
         subfeatures=False,
         invert=True,
-        recurse=True, #  used to catch RBS from new apollo runs (used to be False)
+        recurse=True,  #  used to catch RBS from new apollo runs (used to be False)
     ):
         if feature.type in (
-            "terminator", 
-            "tRNA", 
+            "terminator",
+            "tRNA",
             "Shine_Dalgarno_sequence",
             "sequence_feature",
             "recombination_feature",
@@ -75,13 +76,10 @@ def handle_non_gene_features(features):
             "binding_site",
         ):
             yield feature
-        elif feature.type in (
-            "CDS",
-        ):
+        elif feature.type in ("CDS",):
             pass
         else:
             yield feature
-
 
 
 def fminmax(feature):
@@ -127,7 +125,7 @@ def fix_gene_qualifiers(name, feature, fid):
                 if is_uuid(sf.qualifiers["Name"][0]):
                     del sf.qualifiers["Name"]
             except KeyError:
-                continue # might should go back to pass, I have not put thought into this still
+                continue  # might should go back to pass, I have not put thought into this still
 
             # If it is the RBS exon (mis-labelled by apollo as 'exon')
             if sf.type == "exon" and len(sf) < 10:
@@ -213,11 +211,11 @@ def fix_frameshifted(features):
     mRNA_1 = fixed_mrnas[1]
 
     if not noRBS:
-      mRNA_0.sub_features = [rbss[0], merge_a]
-      mRNA_1.sub_features = other + [rbss[1]]
+        mRNA_0.sub_features = [rbss[0], merge_a]
+        mRNA_1.sub_features = other + [rbss[1]]
     else:
-      mRNA_0.sub_features = [merge_a]
-      mRNA_1.sub_features = other
+        mRNA_0.sub_features = [merge_a]
+        mRNA_1.sub_features = other
     mRNA_0 = fix_gene_boundaries(mRNA_0)
     mRNA_1 = fix_gene_boundaries(mRNA_1)
 
@@ -293,17 +291,16 @@ def remove_useless_features(features):
             # We use the full GO term, but it should be less than that.
             if f.type == "Shine_Dalgarno_sequence":
                 f.type = "RBS"
-                
-                
+
             if f.type == "sequence_feature":
                 f.type = "misc_feature"
-            
+
             if f.type == "recombination_feature":
                 f.type = "misc_recomb"
-            
+
             if f.type == "sequence_alteration":
                 f.type = "variation"
-            
+
             if f.type == "binding_site":
                 f.type = "misc_binding"
 
@@ -368,18 +365,18 @@ def handle_record(record, transltbl):
 
         # Wipe out the parent gene's data, leaving only a locus_tag
         feature.qualifiers = {"locus_tag": "CPT_%s_%03d" % (record.id, fid)}
-        
+
         # Patch our features back in (even if they're non-gene features)
         replacement_feats.append(feature)
-        
+
     replacement_feats = fix_frameshifts(replacement_feats)
-    #exit(0)
+    # exit(0)
     flat_features = feature_lambda(
         replacement_feats, lambda x: True, {}, subfeatures=True
     )
-    
+
     flat_features = remove_useless_features(flat_features)
-    
+
     # Meat of our modifications
     for flat_feat in flat_features:
         # Try and figure out a name. We gave conflicting instructions, so
@@ -409,7 +406,7 @@ def handle_record(record, transltbl):
                 del flat_feat.qualifiers["Product"]
         elif flat_feat.type == "RBS":
             if "locus_tag" not in flat_feat.qualifiers.keys():
-               continue
+                continue
 
         elif flat_feat.type == "terminator":
             flat_feat.type = "regulatory"
@@ -452,5 +449,5 @@ if __name__ == "__main__":
 
     for record in gff3_to_genbank(**vars(args)):
         record.annotations["molecule_type"] = "DNA"
-        #record.seq.alphabet = generic_dna
+        # record.seq.alphabet = generic_dna
         SeqIO.write([record], sys.stdout, "genbank")

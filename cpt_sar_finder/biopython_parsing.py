@@ -3,16 +3,17 @@
 
 from Bio import SeqIO
 
+
 class FASTA_parser:
-    """ Parses multi fasta file, and zips together header with sequence """
+    """Parses multi fasta file, and zips together header with sequence"""
 
     def __init__(self, fa):
         self.fa = fa
-    
-    def multifasta_dict(self):
-        """ parses the input multi fasta, and puts results into dictionary """
 
-        return SeqIO.to_dict(SeqIO.parse(self.fa,"fasta"))
+    def multifasta_dict(self):
+        """parses the input multi fasta, and puts results into dictionary"""
+
+        return SeqIO.to_dict(SeqIO.parse(self.fa, "fasta"))
 
 
 if __name__ == "__main__":
@@ -21,4 +22,3 @@ if __name__ == "__main__":
     print(d)
     for k, v in d.items():
         print(v.description)
-    

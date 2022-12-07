@@ -42,7 +42,7 @@ def blasttsv2gff3(blasttsv, min_dice=50):
         line = line.strip("\n")
         data = line.split("\t")
         dice = 2 * float(data[14]) / (float(data[22]) + float(data[23]))
-        
+
         if dice >= min_dice:
             yield line
 

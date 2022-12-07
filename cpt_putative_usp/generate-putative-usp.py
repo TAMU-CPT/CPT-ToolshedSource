@@ -18,7 +18,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Get putative protein candidates for u-spanins"
     )
-    
+
     parser.add_argument(
         "fasta_file", type=argparse.FileType("r"), help="Fasta file"
     )  # the "input" argument
@@ -119,16 +119,42 @@ if __name__ == "__main__":
         help="gff3 output for putative o-spanins",
     )
 
-    parser.add_argument("--min_size", type=int, default=100, help="minimum size of peptide")
-    parser.add_argument("--max_size", type=int, default=200, help="maximum size of peptide")
-    parser.add_argument("--lipo_min_start", type=int, default=10, help="minimum start site of lipobox")
-    parser.add_argument("--lipo_max_start", type=int, default=30, help="maximum end site of lipobox")
-    parser.add_argument("--min_lipo_after", type=int, default=60, help="minumum amount of residues after lipobox")
-    parser.add_argument("--max_lipo_after", type=int, default=160, help="maximum amount of residues after lipobox")
-    parser.add_argument("--tmd_min_start", type=int, default=75, help="minumum start site of TMD")
-    parser.add_argument("--tmd_max_start", type=int, default=200, help="maximum end site of TMD")
-    parser.add_argument("--tmd_min_size", type=int, default=15, help="minimum size of TMD")
-    parser.add_argument("--tmd_max_size", type=int, default=25, help="maximum size of TMD")
+    parser.add_argument(
+        "--min_size", type=int, default=100, help="minimum size of peptide"
+    )
+    parser.add_argument(
+        "--max_size", type=int, default=200, help="maximum size of peptide"
+    )
+    parser.add_argument(
+        "--lipo_min_start", type=int, default=10, help="minimum start site of lipobox"
+    )
+    parser.add_argument(
+        "--lipo_max_start", type=int, default=30, help="maximum end site of lipobox"
+    )
+    parser.add_argument(
+        "--min_lipo_after",
+        type=int,
+        default=60,
+        help="minumum amount of residues after lipobox",
+    )
+    parser.add_argument(
+        "--max_lipo_after",
+        type=int,
+        default=160,
+        help="maximum amount of residues after lipobox",
+    )
+    parser.add_argument(
+        "--tmd_min_start", type=int, default=75, help="minumum start site of TMD"
+    )
+    parser.add_argument(
+        "--tmd_max_start", type=int, default=200, help="maximum end site of TMD"
+    )
+    parser.add_argument(
+        "--tmd_min_size", type=int, default=15, help="minimum size of TMD"
+    )
+    parser.add_argument(
+        "--tmd_max_size", type=int, default=25, help="maximum size of TMD"
+    )
 
     args = parser.parse_args()
 
@@ -147,45 +173,47 @@ if __name__ == "__main__":
     args.fasta_file.close()
     args.fasta_file = open(args.fasta_file.name, "r")
     args.out_usp_prot.close()
-    args.out_usp_prot = open(args.out_usp_prot.name,"r")
+    args.out_usp_prot = open(args.out_usp_prot.name, "r")
 
     pairs = tuple_fasta(fasta_file=args.out_usp_prot)
     have_lipo = []
-    
+
     for each_pair in pairs:
         if len(each_pair[1]) <= args.max_size:
             try:
-                have_lipo += find_lipobox(pair=each_pair,
-                                        minimum=args.lipo_min_start,
-                                        maximum=args.lipo_max_start,
-                                        min_after=args.min_lipo_after,
-                                        max_after=args.max_lipo_after,
-                                    )
+                have_lipo += find_lipobox(
+                    pair=each_pair,
+                    minimum=args.lipo_min_start,
+                    maximum=args.lipo_max_start,
+                    min_after=args.min_lipo_after,
+                    max_after=args.max_lipo_after,
+                )
             except (IndexError, TypeError):
                 continue
-    
-    #print(len(have_lipo))
-    #print(have_lipo)
+
+    # print(len(have_lipo))
+    # print(have_lipo)
 
     have_tmd_and_lipo = []
-    #print(args.tmd_min_start)
-    #print(args.tmd_max_start)
-    #print(args.tmd_min_size)
-    #print(args.tmd_max_size)
+    # print(args.tmd_min_start)
+    # print(args.tmd_max_start)
+    # print(args.tmd_min_size)
+    # print(args.tmd_max_size)
 
     for each_pair in have_lipo:
         try:
-            have_tmd_and_lipo += find_tmd(pair=each_pair,
-                                minimum=args.tmd_min_start,
-                                maximum=args.tmd_max_start,
-                                TMDmin=args.tmd_min_size,
-                                TMDmax=args.tmd_max_size,  
-                                )
+            have_tmd_and_lipo += find_tmd(
+                pair=each_pair,
+                minimum=args.tmd_min_start,
+                maximum=args.tmd_max_start,
+                TMDmin=args.tmd_min_size,
+                TMDmax=args.tmd_max_size,
+            )
         except (IndexError, TypeError):
             continue
-    
-    #print(len(have_tmd_and_lipo))
-    #print(have_tmd_and_lipo)
+
+    # print(len(have_tmd_and_lipo))
+    # print(have_tmd_and_lipo)
 
     if args.switch == "all":
         pass
@@ -195,30 +223,30 @@ if __name__ == "__main__":
         start = int(range_of.split(":")[0])
         end = int(range_of.split(":")[1])
         have_lipo = parse_a_range(pair=have_tmd_and_lipo, start=start, end=end)
-    
+
     total_have_tmd_and_lipo = len(have_tmd_and_lipo)
 
     ORF = []
     length = []
-    candidate_dict = {k:v for k, v in have_tmd_and_lipo}
+    candidate_dict = {k: v for k, v in have_tmd_and_lipo}
     with args.putative_usp_fa as f:
         for desc, s in candidate_dict.items():
             f.write(">" + str(desc))
-            f.write("\n" + lineWrapper(str(s).replace("*",""))+"\n")
+            f.write("\n" + lineWrapper(str(s).replace("*", "")) + "\n")
             length.append(len(s))
             ORF.append(desc)
     #### Extra statistics
     args.out_usp_prot.close()
     all_orfs = open(args.out_usp_prot.name, "r")
     all_isps = open(args.putative_usp_fa.name, "r")
-    #record = SeqIO.read(all_orfs, "fasta")
-    #print(len(record))
+    # record = SeqIO.read(all_orfs, "fasta")
+    # print(len(record))
     n = 0
     for line in all_orfs:
         if line.startswith(">"):
             n += 1
     all_orfs_counts = n
-    
+
     c = 0
     for line in all_isps:
         if line.startswith(">"):
@@ -231,22 +259,24 @@ if __name__ == "__main__":
         avg = (sum(length)) / total_have_tmd_and_lipo
         n = len(length)
         if n == 0:
-          raise Exception("no median for empty data")
+            raise Exception("no median for empty data")
         if n % 2 == 1:
-          med = length[n // 2]
+            med = length[n // 2]
         else:
-          i = n // 2
-          med = (length[i - 1] + length[i]) / 2
+            i = n // 2
+            med = (length[i - 1] + length[i]) / 2
         with args.summary_usp_txt as f:
-            f.write("total potential u-spanins: " +str(total_have_tmd_and_lipo) + "\n")
+            f.write("total potential u-spanins: " + str(total_have_tmd_and_lipo) + "\n")
             f.write("average length (AA): " + str(avg) + "\n")
             f.write("median length (AA): " + str(med) + "\n")
             f.write("maximum orf in size (AA): " + str(top_size) + "\n")
             f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
-            f.write("ratio of isps found from naive orfs: " + str(c) + "/" +str(n))
+            f.write("ratio of isps found from naive orfs: " + str(c) + "/" + str(n))
 
         args.putative_usp_fa = open(args.putative_usp_fa.name, "r")
-        gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp", org=args.fasta_file)
+        gff_data = prep_a_gff3(
+            fa=args.putative_usp_fa, spanin_type="usp", org=args.fasta_file
+        )
         write_gff3(data=gff_data, output=args.putative_usp_gff)
     else:
         with args.summary_usp_txt as f:
@@ -254,7 +284,7 @@ if __name__ == "__main__":
             if have_lipo:
                 f.write("\nLipoboxes were found here:\n")
                 for each_lipo in have_lipo:
-                    f.write('>'+str(each_lipo[0]))
-                    f.write("\n" + lineWrapper(each_lipo[1].replace("*",""))+"\n")
+                    f.write(">" + str(each_lipo[0]))
+                    f.write("\n" + lineWrapper(each_lipo[1].replace("*", "")) + "\n")
             else:
                 f.write("\nNo Lipobox(es) were found within search restraints")

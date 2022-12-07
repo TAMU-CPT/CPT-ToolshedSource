@@ -20,11 +20,11 @@ class MultilinePlottableMixin:
         n_lines
           Number of lines on which the record will be plotted. A number of
           nucleotides per line can be provided instead (see below).
-        
+
         nucl_per_line
           Number of nucleotides to be represented on every line (determines
           the number of lines ``n_lines``).
-        
+
         plot_sequence
           Whether to plot the nucleotide sequence on each line
 
@@ -38,7 +38,7 @@ class MultilinePlottableMixin:
           of the individual lines. This includes ``draw_line``, ``with_ruler``,
           ``annotate_inline``, ``plot_sequence``,
           ``evelate_outline_annotations``, ``strand_in_label_pixel_threshold``
-        
+
         Returns
         -------
 
@@ -103,7 +103,7 @@ class MultilinePlottableMixin:
         """Plot the features on different lines on different pages of a PDF.
 
         This function returns None
-        
+
         Parameters
         ----------
 
@@ -113,14 +113,14 @@ class MultilinePlottableMixin:
         n_lines
           Number of lines on which the record will be plotted. A number of
           nucleotides per line can be provided instead (see below).
-        
+
         nucl_per_line
           Number of nucleotides to be represented on every line (determines
           the number of lines ``n_lines``).
-        
+
         lines_per_page
           Number of lines on each page
-        
+
         plot_sequence
           Whether to plot the nucleotide sequence on each line
 

@@ -37,24 +37,24 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
       Indicates which standard to use to show nucleotide indices in the plots.
       If 'biopython', the standard python indexing is used (starting at 0).
       If 'genbank', the indexing follows the Genbank standard (starting at 1).
-    
+
     labels_spacing
       Number of pixels that will "pad" every labels to force some horizontal
       space between two labels or between a label and the borders of a feature.
-    
+
     ticks_resolution
       Leave to "auto" for an auto-selected number of ticks on the ruler, or set
-      to e.g. 50 for a tick every 50 nucleotide. 
+      to e.g. 50 for a tick every 50 nucleotide.
 
     Attributes
     ----------
 
       default_font_family
         Default font to use for a feature that doesn't declare a font.
-      
+
       default_ruler_color
         Default ruler color to use when no color is given at plot() time.
-    
+
       default_box_color
         Default box color for non-inline annotations. If set to None, no
         boxes will be drawn unless the features declare a box_color.
@@ -81,7 +81,7 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
         first_index=0,
         plots_indexing="biopython",
         labels_spacing=8,
-        ticks_resolution='auto'
+        ticks_resolution="auto",
     ):
         if sequence_length is None:
             sequence_length = len(sequence)
@@ -147,7 +147,7 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
             first_index=start,
             plots_indexing=self.plots_indexing,
             labels_spacing=self.labels_spacing,
-            ticks_resolution=self.ticks_resolution
+            ticks_resolution=self.ticks_resolution,
         )
 
     def determine_annotation_height(self, levels):
@@ -159,8 +159,7 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
         return self.feature_level_height
 
     def coordinates_in_plot(self, x, level):
-        """Convert a sequence position and height level into a (x, y) position.
-        """
+        """Convert a sequence position and height level into a (x, y) position."""
         return (x, level * self.feature_level_height)
 
     def split_overflowing_features_circularly(self):

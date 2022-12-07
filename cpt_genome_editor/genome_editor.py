@@ -38,7 +38,7 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
     covered = 0
     for feat in rec.features:
         if "ID" in feat.qualifiers.keys():
-          topFeats[feat.qualifiers["ID"][0]] = feat.location.start
+            topFeats[feat.qualifiers["ID"][0]] = feat.location.start
     for change in changes:
         if "," in change:
             (start, end, strand) = change.split(",")
@@ -83,18 +83,18 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                     dbxrefs=True,
                 )
             tmp_req = convertSeqRec(tmp_req)[0]
-            def update_location(feature, shiftS):
-                feature.location = FeatureLocation(feature.location.start + shiftS, feature.location.end + shiftS, feature.strand)
-                for i in feature.sub_features:
-                  i = update_location(i, shiftS)
-                return feature
-                
-            
 
-            #for feature in tmp_req.features:
-            
-                  
-                
+            def update_location(feature, shiftS):
+                feature.location = FeatureLocation(
+                    feature.location.start + shiftS,
+                    feature.location.end + shiftS,
+                    feature.strand,
+                )
+                for i in feature.sub_features:
+                    i = update_location(i, shiftS)
+                return feature
+
+            # for feature in tmp_req.features:
 
             chain.append(
                 [
@@ -116,15 +116,19 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
             # subfeatures, which means you will only get top-level features.
             startInd = len(new_record.features)
             new_record.features += tmp_req.features
-            
+
             for i in new_record.features[startInd:]:
-                i.location = FeatureLocation(i.location.start + covered, i.location.end + covered, i.location.strand)
+                i.location = FeatureLocation(
+                    i.location.start + covered,
+                    i.location.end + covered,
+                    i.location.strand,
+                )
                 if "ID" not in i.qualifiers.keys():
-                  continue
+                    continue
                 diffS = i.location.start - topFeats[i.qualifiers["ID"][0]]
                 subFeats = i.sub_features
                 for j in subFeats:
-                  j = update_location(j, diffS)
+                    j = update_location(j, diffS)
         else:
             new_record.seq += custom_seqs[change].seq
     yield new_record, chain

@@ -1,5 +1,6 @@
 from copy import deepcopy
 
+
 class GraphicFeature:
     """Genetic Feature to be plotted.
 
@@ -94,9 +95,7 @@ class GraphicFeature:
         self.box_linewidth = box_linewidth
         self.box_color = box_color
         self.label_link_color = label_link_color
-        self.fontdict = dict(
-            [("fontsize", 11)] + list((fontdict or {}).items())
-        )
+        self.fontdict = dict([("fontsize", 11)] + list((fontdict or {}).items()))
         self.html = html
         self.open_left = open_left
         self.open_right = open_right
@@ -129,8 +128,7 @@ class GraphicFeature:
         return copy
 
     def overlaps_with(self, other):
-        """Return whether the feature's location overlaps with feature `other`
-        """
+        """Return whether the feature's location overlaps with feature `other`"""
         loc1, loc2 = (self.start, self.end), (other.start, other.end)
         loc1, loc2 = sorted(loc1), sorted(loc2)
         loc1, loc2 = sorted([loc1, loc2], key=lambda loc: loc[0])

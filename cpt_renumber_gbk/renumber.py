@@ -93,9 +93,9 @@ def renumber_genes(
             )
             oldNames = []
             for x in f_gene:
-              if tag_to_update in x.qualifiers.keys():
-                oldNames.append(x.qualifiers[tag_to_update])
-            
+                if tag_to_update in x.qualifiers.keys():
+                    oldNames.append(x.qualifiers[tag_to_update])
+
             f_rbs = sorted(
                 [f for f in record.features if f.type == "RBS"],
                 key=lambda x: x.location.start,
@@ -127,40 +127,49 @@ def renumber_genes(
                     if is_within(rbs, gene) and (
                         rbs.location.start == geneComp or rbs.location.end == geneComp
                     ):
-                        if (tag_to_update not in rbs.qualifiers.keys()): 
-                          tag.append(rbs)
-                          f_processed.append(rbs)
-                          break
-                        elif (tag_to_update not in gene.qualifiers.keys()): # This will gurantee qual is in gene and RBS for next check
-                          tag.append(rbs)
-                          f_processed.append(rbs)
-                          break
-                        elif (not forceTagMatch) or (rbs.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]):
-                          tag.append(rbs)
-                          f_processed.append(rbs)
-                          break 
-                        
+                        if tag_to_update not in rbs.qualifiers.keys():
+                            tag.append(rbs)
+                            f_processed.append(rbs)
+                            break
+                        elif (
+                            tag_to_update not in gene.qualifiers.keys()
+                        ):  # This will gurantee qual is in gene and RBS for next check
+                            tag.append(rbs)
+                            f_processed.append(rbs)
+                            break
+                        elif (not forceTagMatch) or (
+                            rbs.qualifiers[tag_to_update]
+                            == gene.qualifiers[tag_to_update]
+                        ):
+                            tag.append(rbs)
+                            f_processed.append(rbs)
+                            break
+
                 # find all other non-RBS features
                 for feature in [f for f in f_sorted if f not in f_processed]:
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
                     # add it to the same locus tag group, does not process RBS
                     if is_within(feature, gene):
                         if tag_to_update not in feature.qualifiers.keys():
-                        # catches genes and CDS feature that are intron-contained.
-                          if feature.type == "CDS":
-                            if (
-                                feature.location.start == gene.location.start
-                                or feature.location.end == gene.location.end
-                            ):
-                                
+                            # catches genes and CDS feature that are intron-contained.
+                            if feature.type == "CDS":
+                                if (
+                                    feature.location.start == gene.location.start
+                                    or feature.location.end == gene.location.end
+                                ):
+
+                                    tag.append(feature)
+                                    f_processed.append(feature)
+                            else:
                                 tag.append(feature)
                                 f_processed.append(feature)
-                          else:
+                        elif (not forceTagMatch) or (
+                            tag_to_update in gene.qualifiers.keys()
+                            and feature.qualifiers[tag_to_update]
+                            == gene.qualifiers[tag_to_update]
+                        ):
                             tag.append(feature)
                             f_processed.append(feature)
-                        elif (not forceTagMatch) or (tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]):
-                          tag.append(feature)
-                          f_processed.append(feature)
                     elif feature.location.start > gene.location.end:
                         # because the features are sorted by coordinates,
                         # no features further down  on the list will be in this gene
@@ -175,27 +184,30 @@ def renumber_genes(
             for rbs in [f for f in f_rbs if f not in f_processed]:
                 dupeRBS = False
                 for x in f_processed:
-                  if x.type == "RBS" and (tag_to_update in rbs.qualifiers.keys() and tag_to_update in x.qualifiers.keys() and rbs.qualifiers[tag_to_update] == x.qualifiers[tag_to_update]):
-                    dupeRBS = True
+                    if x.type == "RBS" and (
+                        tag_to_update in rbs.qualifiers.keys()
+                        and tag_to_update in x.qualifiers.keys()
+                        and rbs.qualifiers[tag_to_update] == x.qualifiers[tag_to_update]
+                    ):
+                        dupeRBS = True
                 if dupeRBS:
-                  change_table.write(
-                    record.id
-                    + "\t"
-                    + rbs.type
-                    + ":"
-                    + (rbs.qualifiers[tag_to_update][0])
-                    + "\t[Removed: Parent gene already had an RBS]\n"
-                  )
+                    change_table.write(
+                        record.id
+                        + "\t"
+                        + rbs.type
+                        + ":"
+                        + (rbs.qualifiers[tag_to_update][0])
+                        + "\t[Removed: Parent gene already had an RBS]\n"
+                    )
                 else:
-                  change_table.write(
-                    record.id
-                    + "\t"
-                    + rbs.type
-                    + ":"
-                    + (rbs.qualifiers[tag_to_update][0])
-                    + "\t[Removed: RBS did not both fall within boundary of gene and share a boundary with a gene]\n"
-                  )
-
+                    change_table.write(
+                        record.id
+                        + "\t"
+                        + rbs.type
+                        + ":"
+                        + (rbs.qualifiers[tag_to_update][0])
+                        + "\t[Removed: RBS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                    )
 
             tag_index = 1
             delta = []
@@ -226,98 +238,106 @@ def renumber_genes(
 
             # Update all features
             record.features = sorted(clean_features, key=lambda x: x.location.start)
-            
+
             for feature in [f for f in f_sorted if f not in f_processed]:
                 if feature.type == "CDS":
-                  if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
-                    failNameCheck = True
-                    for x in oldNames:
-                      for tag in feature.qualifiers[tag_to_update]:
-                          if tag in x:
-                            failNameCheck = False
-                      if not failNameCheck:
-                        break
-                    if failNameCheck:
-                      change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: (Tag check enabled) CDS did not both share a start/end with and fall within a gene with the same " + tag_to_update + " value]\n"
-                      )
+                    if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
+                        failNameCheck = True
+                        for x in oldNames:
+                            for tag in feature.qualifiers[tag_to_update]:
+                                if tag in x:
+                                    failNameCheck = False
+                            if not failNameCheck:
+                                break
+                        if failNameCheck:
+                            change_table.write(
+                                record.id
+                                + "\t"
+                                + feature.type
+                                + ":"
+                                + (feature.qualifiers[tag_to_update][0])
+                                + "\t[Removed: (Tag check enabled) CDS did not both share a start/end with and fall within a gene with the same "
+                                + tag_to_update
+                                + " value]\n"
+                            )
+                        else:
+                            change_table.write(
+                                record.id
+                                + "\t"
+                                + feature.type
+                                + ":"
+                                + (feature.qualifiers[tag_to_update][0])
+                                + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                            )
+                    elif tag_to_update in feature.qualifiers.keys():
+                        change_table.write(
+                            record.id
+                            + "\t"
+                            + feature.type
+                            + ":"
+                            + (feature.qualifiers[tag_to_update][0])
+                            + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                        )
                     else:
-                      change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
-                      )  
-                  elif tag_to_update in feature.qualifiers.keys():
-                    change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
-                    )
-                  else:
-                    change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ": No "
-                        + tag_to_update
-                        + "\t[Removed: CDS at (" + str(feature.location.start) + "," + str(feature.location.end) + ") did not both fall within boundary of gene and share a boundary with a gene]\n"
-                    )
+                        change_table.write(
+                            record.id
+                            + "\t"
+                            + feature.type
+                            + ": No "
+                            + tag_to_update
+                            + "\t[Removed: CDS at ("
+                            + str(feature.location.start)
+                            + ","
+                            + str(feature.location.end)
+                            + ") did not both fall within boundary of gene and share a boundary with a gene]\n"
+                        )
                 else:
-                  if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
-                    failNameCheck = True
-                    for x in oldNames:
-                      for tag in feature.qualifiers[tag_to_update]:
-                          if tag in x:
-                            failNameCheck = False
-                      if not failNameCheck:
-                        break
-                    if failNameCheck:
-                      change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: (Tag check enabled) Feature did not fall within a gene it shared a " + tag_to_update + " value with]\n"
-                      )
+                    if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
+                        failNameCheck = True
+                        for x in oldNames:
+                            for tag in feature.qualifiers[tag_to_update]:
+                                if tag in x:
+                                    failNameCheck = False
+                            if not failNameCheck:
+                                break
+                        if failNameCheck:
+                            change_table.write(
+                                record.id
+                                + "\t"
+                                + feature.type
+                                + ":"
+                                + (feature.qualifiers[tag_to_update][0])
+                                + "\t[Removed: (Tag check enabled) Feature did not fall within a gene it shared a "
+                                + tag_to_update
+                                + " value with]\n"
+                            )
+                        else:
+                            change_table.write(
+                                record.id
+                                + "\t"
+                                + feature.type
+                                + ":"
+                                + (feature.qualifiers[tag_to_update][0])
+                                + "\t[Removed: Feature not within boundary of a gene]\n"
+                            )
+                    elif tag_to_update in feature.qualifiers.keys():
+                        change_table.write(
+                            record.id
+                            + "\t"
+                            + feature.type
+                            + ":"
+                            + (feature.qualifiers[tag_to_update][0])
+                            + "\t[Removed: Feature not within boundary of a gene]\n"
+                        )
                     else:
-                      change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: Feature not within boundary of a gene]\n"
-                      )
-                  elif tag_to_update in feature.qualifiers.keys():
-                    change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ":"
-                        + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: Feature not within boundary of a gene]\n"
-                    )
-                  else:
-                    change_table.write(
-                        record.id
-                        + "\t"
-                        + feature.type
-                        + ": (has no "
-                        + tag_to_update
-                        + ")\t[Removed: Feature not within boundary of a gene]\n"
-                    )
+                        change_table.write(
+                            record.id
+                            + "\t"
+                            + feature.type
+                            + ": (has no "
+                            + tag_to_update
+                            + ")\t[Removed: Feature not within boundary of a gene]\n"
+                        )
             change_table.write("\n".join(delta) + "\n")
 
             # Output
@@ -340,15 +360,12 @@ def is_within(query, feature):
     # checks if the query item is within the bounds of the given feature
     sortedList = sorted(query.location.parts, key=lambda x: x.start)
     for x in sortedList:
-      if (
-          feature.location.start <= x.start
-          and feature.location.end >= x.end
-      ):
-        if x.strand < 0 and x == sortedList[-1]:
-          return True
-        elif x.strand >= 0 and x == sortedList[0]:
-          return True
-    #else:
+        if feature.location.start <= x.start and feature.location.end >= x.end:
+            if x.strand < 0 and x == sortedList[-1]:
+                return True
+            elif x.strand >= 0 and x == sortedList[0]:
+                return True
+    # else:
     return False
 
 
@@ -382,7 +399,9 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--forceTagMatch", action="store_true", help="Make non-CDS features match tag initially"
+        "--forceTagMatch",
+        action="store_true",
+        help="Make non-CDS features match tag initially",
     )
 
     parser.add_argument(

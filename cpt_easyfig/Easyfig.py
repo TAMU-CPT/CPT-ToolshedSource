@@ -12389,8 +12389,7 @@ ffffffffffffffffffff"
         f.close()
 
     def _saveBitMapWithCompression(self, filename):
-        """
-    """
+        """ """
         # open file
         f = file(filename, "wb")
 
@@ -12602,7 +12601,7 @@ def getArrows(filename, legname):
                             temp[1].append(int(stop))
                     except:
                         if gotit:
-                            print ("feature could not be processed:\n" + line)
+                            print("feature could not be processed:\n" + line)
                         gotit = False
                 if gotit:
                     aninstance = feature(temp[0], temp[1], feat, strand, None, None)
@@ -12650,7 +12649,7 @@ def getArrows(filename, legname):
                     )
                     outlist.append(aninstance)
                 except:
-                    print ("feature could not be processed:\n" + line)
+                    print("feature could not be processed:\n" + line)
                 if feat == "source":
                     try:
                         lengtht = max([int(start), int(stop)])
@@ -12674,7 +12673,7 @@ def getArrows(filename, legname):
                     )
                 outlist[-1].colour = artColour
             except:
-                print ("Colour could not be processed:\n" + line)
+                print("Colour could not be processed:\n" + line)
         elif line[2:].startswith("                 /color=") and getFeats:
             temp = line[26:-1]
             temp = temp.replace('"', "")
@@ -12691,7 +12690,7 @@ def getArrows(filename, legname):
                     )
                 outlist[-1].colour = artColour
             except:
-                print ("Colour could not be processed:\n" + line)
+                print("Colour could not be processed:\n" + line)
         elif line[2:].startswith("                   /colour=") and getFeats:
             temp = line[29:-1]
             temp = temp.replace('"', "")
@@ -12708,7 +12707,7 @@ def getArrows(filename, legname):
                     )
                 outlist[-1].colour = artColour
             except:
-                print ("Colour could not be processed:\n" + line)
+                print("Colour could not be processed:\n" + line)
         elif line[2:].startswith("                   /color=") and getFeats:
             temp = line[28:-1]
             temp = temp.replace('"', "")
@@ -12724,7 +12723,7 @@ def getArrows(filename, legname):
                         int(artColourF[2]),
                     )
             except:
-                print ("Colour could not be processed:\n" + line)
+                print("Colour could not be processed:\n" + line)
             outlist[-1].colour = artColour
         elif (
             line[2:].startswith("                   /gene=")
@@ -13470,7 +13469,7 @@ def draw(
                 bmp.setPenColor(Color.BLACK)
                 bmp.writeString(legendArrows[index][0], 106, i, 64)
             else:
-                print ("wang")
+                print("wang")
             index += 1
     elif legend == "Two columns":
         index = 0
@@ -19285,7 +19284,7 @@ def gbk2fasta(genbank, out, mincut, maxcut):
         if maxcut < 1:
             maxcut = 1
     except:
-        print ("Annotation slice values not valid.")
+        print("Annotation slice values not valid.")
     try:
         gen = open(genbank)
         outfile = open(out, "w")
@@ -19316,7 +19315,9 @@ def gbk2fasta(genbank, out, mincut, maxcut):
                 if not i in rightchars:
                     isitgood = False
             if not isitgood:
-                print ("Annotation file contains invalid characters. Check genbank/EMBL contains no lines starting with > or that fasta file contains only valid nucleotides")
+                print(
+                    "Annotation file contains invalid characters. Check genbank/EMBL contains no lines starting with > or that fasta file contains only valid nucleotides"
+                )
                 return 0
         if "/" in out:
             outfile.write(">" + out.split("/")[1] + "\n")
@@ -19339,12 +19340,12 @@ def gbk2fasta(genbank, out, mincut, maxcut):
                 seq = seq.replace("qqq", "n" * int(len(seq) / 500))
             outfile.write(seq)
         if len(seq) == 0:
-            print ("There is no sequence in " + genbank + ".")
+            print("There is no sequence in " + genbank + ".")
             return 0
         else:
             return 1
     except:
-        print (genbank + " does not exist.")
+        print(genbank + " does not exist.")
         return 0
 
 
@@ -19369,10 +19370,10 @@ def getGCcontent(filename, windsize, step, mincut, maxcut):
         gen.close()
         seq = seq.upper()
     except:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     if len(seq) == 0:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     if maxcut == "Max":
         seq = seq[int(mincut) - 1 :]
@@ -19412,10 +19413,10 @@ def getGCskew(filename, windsize, step, mincut, maxcut):
         gen.close()
         seq = seq.upper()
     except:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     if len(seq) == 0:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     if maxcut == "Max":
         seq = seq[int(mincut) - 1 :]
@@ -19460,10 +19461,10 @@ def getCoverage(filename, filename2, mincut, maxcut):
                 seq += "".join(line.split()[:-1])
         gen.close()
     except:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     if len(seq) == 0:
-        print ("Annotation file " + filename + " not valid.")
+        print("Annotation file " + filename + " not valid.")
         return None
     seq = seq.lower()
     if maxcut == "Max":
@@ -19589,7 +19590,7 @@ def getCustom(filename):
                     thearray[i].append(float(templine[i]))
         return thearray
     except:
-        print (filename + " not valid graph file.")
+        print(filename + " not valid graph file.")
         return None
 
 
@@ -19616,9 +19617,11 @@ def genBlast(inlist, cutlist):
                 + ".easyfig.fa",
                 shell=True,
             ).wait()
-            print ("makeblastdb -dbtype nucl -out temp_easyfig/tempdb -in temp_easyfig/" + str(
-                i + 2
-            ) + ".easyfig.fa")
+            print(
+                "makeblastdb -dbtype nucl -out temp_easyfig/tempdb -in temp_easyfig/"
+                + str(i + 2)
+                + ".easyfig.fa"
+            )
         elif isLegBlastDB():
             subprocess.Popen(
                 "formatdb -p F -t tempdb -n temp_easyfig/tempdb -i temp_easyfig/"
@@ -19627,7 +19630,7 @@ def genBlast(inlist, cutlist):
                 shell=True,
             ).wait()
         else:
-            print ("Could not find BLAST.")
+            print("Could not find BLAST.")
             sys.exit()
         if isNewBlastn():
             subprocess.Popen(
@@ -19650,7 +19653,7 @@ def genBlast(inlist, cutlist):
                 shell=True,
             ).wait()
         else:
-            print ("Could not find BLAST.")
+            print("Could not find BLAST.")
             sys.exit()
         outlist.append(inlist[i])
         outlist.append("temp_easyfig/" + str(i + 1) + str(i + 2) + ".easyfig.out")
@@ -19661,7 +19664,7 @@ def genBlast(inlist, cutlist):
 def genTBlastX(inlist, cutlist):
     pwd = os.getcwd()
     if os.path.exists("temp_easyfig"):
-        print ("please run from a directory without the folder temp_easyfig")
+        print("please run from a directory without the folder temp_easyfig")
         sys.exit()
     os.mkdir("temp_easyfig")
     os.chdir("temp_easyfig")
@@ -19690,7 +19693,7 @@ def genTBlastX(inlist, cutlist):
                 shell=True,
             ).wait()
         else:
-            print ("Could not find BLAST.")
+            print("Could not find BLAST.")
             sys.exit()
         if isNewTblastx():
             subprocess.Popen(
@@ -19713,7 +19716,7 @@ def genTBlastX(inlist, cutlist):
                 shell=True,
             ).wait()
         else:
-            print ("Could not find BLAST.")
+            print("Could not find BLAST.")
             sys.exit()
         outlist.append(inlist[i])
         outlist.append(os.getcwd() + "/" + str(i + 1) + str(i + 2) + ".easyfig.out")
@@ -19936,7 +19939,7 @@ if (
                 gfilename = sys.argv[i + 2]
                 lastflag += 1
             else:
-                print (sys.argv[i + 1] + " not a valid graph type")
+                print(sys.argv[i + 1] + " not a valid graph type")
         elif sys.argv[i] == "-wind_size":
             windsize = int(sys.argv[i + 1])
         elif sys.argv[i] == "-step":
@@ -20000,7 +20003,9 @@ if (
             elif sys.argv[i + 1] == "both":
                 legend = "Top & Bottom"
             else:
-                print ("Legend options are <single/double/top/bottom/both/None> (case sensitive), using None.")
+                print(
+                    "Legend options are <single/double/top/bottom/both/None> (case sensitive), using None."
+                )
         elif sys.argv[i] == "-leg_name":
             legname = sys.argv[i + 1]
     inlist = sys.argv[lastflag + 1 :]
@@ -20092,7 +20097,7 @@ if (
     else:
         "Please choolse -blastn or -tblastx flags to generate blast files, or use -blast_files to use previously generated files."
     if filename == None:
-        print ("Please choose a file to write to (-o tag) and try agian.")
+        print("Please choose a file to write to (-o tag) and try agian.")
         sys.exit()
     if featDict == {} and not nofeat:
         featDict = {"CDS": ("arrow", (64, 224, 208))}
@@ -20162,7 +20167,7 @@ if (
         )
     if (blastit or tblastit) and not keep_blast:
         shutil.rmtree("temp_easyfig")
-    print ("Minimum blast hit reported: " + str(x) + "%")
+    print("Minimum blast hit reported: " + str(x) + "%")
 
 elif len(sys.argv) == 1:
     from Tkinter import *
@@ -20202,7 +20207,7 @@ elif len(sys.argv) == 1:
     app = App(root)
     root.mainloop()
 else:
-    print (
+    print(
         """
 Easyfig.py   Written by: Mitchell Sullivan   mjsull@gmail.com
 Supervisor: Dr. Scott Beatson   University of Queensland    03.12.2010

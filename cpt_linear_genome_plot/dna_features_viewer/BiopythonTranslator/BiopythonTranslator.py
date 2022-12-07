@@ -96,7 +96,7 @@ class BiopythonTranslator(BiopythonTranslatorBase):
 
     def compute_filtered_features(self, features):
         """Return the list of features minus the ignored ones.
-        
+
         By the method keeps any feature whose type is not in
         ignored_features_types and for which all filter(f) pass
         """

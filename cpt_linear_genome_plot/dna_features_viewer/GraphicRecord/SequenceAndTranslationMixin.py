@@ -98,7 +98,7 @@ class SequenceAndTranslationMixin:
         translation
           Sequence of amino acids either as a string ``'MAKG...'`` or as a list
           ``['Met', 'Ala', ...]``
-        
+
 
         """
         start, end = location[0], location[1]
@@ -140,6 +140,4 @@ class SequenceAndTranslationMixin:
                     zorder=-10000,
                 )
         if guides_intensity:
-            ax.axvline(
-                end - 0.5, linewidth=0.1, color=guides_color, zorder=-10000
-            )
+            ax.axvline(end - 0.5, linewidth=0.1, color=guides_color, zorder=-10000)

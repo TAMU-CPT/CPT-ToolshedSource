@@ -62,8 +62,7 @@ class CircularGraphicRecord(GraphicRecord):
         self.labels_spacing = labels_spacing
 
     def initialize_ax(self, ax, draw_line, with_ruler):
-        """Initialize the ax with a circular line, sets limits, aspect etc.
-        """
+        """Initialize the ax with a circular line, sets limits, aspect etc."""
 
         if draw_line:
             circle = mpatches.Circle(
@@ -91,18 +90,13 @@ class CircularGraphicRecord(GraphicRecord):
         annotations_max_level,
         auto_figure_height=False,
         ideal_yspan=None,
-        annotations_are_elevated=True
+        annotations_are_elevated=True,
     ):
         """Final display range and figure dimension tweakings."""
-        annotation_height = self.determine_annotation_height(
-            annotations_max_level
-        )
-        ymin = -2 * self.radius - self.feature_level_height * (
-            features_levels + 1
-        )
-        ymax = (
-            self.feature_level_height * (features_levels + 1)
-            + annotation_height * (annotations_max_level + 1)
+        annotation_height = self.determine_annotation_height(annotations_max_level)
+        ymin = -2 * self.radius - self.feature_level_height * (features_levels + 1)
+        ymax = self.feature_level_height * (features_levels + 1) + annotation_height * (
+            annotations_max_level + 1
         )
         if ideal_yspan is not None:
             ymax = max(annotation_height * ideal_yspan + ymin, ymax)
@@ -146,14 +140,11 @@ class CircularGraphicRecord(GraphicRecord):
         return 90 - a
 
     def coordinates_in_plot(self, position, level):
-        """Convert a sequence position and height level to (x, y) coordinates.
-        """
+        """Convert a sequence position and height level to (x, y) coordinates."""
         r = self.radius + level * self.feature_level_height
         angle = self.position_to_angle(position)
         rad_angle = np.deg2rad(angle)
-        return np.array(
-            [r * np.cos(rad_angle), r * np.sin(rad_angle) - self.radius]
-        )
+        return np.array([r * np.cos(rad_angle), r * np.sin(rad_angle) - self.radius])
 
     def determine_annotation_height(self, max_annotations_level):
         """Auto-select the annotations height.
@@ -165,7 +156,7 @@ class CircularGraphicRecord(GraphicRecord):
         return min(0.25, 3.0 * self.radius / (1.0 + max_annotations_level))
 
     def compute_padding(self, ax):
-        ""
+        """"""
         ax_width = ax.get_window_extent(ax.figure.canvas.get_renderer()).width
         xmin, xmax = ax.get_xlim()
         return 3 * self.labels_spacing * (xmax - xmin) / (1.0 * ax_width)
