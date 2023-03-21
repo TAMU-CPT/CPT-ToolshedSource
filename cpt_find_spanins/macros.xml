@@ -9,13 +9,13 @@
         </requirements>
     </xml>
     <token name="@BLAST_TSV@">
-		"$blast_tsv"
+		$blast_tsv
 	</token>
     <xml name="blast_tsv">
         <param label="Blast Results" help="TSV/tabular (25 Column)" name="blast_tsv" type="data" format="tabular"/>
     </xml>
     <token name="@BLAST_XML@">
-		"$blast_xml"
+		$blast_xml
 	</token>
     <xml name="blast_xml">
         <param label="Blast Results" help="XML format" name="blast_xml" type="data" format="blastxml"/>
@@ -35,7 +35,7 @@
         <expand macro="genome_selector"/>
     </xml>
     <token name="@INPUT_GFF@">
-	"$gff3_data"
+	    $gff3_data
 	</token>
     <token name="@INPUT_FASTA@">
 		genomeref.fa
@@ -50,7 +50,7 @@
         <param label="Fasta file" name="sequences" type="data" format="fasta"/>
     </xml>
     <token name="@SEQUENCE@">
-		"$sequences"
+		$sequences
 	</token>
     <xml name="input/fasta/protein">
         <param label="Protein fasta file" name="sequences" type="data" format="fasta"/>

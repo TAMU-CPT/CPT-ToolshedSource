@@ -19,7 +19,7 @@
         <expand macro="genome_selector"/>
     </xml>
     <token name="@INPUT_GFF@">
-	"$gff3_data"
+	    $gff3_data
 	</token>
     <token name="@INPUT_FASTA@">
 		genomeref.fa
@@ -34,7 +34,7 @@
         <param label="Fasta file" name="sequences" type="data" format="fasta"/>
     </xml>
     <token name="@SEQUENCE@">
-		"$sequences"
+		$sequences
 	</token>
     <xml name="input/fasta/protein">
         <param label="Protein fasta file" name="sequences" type="data" format="fasta"/>
