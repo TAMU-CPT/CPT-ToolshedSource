@@ -15,13 +15,13 @@
         <citation type="doi">10.1093/bioinformatics/btm039</citation>
     </xml>
     <token name="@XMFA_INPUT@">
-		$xmfa
+		'$xmfa'
 	</token>
     <xml name="xmfa_input" token_formats="xmfa">
         <param type="data" format="@FORMATS@" name="xmfa" label="XMFA MSA"/>
     </xml>
     <token name="@XMFA_FA_INPUT@">
-		$sequences
+		'$sequences'
 	</token>
     <xml name="xmfa_fa_input">
         <param type="data" format="fasta" name="sequences" label="Sequences in alignment" help="These sequences should be the SAME DATASET that was used in the progressiveMauve run. Failing that, they should be provided in the same order as in original progressiveMauve run"/>
@@ -50,23 +50,23 @@
         <expand macro="genome_selector"/>
     </xml>
     <token name="@INPUT_GFF@">
-	$gff3_data
+	    '$gff3_data'
 	</token>
     <token name="@INPUT_FASTA@">
     #if str($reference_genome.reference_genome_source) == 'cached':
-            ${reference_genome.fasta_indexes.fields.path}
+            '${reference_genome.fasta_indexes.fields.path}'
     #else if str($reference_genome.reference_genome_source) == 'history':
             genomeref.fa
     #end if
 	</token>
     <token name="@GENOME_SELECTOR_PRE@">
     #if $reference_genome.reference_genome_source == 'history':
-            ln -s $reference_genome.genome_fasta genomeref.fa;
+            ln -s '$reference_genome.genome_fasta' genomeref.fa;
     #end if
 	</token>
     <token name="@GENOME_SELECTOR@">
     #if str($reference_genome.reference_genome_source) == 'cached':
-            ${reference_genome.fasta_indexes.fields.path}
+            '${reference_genome.fasta_indexes.fields.path}'
     #else if str($reference_genome.reference_genome_source) == 'history':
             genomeref.fa
     #end if
