@@ -1,14 +1,1 @@
-<macros>
-    <xml name="requirements">
-        <requirements>
-            <requirement type="package" version="3.6.1">python</requirement>
-            <requirement type="package" version="1.67">biopython</requirement>
-            <yield/>
-        </requirements>
-        <version_command>
-		<![CDATA[
-			cd '$__tool_directory__' && git rev-parse HEAD
-		]]>
-		</version_command>
-    </xml>
-</macros>
+/Users/curtisross/projects/CPT-ToolshedSource/macros.xml
