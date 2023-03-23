@@ -10,7 +10,7 @@
         <requirement type="package" version="7.0.8_68">imagemagick</requirement>
         <requirement type="package" version="9.18">ghostscript</requirement>
     </expand>
-    <command detect_errors="aggressive">
+    <command detect_errors="aggressive"><![CDATA[
 '$__tool_directory__/mist3.py'
 #set repeat_var_1 = '" "'.join([ str($var) for $var in $fasta_files ])
 --window "${window}"
@@ -20,7 +20,7 @@
 --plot_type '$plot_type'
 
 "$repeat_var_1"
-&gt; '$output'
+> '$output' ]]>
 </command>
     <inputs>
         <param help="Sequences to plot" label="file" name="fasta_files" type="data" format="fasta" multiple="True"/>

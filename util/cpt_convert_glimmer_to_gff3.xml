@@ -5,13 +5,13 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements"/>
-    <command detect_errors="aggressive">
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
 python '$__tool_directory__/cpt_convert_glimmer_to_gff3.py'
 '$glimmer'
 @GENOME_SELECTOR@
-&gt; '$data'
+> '$data' ]]>
 </command>
     <inputs>
         <param label="Glimmer Output" name="glimmer" type="data" format="tabular,txt"/>

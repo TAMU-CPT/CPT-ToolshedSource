@@ -5,7 +5,7 @@
         <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
-    <command detect_errors="aggressive">
+    <command detect_errors="aggressive"><![CDATA[
 '$__tool_directory__/fasta_charges.py'
 '$svg'
 @SEQUENCE@
@@ -39,7 +39,7 @@
 	#end for
 #end if
 
-&gt; $html
+> $html ]]>
 </command>
     <inputs>
         <expand macro="input/fasta/protein"/>

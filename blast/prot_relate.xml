@@ -5,14 +5,14 @@
         <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
-    <command detect_errors="aggressive">
+    <command detect_errors="aggressive"><![CDATA[
 '$__tool_directory__/relatedness_prot.py'
 @BLAST_TSV@
 '$__tool_directory__/TaxID_List.txt'
 --hits '$hits'
 '$filter'
 --protein
-&gt; '$accession_list'
+> '$accession_list']]>
 </command>
     <inputs>
         <expand macro="blast_tsv"/>
