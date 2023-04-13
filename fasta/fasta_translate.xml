@@ -11,7 +11,7 @@
 
 --target '${output.format_select}'
 
-#if str('$output.format_select') == "protein":
+#if str($output.format_select) == "protein":
 		--table '$output.table'
 		'$output.strip_stops'
 		'$output.met'

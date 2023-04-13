@@ -16,7 +16,7 @@ python '$__tool_directory__/phage_annotation_table.py'
 --types "$extraTypes"
 --reportTemplateName "$report_format"
 --annotationTableCols "$cols,$gaf_cols"
-#if '$gaf_data':
+#if $gaf_data:
 --gafData "$gaf_data"
 #end if
 '$checkSubfeats'

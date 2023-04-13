@@ -7,28 +7,28 @@
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 ## Symlink files in with correct extensions
-#for '$file' in '$sequences':
+#for $file in $sequences:
     ln -s '$file' `basename '$file'`;
 #end for
 
 progressiveMauve
 ## Input Options
 
-#if '$apply_backbone':
+#if $apply_backbone:
     --apply-backbone='$apply_backbone'
 #end if
 --island-gap-size='$island_gap_size'
 '$mums'
 
-#if '$seed_weight':
+#if $seed_weight:
     --seed-weight='$seed_weight'
 #end if
 
-#if '$max_gapped_aligner_length':
+#if $max_gapped_aligner_length:
     --max-gapped-aligner-length='$max_gapped_aligner_length'
 #end if
 
-#if '$match_input':
+#if $match_input:
     --match-input='$match_input'
 #end if
 
@@ -41,23 +41,23 @@ progressiveMauve
 '$skip_refinement'
 '$skip_gapped_alignment'
 
-#if '$bp_dist_estimate_min_score':
+#if $bp_dist_estimate_min_score:
     --bp-dist-estimate-min-score='$bp_dist_estimate_min_score'
 #end if
 
-#if '$gap_open':
+#if $gap_open:
     --gap-open='$gap_open'
 #end if
 
-#if '$gap_extend':
+#if $gap_extend:
     --gap-extend='$gap_extend'
 #end if
 
-#if '$weight':
+#if $weight:
     --weight='$weight'
 #end if
 
-#if '$min_scaled_penalty':
+#if $min_scaled_penalty:
     --min-scaled-penalty='$min_scaled_penalty'
 #end if
 
@@ -73,16 +73,16 @@ progressiveMauve
 
 ## Outputs
 --output=$output
-#if '$output_guide_tree':
+#if $output_guide_tree:
     --output-guide-tree='$output_guide_tree_file'
 #end if
 
-#if '$output_backbone':
+#if $output_backbone:
     --backbone-output='$output_backbone_file'
 #end if
 
 ## Sequences
-#for file in '$sequences':
+#for file in $sequences:
     `basename "${file}"`
 #end for
 

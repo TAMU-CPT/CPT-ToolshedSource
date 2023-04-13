@@ -15,7 +15,7 @@
 perl -Mlib='$__tool_directory__/lib' '$__tool_directory__/cpt_psm_0_prep.pl'
 --galaxy
 --outfile_supporting '$__new_file_path__'
-#for '$item' in '$repeat_file':
+#for $item in $repeat_file:
 --file "${item.file}"
 #end for
 

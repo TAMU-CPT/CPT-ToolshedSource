@@ -12,15 +12,15 @@
 
 --width '$width'
 
-#if '$scheme.cs' == "default":
+#if $scheme.cs == "default":
 --aa HSQTNCY AVILMPFWG ERDK
 --fgColor "#000000" "#000000" "#ffffff"
 --bgColor "#ffffff" "#999999" "#000000"
-#elif '$scheme.cs' == "rb":
+#elif $scheme.cs == "rb":
 --aa KR ED HSQTNCYAVILMPFWG
 --fgColor "#ffffff" "#ffffff" "#000000"
 --bgColor "#00b0f0" "#fc0000" "#ffffff"
-#elif '$scheme.cs' == "rbgb":
+#elif $scheme.cs == "rbgb":
 --aa KR ED P C HSQTNYAVILMFWG
 --fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
 --bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"

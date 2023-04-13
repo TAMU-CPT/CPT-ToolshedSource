@@ -12,9 +12,9 @@ python2.7 '$__tool_directory__/searchFile.py'
     #if $check is not None:
     --dbaseTerms "$check"
     #end if
-    #if '$term_add.term_selector' == "customtxt":
+    #if $term_add.term_selector == "customtxt":
     --custom_txt "$term_add.custom_txt"
-    #elif '$term_add.term_selector' == "customfile":
+    #elif $term_add.term_selector == "customfile":
     --custom_file "$term_add.custom_file"
     #else:
     #pass

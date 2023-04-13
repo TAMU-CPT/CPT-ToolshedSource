@@ -19,11 +19,11 @@ python '$__tool_directory__/linear_genome_plot.py'
 --title "$title"
 $label_algo
 $label_box
-#if '$selectregion.custom_region':
+#if $selectregion.custom_region:
     --sz '$selectregion.start_zoom'
     --ez '$selectregion.end_zoom'
 #end if
-#if '$multiline.multi_line':
+#if $multiline.multi_line:
     --multiline
     --nucl_per_line '$multiline.nucl_per_line'
 #end if

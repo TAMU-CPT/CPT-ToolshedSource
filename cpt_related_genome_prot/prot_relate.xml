@@ -12,7 +12,7 @@
 --hits '$hits'
 '$filter'
 --protein
-#if '$blastIn.blastType' == "XML":
+#if $blastIn.blastType == "XML":
 --xmlMode
 #end if
 --taxFilter "$taxFilter" 

@@ -12,8 +12,8 @@
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
 '$__tool_directory__/intersect_and_adjacent.py'
-"$gff3_data_a"
-"$gff3_data_b"
+'$gff3_data_a'
+'$gff3_data_b'
 '$window'
 '$stranding'
 --oa '$oa'
