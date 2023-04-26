@@ -1,14 +1,14 @@
 <tool id="edu.tamu.cpt.proximity.searchFile" name="Search File" version="1.0">
     <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
     <macros>
-	    <import>macros.xml</import>
-	    <import>cpt-macros.xml</import>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
-	    <requirement type="package" version="0.10.1">gffutils</requirement>
+        <requirement type="package" version="0.10.1">gffutils</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python2.7 $__tool_directory__/searchFile.py
+python2.7 '$__tool_directory__/searchFile.py'
     #if $check is not None:
     --dbaseTerms "$check"
     #end if
@@ -40,74 +40,74 @@ python2.7 $__tool_directory__/searchFile.py
     #if $prox:
         --prox
     #end if
-    --output $output
+    --output '$output'
     ]]></command>
-        <inputs>
-            <param label="Using Proximity to Lysis Pipeline?" name="prox" type="boolean" truevalue="--prox" falsevalue="" checked="false" help="required GFF3 input"/>
-            <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database (see terms in Shared Data/Lysis family Terms)" display="checkboxes">
-                <option value="endolysins" selected="true">Endolysins</option>
-                <option value="holins" selected="true">Holins and Anti-holins</option>
-                <option value="spanins" selected="true">Spanins</option>
-                <option value="endolysin_domains" selected="true">Endolysin Associated Domains</option>
-                <option value="spanin_domains" selected="true">Spanin Associated Domains</option>
-                <option value="holin_domains" selected="true">Holin Associated Domains</option>
+    <inputs>
+        <param label="Using Proximity to Lysis Pipeline?" name="prox" type="boolean" truevalue="--prox" falsevalue="" checked="false" help="required GFF3 input"/>
+        <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database (see terms in Shared Data/Lysis family Terms)" display="checkboxes">
+            <option value="endolysins" selected="true">Endolysins</option>
+            <option value="holins" selected="true">Holins and Anti-holins</option>
+            <option value="spanins" selected="true">Spanins</option>
+            <option value="endolysin_domains" selected="true">Endolysin Associated Domains</option>
+            <option value="spanin_domains" selected="true">Spanin Associated Domains</option>
+            <option value="holin_domains" selected="true">Holin Associated Domains</option>
+        </param>
+        <conditional name="term_add">
+            <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
+                <option value="nocustom" selected="false">No Custom Terms</option>
+                <option value="customtxt" selected="false">Custom Text</option>
+                <option value="customfile" selected="false">Custom File</option>
             </param>
-            <conditional name="term_add">
-                <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
-                    <option value="nocustom" selected="false">No Custom Terms</option>
-                    <option value="customtxt" selected="false">Custom Text</option>
-                    <option value="customfile" selected="false">Custom File</option>
+            <when value="customtxt">
+                <param name="custom_txt" label="Custom Text" optional="true" type="text" area="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
+            </when>
+            <when value="customfile">
+                <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+            </when>
+        </conditional>
+        <repeat name="input_files" title="Input Files">
+            <conditional name="file_selector">
+                <param name="file_select" type="select" label="Choose the type of file(s) you'd like to query">
+                    <option value="gff3selection" selected="false">GFF3</option>
+                    <option value="gbkselection" selected="false">Genbank</option>
+                    <option value="faselection" selected="false">FASTA</option>
+                    <option value="blastselection" selected="false">BLAST-XML</option>
                 </param>
-                <when value="customtxt">
-                    <param name="custom_txt" label="Custom Text" optional="true" type="text" area="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
+                <when value="gff3selection">
+                    <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3"/>
                 </when>
-                <when value="customfile">
-                    <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+                <when value="gbkselection">
+                    <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank"/>
+                </when>
+                <when value="faselection">
+                    <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta"/>
+                </when>
+                <when value="blastselection">
+                    <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml"/>
                 </when>
             </conditional>
-            <repeat name="input_files" title="Input Files">
+        </repeat>
+    </inputs>
+    <outputs>
+        <data format="txt" name="output" label="termHits">
+            <change_format>
+                <when input="prox" value="--prox" format="gff3"/>
+            </change_format>
+        </data>
+    </outputs>
+    <tests>
+        <test>
+            <param name="prox" value="--prox"/>
+            <param name="check" value="spanins"/>
+            <repeat name="input_files">
                 <conditional name="file_selector">
-                    <param name="file_select" type="select" label="Choose the type of file(s) you'd like to query">
-                        <option value="gff3selection" selected="false">GFF3</option>
-                        <option value="gbkselection" selected="false">Genbank</option>
-                        <option value="faselection" selected="false">FASTA</option>
-                        <option value="blastselection" selected="false">BLAST-XML</option>
-                    </param>
-                    <when value="gff3selection">
-                        <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3"/>
-                    </when>
-                    <when value="gbkselection">
-                        <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank"/>
-                    </when>
-                    <when value="faselection">
-                        <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta"/>
-                    </when>
-                    <when value="blastselection">
-                        <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml"/>
-                    </when>
+                    <param name="file_select" value="gff3selection"/>
+                    <param name="gff3_files" value="lambda_spaninBLAST.gff3"/>
                 </conditional>
             </repeat>
-        </inputs>
-        <outputs>
-            <data format="txt" name="output" label="termHits">
-                <change_format>
-                    <when input="prox" value="--prox" format="gff3"/>
-                </change_format>
-            </data>
-        </outputs>
-        <tests>
-            <test>
-                <param name="prox" value="--prox"/>
-                <param name="check" value="spanins"/>
-                <repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="gff3selection"/>
-                            <param name="gff3_files" value="lambda_spaninBLAST.gff3"/>
-                    </conditional>
-                </repeat>
-                <output name="output" file="termHits"/>
-            </test>
-        </tests>
+            <output name="output" file="termHits"/>
+        </test>
+    </tests>
     <help><![CDATA[
 INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box. Additionally, if a user is performing this script in the proximity to lysis workflow, the selector needs to be selected to true, and only gff3 files will be able to complete the job.
 
@@ -139,9 +139,9 @@ File Search Areas:
 
 - blast-xml : hit description
     ]]></help>
-        <citations>
-            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
-            <citation type="bibtex">
+    <citations>
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+        <citation type="bibtex">
                 @unpublished{galaxyTools,
                 author = {C. Ross},
                 title = {CPT Galaxy Tools},
@@ -149,5 +149,5 @@ File Search Areas:
                 note = {https://github.com/tamu-cpt/galaxy-tools/}
                 }
             </citation>
-        </citations>
+    </citations>
 </tool>

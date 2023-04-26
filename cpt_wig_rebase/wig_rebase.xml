@@ -2,42 +2,41 @@
   <description>against parent features</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/wig_rebase.py
-$parent
-$wigFile
+python '$__tool_directory__/wig_rebase.py'
+'$parent'
+'$wigFile'
 
-$protein2dna
+'$protein2dna'
 --map_by "$map_by"
-> $output ]]></command>
+> '$output']]></command>
   <inputs>
     <param label="Parent GFF3 annotations" name="parent" format="gff3" type="data"/>
     <param label="Wig Results" name="wigFile" format="wig" type="data"/>
-
     <param label="Map protein translated results to original DNA data" name="protein2dna" type="boolean" truevalue="--protein2dna" falsevalue=""/>
-    <param label="Mapping Key" name="map_by" type="text" value="ID" />
+    <param label="Mapping Key" name="map_by" type="text" value="ID"/>
   </inputs>
   <outputs>
     <data format="wig" name="output"/>
   </outputs>
   <tests>
-      <test>
-          <param name="parent" value="T7_CLEAN.gff3"/>
-          <param name="wigFile" value="T7_BW_I.wig"/>
-          <param name="protein2dna" value="--protein2dna" />
-          <param name="map_by" value="ID" />
-          <output name="output" file="T7_BW_I_REBASE.wig"/>
-      </test>
-      <test>
-          <param name="parent" value="tmhmm.parent.gff3"/>
-          <param name="wigFile" value="tmhmm_m.wig"/>
-          <param name="protein2dna" value="--protein2dna" />
-          <param name="map_by" value="ID" />
-          <output name="output" file="rebased_m.wig"/>
-      </test>
+    <test>
+      <param name="parent" value="T7_CLEAN.gff3"/>
+      <param name="wigFile" value="T7_BW_I.wig"/>
+      <param name="protein2dna" value="--protein2dna"/>
+      <param name="map_by" value="ID"/>
+      <output name="output" file="T7_BW_I_REBASE.wig"/>
+    </test>
+    <test>
+      <param name="parent" value="tmhmm.parent.gff3"/>
+      <param name="wigFile" value="tmhmm_m.wig"/>
+      <param name="protein2dna" value="--protein2dna"/>
+      <param name="map_by" value="ID"/>
+      <output name="output" file="rebased_m.wig"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -56,5 +55,5 @@ E.g. Given
 
 The data would be re-mapped and you would receive a wig file with data from 2000-2200.
 ]]></help>
-		<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>

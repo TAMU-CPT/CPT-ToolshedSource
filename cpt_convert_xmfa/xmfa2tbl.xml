@@ -7,12 +7,12 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/xmfa2tbl.py
-$dice
+'python $__tool_directory__/xmfa2tbl.py'
+'$dice'
 @XMFA_INPUT@
 @XMFA_FA_INPUT@
 
-> $output
+> '$output'
 ]]></command>
 	<inputs>
 		<expand macro="xmfa_input" />

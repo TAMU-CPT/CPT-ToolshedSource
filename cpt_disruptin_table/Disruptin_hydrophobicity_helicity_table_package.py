@@ -21,15 +21,15 @@ def disruptin_table(garnier_file, fasta_file):
     sec_struct = []
 
     # reading the lines from the garnier csv file
-#    with open(garnier_file,'r') as csvfile:
-#        garnierreader = csv.reader(csvfile)
+    #    with open(garnier_file,'r') as csvfile:
+    #        garnierreader = csv.reader(csvfile)
     for row in garnier_file:
-        if row[0] == 'Sequence: ':
+        if row[0] == "Sequence: ":
             names += [row[1]]
-        elif row[0] in 'HETC':
-	    row = row.split('\t')
-            sec_struct += [''.join(row)]
-			
+        elif row[0] in "HETC":
+            row = row.split("\t")
+            sec_struct += ["".join(row)]
+
     record = []
     p = []
     r = []
@@ -100,19 +100,19 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set up output location
-#    f = open(sys.stdout, 'w', newline='')
-#    writer1 = csv.writer(f)
+    #    f = open(sys.stdout, 'w', newline='')
+    #    writer1 = csv.writer(f)
 
     iden, position, residue, charge, hydro, struct = disruptin_table(**vars(args))
 
     for i in range(len(iden)):
-#		 writer1.writerow(['Protein ID']+[iden[i]])
-#        writer1.writerow(['Position'] + [format(x, 's') for x in position[i]])
-#        writer1.writerow(['Residue'] + [format(x, 's') for x in residue[i]])
-#		 writer1.writerow(['Charge'] + [format(x, 's') for x in charge[i]])
-#        writer1.writerow(['Hydrophobicity'] + [format(x, '.3f') for x in hydro[i]])
-#        writer1.writerow(['Secondary Structure'] + [format(x, 's') for x in struct[i]])
-#        writer1.writerow([''])
+        #        writer1.writerow(['Protein ID']+[iden[i]])
+        #        writer1.writerow(['Position'] + [format(x, 's') for x in position[i]])
+        #        writer1.writerow(['Residue'] + [format(x, 's') for x in residue[i]])
+        #        writer1.writerow(['Charge'] + [format(x, 's') for x in charge[i]])
+        #        writer1.writerow(['Hydrophobicity'] + [format(x, '.3f') for x in hydro[i]])
+        #        writer1.writerow(['Secondary Structure'] + [format(x, 's') for x in struct[i]])
+        #        writer1.writerow([''])
 
         print(str(iden[i]))
         print("Position \t " + "\t".join(position[i]))

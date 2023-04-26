@@ -41,7 +41,9 @@ CREDITS = (
 
 class FancyRecord(object):
     def __init__(self, record, tmpdir):
-        self.temp = tempfile.NamedTemporaryFile(mode='w', dir=tmpdir, delete=False, suffix=".fa")
+        self.temp = tempfile.NamedTemporaryFile(
+            mode="w", dir=tmpdir, delete=False, suffix=".fa"
+        )
         self.temp_path = self.temp.name
         self.id = self.temp_path.rsplit("/")[-1]
         self.record = record
@@ -110,8 +112,7 @@ class Subplot(object):
         return "Subplot [%s]" % self.get_description()
 
     def run_gepard(self, matrix, window, global_rescale="35%"):
-        """Run gepard on two sequences, with a specified output file
-        """
+        """Run gepard on two sequences, with a specified output file"""
         log.info("Running Gepard on %s", self.get_description())
 
         destination_fn = (
@@ -138,8 +139,8 @@ class Subplot(object):
             "--silent",
         ]
         log.debug(subprocess.list2cmdline(cmd))
-        #log.info(subprocess.check_output("convert -list type"))
-        #exit(2)
+        # log.info(subprocess.check_output("convert -list type"))
+        # exit(2)
         failure_count = 0
         while True:
             try:
@@ -209,8 +210,7 @@ class Subplot(object):
             return int(float(font_size) * 30 / 40)
 
         def est_pixels(string, font_size):
-            """guess pixel width of a string at a given font size
-            """
+            """guess pixel width of a string at a given font size"""
             return char_width(font_size) * len(string)
 
         j_ticks = int(Misty.BestTick(self.j.length, 5))
@@ -246,7 +246,10 @@ class Subplot(object):
         primary_header = self.i.header
         secondary_head = self.i.description
         cmd += (
-            ["-rotate", "-90",]
+            [
+                "-rotate",
+                "-90",
+            ]
             + FONT_30pt
             + [
                 # Side label (i/row)
@@ -266,7 +269,10 @@ class Subplot(object):
             ]
         )
 
-        if est_pixels(self.i.description, 10) < original_dims[1] and secondary_head != "":
+        if (
+            est_pixels(self.i.description, 10) < original_dims[1]
+            and secondary_head != ""
+        ):
             cmd += FONT_10pt + [
                 # Side label (i/row)
                 "-annotate",
@@ -340,7 +346,10 @@ class Subplot(object):
             ]
         )
 
-        if est_pixels(self.j.description, 10) < original_dims[0] and secondary_head != "":
+        if (
+            est_pixels(self.j.description, 10) < original_dims[0]
+            and secondary_head != ""
+        ):
             cmd += FONT_10pt + [
                 "-annotate",
                 "+%s+%s"
@@ -379,25 +388,23 @@ class Subplot(object):
             cmd += ["-annotate", "+%s+%s" % (x + 5, y), self.label_formatter(z)]
 
         cmd.append(outfile)
-        #tmpFile = open(outfile, "w")
-        #tmpFile.close()
-        log.info(subprocess.check_output( ["cp", infile, outfile] ))
+        # tmpFile = open(outfile, "w")
+        # tmpFile.close()
+        log.info(subprocess.check_output(["cp", infile, outfile]))
         log.info(subprocess.list2cmdline(cmd))
-        log.info(subprocess.check_output( "ls" ))
+        log.info(subprocess.check_output("ls"))
         log.info(self.tmpdir)
-        log.info(subprocess.check_output( ["ls", self.tmpdir]))
+        log.info(subprocess.check_output(["ls", self.tmpdir]))
         log.info(outfile[2:])
         log.info("Above was ls\n")
         try:
-            subprocess.check_output(cmd)# + [" 2>&1"])
+            subprocess.check_output(cmd)  # + [" 2>&1"])
         except:
             log.info("Excepted")
 
 
-
 class Misty(object):
-    """MIST Class for building MIST Plots
-    """
+    """MIST Class for building MIST Plots"""
 
     def __init__(self, window=10, zoom=50, matrix="edna", files_path="mist_images"):
         self.tmpdir = tempfile.mkdtemp(prefix="cpt.mist3.", dir=".")
@@ -563,7 +570,7 @@ class Misty(object):
         MONTAGE_BORDER_COORD = "%sx%s" % (MONTAGE_BORDER, MONTAGE_BORDER)
 
         m0 = os.path.join(self.tmpdir, "m0.png")
-#        log.info(subprocess.check_output( ["cp", image_list[0], m0]  ))
+        #        log.info(subprocess.check_output( ["cp", image_list[0], m0]  ))
         cmd = ["montage"] + image_list
         cmd += [
             "-tile",
@@ -581,9 +588,9 @@ class Misty(object):
 
         log.debug(" ".join(cmd))
         try:
-          subprocess.check_call(cmd)
+            subprocess.check_call(cmd)
         except:
-          log.debug("Excepted, 2")
+            log.debug("Excepted, 2")
         # Add grey borders
         montage_path = os.path.join(self.tmpdir, "montage.png")
         cmd = [
@@ -602,9 +609,9 @@ class Misty(object):
 
         log.debug(" ".join(cmd))
         try:
-          subprocess.check_call(cmd)
+            subprocess.check_call(cmd)
         except:
-          log.debug("Excepted, 2")
+            log.debug("Excepted, 2")
         os.unlink(m0)
         return montage_path
 
@@ -629,10 +636,7 @@ class Misty(object):
         current_sum_width = MONTAGE_BORDER
         current_sum_height = MONTAGE_BORDER
 
-        convert_arguments_top+= [
-            "-rotate",
-            "-90"
-        ]
+        convert_arguments_top += ["-rotate", "-90"]
         # Top side
         for j in range(len(self.matrix_data[0])):
             subplot = self.matrix_data[0][j]["subplot"]
@@ -640,27 +644,39 @@ class Misty(object):
                 "-fill",
                 LABEL_COLOUR,
                 "-annotate",
-                "-%s+%s" % (0, str(cumulative_width - current_sum_width -(subplot.get_thumb_dims()[0]/2) + (2 * MONTAGE_BORDER) + IMAGE_BORDER)),
+                "-%s+%s"
+                % (
+                    0,
+                    str(
+                        cumulative_width
+                        - current_sum_width
+                        - (subplot.get_thumb_dims()[0] / 2)
+                        + (2 * MONTAGE_BORDER)
+                        + IMAGE_BORDER
+                    ),
+                ),
                 subplot.j.header,
             ]
             current_sum_width += subplot.get_thumb_dims()[0] + (2 * IMAGE_BORDER)
             log.debug("CSW %s", current_sum_width)
-        convert_arguments_top+= [
-            "-rotate",
-            "90"
-        ]
+        convert_arguments_top += ["-rotate", "90"]
         # Left side
-        #convert_arguments_left += [
+        # convert_arguments_left += [
         #    "-rotate",
         #    "90"
-        #]
+        # ]
         for i in range(len(self.matrix_data)):
             subplot = self.matrix_data[i][0]["subplot"]
             convert_arguments_left += [
                 "-fill",
                 LABEL_COLOUR,
                 "-annotate",
-                "+2+%s" % str(current_sum_height + (subplot.get_thumb_dims()[1]/2.0) + IMAGE_BORDER),
+                "+2+%s"
+                % str(
+                    current_sum_height
+                    + (subplot.get_thumb_dims()[1] / 2.0)
+                    + IMAGE_BORDER
+                ),
                 "\n" + subplot.i.header,
             ]
             current_sum_height += subplot.get_thumb_dims()[1] + (2 * IMAGE_BORDER)
@@ -669,15 +685,15 @@ class Misty(object):
         cmd = [
             "convert",
             base_path,
-       #     "-rotate",
-       #     "-90",
+            #     "-rotate",
+            #     "-90",
             "-pointsize",
             "20",
             "-font",
             TYPEFONT,
         ]
         cmd += convert_arguments_left
-       # cmd += ["-rotate", "90"]
+        # cmd += ["-rotate", "90"]
         cmd += convert_arguments_top
 
         output_path = os.path.join(self.tmpdir, "large.png")
@@ -694,7 +710,7 @@ class Misty(object):
             subprocess.check_call(cmd)
         except:
             log.debug("Excepted, 3")
-        #subprocess.check_output(cmd)
+        # subprocess.check_output(cmd)
         return output_path
 
     def run(self):

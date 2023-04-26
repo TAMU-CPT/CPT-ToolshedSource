@@ -1,32 +1,28 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber GenBank Genes" version="0.4" profile="16.04">
-    <description>relabels/renumbers GenBank tags according to rules</description>
+  <description>relabels/renumbers GenBank tags according to rules</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/renumber.py
-  $file
+'python $__tool_directory__/renumber.py'
+  '$file'
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
 --leading_zeros "${leading_zeros}"
-$forceMatch
---change_table $change_table
+'$forceMatch'
+--change_table '$change_table'
 
-> $output
+> '$output'
 
 ]]></command>
   <inputs>
-    <param label="GenBank file" name="file" type="data" format="genbank" />
-    <param help="Which tag is used to store gene numbers" label="Tag to update"
-        name="tag_to_update" type="text" value="locus_tag"/>
-    <param help="A string to use as a prefix for the numbering. Will be used as XXXXXXNNN where XXXXXX is the string and NNN is a numerical identifier. Using &quot;display_id&quot; has special meaning, it will use the genome's name/accession number"
-        label="String prefix" name="string_prefix" type="text" value="display_id"/>
-    <param label="Number of leading zeros/padding" name="leading_zeros"
-        type="integer" value="3"/>
-    <param name="forceMatch" label="Force Updated Tags to initially match in addition to location checks. " help="If tag is not present, only location and type checks will be used to infer renumber" type="boolean" truevalue="--forceTagMatch" falsevalue="" checked="True" />
+    <param label="GenBank file" name="file" type="data" format="genbank"/>
+    <param help="Which tag is used to store gene numbers" label="Tag to update" name="tag_to_update" type="text" value="locus_tag"/>
+    <param help="A string to use as a prefix for the numbering. Will be used as XXXXXXNNN where XXXXXX is the string and NNN is a numerical identifier. Using &quot;display_id&quot; has special meaning, it will use the genome's name/accession number" label="String prefix" name="string_prefix" type="text" value="display_id"/>
+    <param label="Number of leading zeros/padding" name="leading_zeros" type="integer" value="3"/>
+    <param name="forceMatch" label="Force Updated Tags to initially match in addition to location checks. " help="If tag is not present, only location and type checks will be used to infer renumber" type="boolean" truevalue="--forceTagMatch" falsevalue="" checked="True"/>
   </inputs>
   <outputs>
     <data format="genbank" name="output">
@@ -35,14 +31,14 @@ $forceMatch
     </data>
   </outputs>
   <tests>
-      <test>
-          <param name="file" value="MS105.genbank" />
-          <param name="leading_zeros" value="10" />
-          <param name="forceMatch" value="" />
-          <param name="string_prefix" value="MS105_" />
-          <output name="genbank" value="renumbered.gbk" />
-          <output name="change_table" value="renumbered.tsv" />
-      </test>
+    <test>
+      <param name="file" value="MS105.genbank"/>
+      <param name="leading_zeros" value="10"/>
+      <param name="forceMatch" value=""/>
+      <param name="string_prefix" value="MS105_"/>
+      <output name="genbank" value="renumbered.gbk"/>
+      <output name="change_table" value="renumbered.tsv"/>
+    </test>
   </tests>
   <help>
 Gene Renumbering Tool
@@ -54,5 +50,5 @@ Subfeatures, such as CDS or intron, will attempt to be grouped with their associ
 
 If the tag check is enabled, then whatever qualifier is selected for updating (such as locus_tag), the subfeatures must also have the same value as any canidate parent gene had for that qualifier. This is useful for subfeatures such as introns, which may be inside more than one gene and could potentially get renumbered to the wrong parent in a location-only check. However, if your dataset does not already have a consistent naming convention, other valid heirarchies could get dropped. The log file will list what features got dropped based on tag checks, so be sure to use that to verify all data made it through.
 </help>
-		<expand macro="citations-2020" />
+  <expand macro="citations-2020"/>
 </tool>

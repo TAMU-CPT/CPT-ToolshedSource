@@ -12,8 +12,7 @@ log = logging.getLogger(__name__)
 
 
 def _id_tn_dict(sequences):
-    """Figure out sequence IDs AND sequence lengths from fasta file
-    """
+    """Figure out sequence IDs AND sequence lengths from fasta file"""
     label_convert = {}
     if sequences is not None:
         if len(sequences) == 1:

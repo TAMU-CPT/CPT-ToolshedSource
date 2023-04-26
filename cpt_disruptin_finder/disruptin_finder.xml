@@ -1,37 +1,34 @@
-<?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.phage.disruptin_finder" name="Disruptin Finder" version="1.1">
-    <description>finds proteins with size and charge criteria</description>
-    <macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-    </macros>
-    <expand macro="requirements"/>
-    <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/disruptin_finder.py
-$fasta_file
---thresh_net_charge $thresh_net_charge
---thresh_size $thresh_size
---thresh_charge_ratio $thresh_charge_ratio
---selection_criteria $selection_criteria
+  <description>finds proteins with size and charge criteria</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python '$__tool_directory__/disruptin_finder.py'
+'$fasta_file'
+--thresh_net_charge '$thresh_net_charge'
+--thresh_size '$thresh_size'
+--thresh_charge_ratio '$thresh_charge_ratio'
+--selection_criteria '$selection_criteria'
 
-> $output]]></command>
-    <inputs>
-        <param label="Fasta" name="fasta_file" type="data" format="fasta" />
-	<param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4" />
-        <param label="Maximum Length" name="thresh_size" type="integer" value="100" />
-	<param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25" />
-		
-	<param type="select" label="Type of selection criteria" name="selection_criteria">
-		<option value="net">Net charge</option>
-		<option value="ratio">Ratio of charged residues to sequence length</option>
-		<option value="both" selected="true">Both net charge and ratio</option>
-	</param>
-
-    </inputs>
-    <outputs>
-		<data format="fasta" name="output"/>
-    </outputs>
-    <help><![CDATA[
+> '$output']]></command>
+  <inputs>
+    <param label="Fasta" name="fasta_file" type="data" format="fasta"/>
+    <param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4"/>
+    <param label="Maximum Length" name="thresh_size" type="integer" value="100"/>
+    <param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25"/>
+    <param type="select" label="Type of selection criteria" name="selection_criteria">
+      <option value="net">Net charge</option>
+      <option value="ratio">Ratio of charged residues to sequence length</option>
+      <option value="both" selected="true">Both net charge and ratio</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="output"/>
+  </outputs>
+  <help><![CDATA[
 **What it does**
 This program finds proteins sequences based on given selection criteria: net charge, sequence length, 
 and/or number of charged residues per amino acid. Inputs include a multi fasta file of protein sequences,
@@ -40,9 +37,9 @@ thresholds for size, charge, and charge-to-size ratio criteria.
 This tool returns the selected sequences in a fasta format.
 
         ]]></help>
-    <citations>
-      <citation type="doi">10.1371/journal.pcbi.1008214</citation>
-      <citation type="bibtex">
+  <citations>
+    <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+    <citation type="bibtex">
       @unpublished{galaxyTools, 
           author = {A. Holt},
           title = {CPT Galaxy Tools},
@@ -50,5 +47,5 @@ This tool returns the selected sequences in a fasta format.
           note = {https://github.com/tamu-cpt/galaxy-tools/}
       }
       </citation>
-    </citations>
+  </citations>
 </tool>

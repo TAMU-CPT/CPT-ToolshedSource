@@ -21,15 +21,15 @@ if __name__ == "__main__":
         )
         rec.features = []
         for x in tempFeats:
-          rec.features.append(x)
+            rec.features.append(x)
         for x in rec.features:
-          if "Parent" in x.qualifiers.keys():
-            found = 0
-            for seek in x.qualifiers["Parent"]:
-              for y in rec.features:
-                if y.id == seek:
-                  found += 1
-                  break
-            if found < len(x.qualifiers["Parent"]):
-              del x.qualifiers["Parent"]
+            if "Parent" in x.qualifiers.keys():
+                found = 0
+                for seek in x.qualifiers["Parent"]:
+                    for y in rec.features:
+                        if y.id == seek:
+                            found += 1
+                            break
+                if found < len(x.qualifiers["Parent"]):
+                    del x.qualifiers["Parent"]
         gffWrite([rec], sys.stdout)

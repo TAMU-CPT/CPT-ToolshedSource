@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name= "LipoP to GFF3" version="1.0">
+<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name="LipoP to GFF3" version="1.0">
   <description>Adds LipoP results to GFF3</description>
   <macros>
     <import>macros.xml</import>
@@ -6,13 +6,13 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/lipoP_to_gff3.py
+python '$__tool_directory__/lipoP_to_gff3.py'
 
 "$lipoIn"
 "$gff3In"
 --jBrowseOut "$jBrowseOut"
-$filterSP2
-> $stdout
+'$filterSP2'
+> '$stdout'
 
 ]]></command>
   <inputs>
@@ -26,10 +26,10 @@ $filterSP2
   </outputs>
   <tests>
     <test>
-      <param name="lipoIn" value="GalPub.txt" />
-      <param name="gff3In" value="GalPub.gff3" />
-      <param name="jBrowseOut" value="True" />
-      <output name="stdout" value="GalPubExt.gff3" />
+      <param name="lipoIn" value="GalPub.txt"/>
+      <param name="gff3In" value="GalPub.gff3"/>
+      <param name="jBrowseOut" value="True"/>
+      <output name="stdout" value="GalPubExt.gff3"/>
     </test>
   </tests>
   <help><![CDATA[
@@ -49,5 +49,5 @@ result from the LipoP, and remove all sub features of the gene except for the
 cleavage sites. This is useful for viewing in Apollo, but should most likely 
 not be used if you plan to run this output through more tools.
       ]]></help>
-		<expand macro="citations-2020" />
+  <expand macro="citations-2020"/>
 </tool>

@@ -1,14 +1,13 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.genome_editor" name="Genome Editor" version="2.1">
-  <description>allows you to re-arrange a genome</description>
-  <macros>
-    <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command><![CDATA[
+    <description>allows you to re-arrange a genome</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command><![CDATA[
 @GENOME_SELECTOR_PRE@
-python $__tool_directory__/genome_editor.py
+'python $__tool_directory__/genome_editor.py'
 
 @GENOME_SELECTOR@
 @INPUT_GFF@
@@ -27,8 +26,8 @@ python $__tool_directory__/genome_editor.py
 	#end if
 #end for
 ]]></command>
-	<configfiles>
-		<configfile name="custom_seqs">
+    <configfiles>
+        <configfile name="custom_seqs">
 		<![CDATA[
 #for $idx, $change in enumerate($changes):
 	#if $change.input_type.input_type_select == "custom":
@@ -38,100 +37,99 @@ ${change.input_type.seq}
 #end for
 		]]>
 		</configfile>
-	</configfiles>
-  <inputs>
-      <expand macro="input/gff3+fasta" />
-      <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 ">
-		  <validator type="expression" message="You must specify a new ID"><![CDATA[value and len(value) > 0]]></validator>
-	  </param>
-      <repeat name="changes" title="Sequence Component Selections">
-		<conditional name="input_type">
-			<param name="input_type_select" type="select" label="Data Source">
-				<option value="region" selected="True">Region from FASTA file</option>
-				<option value="custom">Custom Additional Sequence</option>
-			</param>
-			<when value="region">
-				<param label="Start" name="start" type="integer" min="1" value="1" help="Inclusive range, 1-indexed genome. (I.e. specifying 1-2000 will include base number 1)"/>
-				<param label="End" name="end" type="integer" min="1" value="1" help="Inclusive range. (I.e. specifying 1-2000 will include base number 2000)"/>
-				<param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
-			</when>
-			<when value="custom">
-				<param label="Custom Sequence" name="seq" type="text" help="Enter the sequence, e.g. 'ACTG'. No FASTA definition line."/>
-			</when>
-		</conditional>
-      </repeat>
-  </inputs>
-  <outputs>
-	<data format="gff3" name="out_gff3" label="${new_id} Features"/>
-    <data format="fasta" name="out_fasta" label="${new_id}"/>
-    <data format="tabular" name="out_chain" label="${new_id} Change Table"/>
-  </outputs>
-  <tests>
-      <test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="genome_editor.simple.fa" />
-			<param name="gff3_data" value="genome_editor.simple.gff3" />
-			<param name="new_id" value="test2" />
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="region" />
-					<param name="start" value="1"/>
-					<param name="end" value="4"/>
-					<param name="revcom" value="+"/>
-				</conditional>
-			</repeat>
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="custom" />
-					<param name="seq" value="cccggg"/>
-				</conditional>
-			</repeat>
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="region" />
-					<param name="start" value="5"/>
-					<param name="end" value="8"/>
-					<param name="revcom" value="-"/>
-				</conditional>
-			</repeat>
-			<output name="out_gff3" file="genome_editor.simple.out.gff3" />
-			<output name="out_fasta" file="genome_editor.simple.out.fa" />
-			<output name="out_chain" file="genome_editor.simple.out.chain" />
-      </test>
-      <test>
-
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="gff3_data" value="miro.2.gff3" />
-			<param name="new_id" value="Miro.v2" />
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="region" />
-					<param name="start" value="1"/>
-					<param name="end" value="950"/>
-					<param name="revcom" value="+"/>
-				</conditional>
-			</repeat>
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="custom" />
-					<param name="seq" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
-				</conditional>
-			</repeat>
-			<repeat name="changes">
-				<conditional name="input_type">
-					<param name="input_type_select" value="region" />
-					<param name="start" value="3170"/>
-					<param name="end" value="3450"/>
-					<param name="revcom" value="+"/>
-				</conditional>
-			</repeat>
-			<output name="out_gff3" file="genome_editor.mirov2.gff3" />
-			<output name="out_fasta" file="genome_editor.mirov2.fa" />
-			<output name="out_chain" file="genome_editor.mirov2.chain" />
-      </test>
-  </tests>
-  <help><![CDATA[
+    </configfiles>
+    <inputs>
+        <expand macro="input/gff3+fasta"/>
+        <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 ">
+            <validator type="expression" message="You must specify a new ID"><![CDATA[value and len(value) > 0]]></validator>
+        </param>
+        <repeat name="changes" title="Sequence Component Selections">
+            <conditional name="input_type">
+                <param name="input_type_select" type="select" label="Data Source">
+                    <option value="region" selected="True">Region from FASTA file</option>
+                    <option value="custom">Custom Additional Sequence</option>
+                </param>
+                <when value="region">
+                    <param label="Start" name="start" type="integer" min="1" value="1" help="Inclusive range, 1-indexed genome. (I.e. specifying 1-2000 will include base number 1)"/>
+                    <param label="End" name="end" type="integer" min="1" value="1" help="Inclusive range. (I.e. specifying 1-2000 will include base number 2000)"/>
+                    <param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+"/>
+                </when>
+                <when value="custom">
+                    <param label="Custom Sequence" name="seq" type="text" help="Enter the sequence, e.g. 'ACTG'. No FASTA definition line."/>
+                </when>
+            </conditional>
+        </repeat>
+    </inputs>
+    <outputs>
+        <data format="gff3" name="out_gff3" label="${new_id} Features"/>
+        <data format="fasta" name="out_fasta" label="${new_id}"/>
+        <data format="tabular" name="out_chain" label="${new_id} Change Table"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="genome_editor.simple.fa"/>
+            <param name="gff3_data" value="genome_editor.simple.gff3"/>
+            <param name="new_id" value="test2"/>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="region"/>
+                    <param name="start" value="1"/>
+                    <param name="end" value="4"/>
+                    <param name="revcom" value="+"/>
+                </conditional>
+            </repeat>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="custom"/>
+                    <param name="seq" value="cccggg"/>
+                </conditional>
+            </repeat>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="region"/>
+                    <param name="start" value="5"/>
+                    <param name="end" value="8"/>
+                    <param name="revcom" value="-"/>
+                </conditional>
+            </repeat>
+            <output name="out_gff3" file="genome_editor.simple.out.gff3"/>
+            <output name="out_fasta" file="genome_editor.simple.out.fa"/>
+            <output name="out_chain" file="genome_editor.simple.out.chain"/>
+        </test>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="miro.fa"/>
+            <param name="gff3_data" value="miro.2.gff3"/>
+            <param name="new_id" value="Miro.v2"/>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="region"/>
+                    <param name="start" value="1"/>
+                    <param name="end" value="950"/>
+                    <param name="revcom" value="+"/>
+                </conditional>
+            </repeat>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="custom"/>
+                    <param name="seq" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+                </conditional>
+            </repeat>
+            <repeat name="changes">
+                <conditional name="input_type">
+                    <param name="input_type_select" value="region"/>
+                    <param name="start" value="3170"/>
+                    <param name="end" value="3450"/>
+                    <param name="revcom" value="+"/>
+                </conditional>
+            </repeat>
+            <output name="out_gff3" file="genome_editor.mirov2.gff3"/>
+            <output name="out_fasta" file="genome_editor.mirov2.fa"/>
+            <output name="out_chain" file="genome_editor.mirov2.chain"/>
+        </test>
+    </tests>
+    <help><![CDATA[
 **What it does**
 
 Allows for re-arranging a FASTA genomic sequence, and remaps the associated features 
@@ -165,5 +163,5 @@ the last section with be reverse-complemented and give the following output::
 	TTA GTA ATG GCC ATT
 
 ]]></help>
-  <expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

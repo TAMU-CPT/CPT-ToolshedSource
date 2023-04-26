@@ -1,6 +1,5 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.blast.blast2pxmfa" name="Blast TSV to Protein XMFA" version="1.0">
-  <description></description>
+  <description/>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
@@ -9,30 +8,30 @@
     <requirement type="package" version="2.1">clustalw</requirement>
   </expand>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blast2pxmfa.py
+'$__tool_directory__/blast2pxmfa.py'
 @BLAST_TSV@
-$fasta
-$gff3
-$output
+'$fasta'
+'$gff3'
+'$output'
 ]]></command>
   <inputs>
-    <expand macro="blast_tsv" />
-    <expand macro="gff3_with_fasta" />
+    <expand macro="blast_tsv"/>
+    <expand macro="gff3_with_fasta"/>
   </inputs>
   <outputs>
     <data format="pxmfa" name="output"/>
   </outputs>
   <tests>
-      <test>
-          <param name="blast_tsv" value="results.tsv"/>
-          <param name="fasta" value="related.fa"/>
-          <param name="gff3" value="related.gbk.gff"/>
-          <output name="output" file="cbk.xmfa">
-                <assert_contents>
-			    <has_n_lines n="7547" delta="100"/>
-		</assert_contents>
-          </output>
-      </test>
+    <test>
+      <param name="blast_tsv" value="results.tsv"/>
+      <param name="fasta" value="related.fa"/>
+      <param name="gff3" value="related.gbk.gff"/>
+      <output name="output" file="cbk.xmfa">
+        <assert_contents>
+          <has_n_lines n="7547" delta="100"/>
+        </assert_contents>
+      </output>
+    </test>
   </tests>
   <help><![CDATA[
 .. class:: warningmark
@@ -54,6 +53,6 @@ The tool works by:
 - running ClustalW to generate a set of alignments for each cluster
 - outputting those clusters in the XMFA format
 ]]></help>
-    <citations>
+  <citations>
     </citations>
 </tool>

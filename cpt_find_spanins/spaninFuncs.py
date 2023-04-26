@@ -18,9 +18,9 @@ Lys = "K"
 
 def check_back_end_snorkels(seq, tmsize):
     """
-        Searches through the backend of a potential TMD snorkel. This is the 2nd part of a TMD snorkel lysine match.
-        --> seq : should be the sequence fed from the "search_region" portion of the sequence
-        --> tmsize : size of the potential TMD being investigated
+    Searches through the backend of a potential TMD snorkel. This is the 2nd part of a TMD snorkel lysine match.
+    --> seq : should be the sequence fed from the "search_region" portion of the sequence
+    --> tmsize : size of the potential TMD being investigated
     """
     found = []
     if seq[tmsize - 4] == Lys and re.search(("[FIWLVMYCATGS]"), seq[tmsize - 5]):
@@ -42,10 +42,10 @@ def check_back_end_snorkels(seq, tmsize):
 
 def prep_a_gff3(fa, spanin_type, org):
     """
-        Function parses an input detailed 'fa' file and outputs a 'gff3' file
-        ---> fa = input .fa file
-        ---> output = output a returned list of data, easily portable to a gff3 next
-        ---> spanin_type = 'isp' or 'osp'
+    Function parses an input detailed 'fa' file and outputs a 'gff3' file
+    ---> fa = input .fa file
+    ---> output = output a returned list of data, easily portable to a gff3 next
+    ---> spanin_type = 'isp' or 'osp'
     """
     with org as f:
         header = f.readline()
@@ -76,17 +76,21 @@ def prep_a_gff3(fa, spanin_type, org):
         source = "cpt.py|putative-*.py"  # column 2
         score = "."  # column 6
         phase = "."  # column 8
-        attributes = "ID=" +orgacc+ "|"+ orfid + ";ALIAS=" + spanin + ";SEQ="+a_pair[1]  # column 9
-        sequence = [[orgacc, source, methodtype, start, end, score, strand, phase, attributes]]
+        attributes = (
+            "ID=" + orgacc + "|" + orfid + ";ALIAS=" + spanin + ";SEQ=" + a_pair[1]
+        )  # column 9
+        sequence = [
+            [orgacc, source, methodtype, start, end, score, strand, phase, attributes]
+        ]
         data += sequence
     return data
 
 
 def write_gff3(data, output="results.gff3"):
     """
-        Parses results from prep_a_gff3 into a gff3 file
-        ---> input : list from prep_a_gff3
-        ---> output : gff3 file
+    Parses results from prep_a_gff3 into a gff3 file
+    ---> input : list from prep_a_gff3
+    ---> output : gff3 file
     """
     data = data
     filename = output
@@ -109,14 +113,23 @@ def write_gff3(data, output="results.gff3"):
     f.close()
 
 
-def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False, peri_min=18, peri_max=206):
-    """ 
-        Function that searches for lysine snorkels and then for a spanning hydrophobic region that indicates a potential TMD
-        ---> pair : Input of tuple with description and AA sequence (str)
-        ---> minimum : How close from the initial start codon a TMD can be within
-        ---> maximum : How far from the initial start codon a TMD can be within
-        ---> TMDmin : The minimum size that a transmembrane can be (default = 10)
-        ---> TMDmax : The maximum size tha ta transmembrane can be (default = 20)
+def find_tmd(
+    pair,
+    minimum=10,
+    maximum=30,
+    TMDmin=10,
+    TMDmax=20,
+    isp_mode=False,
+    peri_min=18,
+    peri_max=206,
+):
+    """
+    Function that searches for lysine snorkels and then for a spanning hydrophobic region that indicates a potential TMD
+    ---> pair : Input of tuple with description and AA sequence (str)
+    ---> minimum : How close from the initial start codon a TMD can be within
+    ---> maximum : How far from the initial start codon a TMD can be within
+    ---> TMDmin : The minimum size that a transmembrane can be (default = 10)
+    ---> TMDmax : The maximum size tha ta transmembrane can be (default = 20)
     """
     # hydrophobicAAs = ['P', 'F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
     tmd = []
@@ -125,55 +138,62 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False,
     if maximum > len(s):
         maximum = len(s)
     search_region = s[minimum - 1 : maximum + 1]
-    #print(f"this is the search region: {search_region}")
+    # print(f"this is the search region: {search_region}")
     # print(search_region) # for trouble shooting
 
-    for tmsize in range(TMDmin, TMDmax+1, 1):
-        #print(f"this is the current tmsize we're trying: {tmsize}")
+    for tmsize in range(TMDmin, TMDmax + 1, 1):
+        # print(f"this is the current tmsize we're trying: {tmsize}")
         # print('==============='+str(tmsize)+'================') # print for troubleshooting
-        pattern = "[PFIWLVMYCATGS]{"+str(tmsize)+"}"  # searches for these hydrophobic residues tmsize total times
-        #print(pattern)
-        #print(f"sending to regex: {search_region}")
+        pattern = (
+            "[PFIWLVMYCATGS]{" + str(tmsize) + "}"
+        )  # searches for these hydrophobic residues tmsize total times
+        # print(pattern)
+        # print(f"sending to regex: {search_region}")
         if re.search(
-            ("[K]"), search_region[1:8]):  # grabbing one below with search region, so I want to grab one ahead here when I query.
-            store_search = re.search(("[K]"), search_region[1:8])  # storing regex object
+            ("[K]"), search_region[1:8]
+        ):  # grabbing one below with search region, so I want to grab one ahead here when I query.
+            store_search = re.search(
+                ("[K]"), search_region[1:8]
+            )  # storing regex object
             where_we_are = store_search.start()  # finding where we got the hit
             if re.search(
                 ("[PFIWLVMYCATGS]"), search_region[where_we_are + 1]
             ) and re.search(
                 ("[PFIWLVMYCATGS]"), search_region[where_we_are - 1]
             ):  # hydrophobic neighbor
-                #try:
-                g = re.search(("[PFIWLVMYCATGS]"), search_region[where_we_are + 1]).group()
+                # try:
+                g = re.search(
+                    ("[PFIWLVMYCATGS]"), search_region[where_we_are + 1]
+                ).group()
                 backend = check_back_end_snorkels(search_region, tmsize)
                 if backend == "match":
                     if isp_mode:
                         g = re.search((pattern), search_region).group()
-                        end_of_tmd = re.search((g), s).end()+1
+                        end_of_tmd = re.search((g), s).end() + 1
                         amt_peri = len(s) - end_of_tmd
                         if peri_min <= amt_peri <= peri_max:
-                            pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
-                            new_pair = (pair_desc,pair[1])
+                            pair_desc = pair[0] + ", peri_count~=" + str(amt_peri)
+                            new_pair = (pair_desc, pair[1])
                             tmd.append(new_pair)
                     else:
                         tmd.append(pair)
                 else:
                     continue
-        #else:
-            #print("I'm continuing out of snorkel loop")
-            #print(f"{search_region}")
-            #continue
+        # else:
+        # print("I'm continuing out of snorkel loop")
+        # print(f"{search_region}")
+        # continue
         if re.search((pattern), search_region):
-            #print(f"found match: {}")
-            #print("I AM HEREEEEEEEEEEEEEEEEEEEEEEE")
-            #try:
+            # print(f"found match: {}")
+            # print("I AM HEREEEEEEEEEEEEEEEEEEEEEEE")
+            # try:
             if isp_mode:
                 g = re.search((pattern), search_region).group()
-                end_of_tmd = re.search((g), s).end()+1
+                end_of_tmd = re.search((g), s).end() + 1
                 amt_peri = len(s) - end_of_tmd
                 if peri_min <= amt_peri <= peri_max:
-                    pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
-                    new_pair = (pair_desc,pair[1])
+                    pair_desc = pair[0] + ", peri_count~=" + str(amt_peri)
+                    new_pair = (pair_desc, pair[1])
                     tmd.append(new_pair)
             else:
                 tmd.append(pair)
@@ -183,13 +203,15 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False,
         return tmd
 
 
-def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, regex=1, osp_mode=False):
+def find_lipobox(
+    pair, minimum=10, maximum=50, min_after=30, max_after=185, regex=1, osp_mode=False
+):
     """
-        Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
-        ---> minimum - min distance from start codon to first AA of lipobox
-        ---> maximum - max distance from start codon to first AA of lipobox
-        ---> regex - option 1 (default) => more strict regular expression ; option 2 => looser selection, imported from LipoRy
-        
+    Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
+    ---> minimum - min distance from start codon to first AA of lipobox
+    ---> maximum - max distance from start codon to first AA of lipobox
+    ---> regex - option 1 (default) => more strict regular expression ; option 2 => looser selection, imported from LipoRy
+
     """
     if regex == 1:
         pattern = "[ILMFTV][^REKD][GAS]C"  # regex for Lipobox from findSpanin.pl
@@ -199,19 +221,23 @@ def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, rege
     candidates = []
     s = str(pair[1])
     # print(s) # trouble shooting
-    search_region = s[minimum-1 : maximum + 5] # properly slice the input... add 4 to catch if it hangs off at max input
+    search_region = s[
+        minimum - 1 : maximum + 5
+    ]  # properly slice the input... add 4 to catch if it hangs off at max input
     # print(search_region) # trouble shooting
-    patterns = ["[ILMFTV][^REKD][GAS]C","AW[AGS]C"]
+    patterns = ["[ILMFTV][^REKD][GAS]C", "AW[AGS]C"]
     for pattern in patterns:
-        #print(pattern)  # trouble shooting
+        # print(pattern)  # trouble shooting
         if re.search((pattern), search_region):  # lipobox must be WITHIN the range...
             # searches the sequence with the input RegEx AND omits if
-            g = re.search((pattern), search_region).group() # find the exact group match
+            g = re.search(
+                (pattern), search_region
+            ).group()  # find the exact group match
             amt_peri = len(s) - re.search((g), s).end() + 1
-            if min_after <= amt_peri <= max_after: # find the lipobox end region
+            if min_after <= amt_peri <= max_after:  # find the lipobox end region
                 if osp_mode:
-                    pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
-                    new_pair = (pair_desc,pair[1])
+                    pair_desc = pair[0] + ", peri_count~=" + str(amt_peri)
+                    new_pair = (pair_desc, pair[1])
                     candidates.append(new_pair)
                 else:
                     candidates.append(pair)
@@ -221,9 +247,9 @@ def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, rege
 
 def tuple_fasta(fasta_file):
     """
-        #### INPUT: Fasta File
-        #### OUTPUT: zipped (zip) : pairwise relationship of description to sequence
-        #### 
+    #### INPUT: Fasta File
+    #### OUTPUT: zipped (zip) : pairwise relationship of description to sequence
+    ####
     """
     fasta = SeqIO.parse(fasta_file, "fasta")
     descriptions = []
@@ -281,10 +307,10 @@ def splitStrands(text, strand="+"):
 
 def parse_a_range(pair, start, end):
     """
-        Takes an input data tuple from a fasta tuple pair and keeps only those within the input sequence range
-        ---> data : fasta tuple data
-        ---> start : start range to keep
-        ---> end : end range to keep (will need to + 1)
+    Takes an input data tuple from a fasta tuple pair and keeps only those within the input sequence range
+    ---> data : fasta tuple data
+    ---> start : start range to keep
+    ---> end : end range to keep (will need to + 1)
     """
     matches = []
     for each_pair in pair:
@@ -310,12 +336,18 @@ def grabLocs(text):
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
     from cpt.py
     """
-    start = re.search(("[\d]+\.\."), text).group(0)  # Start of the sequence ; looks for [numbers]..
-    end = re.search(("\.\.[\d]+"), text).group(0)  # End of the sequence ; Looks for ..[numbers]
-    orf = re.search(("(ORF)[\d]+"), text).group(0)  # Looks for ORF and the numbers that are after it
-    if re.search(("(\[1\])"), text): # stores strand
+    start = re.search(("[\d]+\.\."), text).group(
+        0
+    )  # Start of the sequence ; looks for [numbers]..
+    end = re.search(("\.\.[\d]+"), text).group(
+        0
+    )  # End of the sequence ; Looks for ..[numbers]
+    orf = re.search(("(ORF)[\d]+"), text).group(
+        0
+    )  # Looks for ORF and the numbers that are after it
+    if re.search(("(\[1\])"), text):  # stores strand
         strand = "+"
-    elif re.search(("(\[-1\])"), text): # stores strand
+    elif re.search(("(\[-1\])"), text):  # stores strand
         strand = "-"
     start = int(start.split("..")[0])
     end = int(end.split("..")[1])
@@ -329,7 +361,7 @@ def spaninProximity(isp, osp, max_dist=30):
     _NOTE THIS FUNCTION COULD BE MODIFIED TO RETURN SEQUENCES_
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
-    I modified this on 07.30.2020 to bypass the pick + or - strand. To 
+    I modified this on 07.30.2020 to bypass the pick + or - strand. To
     INPUT: list of OSP and ISP candidates
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
@@ -358,13 +390,27 @@ def spaninProximity(isp, osp, max_dist=30):
                     elif iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]:
                         ### OVERLAP / SEPARATE ###
                         if (iseq[1] - oseq[0]) < 6:
-                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            combo = [
+                                iseq[0],
+                                iseq[1],
+                                oseq[2],
+                                oseq[0],
+                                oseq[1],
+                                iseq[3],
+                            ]
                             separate[iseq[2]] += [combo]
                         else:
-                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            combo = [
+                                iseq[0],
+                                iseq[1],
+                                oseq[2],
+                                oseq[0],
+                                oseq[1],
+                                iseq[3],
+                            ]
                             overlap[iseq[2]] += [combo]
                     elif iseq[1] <= oseq[0] <= iseq[1] + max_dist:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1], iseq[3]]
                         separate[iseq[2]] += [combo]
                     else:
                         continue
@@ -383,13 +429,27 @@ def spaninProximity(isp, osp, max_dist=30):
                         embedded[iseq[2]] += [combo]
                     elif iseq[0] <= oseq[1] <= iseq[1] and oseq[0] < iseq[0]:
                         if (oseq[1] - iseq[0]) < 6:
-                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            combo = [
+                                iseq[0],
+                                iseq[1],
+                                oseq[2],
+                                oseq[0],
+                                oseq[1],
+                                iseq[3],
+                            ]
                             separate[iseq[2]] += [combo]
                         else:
-                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            combo = [
+                                iseq[0],
+                                iseq[1],
+                                oseq[2],
+                                oseq[0],
+                                oseq[1],
+                                iseq[3],
+                            ]
                             overlap[iseq[2]] += [combo]
                     elif iseq[0] - 10 < oseq[1] < iseq[0]:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1], iseq[3]]
                         separate[iseq[2]] += [combo]
                     else:
                         continue
@@ -402,7 +462,8 @@ def spaninProximity(isp, osp, max_dist=30):
 
 
 def check_for_usp():
-    " pass "
+    "pass"
+
 
 ############################################### TEST RANGE #########################################################################
 ####################################################################################################################################
@@ -454,7 +515,7 @@ if __name__ == "__main__":
     pairs = zip(test_desc, test_seq)
     lipo = []
     for each_pair in pairs:
-        #print(each_pair)
+        # print(each_pair)
         # try:
         try:
             lipo += find_lipobox(pair=each_pair, regex=2)  # , minimum=8)

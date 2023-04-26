@@ -173,11 +173,7 @@ if __name__ == "__main__":
         default="_putative_osp.gff3",
         help="gff3 output for putative o-spanins",
     )
-    parser.add_argument(
-        "--osp_mode",
-        action="store_true",
-        default=True
-    )
+    parser.add_argument("--osp_mode", action="store_true", default=True)
 
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
@@ -255,7 +251,7 @@ if __name__ == "__main__":
     with args.putative_osp_fa as f:
         for desc, s in candidate_dict.items():  # description / sequence
             f.write(">" + str(desc))
-            f.write("\n" + lineWrapper(str(s).replace("*","")) + "\n")
+            f.write("\n" + lineWrapper(str(s).replace("*", "")) + "\n")
             length.append(len(s))
             ORF.append(desc)
     if not length:
@@ -275,15 +271,15 @@ if __name__ == "__main__":
     args.out_osp_prot.close()
     all_orfs = open(args.out_osp_prot.name, "r")
     all_osps = open(args.putative_osp_fa.name, "r")
-    #record = SeqIO.read(all_orfs, "fasta")
-    #print(len(record))
+    # record = SeqIO.read(all_orfs, "fasta")
+    # print(len(record))
     #### Extra stats
     n = 0
     for line in all_orfs:
         if line.startswith(">"):
             n += 1
     all_orfs_counts = n
-    
+
     c = 0
     for line in all_osps:
         if line.startswith(">"):
@@ -296,9 +292,11 @@ if __name__ == "__main__":
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
         f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
-        #f.write(f"ratio of osps found from naive orfs: {c}/{n}")
-        f.write("ratio of osps found from naive orfs: "+ str(c) + "/" +str(n))
+        # f.write(f"ratio of osps found from naive orfs: {c}/{n}")
+        f.write("ratio of osps found from naive orfs: " + str(c) + "/" + str(n))
     # Output the putative list in gff3 format:
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp",org=args.fasta_file)
+    gff_data = prep_a_gff3(
+        fa=args.putative_osp_fa, spanin_type="osp", org=args.fasta_file
+    )
     write_gff3(data=gff_data, output=args.putative_osp_gff)

@@ -17,7 +17,7 @@ log = logging.getLogger()
 
 
 def parse_xml(blastxml, thresh):
-    """ Parses xml file to get desired info (genes, hits, etc) """
+    """Parses xml file to get desired info (genes, hits, etc)"""
     blast = []
     discarded_records = 0
     totLen = 0
@@ -64,7 +64,7 @@ def parse_xml(blastxml, thresh):
 
 
 def filter_lone_clusters(clusters):
-    """ Removes all clusters with only one member and those with no hits """
+    """Removes all clusters with only one member and those with no hits"""
     filtered_clusters = {}
     for key in clusters:
         if len(clusters[key]) > 1 and len(key) > 0:
@@ -78,7 +78,7 @@ def test_true(feature, **kwargs):
 
 
 def parse_gff(gff3):
-    """ Extracts strand and start location to be used in cluster filtering """
+    """Extracts strand and start location to be used in cluster filtering"""
     log.debug("parse_gff3")
     gff_info = {}
     _rec = None
@@ -113,12 +113,12 @@ def parse_gff(gff3):
 
 
 def all_same(genes_list):
-    """ Returns True if all gene names in cluster are identical """
+    """Returns True if all gene names in cluster are identical"""
     return all(gene["name"] == genes_list[0]["name"] for gene in genes_list[1:])
 
 
 def remove_duplicates(clusters):
-    """ Removes clusters with multiple members but only one gene name """
+    """Removes clusters with multiple members but only one gene name"""
     filtered_clusters = {}
     for key in clusters:
         if all_same(clusters[key]):
@@ -130,7 +130,7 @@ def remove_duplicates(clusters):
 
 
 class IntronFinder(object):
-    """ IntronFinder objects are lists that contain a list of hits for every gene """
+    """IntronFinder objects are lists that contain a list of hits for every gene"""
 
     def __init__(self, gff3, blastp, thresh):
         self.blast = []
@@ -142,7 +142,7 @@ class IntronFinder(object):
         self.blast = parse_xml(blastp, thresh)
 
     def create_clusters(self):
-        """ Finds 2 or more genes with matching hits """
+        """Finds 2 or more genes with matching hits"""
         clusters = {}
         for gene in self.blast:
             for hit in gene:
@@ -163,7 +163,7 @@ class IntronFinder(object):
         self.clusters = filter_lone_clusters(clusters)
 
     def check_strand(self):
-        """ filters clusters for genes on the same strand """
+        """filters clusters for genes on the same strand"""
         filtered_clusters = {}
         for key in self.clusters:
             pos_strand = []

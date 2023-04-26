@@ -67,7 +67,7 @@ def mga_to_gff3(mga_output, genome):
                         "Source": "MGA",
                     },
                     phase=phase,
-                    source="MGA"
+                    source="MGA",
                 )
 
             cds_feat = gffSeqFeature(
@@ -77,9 +77,9 @@ def mga_to_gff3(mga_output, genome):
                 qualifiers={
                     "Source": "MGA",
                     "ID": "%s.cds_%s" % (current_record.id, gene_id),
-                }, 
+                },
                 phase=phase,
-                source="MGA"
+                source="MGA",
             )
 
             if rbs_feat is not None:
@@ -103,7 +103,7 @@ def mga_to_gff3(mga_output, genome):
                     "ID": "%s.%s" % (current_record.id, gene_id),
                 },
                 phase=phase,
-                source="MGA"
+                source="MGA",
             )
 
             gene.sub_features = [cds_feat]

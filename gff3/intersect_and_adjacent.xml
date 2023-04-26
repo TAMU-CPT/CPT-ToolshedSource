@@ -1,55 +1,54 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.intersect_and_adjacent" name="Intersect and Adjacent" version="21.0.0">
   <description>Outputs nearby top-level GFF features from two GFF3 files</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements">
-      <requirement type="package" version="3.0.2">intervaltree</requirement>
+    <requirement type="package" version="3.0.2">intervaltree</requirement>
   </expand>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/intersect_and_adjacent.py
+'$__tool_directory__/intersect_and_adjacent.py'
 "$gff3_data_a"
 "$gff3_data_b"
-$window
-$stranding
---oa $oa
---ob $ob
+'$window'
+'$stranding'
+--oa '$oa'
+--ob '$ob'
 ]]></command>
   <inputs>
     <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
     <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
-    <param label="Adjacency Window Size" name="window" type="integer" value = "0"/>
-    <param label="Only allow adjacencies for features on the same strand" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
+    <param label="Adjacency Window Size" name="window" type="integer" value="0"/>
+    <param label="Only allow adjacencies for features on the same strand" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
     <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b.name} in ${gff3_data_a.name}"/>
   </outputs>
   <tests>
-		<test>
-			<param name="gff3_data_a" value="T7_ISP.gff3" />
-			<param name="gff3_data_b" value="T7_OSP.gff3" />
-                        <param name="window" value= "50" />
-                        <param name="stranding" value= "-stranding"/>
-			<output name="oa" file="T7_IA1.gff3">
-			  <!-- test-data/T7_IA1.gff3 -->
-			  <assert_contents>
-			    <has_line line="##gff-version 3" />
-			    <has_line line="##sequence-region NC_001604 1 39937" />
-			    <has_n_lines n="82" />
-			  </assert_contents>
-			</output>
-			<output name="ob" file="T7_IA2.gff3">
-			  <!-- test-data/T7_IA2.gff3 -->
-			  <assert_contents>
-			    <has_line line="##gff-version 3" />
-			    <has_line line="##sequence-region NC_001604 1 39847" />
-			    <has_n_lines n="102" />
-			  </assert_contents>
-			</output>
-		</test>
+    <test>
+      <param name="gff3_data_a" value="T7_ISP.gff3"/>
+      <param name="gff3_data_b" value="T7_OSP.gff3"/>
+      <param name="window" value="50"/>
+      <param name="stranding" value="-stranding"/>
+      <output name="oa" file="T7_IA1.gff3">
+        <!-- test-data/T7_IA1.gff3 -->
+        <assert_contents>
+          <has_line line="##gff-version 3"/>
+          <has_line line="##sequence-region NC_001604 1 39937"/>
+          <has_n_lines n="82"/>
+        </assert_contents>
+      </output>
+      <output name="ob" file="T7_IA2.gff3">
+        <!-- test-data/T7_IA2.gff3 -->
+        <assert_contents>
+          <has_line line="##gff-version 3"/>
+          <has_line line="##sequence-region NC_001604 1 39847"/>
+          <has_n_lines n="102"/>
+        </assert_contents>
+      </output>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
@@ -59,5 +58,5 @@ Given two input files, this tool computes the members of A that are within
 two gff3 outputs, one being the features of GFF A that pass this check,
 and the other being the features of GFF B that pass.
 ]]></help>
-		<expand macro="citations-2020" />
+  <expand macro="citations-2020"/>
 </tool>

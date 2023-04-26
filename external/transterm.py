@@ -42,7 +42,7 @@ def build_expterm():
 
 def generate_annotation_file(gff3):
     # TODO: cleanup
-    t = tempfile.NamedTemporaryFile(mode="w",delete=False, suffix=".coords")
+    t = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".coords")
     for rec in gffParse(gff3):
         features = feature_lambda(
             rec.features, feature_test_type, {"type": "CDS"}, subfeatures=False
@@ -77,10 +77,11 @@ def run_transterm(expterm, fasta, annotations):
 def pairwise(it):
     it = iter(it)
     while True:
-      try:
-        yield next(it), next(it)
-      except StopIteration:
-        return
+        try:
+            yield next(it), next(it)
+        except StopIteration:
+            return
+
 
 def parse_transterm(data):
     data = data.decode("utf-8")

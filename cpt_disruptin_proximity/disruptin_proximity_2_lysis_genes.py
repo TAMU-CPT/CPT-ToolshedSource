@@ -46,16 +46,16 @@ def treeFeatures(features):
 def read_enzyme_list(enzyme_file=None):
     enzyme_file.seek(0)
     domains = []
-    #domain_names = []
+    # domain_names = []
 
     for line in enzyme_file:
         if not line.startswith("*"):
             words = line.split("\t")
             if len(words) > 3:
                 domains += [words[2]]
-                #domain_names += [words[0]]
+                # domain_names += [words[0]]
 
-    return (domains[1:])
+    return domains[1:]
 
 
 # adapted from intersect_and_adjacent.py
@@ -132,9 +132,11 @@ def find_endolysins(rec_ipro, enzyme_domain_ids):
                     # Ignores feature with unwanted key words in the feature name
                     if all(x not in f.qualifiers["Name"][0] for x in unwanted):
                         # If feature is included in the given enzyme domain list, the protein name, domain id, and domain name are stored
-                        domain_description = [str(f.qualifiers['Name'][0])]
-                        if 'signature_desc' in f.qualifiers:
-                            domain_description += [str(f.qualifiers['signature_desc'][0])]
+                        domain_description = [str(f.qualifiers["Name"][0])]
+                        if "signature_desc" in f.qualifiers:
+                            domain_description += [
+                                str(f.qualifiers["signature_desc"][0])
+                            ]
 
                         for i in enzyme_domain_ids:
                             for y in domain_description:
@@ -146,7 +148,7 @@ def find_endolysins(rec_ipro, enzyme_domain_ids):
 
                                     target = f.qualifiers["Target"][0]
                                     target = target.split(" ")
-                                    protein_name = str(target[0]) + '**'
+                                    protein_name = str(target[0]) + "**"
                                     endo_rec_names += [protein_name]
 
         return endo_rec_names, endo_rec_domain_ids
@@ -158,11 +160,11 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_ipro = gffParse(ipro)
     recTemp = gffParse(genome)[0]
     tempFeats = feature_lambda(
-                recTemp.features,
-                feature_test_type,
-                {"types": ["CDS"]},
-                subfeatures=True,
-                )
+        recTemp.features,
+        feature_test_type,
+        {"types": ["CDS"]},
+        subfeatures=True,
+    )
     recTemp.features = tempFeats
     rec_genome_ini = [recTemp]
 
@@ -175,18 +177,16 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     if len(rec_lgc) > 0 and len(rec_tmhmm) > 0 and len(rec_genome_ini) > 0:
 
         # find names of the proteins containing endolysin associated domains
-        endo_names, endo_domain_ids = find_endolysins(
-            rec_ipro, list(enzyme_domain_ids)
-        )
+        endo_names, endo_domain_ids = find_endolysins(rec_ipro, list(enzyme_domain_ids))
 
         # find names of proteins containing transmembrane domains
         tmhmm_protein_names = []
         for seq in rec_tmhmm:
-            tmhmm_protein_names += [str(seq.id) + '**']
+            tmhmm_protein_names += [str(seq.id) + "**"]
 
         lgc_names = []
         for seq in rec_lgc:
-            lgc_names += [str(seq.id) + '**']
+            lgc_names += [str(seq.id) + "**"]
 
         adjacent_endo = {}
         adjacent_lgc_to_endo = {}
@@ -215,14 +215,14 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                 # searches for synonyms and
                 if feat.type == "CDS":
                     feat_names = []
-                    feat_names.append(str(feat.id) + '**')
+                    feat_names.append(str(feat.id) + "**")
                     if "locus_tag" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["locus_tag"][0]) + '**')
+                        feat_names.append(str(feat.qualifiers["locus_tag"][0]) + "**")
                     if "protein_id" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["protein_id"][0]) + '**')
+                        feat_names.append(str(feat.qualifiers["protein_id"][0]) + "**")
                     if "Name" in feat.qualifiers:
                         if len(str(feat.qualifiers["Name"][0])) > 5:
-                            feat_names.append(str(feat.qualifiers["Name"][0]) + '**')
+                            feat_names.append(str(feat.qualifiers["Name"][0]) + "**")
 
                     # print(str(feat_names))
                     # print(str(feat.qualifiers))
@@ -233,9 +233,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                     holin_annotations = ["holin"]
                     if "product" in feat.qualifiers:
                         if any(
-                            x
-                            for x in holin_annotations
-                            if (x in str(feat.qualifiers))
+                            x for x in holin_annotations if (x in str(feat.qualifiers))
                         ):
                             tm_seqrec += [feat]
                     # check if protein contains a TMD
@@ -277,7 +275,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             adjacent_lgc_to_tm[rec_genome.id] = adjacent_lgc_to_tm_i
             # print(rec_genome.id)
     else:
-      return 0, 0, 0, 0
+        return 0, 0, 0, 0
     # print(adjacent_endo)
     return adjacent_endo, adjacent_lgc_to_endo, adjacent_tm, adjacent_lgc_to_tm
 
@@ -333,19 +331,19 @@ if __name__ == "__main__":
     )
 
     if endo == 0:
-      with open(args.oa, "w") as handle:
-        handle.write("##gff-version 3")
-      with open(args.ob, "w") as handle:
-        handle.write("##gff-version 3")
-      with open(args.oc, "w") as handle:
-        handle.write("##gff-version 3")
-      with open(args.od, "w") as handle:
-        handle.write("##gff-version 3")
-      return
+        with open(args.oa, "w") as handle:
+            handle.write("##gff-version 3")
+        with open(args.ob, "w") as handle:
+            handle.write("##gff-version 3")
+        with open(args.oc, "w") as handle:
+            handle.write("##gff-version 3")
+        with open(args.od, "w") as handle:
+            handle.write("##gff-version 3")
+        return
 
     args.genome.seek(0)
     rec = list(gffParse(args.genome))
-    
+
     with open(args.oa, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]

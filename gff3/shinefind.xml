@@ -1,61 +1,58 @@
 <tool id="edu.tamu.cpt.genbank.shinefind" name="Shine Find" version="21.1.0.0">
-	<description>Identify shine-dalgarno sequences</description>
-	<macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-	</macros>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive"><![CDATA[
+    <description>Identify shine-dalgarno sequences</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/shinefind.py
+python '$__tool_directory__/shinefind.py'
 
 @GENOME_SELECTOR@
-$gff3_data
+'$gff3_data'
 
---table_output $default_output
---gff3_output $gff3_output
+--table_output '$default_output'
+--gff3_output '$gff3_output'
 
---lookahead_min $lookahead_min
---lookahead_max $lookahead_max
-$add
-$top_only
+--lookahead_min '$lookahead_min'
+--lookahead_max '$lookahead_max'
+'$add'
+'$top_only'
 
 
-> $stdout
+> '$stdout'
 
 ]]></command>
-	<inputs>
-		<expand macro="genome_selector" />
-		<expand macro="gff3_input" />
-
-		<param label="Minimum number of bases upstream of CDS for gap (--lookahead_min)" name="lookahead_min" type="integer" value="3"/>
-		<param label="Maximum number of bases upstream of CDS for gap (--lookahead_max)" name="lookahead_max" type="integer" value="17"/>
-		<param checked="true" label="Automatically add RBSs to input GFF3" name="add"
-				type="boolean" truevalue="--add" falsevalue="" />
-		<param checked="true" label="Only report best hits (--top_only)"
-				name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
-	</inputs>
-	<outputs>
-		<data format="tabular" name="default_output" label="ShineFind RBS list from $gff3_data.name"/>
-		<data format="gff3" name="gff3_output" label="ShineFind GFF3 RBSs from $gff3_data.name"/>
-		<data format="gff3" name="stdout" label="$gff3_data.name with RBSs"/>
-	</outputs>
-	<tests>
-		<test>
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="reference_genome_source" value="history" />
-			<param name="gff3_data" value="miro.gff3" />
-			<param name="lookahead_max" value="15" />
-			<param name="lookahead_min" value="5" />
-			<param name="add" value="True"/>
-			<param name="top_only" value="False" />
-			<output name="default_output" file="shinefind.tbl" />
-			<output name="gff3_output" file="shinefind.gff3" />
-			<output name="stdout" file="shinefind_stdout.gff3" />
-		</test>
-	</tests>
-	<help><![CDATA[
+    <inputs>
+        <expand macro="genome_selector"/>
+        <expand macro="gff3_input"/>
+        <param label="Minimum number of bases upstream of CDS for gap (--lookahead_min)" name="lookahead_min" type="integer" value="3"/>
+        <param label="Maximum number of bases upstream of CDS for gap (--lookahead_max)" name="lookahead_max" type="integer" value="17"/>
+        <param checked="true" label="Automatically add RBSs to input GFF3" name="add" type="boolean" truevalue="--add" falsevalue=""/>
+        <param checked="true" label="Only report best hits (--top_only)" name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="default_output" label="ShineFind RBS list from $gff3_data.name"/>
+        <data format="gff3" name="gff3_output" label="ShineFind GFF3 RBSs from $gff3_data.name"/>
+        <data format="gff3" name="stdout" label="$gff3_data.name with RBSs"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="genome_fasta" value="miro.fa"/>
+            <param name="reference_genome_source" value="history"/>
+            <param name="gff3_data" value="miro.gff3"/>
+            <param name="lookahead_max" value="15"/>
+            <param name="lookahead_min" value="5"/>
+            <param name="add" value="True"/>
+            <param name="top_only" value="False"/>
+            <output name="default_output" file="shinefind.tbl"/>
+            <output name="gff3_output" file="shinefind.gff3"/>
+            <output name="stdout" file="shinefind_stdout.gff3"/>
+        </test>
+    </tests>
+    <help><![CDATA[
 **What it does**
 
 From an input GFF3 and FASTA file, the upstream sequence within user-specified bounds is 
@@ -91,8 +88,7 @@ be added to the GFF3 file.
 		Previous to this date, when using "Only report best hits" option the algorithm would pick the "first" one (moving downstream) found in the case of tied sequence length. After this date, it now will report the sequence with the smaller gap between the END of the SD sequence and the START of the CDS.
 
 			]]></help>
-		<expand macro="citations" >
-			<expand macro="sl-citations-clm"/>
-		</expand>
+    <expand macro="citations">
+        <expand macro="sl-citations-clm"/>
+    </expand>
 </tool>
-

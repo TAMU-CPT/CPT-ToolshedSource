@@ -166,7 +166,11 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = "Residue %s..%s hit to %s" % (parent_match_start, parent_match_end, desc,)
+            hit_qualifiers["description"] = "Residue %s..%s hit to %s" % (
+                parent_match_start,
+                parent_match_end,
+                desc,
+            )
             top_feature = gffSeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
@@ -217,7 +221,10 @@ def combine_records(records):
             cleaned_records[combo_id].features[0].subfeatures = copy.deepcopy(
                 sub_features
             )
-            cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], rec.features[0].qualifiers["score"])
+            cleaned_records[combo_id].features[0].qualifiers["score"] = min(
+                cleaned_records[combo_id].features[0].qualifiers["score"],
+                rec.features[0].qualifiers["score"],
+            )
             # now we need to update the IDs for the features when combined
             # sort them into the proper order, then apply new ids
             # and also ensure the parent record boundaries fit the whole span of subfeatures
@@ -234,8 +241,11 @@ def combine_records(records):
                     new_parent_end,
                     feat.location.start + 1,
                     feat.location.end,
-                ) 
-                cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], feat.qualifiers["blast_score"])
+                )
+                cleaned_records[combo_id].features[0].qualifiers["score"] = min(
+                    cleaned_records[combo_id].features[0].qualifiers["score"],
+                    feat.qualifiers["blast_score"],
+                )
                 # if feat.location.start < new_parent_start:
                 #    new_parent_start = feat.location.start - 1
                 # if feat.location.end > new_parent_end:
@@ -245,11 +255,11 @@ def combine_records(records):
             )
             cleaned_records[combo_id].features[0].qualifiers[
                 "description"
-            ] = "Residue %s..%s hit to %s"  % (
-                    new_parent_start,
-                    new_parent_end,
-                    cleaned_records[combo_id].features[0].qualifiers["Name"],
-                )
+            ] = "Residue %s..%s hit to %s" % (
+                new_parent_start,
+                new_parent_end,
+                cleaned_records[combo_id].features[0].qualifiers["Name"],
+            )
             # save the renamed and ordered feature list to record
             cleaned_records[combo_id].features[0].sub_features = copy.deepcopy(
                 sub_features
@@ -309,7 +319,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
             "ID": feature_id,
             "Name": (dc["salltitles"].split("<>")[0]),
             "description": "Residue {sstart}..{send} hit to {x}".format(
-                    x=dc["salltitles"].split("<>")[0], **dc
+                x=dc["salltitles"].split("<>")[0], **dc
             ),
             "source": "blast",
             "score": dc["evalue"],
@@ -321,7 +331,14 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         hsp_qualifiers = {"source": "blast"}
         for key in dc.keys():
             # Add the remaining BLAST info to the GFF qualifiers
-            if key in ("salltitles", "sallseqid", "sseqid", "qseqid", "qseq", "sseq",):
+            if key in (
+                "salltitles",
+                "sallseqid",
+                "sseqid",
+                "qseqid",
+                "qseq",
+                "sseq",
+            ):
                 continue
             hsp_qualifiers["blast_%s" % key] = clean_string(dc[key])
 

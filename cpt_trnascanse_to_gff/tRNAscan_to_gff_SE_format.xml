@@ -1,35 +1,34 @@
-<?xml version="1.0"?>
 <tool id="tRNA-SE_scan_to_gff" name="Convert tRNAscan-SE table to gff format" version="20.0.0">
-	<description></description>
-	<macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-	</macros>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/tRNAscan_to_gff_SE_format.py
-< $trnascan
-> $output
+    <description/>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python '$__tool_directory__/tRNAscan_to_gff_SE_format.py'
+< '$trnascan'
+> '$output'
 ]]></command>
-	<inputs>
-			<param format="tabular" type="data" name="trnascan" label="tRNAscan table" />
-	</inputs>
-	<outputs>
-		<data format="gff3" name="output">
+    <inputs>
+        <param format="tabular" type="data" name="trnascan" label="tRNAscan table"/>
+    </inputs>
+    <outputs>
+        <data format="gff3" name="output">
 		</data>
-	</outputs>
-	<tests>
-		<test>
-			<param name="trnascan" value="ConvTrnaSe_In.tabular" />
-			<output name="output" file="ConvTrnaSe_Out.gff3" />
-		</test>
-	</tests>
-	<help><![CDATA[
+    </outputs>
+    <tests>
+        <test>
+            <param name="trnascan" value="ConvTrnaSe_In.tabular"/>
+            <output name="output" file="ConvTrnaSe_Out.gff3"/>
+        </test>
+    </tests>
+    <help><![CDATA[
 What it does
 ============
 
 Converts tRNAscan-SE table to gff format
 
 ]]></help>
-		<expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

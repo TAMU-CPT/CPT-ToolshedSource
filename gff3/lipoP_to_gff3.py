@@ -24,18 +24,17 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut, filterSP2):
         rowElem = row.split("\t")
 
         orgID = rowElem[0]
-        
-        if filterSP2:
-          if rowElem[2] == "CleavII":
-            if not (orgID in orgIDs.keys()):
-                orgIDs[orgID] = []
-            orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
-        else:
-          if rowElem[2] in "CleavII":
-            if not (orgID in orgIDs.keys()):
-                orgIDs[orgID] = []
-            orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
 
+        if filterSP2:
+            if rowElem[2] == "CleavII":
+                if not (orgID in orgIDs.keys()):
+                    orgIDs[orgID] = []
+                orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
+        else:
+            if rowElem[2] in "CleavII":
+                if not (orgID in orgIDs.keys()):
+                    orgIDs[orgID] = []
+                orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
 
     # Rebase
     for gff in gffParse(gff3In):
@@ -61,7 +60,7 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut, filterSP2):
                     keepSeq.append(xRec)
                 continue
 
-            #if jBrowseOut:
+            # if jBrowseOut:
             #    xRec.sub_features = []
 
             i = 0
@@ -103,7 +102,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--filterSP2",
-        action='store_true',
+        action="store_true",
         help="Filter for only SPII sites",
     )
     args = parser.parse_args()

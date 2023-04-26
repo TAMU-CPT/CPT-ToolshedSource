@@ -274,7 +274,7 @@ if __name__ == "__main__":
     # data = expand_taxIDs(data)
     # data = deform_scores(data)
     if not args.noFilter:
-      data = filter_phage(data, phageTaxLookup)
+        data = filter_phage(data, phageTaxLookup)
     # data = expand_titles(data)
 
     if args.protein or args.canonical:

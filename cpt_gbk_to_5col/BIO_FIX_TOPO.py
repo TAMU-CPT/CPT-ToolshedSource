@@ -2,10 +2,9 @@ import Bio.GenBank
 
 
 def record_end(self, content):
-    """Clean up when we've finished the record.
-    """
-    #from Bio import Alphabet
-    #from Bio.Alphabet import IUPAC
+    """Clean up when we've finished the record."""
+    # from Bio import Alphabet
+    # from Bio.Alphabet import IUPAC
     from Bio.Seq import Seq, UnknownSeq
 
     # Try and append the version number to the accession for the full id
@@ -24,8 +23,8 @@ def record_end(self, content):
     # first, determine the alphabet
     # we default to an generic alphabet if we don't have a
     # seq type or have strange sequence information.
-    
-    #seq_alphabet = Alphabet.generic_alphabet
+
+    # seq_alphabet = Alphabet.generic_alphabet
 
     # now set the sequence
     sequence = "".join(self._seq_data)
@@ -77,9 +76,9 @@ def record_end(self, content):
             self.data.annotations["topology"] = "linear"
     """
     if not sequence and self.__expected_size:
-        self.data.seq = UnknownSeq(self._expected_size)#, seq_alphabet)
+        self.data.seq = UnknownSeq(self._expected_size)  # , seq_alphabet)
     else:
-        self.data.seq = Seq(sequence)#, seq_alphabet)
+        self.data.seq = Seq(sequence)  # , seq_alphabet)
 
 
 Bio.GenBank._FeatureConsumer.record_end = record_end

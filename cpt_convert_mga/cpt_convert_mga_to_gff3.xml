@@ -1,40 +1,38 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.util.mga_to_gff3" name="MGA to GFF3" version="19.1.0.0">
-	<description></description>
-	<macros>
-		<import>cpt-macros.xml</import>
-		<import>macros.xml</import>
-	</macros>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive">
+    <description/>
+    <macros>
+        <import>cpt-macros.xml</import>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/cpt_convert_mga_to_gff3.py
-$mga
+python '$__tool_directory__/cpt_convert_mga_to_gff3.py'
+'$mga'
 @GENOME_SELECTOR@
-> $data
-
+> '$data' ]]>
 </command>
-	<inputs>
-		<param label="MGA Output" name="mga" type="data" format="txt"/>
-		<expand macro="genome_selector" />
-	</inputs>
-	<outputs>
-		<data format="gff3" name="data">
+    <inputs>
+        <param label="MGA Output" name="mga" type="data" format="txt"/>
+        <expand macro="genome_selector"/>
+    </inputs>
+    <outputs>
+        <data format="gff3" name="data">
 		</data>
-	</outputs>
-	<tests>
-		<test>
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="ConvMga_In.fa" />
-			<param name="mga" value="ConvMga_In.out" />
-			<output name="data" file="ConvMga_Out.gff3" />
-		</test>
-	</tests>
-	<help>
+    </outputs>
+    <tests>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="ConvMga_In.fa"/>
+            <param name="mga" value="ConvMga_In.out"/>
+            <output name="data" file="ConvMga_Out.gff3"/>
+        </test>
+    </tests>
+    <help>
 **What it does**
 
 Converts an input MetaGeneAnnotator table to the GFF3 format.
 	</help>
-		<expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

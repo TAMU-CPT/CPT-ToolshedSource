@@ -17,7 +17,6 @@ log = logging.getLogger(__name__)
 def main(fasta, gff3, feature_filter=None, nodesc=False):
     if feature_filter == "nice_cds":
         from gff2gb import gff3_to_genbank as cpt_Gff2Gbk
-        
 
         for rec in cpt_Gff2Gbk(gff3, fasta, 11):
             seenList = {}
@@ -66,8 +65,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 else:
                     feat.qualifiers["ID"] = [feat._ID]
                     product = feat.qualifiers.get("product", "")
-                    description = "{1} [Location={0.location};ID={0.qualifiers[ID][0]}]".format(
-                        feat, product
+                    description = (
+                        "{1} [Location={0.location};ID={0.qualifiers[ID][0]}]".format(
+                            feat, product
+                        )
                     )
                 yield [
                     SeqRecord(
@@ -116,9 +117,21 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = ""
                 else:
                     if feat.strand == -1:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.phase, feat.strand)}
+                        important_data = {
+                            "Location": FeatureLocation(
+                                feat.location.start + 1,
+                                feat.location.end - feat.phase,
+                                feat.strand,
+                            )
+                        }
                     else:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.phase, feat.location.end, feat.strand)}
+                        important_data = {
+                            "Location": FeatureLocation(
+                                feat.location.start + 1 + feat.phase,
+                                feat.location.end,
+                                feat.strand,
+                            )
+                        }
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -130,48 +143,65 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-                #if feat.id == "CPT_Privateer_006.p01":
-                #print(feat)
-                #exit()
-                
+                # if feat.id == "CPT_Privateer_006.p01":
+                # print(feat)
+                # exit()
+
                 if isinstance(feat.location, CompoundLocation):
-                  finSeq = ""
-                  if feat.strand == -1:
-                    for x in feat.location.parts:
-                      finSeq += str((rec.seq[feat.location.start: feat.location.end - feat.phase]).reverse_complement())
-                  else:
-                    for x in feat.location.parts:
-                      finSeq += str(rec.seq[feat.location.start + feat.phase: feat.location.end])
-                  yield [
-                    SeqRecord(
-                        finSeq,
-                        id=nid.replace(" ", "-"),
-                        description=description,
-                    )
-                  ]
+                    finSeq = ""
+                    if feat.strand == -1:
+                        for x in feat.location.parts:
+                            finSeq += str(
+                                (
+                                    rec.seq[
+                                        feat.location.start : feat.location.end
+                                        - feat.phase
+                                    ]
+                                ).reverse_complement()
+                            )
+                    else:
+                        for x in feat.location.parts:
+                            finSeq += str(
+                                rec.seq[
+                                    feat.location.start + feat.phase : feat.location.end
+                                ]
+                            )
+                    yield [
+                        SeqRecord(
+                            finSeq,
+                            id=nid.replace(" ", "-"),
+                            description=description,
+                        )
+                    ]
                 elif feat.strand == -1:
-                  yield [
-                    SeqRecord(
-                        (rec.seq[feat.location.start: feat.location.end - feat.phase]).reverse_complement(),
-                        id=nid.replace(" ", "-"),
-                        description=description,
-                    )
-                  ]
+                    yield [
+                        SeqRecord(
+                            (
+                                rec.seq[
+                                    feat.location.start : feat.location.end - feat.phase
+                                ]
+                            ).reverse_complement(),
+                            id=nid.replace(" ", "-"),
+                            description=description,
+                        )
+                    ]
                 else:
-                  yield [
-                    SeqRecord(
-                        #feat.extract(rec).seq,
-                        rec.seq[feat.location.start + feat.phase: feat.location.end],
-                        id=nid.replace(" ", "-"),
-                        description=description,
-                    )
-                  ]
+                    yield [
+                        SeqRecord(
+                            # feat.extract(rec).seq,
+                            rec.seq[
+                                feat.location.start + feat.phase : feat.location.end
+                            ],
+                            id=nid.replace(" ", "-"),
+                            description=description,
+                        )
+                    ]
             rec.features = newfeats
             rec.annotations = {}
-            #gffWrite([rec], sys.stdout)
+            # gffWrite([rec], sys.stdout)
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-        
+
         for rec in gffParse(gff3, base_dict=seq_dict):
             noMatch = True
             if "Alias" in rec.features[0].qualifiers.keys():
@@ -201,9 +231,21 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = ""
                 else:
                     if feat.strand == -1:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.phase, feat.strand)}
+                        important_data = {
+                            "Location": FeatureLocation(
+                                feat.location.start + 1,
+                                feat.location.end - feat.phase,
+                                feat.strand,
+                            )
+                        }
                     else:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.phase, feat.location.end, feat.strand)}
+                        important_data = {
+                            "Location": FeatureLocation(
+                                feat.location.start + 1 + feat.phase,
+                                feat.location.end,
+                                feat.strand,
+                            )
+                        }
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -217,40 +259,58 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     )
 
                 if isinstance(feat.location, CompoundLocation):
-                  finSeq = ""
-                  if feat.strand == -1:
-                    for x in feat.location.parts:
-                      finSeq += str((rec.seq[x.start: x.end - feat.phase]).reverse_complement())
-                  else:
-                    for x in feat.location.parts:
-                      finSeq += str(rec.seq[x.start + feat.phase: x.end])
-                  yield [
-                    SeqRecord(
-                        Seq(finSeq),
-                        id=id.replace(" ", "-"),
-                        description=description,
-                    )
-                  ]
+                    finSeq = ""
+                    if feat.strand == -1:
+                        for x in feat.location.parts:
+                            finSeq += str(
+                                (
+                                    rec.seq[x.start : x.end - feat.phase]
+                                ).reverse_complement()
+                            )
+                    else:
+                        for x in feat.location.parts:
+                            finSeq += str(rec.seq[x.start + feat.phase : x.end])
+                    yield [
+                        SeqRecord(
+                            Seq(finSeq),
+                            id=id.replace(" ", "-"),
+                            description=description,
+                        )
+                    ]
 
                 else:
 
-                  if feat.strand == -1:
-                    yield [
-                      SeqRecord(
-                          seq=Seq(str(rec.seq[feat.location.start: feat.location.end - feat.phase])).reverse_complement(),
-                          id=id.replace(" ", "-"),
-                          description=description,
-                      )
-                    ]
-                  else:
-                    yield [
-                      SeqRecord(
-                          #feat.extract(rec).seq,
-                          seq=Seq(str(rec.seq[feat.location.start + feat.phase: feat.location.end])),
-                          id=id.replace(" ", "-"),
-                          description=description,
-                      )
-                    ]
+                    if feat.strand == -1:
+                        yield [
+                            SeqRecord(
+                                seq=Seq(
+                                    str(
+                                        rec.seq[
+                                            feat.location.start : feat.location.end
+                                            - feat.phase
+                                        ]
+                                    )
+                                ).reverse_complement(),
+                                id=id.replace(" ", "-"),
+                                description=description,
+                            )
+                        ]
+                    else:
+                        yield [
+                            SeqRecord(
+                                # feat.extract(rec).seq,
+                                seq=Seq(
+                                    str(
+                                        rec.seq[
+                                            feat.location.start
+                                            + feat.phase : feat.location.end
+                                        ]
+                                    )
+                                ),
+                                id=id.replace(" ", "-"),
+                                description=description,
+                            )
+                        ]
 
 
 if __name__ == "__main__":
@@ -267,9 +327,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     for seq in main(**vars(args)):
-        #if isinstance(seq, list):
+        # if isinstance(seq, list):
         #  for x in seq:
         #    print(type(x.seq))
         #    SeqIO.write(x, sys.stdout, "fasta")
-        #else:
-          SeqIO.write(seq, sys.stdout, "fasta")
+        # else:
+        SeqIO.write(seq, sys.stdout, "fasta")

@@ -1,19 +1,18 @@
-<?xml version="1.0"?>
 <macros>
-	<xml name="requirements">
-		<requirements>
-			<requirement type="package" version="3.8.13">python</requirement>
-			<requirement type="package" version="1.77">biopython</requirement>
-			<requirement type="package" version="1.2.2">cpt_gffparser</requirement>  
+    <xml name="requirements">
+        <requirements>
+            <requirement type="package" version="3.8.13">python</requirement>
+            <requirement type="package" version="1.77">biopython</requirement>
+            <requirement type="package" version="1.2.2">cpt_gffparser</requirement>
             <requirement type="package" version="1.0.5">pandas</requirement>
             <requirement type="package" version="3.3.2">matplotlib</requirement>
             <!-- <requirement type="package" version="3.0.1">dna-features-viewer</requirement> -->
-			<yield/>
-		</requirements>
+            <yield/>
+        </requirements>
         <version_command>
 		<![CDATA[
-			cd $__tool_directory__ && git rev-parse HEAD
+			cd '$__tool_directory__' && git rev-parse HEAD
 		]]>
 		</version_command>
-	</xml>
+    </xml>
 </macros>

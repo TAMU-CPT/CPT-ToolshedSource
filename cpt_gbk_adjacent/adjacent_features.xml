@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC4">
   <description>Searches a Genbank file for a given FASTA sequence, then outputs a file with adjacent upstream features, and another with adjacent downstream features.</description>
   <macros>
@@ -7,20 +6,20 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/adjacent_features.py
-#set repeat_var_1 = '" "'.join([ str($var) for $var in $gbkIn ])
-#set repeat_var_2 = '" "'.join([ str($var) for $var in $fastaIn ])
+python '$__tool_directory__/adjacent_features.py'
+#set repeat_var_1 = '" "'.join([ str('$var') for '$var' in '$gbkIn' ])
+#set repeat_var_2 = '" "'.join([ str('$var') for '$var' in '$fastaIn' ])
 -genbankFiles "$repeat_var_1"
 -fastaFiles "$repeat_var_2"
--tTable $tTable
--fTable $fTable
--upOut $upstreamOut
--downOut $downstreamOut
-$translate
-$forceID
-$mode
---forward $ahead
---behind $back
+-tTable '$tTable'
+-fTable '$fTable'
+-upOut '$upstreamOut'
+-downOut '$downstreamOut'
+'$translate'
+'$forceID'
+'$mode'
+--forward '$ahead'
+--behind '$back'
 ]]></command>
   <inputs>
     <param label="Genbank file" name="gbkIn" type="data" format="genbank" multiple="True"/>
@@ -80,8 +79,8 @@ $mode
     </param>
   </inputs>
   <outputs>
-        <data name="upstreamOut" format="fasta" label="upOut"/>
-        <data name="downstreamOut" format="fasta" label="downOut"/>
+    <data name="upstreamOut" format="fasta" label="upOut"/>
+    <data name="downstreamOut" format="fasta" label="downOut"/>
   </outputs>
   <help><![CDATA[
 Currently Experimental: Uploaded for review purposes
@@ -97,9 +96,9 @@ It is currently recommended to select either the Gene only or CDS only options f
 
 
 ]]></help>
-		<citations>
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
-      <citation type="bibtex">
+  <citations>
+    <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+    <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
@@ -107,5 +106,5 @@ It is currently recommended to select either the Gene only or CDS only options f
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
-		</citations>
+  </citations>
 </tool>

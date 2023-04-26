@@ -64,10 +64,9 @@ def extract_features(
                     continue
 
                 if "codon_start" in feat.qualifiers:
-                  offset = 1 - int(feat.qualifiers["codon_start"][0])
+                    offset = 1 - int(feat.qualifiers["codon_start"][0])
                 else:
-                  offset = 0
-
+                    offset = 0
 
                 temp = gbk.seq[feat.location.start : feat.location.end]
                 if feat.location.strand == -1:
@@ -90,7 +89,9 @@ def extract_features(
                         "++++++++"
                     ]  # Junk value for genesOnly flag
 
-                if (gSeq == fSeq) and (protID == feat.qualifiers["protein_id"][0] or forceSeqID == False):
+                if (gSeq == fSeq) and (
+                    protID == feat.qualifiers["protein_id"][0] or forceSeqID == False
+                ):
                     goBack = num - 1
                     goAhead = num + 1
                     numBack = behind
@@ -120,10 +121,9 @@ def extract_features(
 
                     backList.reverse()
                     if feat.location.strand == -1:
-                      tmpList = aheadList
-                      aheadList = backList
-                      backList = tmpList
-                      
+                        tmpList = aheadList
+                        aheadList = backList
+                        backList = tmpList
 
                     for item in backList:
                         addition = ""

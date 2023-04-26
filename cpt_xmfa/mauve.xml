@@ -1,12 +1,11 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.comparative.mauve" name="X-Vis" version="1.0" profile="16.04">
-	<description>from XMFA file</description>
-	<macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
-	</macros>
-	<configfiles>
-		<configfile name="index">
+    <description>from XMFA file</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <configfiles>
+        <configfile name="index">
 		<![CDATA[
 #if ($frameHeight > 0):
 <!DOCTYPE html>
@@ -39,31 +38,31 @@
 #end if
 		]]>
 		</configfile>
-	</configfiles>
-	<expand macro="requirements"/>
-	<command detect_errors="aggressive"><![CDATA[
+    </configfiles>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 mkdir -p "$output.files_path";
 
-python $__tool_directory__/xmfa_process.py
+python '$__tool_directory__/xmfa_process.py'
 @INPUT_GFF@
 @INPUT_FASTA@
 @XMFA_INPUT@
 "out" > "$output.files_path/data.json";
 mv out "$output.files_path/";
 
-cp $__tool_directory__/mauve.js $output.files_path/;
-cp $index "$output"
+cp '$__tool_directory__/mauve.js' '$output.files_path/';
+cp '$index' "$output"
 ]]></command>
-	<inputs>
-		<expand macro="input/gff3+fasta" />
-		<expand macro="xmfa_input" />
-                <param label="Manually Set Height (0 for auto-scaling)" name="frameHeight" type="integer" value="0"/>
-	</inputs>
-	<outputs>
-		<data format="html" name="output" />
-	</outputs>
-	<help>
+    <inputs>
+        <expand macro="input/gff3+fasta"/>
+        <expand macro="xmfa_input"/>
+        <param label="Manually Set Height (0 for auto-scaling)" name="frameHeight" type="integer" value="0"/>
+    </inputs>
+    <outputs>
+        <data format="html" name="output"/>
+    </outputs>
+    <help>
 	</help>
-	<tests/>
+    <tests/>
 </tool>

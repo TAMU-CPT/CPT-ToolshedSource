@@ -30,8 +30,7 @@ import sys
 
 
 def parse_xmfa(xmfa):
-    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544
-    """
+    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544"""
     current_lcb = []
     current_seq = {}
     for line in xmfa.readlines():
@@ -103,8 +102,7 @@ def to_xmfa(lcbs, handle=sys.stdout):
 
 
 def percent_identity(a, b):
-    """Calculate % identity, ignoring gaps in the host sequence
-    """
+    """Calculate % identity, ignoring gaps in the host sequence"""
     match = 0
     mismatch = 0
     for char_a, char_b in zip(list(a), list(b)):
@@ -121,8 +119,7 @@ def percent_identity(a, b):
 
 
 def id_tn_dict(sequences, tmpfile=False):
-    """Figure out sequence IDs
-    """
+    """Figure out sequence IDs"""
     label_convert = {}
     correct_chrom = None
     if not isinstance(sequences, list):

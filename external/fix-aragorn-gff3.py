@@ -13,19 +13,22 @@ log = logging.getLogger(__name__)
 def fixed_feature(rec):
     for idx, feature in enumerate(
         feature_lambda(
-            rec.features, feature_test_type, {"types": ["tRNA", "tmRNA"]}, subfeatures=True
+            rec.features,
+            feature_test_type,
+            {"types": ["tRNA", "tmRNA"]},
+            subfeatures=True,
         )
     ):
-        
+
         fid = "%s-%03d" % (feature.type, 1 + idx)
         try:
             name = [feature.type + "-" + feature.qualifiers["Codon"][0]]
         except KeyError:
-            name = [feature.qualifiers['product'][0]]
+            name = [feature.qualifiers["product"][0]]
         try:
-          origSource = feature.qualifiers["source"][0]
+            origSource = feature.qualifiers["source"][0]
         except:
-          origSource = "."
+            origSource = "."
         gene = gffSeqFeature(
             location=feature.location,
             type="gene",

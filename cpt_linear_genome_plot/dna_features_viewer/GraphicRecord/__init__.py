@@ -1,3 +1,3 @@
 from .GraphicRecord import GraphicRecord
 
-__all__ = ['GraphicRecord']
+__all__ = ["GraphicRecord"]

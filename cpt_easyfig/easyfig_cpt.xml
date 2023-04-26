@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Easyfig:" version="2.2.3">
   <description> Galaxy wrapper for genbank visualization</description>
   <macros>
@@ -19,33 +18,33 @@ fi
 done;
 done;        
 
-python $__tool_directory__/Easyfig.py
--e $eVal 
+python '$__tool_directory__/Easyfig.py'
+-e '$eVal'
 #if $blast.input_type == "files":
 -blast_files 
 #for $file in $blast.blastIn:
-    $file 
+    '$file'
 #end for
 #else if $blast.input_type == "blastN":
 -blastn
 $blast.keepBlast
 #else if $blast.input_type == "blastX":
 -tblastx
-$blast.keepBlast
+'$blast.keepBlast'
 #end if
--aln $align 
--i $identity
--min_length $blastLen
--legend $leg 
--leg_name $nameLoc
--f1 $tfF
--f2 $intF
--blast_col $color 
+-aln '$align'
+-i '$identity'
+-min_length '$blastLen'
+-legend '$leg' 
+-leg_name '$nameLoc'
+-f1 '$tfF'
+-f2 '$intF'
+-blast_col '$color' 
 #if $gc != "":
-    -G $gc 
+    -G '$gc' 
 #end if
 
--o $SVG_Out 
+-o '$SVG_Out' 
 -svg 
 -filter
 \${genList[@]}
@@ -54,14 +53,13 @@ $blast.keepBlast
 &&
 tar -cvf tempTar temp_easyfig
 &&
-mv tempTar $blastDir
+mv tempTar '$blastDir'
 #end if
 #end if
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
     <param label="Reverse Items (See 'Reverse Option' in help text)" name="revString" type="text" value=""/>
-
     <conditional name="blast">
       <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
         <option value="files" selected="true">Use existing BLAST result</option>
@@ -72,44 +70,41 @@ mv tempTar $blastDir
         <param label="Blast Results (12-Column .tsv)" name="blastIn" type="data" format="tabular" multiple="True"/>
       </when>
       <when value="blastN">
-        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue=""/>
       </when>
       <when value="blastX">
-        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue=""/>
       </when>
     </conditional>
-
     <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
     <param label="Minimum Percent Identity Value" name="identity" type="float" value="0.00"/>
     <param label="Minimum Length for Blast Hit to be drawn" name="blastLen" type="integer" value="0"/>
-    
-    <param label="Draw colour gradient figure for blast hits." name="tfF" type="boolean" checked="false"  truevalue="T" falsevalue="F" />
+    <param label="Draw colour gradient figure for blast hits." name="tfF" type="boolean" checked="false" truevalue="T" falsevalue="F"/>
     <param label="How many base pairs long to draw the scale legend item (0 to not draw it)" name="intF" type="integer" value="0"/>
-
     <param label="Customize location of gene name" name="leg" type="select">
-            <option value="single">Single</option>
-            <option value="double">Double</option>
-            <option value="top">Top</option>
-            <option value="bottom">Bottom</option>
-            <option value="both">Both</option>
-            <option value="None">None</option>
+      <option value="single">Single</option>
+      <option value="double">Double</option>
+      <option value="top">Top</option>
+      <option value="bottom">Bottom</option>
+      <option value="both">Both</option>
+      <option value="None">None</option>
     </param>
     <param label="What property to get feature name from" name="nameLoc" type="text" value="gene"/>
     <param label="Customize alignment for Blast hits" name="align" type="select">
-            <option value="best">Best</option>
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-            <option value="centre">Center</option>
+      <option value="best">Best</option>
+      <option value="left">Left</option>
+      <option value="right">Right</option>
+      <option value="centre">Center</option>
     </param>
     <param label="Customize color for Blast hits" name="color" type="select">
-            <option value="gray">Gray</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
+      <option value="gray">Gray</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
     </param>
     <param label="Select GC Content plot" name="gc" type="select">
-            <option value="">No GC</option>
-            <option value="GCContent">GC Content</option>
-            <option value="GCSkew">GC Skew</option>
+      <option value="">No GC</option>
+      <option value="GCContent">GC Content</option>
+      <option value="GCSkew">GC Skew</option>
     </param>
     <param name="out_format" type="select" label="Output data type">
       <option value="svg">SVG</option>
@@ -117,15 +112,15 @@ mv tempTar $blastDir
     </param>
   </inputs>
   <outputs>
-        <data format="svg" name="SVG_Out" label="Easyfig Output">
-          <change_format>
-            <when input="out_format" value="html" format="html" />
-          </change_format>
-        </data>
-        <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
-          <filter>blast['input_type'] != 'files'</filter>
-          <filter>blast['keepBlast']</filter>
-        </data>
+    <data format="svg" name="SVG_Out" label="Easyfig Output">
+      <change_format>
+        <when input="out_format" value="html" format="html"/>
+      </change_format>
+    </data>
+    <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+      <filter>blast['input_type'] != 'files'</filter>
+      <filter>blast['keepBlast']</filter>
+    </data>
   </outputs>
   <help><![CDATA[
 **What it does**
@@ -178,6 +173,6 @@ A Scalable Vector Graphics (svg) file or static html display are returned.
 Blast Wrapper written by Criscione, Anthony, Center for Phage Technology, Texas A&M University, 2020
      ]]></help>
   <expand macro="citations">
-		<citation type="doi">10.1093/bioinformatics/btr039</citation>
-	</expand>
+    <citation type="doi">10.1093/bioinformatics/btr039</citation>
+  </expand>
 </tool>

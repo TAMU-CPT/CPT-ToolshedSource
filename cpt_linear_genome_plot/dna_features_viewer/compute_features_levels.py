@@ -46,16 +46,13 @@ def compute_features_levels(features):
         if f1.overlaps_with(f2)
     ]
     graph = Graph(features, edges)
-    levels = {
-        n: n.data.get("fixed_level", None)
-        for n in graph.nodes
-    }
+    levels = {n: n.data.get("fixed_level", None) for n in graph.nodes}
 
     def collision(node, level):
         """Return whether the node placed at base_level collides with its
         neighbors in the graph."""
         line_factor = 0.5
-        nlines = node.data.get("nlines", 1) 
+        nlines = node.data.get("nlines", 1)
         for neighbor in graph.neighbors[node]:
             neighbor_level = levels[neighbor]
             if neighbor_level is None:

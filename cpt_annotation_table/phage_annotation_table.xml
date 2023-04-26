@@ -1,18 +1,17 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="20.0.0.1">
     <description>from gff3 formatted datasets</description>
     <macros>
-      <import>macros.xml</import>
+        <import>macros.xml</import>
         <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
-	<requirement type="package" version="2.10.1">jinja2</requirement>  
+        <requirement type="package" version="2.10.1">jinja2</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/phage_annotation_table.py
-$gff3_data
+python '$__tool_directory__/phage_annotation_table.py'
+'$gff3_data'
 @GENOME_SELECTOR@
 --types "$extraTypes"
 --reportTemplateName "$report_format"
@@ -20,45 +19,38 @@ $gff3_data
 #if $gaf_data:
 --gafData "$gaf_data"
 #end if
-$checkSubfeats
-> $output]]></command>
+'$checkSubfeats'
+> '$output']]></command>
     <inputs>
-        <expand macro="gff3_input" />
-        <expand macro="genome_selector" />
-        <param label="Extra sub-feature types to include (Comma-separated, Will always include gene)" optional="True" name="extraTypes" type="text" value =""/>
+        <expand macro="gff3_input"/>
+        <expand macro="genome_selector"/>
+        <param label="Extra sub-feature types to include (Comma-separated, Will always include gene)" optional="True" name="extraTypes" type="text" value=""/>
         <param label="Columns" type="select" name="cols" multiple="True">
             <option value="rid" selected="true">Record ID</option>
             <option value="id" selected="true">ID</option>
             <option value="type" selected="true">Type</option>
             <option value="name" selected="true">Name</option>
-
             <option value="location" selected="true">Location</option>
             <option value="start" selected="true">Feature Start</option>
             <option value="end" selected="true">Feature End</option>
             <option value="strand" selected="true">Strand</option>
             <option value="length" selected="true">Length</option>
-
             <option value="sd_seq" selected="true">SD sequence</option>
             <option value="sd_spacing" selected="true">SD spacing</option>
             <option value="start_codon" selected="true">Start codon</option>
             <option value="stop_codon" selected="true">Stop codon</option>
-
             <option value="ig_dist" selected="true">Distance to next upstream feature</option>
             <option value="upstream_feature__name" selected="true">Name of upstream feature</option>
-
             <option value="owner" selected="true">Owner</option>
             <option value="date_created" selected="true">Date created</option>
             <option value="date_last_modified" selected="true">Date last modified</option>
-
             <option value="notes" selected="true">Notes</option>
             <option value="description" selected="true">Description</option>
             <option value="product" selected="true">Product</option>
             <option value="dbxrefs" selected="true">DBxrefs</option>
             <option value="qualifiers" selected="true">Qualifiers</option>
         </param>
-
-        <param label="GAF Data" name="gaf_data" type="data" format="tabular" optional="True"
-            help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool. The [GAF] Columns below are ONLY available when this data is populated."/>
+        <param label="GAF Data" name="gaf_data" type="data" format="tabular" optional="True" help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool. The [GAF] Columns below are ONLY available when this data is populated."/>
         <param label="GAF Columns" type="select" name="gaf_cols" multiple="True">
             <!-- GAF Specific Fields -->
             <option value="gaf_annotation_extension" selected="false">GAF Annotation Extension</option>
@@ -83,30 +75,30 @@ $checkSubfeats
         </param>
     </inputs>
     <outputs>
-      <data format="html" name="output">
-          <change_format>
-            <when format="tabular" input="report_format" value="phageqc_report_annotation_table.tsv"/>
-          </change_format>
-      </data>
+        <data format="html" name="output">
+            <change_format>
+                <when format="tabular" input="report_format" value="phageqc_report_annotation_table.tsv"/>
+            </change_format>
+        </data>
     </outputs>
-    <tests> 
-	<test>
-		<param name="reference_genome_source" value="history" />
-		<param name="genome_fasta" value="NC_001416_Table_In.fasta" />
-		<param name="gff3_data" value="NC_001416_Table_In.gff3" />
-		<param name="report_format" value="phageqc_report_annotation_table.html" />
-		<output name="output" file="PhageTable_Out.html" />
-	</test>
-	<test>
-		<param name="reference_genome_source" value="history" />
-		<param name="genome_fasta" value="NC_001416_Table_In.fasta" />
-		<param name="gff3_data" value="NC_001416_Table_In.gff3" />
-		<param name="report_format" value="phageqc_report_annotation_table.tsv" />
-		<output name="output" file="PhageTable_Out.tabular" />
-	</test>
-  </tests>
+    <tests>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="NC_001416_Table_In.fasta"/>
+            <param name="gff3_data" value="NC_001416_Table_In.gff3"/>
+            <param name="report_format" value="phageqc_report_annotation_table.html"/>
+            <output name="output" file="PhageTable_Out.html"/>
+        </test>
+        <test>
+            <param name="reference_genome_source" value="history"/>
+            <param name="genome_fasta" value="NC_001416_Table_In.fasta"/>
+            <param name="gff3_data" value="NC_001416_Table_In.gff3"/>
+            <param name="report_format" value="phageqc_report_annotation_table.tsv"/>
+            <output name="output" file="PhageTable_Out.tabular"/>
+        </test>
+    </tests>
     <help><![CDATA[
 Generate an "annotation table" of a genome, with user-configurable data columns
 ]]></help>
-    <expand macro="citations" />
+    <expand macro="citations"/>
 </tool>

@@ -10,61 +10,63 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 
-def parse_blast(blast, isXML = False):
+def parse_blast(blast, isXML=False):
     res = []
     finalRes = []
     if isXML:
-      for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
-        for alignment in blast_record.alignments:
-            tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3:]
-            tempID = tempID[:tempID.find("|")]
-            tempDesc = alignment.title
-            while tempDesc.find("|") >= 0:
-              tempDesc = tempDesc[tempDesc.find("|") + 1:]
-            tempDesc = tempDesc.strip()
-            tempID = tempID.strip()
-            for hsp in alignment.hsps:
-              line = [str(blast_record.query)]
-              line.append(str(hsp.align_length))
-              line.append(str(hsp.identities))
-              line.append(str(blast_record.query_length)) 
-              line.append(str(alignment.length))
-              line.append(tempDesc)
-              line.append(tempID)
-              #line.append("0000000")
-              #print(line)
-              res.append(line)
-      blast.seek(0)
-      resInd = -1
-      taxLine = blast.readline()
-      while taxLine: 
-        if "<Hit>" in taxLine:
-          resInd += 1
-          taxSlice = ""
-        elif "<taxid>" in taxLine:
-          taxSlice = taxLine[taxLine.find("<taxid>") + 7:taxLine.find("</taxid>")]
-          finalRes.append(res[resInd])
-          finalRes[-1].append(taxSlice)
-          #print(finalRes[-1])
+        for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
+            for alignment in blast_record.alignments:
+                tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3 :]
+                tempID = tempID[: tempID.find("|")]
+                tempDesc = alignment.title
+                while tempDesc.find("|") >= 0:
+                    tempDesc = tempDesc[tempDesc.find("|") + 1 :]
+                tempDesc = tempDesc.strip()
+                tempID = tempID.strip()
+                for hsp in alignment.hsps:
+                    line = [str(blast_record.query)]
+                    line.append(str(hsp.align_length))
+                    line.append(str(hsp.identities))
+                    line.append(str(blast_record.query_length))
+                    line.append(str(alignment.length))
+                    line.append(tempDesc)
+                    line.append(tempID)
+                    # line.append("0000000")
+                    # print(line)
+                    res.append(line)
+        blast.seek(0)
+        resInd = -1
         taxLine = blast.readline()
-      return finalRes
+        while taxLine:
+            if "<Hit>" in taxLine:
+                resInd += 1
+                taxSlice = ""
+            elif "<taxid>" in taxLine:
+                taxSlice = taxLine[
+                    taxLine.find("<taxid>") + 7 : taxLine.find("</taxid>")
+                ]
+                finalRes.append(res[resInd])
+                finalRes[-1].append(taxSlice)
+                # print(finalRes[-1])
+            taxLine = blast.readline()
+        return finalRes
     else:
-      for line in blast:
-        taxSplit = []
-        preTaxSplit = line.strip("\n").split("\t")
-        for tax in preTaxSplit[-1].split(";"):
-            shallowCopy = []
-            for x in range(len(preTaxSplit)):
-                shallowCopy.append(preTaxSplit[x])
-            shallowCopy[-1] = tax
-            res.append(shallowCopy)
-      for line in res:
-        for access in line[6].split(";"):
-            shallowCopy = []
-            for x in range(len(line)):
-                shallowCopy.append(line[x])
-            shallowCopy[6] = access
-            finalRes.append(shallowCopy)
+        for line in blast:
+            taxSplit = []
+            preTaxSplit = line.strip("\n").split("\t")
+            for tax in preTaxSplit[-1].split(";"):
+                shallowCopy = []
+                for x in range(len(preTaxSplit)):
+                    shallowCopy.append(preTaxSplit[x])
+                shallowCopy[-1] = tax
+                res.append(shallowCopy)
+        for line in res:
+            for access in line[6].split(";"):
+                shallowCopy = []
+                for x in range(len(line)):
+                    shallowCopy.append(line[x])
+                shallowCopy[6] = access
+                finalRes.append(shallowCopy)
     # for x in finalRes:
     #  print(x)
     # exit()
@@ -303,18 +305,18 @@ if __name__ == "__main__":
     data = []  # Reformatting to list rather than generator
 
     data = parse_blast(args.blast, args.xmlMode)
-    nameRec = data[0][0] 
+    nameRec = data[0][0]
     data = make_num(data)
     data = add_dice(data)
     data = bundle_dice(data)
-     
+
     # data = filter_dice(data, threshold=0.0)
     # data = important_only(data, splitId)
 
     # data = expand_taxIDs(data)
     # data = deform_scores(data)
     if not args.noFilter:
-      data = filter_phage(data, phageTaxLookup)
+        data = filter_phage(data, phageTaxLookup)
     # data = expand_titles(data)
 
     if args.protein or args.canonical:
@@ -343,7 +345,7 @@ if __name__ == "__main__":
                 "%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[6], out[4], out[9], out[2], out[8])
             )
-            
+
     else:
         sys.stdout.write(
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\n"
@@ -361,4 +363,3 @@ if __name__ == "__main__":
                 "%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[4], out[9], out[1], out[8])
             )
-            

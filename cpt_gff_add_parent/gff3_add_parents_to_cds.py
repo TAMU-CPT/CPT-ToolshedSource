@@ -3,7 +3,8 @@ import sys
 import logging
 import argparse
 from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
-#from Bio.SeqFeature import SeqFeature
+
+# from Bio.SeqFeature import SeqFeature
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -26,7 +27,11 @@ def fixed_feature(rec):
         mRNA = gffSeqFeature(
             location=feature.location,
             type="mRNA",
-            qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid], "Parent": gene.qualifiers["ID"]},
+            qualifiers={
+                "source": ["cpt.fixModel"],
+                "ID": ["%s.mRNA" % fid],
+                "Parent": gene.qualifiers["ID"],
+            },
         )
         feature.qualifiers["ID"] = [fid + ".CDS"]
         feature.qualifiers["Parent"] = mRNA.qualifiers["ID"]

@@ -1,17 +1,16 @@
-<?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.gff3.splitGff" name="Split GFF3+Fasta into separate parts" version="22.0.0">
-  <description></description>
+  <description/>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/gff3_splitgff.py
-$input
+'python $__tool_directory__/gff3_splitgff.py'
+'$input'
 
---gff $gff_out
---fasta $fasta_out
+--gff '$gff_out'
+--fasta '$fasta_out'
 ]]></command>
   <inputs>
     <param label="Combined GFF3/Fasta File" name="input" type="data" format="gff,gff3"/>
@@ -21,16 +20,16 @@ $input
     <data format="fasta" label="Fasta Portion of ${input.name}" name="fasta_out"/>
   </outputs>
   <tests>
-		<test>
-			<param name="input" value="Miro_SplitIn.gff3" />
-			<output name="gff" file="Miro_SplitOut.gff3" />
-			<output name="fasta" file="Miro_SplitOut.fa" />
-		</test>
+    <test>
+      <param name="input" value="Miro_SplitIn.gff3"/>
+      <output name="gff" file="Miro_SplitOut.gff3"/>
+      <output name="fasta" file="Miro_SplitOut.fa"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**
 
 Splits apart the GFF3/Fasta data in a combined file into separate fasta and gff3 files.
       ]]></help>
-		<expand macro="citations" />
+  <expand macro="citations"/>
 </tool>

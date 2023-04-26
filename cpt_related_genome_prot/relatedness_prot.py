@@ -8,42 +8,48 @@ from Bio.Blast import NCBIXML
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-def parse_blast(blast, isXML = False):
+
+def parse_blast(blast, isXML=False):
     res = []
     finalRes = []
     if isXML:
-      for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
-        for alignment in blast_record.alignments:
-            tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3:]
-            tempID = tempID[:tempID.find("|")]
-            tempDesc = alignment.title
-            while tempDesc.find("|") >= 0:
-              tempDesc = tempDesc[tempDesc.find("|") + 1:]
-            tempDesc = tempDesc.strip()
-            tempID = tempID.strip()
-            #for hsp in alignment.hsps:
-            line = [str(blast_record.query)[:str(blast_record.query).find("[")].strip()]
-            line.append(alignment.hit_id)
-            line.append(tempDesc)
-            line.append(alignment.accession)
-            res.append(line)
-      blast.seek(0)
-      resInd = -1
-      taxLine = blast.readline()
-      while taxLine: 
-        if "<Hit>" in taxLine:
-          resInd += 1
-          taxSlice = ""
-        elif "<taxid>" in taxLine:
-          taxSlice = taxLine[taxLine.find("<taxid>") + 7:taxLine.find("</taxid>")]
-          finalRes.append(res[resInd])
-          finalRes[-1].append(taxSlice)
+        for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
+            for alignment in blast_record.alignments:
+                tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3 :]
+                tempID = tempID[: tempID.find("|")]
+                tempDesc = alignment.title
+                while tempDesc.find("|") >= 0:
+                    tempDesc = tempDesc[tempDesc.find("|") + 1 :]
+                tempDesc = tempDesc.strip()
+                tempID = tempID.strip()
+                # for hsp in alignment.hsps:
+                line = [
+                    str(blast_record.query)[: str(blast_record.query).find("[")].strip()
+                ]
+                line.append(alignment.hit_id)
+                line.append(tempDesc)
+                line.append(alignment.accession)
+                res.append(line)
+        blast.seek(0)
+        resInd = -1
         taxLine = blast.readline()
-      return finalRes
+        while taxLine:
+            if "<Hit>" in taxLine:
+                resInd += 1
+                taxSlice = ""
+            elif "<taxid>" in taxLine:
+                taxSlice = taxLine[
+                    taxLine.find("<taxid>") + 7 : taxLine.find("</taxid>")
+                ]
+                finalRes.append(res[resInd])
+                finalRes[-1].append(taxSlice)
+            taxLine = blast.readline()
+        return finalRes
     else:
-      for line in blast:
-        finalRes.append(line.strip("\n").split("\t"))
+        for line in blast:
+            finalRes.append(line.strip("\n").split("\t"))
     return finalRes
+
 
 def with_dice(blast):
     for data in blast:
@@ -108,18 +114,19 @@ def expand_fields(blast):
         for x in range(0, len(data[4])):
             yield [data[0], data[1], data[2][x], data[3], int(data[4][x])]
 
+
 def expand_taxIDs(blast, taxFilter):
     for data in blast:
         # if(len(data[4]) > 0):
         #  print(data[0])
         for ID in data[4]:
             if ID != "N/A":
-              filterOut = False
-              for tax in taxFilter:
-                if str(ID).strip() == tax:
-                  filterOut = True
-              if not filterOut:
-                yield [data[0], data[1], data[2], data[3], int(ID)]
+                filterOut = False
+                for tax in taxFilter:
+                    if str(ID).strip() == tax:
+                        filterOut = True
+                if not filterOut:
+                    yield [data[0], data[1], data[2], data[3], int(ID)]
 
 
 def expand_titles(blast):
@@ -150,6 +157,7 @@ def remove_dupes(data):
         # Pretty simple
         yield row
 
+
 def scoreMap(blast):
     c = {}
     m = {}
@@ -172,10 +180,10 @@ if __name__ == "__main__":
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
     parser.add_argument("--noFilter", action="store_true")
-    #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
+    # parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
-    parser.add_argument("--xmlMode", action="store_true")   
-    parser.add_argument("--taxFilter", type=str) 
+    parser.add_argument("--xmlMode", action="store_true")
+    parser.add_argument("--taxFilter", type=str)
 
     args = parser.parse_args()
 
@@ -183,18 +191,18 @@ if __name__ == "__main__":
     phageTaxLookup = []
     sciName = []
     line = phageDb.readline()
-    
+
     taxList = []
-    if args.taxFilter and args.taxFilter != "" :
-      args.taxFilter = args.taxFilter.split(" ")
-      for ind in args.taxFilter:
-        taxList.append(ind.strip())
+    if args.taxFilter and args.taxFilter != "":
+        args.taxFilter = args.taxFilter.split(" ")
+        for ind in args.taxFilter:
+            taxList.append(ind.strip())
 
     while line:
         line = line.split("\t")
         phageTaxLookup.append(int(line[0]))
         line[1] = line[1].strip()
-        if (line[1] == ""):
+        if line[1] == "":
             line[1] = "Novel Genome"
         sciName.append(line[1])
         line = phageDb.readline()
@@ -213,7 +221,7 @@ if __name__ == "__main__":
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
-    
+
     data = expand_taxIDs(data, taxList)
     data = remove_dupes(data)
     if not args.noFilter:
@@ -221,19 +229,16 @@ if __name__ == "__main__":
     listify = []
     for x in data:
         listify.append(x)
-    #listify = greatest_taxID(listify)
-       
+    # listify = greatest_taxID(listify)
+
     count_label = "Similar Unique Proteins"
-    
+
     counts, accessions = scoreMap(listify)
-    
+
     nameRec = listify[0][0]
-    sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\n"
-            % (args.hits, nameRec)
-        )
+    sys.stdout.write("Top %d matches for BLASTp results of %s\n" % (args.hits, nameRec))
     header = "# TaxID\t"
-    #if args.title:
+    # if args.title:
     header += "Name\t"
     if args.access:
         header += "Accessions\t"
@@ -241,14 +246,14 @@ if __name__ == "__main__":
     sys.stdout.write(header)
 
     for idx, ((name, ID), num) in enumerate(
-            sorted(counts.items(), key=lambda item: -item[1])
-        ):
+        sorted(counts.items(), key=lambda item: -item[1])
+    ):
         if idx > args.hits - 1:
             break
         line = str(ID) + "\t"
-        #if args.title:
+        # if args.title:
         line += str(name) + "\t"
         if args.access:
-          line += str(accessions[(name, ID)][0]) + "\t"
-        line += str(num) + "\n" 
+            line += str(accessions[(name, ID)][0]) + "\t"
+        line += str(num) + "\n"
         sys.stdout.write(line)

@@ -1,28 +1,27 @@
-<?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.spanin.generate-putative-osp" name="OSP candidates" version="1.0">
     <description>constructs a putative list of potential o-spanin from an input genomic FASTA</description>
     <macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/generate-putative-osp.py
-$fasta_file
---strand $strand
---switch $switch
---osp_on $osp_on
---osp_op $osp_op
---osp_ob $osp_ob
---osp_og $osp_og
---osp_min_len $osp_min_len
---putative_osp $putative_osp
---summary_osp_txt $summary_osp
---putative_osp_gff $putative_osp_gff
---min_lipo_after $lipo_min
---max_lipo_after $lipo_max
---osp_max $osp_max
+'$__tool_directory__/generate-putative-osp.py'
+'$fasta_file'
+--strand '$strand'
+--switch '$switch'
+--osp_on '$osp_on'
+--osp_op '$osp_op'
+--osp_ob '$osp_ob'
+--osp_og '$osp_og'
+--osp_min_len '$osp_min_len'
+--putative_osp '$putative_osp'
+--summary_osp_txt '$summary_osp'
+--putative_osp_gff '$putative_osp_gff'
+--min_lipo_after '$lipo_min'
+--max_lipo_after '$lipo_max'
+--osp_max '$osp_max'
 ]]></command>
     <inputs>
         <param type="select" label="Strand Choice" name="strand">
@@ -30,20 +29,20 @@ $fasta_file
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta" />
-        <param label="o-spanin minimal length" name="osp_min_len" type="integer" value="45" />
-        <param label="o-spanin maximum length" name="osp_max" type="integer" value="200" />
-        <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
-        <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
-        <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
-        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="25" />
-        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="170" />
+        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta"/>
+        <param label="o-spanin minimal length" name="osp_min_len" type="integer" value="45"/>
+        <param label="o-spanin maximum length" name="osp_max" type="integer" value="200"/>
+        <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all"/>
+        <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10"/>
+        <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]"/>
+        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="25"/>
+        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="170"/>
     </inputs>
-    <outputs>   
-        <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
-        <data format="fasta" name="osp_op" label="ProtSequences.fa" hidden = "true"/>
-        <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
-        <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
+    <outputs>
+        <data format="fasta" name="osp_on" label="NucSequences.fa" hidden="true"/>
+        <data format="fasta" name="osp_op" label="ProtSequences.fa" hidden="true"/>
+        <data format="bed" name="osp_ob" label="BED_Output.bed" hidden="true"/>
+        <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden="true"/>
         <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
         <data format="txt" name="summary_osp" label="summary_osp.txt"/>
         <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
@@ -71,5 +70,5 @@ Finally, the protein list is filtered for size with user-set periplasmic length 
 **OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 Protein sequences which passed the above filters are returned as the candidate OSPs.
 ]]></help>
-        <expand macro="citations-crr" />
+    <expand macro="citations-crr"/>
 </tool>

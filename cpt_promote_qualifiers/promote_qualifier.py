@@ -31,7 +31,10 @@ def promote_qualifier(qualifier, parent, child, gff3):
                     reverse=False if parent_feature.strand > 0 else True,
                 )[0]
             except IndexError:
-                logging.warning("Child type %s not found under parent %s" % (child, parent_feature.qualifiers["ID"]))
+                logging.warning(
+                    "Child type %s not found under parent %s"
+                    % (child, parent_feature.qualifiers["ID"])
+                )
                 continue
             try:
                 parent_feature.qualifiers[qualifier] = first_child.qualifiers[qualifier]

@@ -78,7 +78,7 @@ class BokehPlottableMixin:
             height = int(0.5 * height)
         else:
             height = 100 * figure_height
-        height = max(height, 185) # Minimal height to see all icons
+        height = max(height, 185)  # Minimal height to see all icons
 
         max_y = max(
             [data["annotation_y"] for f, data in plot_data.items()]
