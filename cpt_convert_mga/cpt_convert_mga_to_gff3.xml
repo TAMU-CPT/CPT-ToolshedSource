@@ -7,7 +7,6 @@
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
-
 python '$__tool_directory__/cpt_convert_mga_to_gff3.py'
 '$mga'
 @GENOME_SELECTOR@
