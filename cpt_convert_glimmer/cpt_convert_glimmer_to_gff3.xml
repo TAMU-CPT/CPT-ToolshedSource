@@ -11,7 +11,7 @@
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
-'python $__tool_directory__/cpt_convert_glimmer_to_gff3.py'
+python '$__tool_directory__/cpt_convert_glimmer_to_gff3.py'
 '$glimmer'
 @GENOME_SELECTOR@
 > '$data' ]]>
