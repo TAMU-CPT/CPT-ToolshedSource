@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffWrite, gffSeqFeature
 from Bio import SeqIO
-from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
 import logging
 
