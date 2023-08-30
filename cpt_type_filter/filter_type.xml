@@ -8,7 +8,7 @@
   <command detect_errors="aggressive"><![CDATA[
 #set repeat_data = '" "'.join([ str($var.type) for $var in $repeat_0 ])
 
-'python $__tool_directory__/filter_type.py'
+python '$__tool_directory__/filter_type.py'
 @INPUT_GFF@
 "$repeat_data"
 '$invert'
