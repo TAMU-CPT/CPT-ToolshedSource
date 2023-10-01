@@ -5,6 +5,9 @@
         <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
+        <requirement type="package" version="3.9.16">python</requirement>
+        <requirement type="package" version="1.2.2">cpt_gffparser</requirement>
+        <requirement type="package" version="1.81">biopython</requirement>
         <requirement type="package" version="2022.1.18">regex</requirement>
     </expand>
     <command interpreter="python" detect_errors="aggressive"><![CDATA[
