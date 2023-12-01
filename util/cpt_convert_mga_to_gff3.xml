@@ -1,7 +1,7 @@
 <tool id="edu.tamu.cpt2.util.mga_to_gff3" name="MGA to GFF3" version="19.1.0.0">
     <description/>
     <macros>
-        <import>cpt-macros.xml</import>
+    
         <import>macros.xml</import>
     </macros>
     <expand macro="requirementsPython3"/>

@@ -2,7 +2,7 @@
     <description>CPT version accepts fasta input for genome lengths.</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="377">ucsc-wigtobigwig</requirement>

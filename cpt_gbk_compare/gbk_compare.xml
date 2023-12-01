@@ -2,7 +2,7 @@
   <description>, compare the identity of two genbank files</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <requirements>
     <requirement type="package" version="3.7">python</requirement>

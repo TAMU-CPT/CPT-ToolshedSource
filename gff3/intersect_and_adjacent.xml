@@ -2,7 +2,7 @@
   <description>Outputs nearby top-level GFF features from two GFF3 files</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements">
     <requirement type="package" version="3.0.2">intervaltree</requirement>

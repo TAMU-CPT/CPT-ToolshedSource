@@ -2,7 +2,7 @@
     <description>Removes FASTA sequences at the end of .gff3 file. All lines after '##FASTA' deleted</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[

@@ -2,7 +2,7 @@
   <description>Searches a Genbank file for a given FASTA sequence, then outputs a file with adjacent upstream features, and another with adjacent downstream features.</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[

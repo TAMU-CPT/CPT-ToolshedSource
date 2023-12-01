@@ -19,6 +19,7 @@ from spaninFuncs import (
 #### INPUT : putative_isp.fa & putative_osp.fa (in that order)
 #### PARAMETERS :
 
+
 ###############################################################################
 def write_output(candidates):
     """output file function...maybe not needed"""
@@ -132,7 +133,6 @@ def check_for_uniques(spanins):
             spanin_data["positive"]["amt_positive"] = 0
             spanin_data["positive"]["pos_amt_unique"] = 0
         if spanin_data["negative"]["coords"]:
-
             # do something else...
             # print('in other function')
             # print(spanin_data['negative']['coords'])
@@ -196,7 +196,6 @@ def check_for_uniques(spanins):
 
 
 if __name__ == "__main__":
-
     # Common parameters for both ISP / OSP portion of script
 
     parser = argparse.ArgumentParser(
@@ -330,8 +329,7 @@ if __name__ == "__main__":
                         for k, v in SPANIN_TYPES["EMBEDDED"].items():
                             # print(k)
                             f.writelines(
-                                ""
-                                + str(k)
+                                +str(k)
                                 + " ==> Amount of corresponding candidate o-spanins(s): "
                                 + str(len(v))
                                 + "\n"
@@ -339,8 +337,7 @@ if __name__ == "__main__":
                     if each_spanin_type == "SEPARATED":
                         for k, v in SPANIN_TYPES["SEPARATED"].items():
                             f.writelines(
-                                ""
-                                + str(k)
+                                +str(k)
                                 + " ==> Amount of corresponding candidate o-spanins(s): "
                                 + str(len(v))
                                 + "\n"
@@ -348,8 +345,7 @@ if __name__ == "__main__":
                     if each_spanin_type == "OVERLAPPED":
                         for k, v in SPANIN_TYPES["OVERLAPPED"].items():
                             f.writelines(
-                                ""
-                                + str(k)
+                                +str(k)
                                 + " ==> Amount of corresponding candidate o-spanins(s): "
                                 + str(len(v))
                                 + "\n"
@@ -414,15 +410,13 @@ if __name__ == "__main__":
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[2]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[2]])
                                 + "\n"
                             )
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[1]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[1]])
                                 + "\n"
                             )
         else:
@@ -491,15 +485,13 @@ if __name__ == "__main__":
                         if each_posp[2] in pair_dict["pairs"]["pair_number"].keys():
                             # print('ovl ; +')
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[2]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[2]])
                                 + "\n"
                             )
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[1]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[1]])
                                 + "\n"
                             )
         else:
@@ -565,15 +557,13 @@ if __name__ == "__main__":
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[2]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[2]])
                                 + "\n"
                             )
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                ""
-                                + str(pair_dict["pairs"]["pair_number"][each_posp[1]])
+                                +str(pair_dict["pairs"]["pair_number"][each_posp[1]])
                                 + "\n"
                             )
         else:

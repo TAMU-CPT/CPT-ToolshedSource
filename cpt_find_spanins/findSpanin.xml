@@ -2,7 +2,7 @@
     <description>With the outputs from the ISP and OSP candidate tools, cull the list down to candidate pairs</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
     </expand>

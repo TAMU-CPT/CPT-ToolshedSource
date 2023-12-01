@@ -2,7 +2,7 @@
     <description>from XMFA file</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <configfiles>
         <configfile name="index">

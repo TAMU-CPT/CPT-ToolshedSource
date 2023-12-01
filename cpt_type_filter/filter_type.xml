@@ -2,7 +2,7 @@
   <description>selects features from a gff3 file based on feature type</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[

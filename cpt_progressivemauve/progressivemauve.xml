@@ -2,7 +2,7 @@
     <description>constructs multiple genome alignments</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <requirements>
         <requirement type="package">progressivemauve</requirement>

@@ -2,7 +2,7 @@
     <description>allows you to re-arrange a genome</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements"/>
     <command><![CDATA[

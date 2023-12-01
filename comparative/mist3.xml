@@ -2,7 +2,7 @@
     <description>Multiple Interrelated Sequence doT plotter.</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="2.7">python</requirement>

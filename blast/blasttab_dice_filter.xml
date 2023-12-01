@@ -2,7 +2,7 @@
     <description>removes low-dice blast results</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[

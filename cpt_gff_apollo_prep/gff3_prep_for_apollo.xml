@@ -2,7 +2,7 @@
   <description>by ensuring that CDS features have a wrapping exon feature</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[

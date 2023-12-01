@@ -2,7 +2,7 @@
     <description>identifies lysis gene candidates close to genes encoding endolysin domains and genes encoding transmembrane domains</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="3.0.2">intervaltree</requirement>

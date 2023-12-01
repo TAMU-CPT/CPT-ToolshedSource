@@ -2,7 +2,7 @@
     <description>e.g. to get peptides from ESTs</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="3.9.16">python</requirement>

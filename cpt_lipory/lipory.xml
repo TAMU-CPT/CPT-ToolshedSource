@@ -2,7 +2,7 @@
   <description> in protein sequences</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements">
     <requirement type="package" version="2022.1.18">regex</requirement>

@@ -2,7 +2,7 @@
     <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="0.10.1">gffutils</requirement>

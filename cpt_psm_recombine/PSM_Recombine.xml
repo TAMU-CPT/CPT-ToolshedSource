@@ -2,7 +2,7 @@
   <description>: generates a raw PSM file for plotting and a tabular summary</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <requirements>
     <requirement type="package" version="5.22.1">perl</requirement>

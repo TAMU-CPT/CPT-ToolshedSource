@@ -2,7 +2,7 @@
   <description>that's unused in our GFF tools</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[

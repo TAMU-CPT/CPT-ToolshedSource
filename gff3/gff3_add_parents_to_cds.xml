@@ -2,7 +2,7 @@
     <description>is one step of fixing a gene model--adding parent gene features to CDSs</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[

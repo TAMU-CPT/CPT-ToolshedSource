@@ -2,7 +2,7 @@
   <description>validate phage annotations</description>
   <macros>
     <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
+
   </macros>
   <requirements>
     <requirement type="package" version="3.6">python</requirement>

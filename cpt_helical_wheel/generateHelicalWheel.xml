@@ -1,7 +1,7 @@
 <tool id="edu.tamu.cpt2.helicalWheel.generateHelicalWheel" name="Helical Wheel" version="1.0">
     <description>Generate and Plot a Protein Helical Wheel</description>
     <macros>
-        <import>cpt-macros.xml</import>
+    
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements">

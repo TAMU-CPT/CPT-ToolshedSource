@@ -2,7 +2,7 @@
     <description>predicts transcription terminators</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+    
     </macros>
     <requirements>
         <requirement type="package" version="3.7.9">python</requirement>
