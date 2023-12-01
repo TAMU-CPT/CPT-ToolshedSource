@@ -2,13 +2,14 @@
     <xml name="requirements">
         <requirements>
             <requirement type="package" version="0.6.4">bcbiogff</requirement>
+            <requirement type="package" version="3.9">python</requirement>
+            <requirement type="package" version="1.65">biopython</requirement>
+            <requirement type="package" version="2.12.1">requests</requirement>
+            <requirement type="package" version="1.2.2">cpt_gffparser</requirement>
             <yield/>
         </requirements>
     </xml>
     <token name="@WRAPPER_VERSION@">2.4.0</token>
-    <xml name="citation/progressive_mauve">
-        <citation type="doi">10.1371/journal.pone.0011147</citation>
-    </xml>
     <xml name="citation/gepard">
         <citation type="doi">10.1093/bioinformatics/btm039</citation>
     </xml>
@@ -46,6 +47,105 @@
     <xml name="input/gff3+fasta">
         <expand macro="gff3_input"/>
         <expand macro="genome_selector"/>
+    </xml>
+    <xml name="citation/mijalisrasche">
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+        <citation type="bibtex">@unpublished{galaxyTools,
+		author = {E. Mijalis, H. Rasche},
+		title = {CPT Galaxy Tools},
+		year = {2013-2017},
+		note = {https://github.com/tamu-cpt/galaxy-tools/}
+		}
+		</citation>
+    </xml>
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {E. Mijalis, H. Rasche},
+				title = {CPT Galaxy Tools},
+				year = {2013-2017},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-crr">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Ross},
+				title = {CPT Galaxy Tools},
+				year = {2020-},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-2020">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {E. Mijalis, H. Rasche},
+				title = {CPT Galaxy Tools},
+				year = {2013-2017},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2021},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-2020-AJC-solo">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2021},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="citations-clm">
+        <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Maughmer},
+				title = {CPT Galaxy Tools},
+				year = {2017-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+            <yield/>
+        </citations>
+    </xml>
+    <xml name="sl-citations-clm">
+        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Maughmer},
+				title = {CPT Galaxy Tools},
+				year = {2017-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+        <yield/>
     </xml>
     <token name="@INPUT_GFF@">
 	    '$gff3_data'
