@@ -12,13 +12,15 @@
 python '$__tool_directory__/phage_annotation_table.py'
 '$gff3_data'
 @GENOME_SELECTOR@
---types "$extraTypes"
 --reportTemplateName "$report_format"
 --annotationTableCols "$cols,$gaf_cols"
+#if $extraTypes:
+--types "$extraTypes"
+#end if
 #if $gaf_data:
 --gafData "$gaf_data"
 #end if
---searchSubs '$checkSubfeats'
+'$checkSubfeats'
 > '$output']]></command>
     <inputs>
         <expand macro="gff3_input"/>
