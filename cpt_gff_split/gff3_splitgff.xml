@@ -2,11 +2,10 @@
   <description/>
   <macros>
     <import>macros.xml</import>
-
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-'python $__tool_directory__/gff3_splitgff.py'
+python '$__tool_directory__/gff3_splitgff.py'
 '$input'
 
 --gff '$gff_out'
