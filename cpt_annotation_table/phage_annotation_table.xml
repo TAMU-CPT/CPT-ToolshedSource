@@ -20,7 +20,7 @@ python '$__tool_directory__/phage_annotation_table.py'
 #if $gaf_data:
 --gafData "$gaf_data"
 #end if
-'$checkSubfeats'
+$checkSubfeats
 > '$output']]></command>
     <inputs>
         <expand macro="gff3_input"/>
