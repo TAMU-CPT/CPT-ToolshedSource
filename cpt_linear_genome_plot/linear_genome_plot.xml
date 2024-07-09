@@ -3,8 +3,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <expand macro="requirements">
-    </expand>
+    <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/linear_genome_plot.py'
 '$input_file'

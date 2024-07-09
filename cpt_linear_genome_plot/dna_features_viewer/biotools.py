@@ -34,9 +34,15 @@ def reverse_complement(sequence):
     return complement(sequence)[::-1]
 
 
-aa_short_to_long_form_dict = {
-    _aa1: _aa3[0] + _aa3[1:].lower() for (_aa1, _aa3) in zip(aa1 + "*", aa3 + ["*"])
-}
+if type(aa1) is str and type(aa3) is list:
+    aa_short_to_long_form_dict = {
+        _aa1: _aa3[0] + _aa3[1:].lower() for (_aa1, _aa3) in zip(aa1 + "*", aa3 + ["*"])
+    }
+else:
+    aa_short_to_long_form_dict = {
+        _aa1: _aa3[0] + _aa3[1:].lower()
+        for (_aa1, _aa3) in zip(aa1 + ("*",), aa3 + ("*",))
+    }
 
 
 def translate(dna_sequence, long_form=False):

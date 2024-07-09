@@ -3,7 +3,15 @@ from ..biotools import find_narrowest_text_wrap
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import FeatureLocation, SeqFeature
-from Bio.Alphabet import DNAAlphabet
+
+try:
+    # Biopython <1.78
+    from Bio.Alphabet import DNAAlphabet
+
+    has_dna_alphabet = True
+except ImportError:
+    # Biopython >=1.78
+    has_dna_alphabet = False
 
 from .MatplotlibPlottableMixin import MatplotlibPlottableMixin
 from .BokehPlottableMixin import BokehPlottableMixin
@@ -123,7 +131,10 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
             for f in self.features
         ]
         if not isinstance(sequence, Seq):
-            sequence = Seq(sequence, alphabet=DNAAlphabet())
+            if has_dna_alphabet:
+                sequence = Seq(sequence, alphabet=DNAAlphabet())
+            else:
+                sequence = Seq(sequence)
         return SeqRecord(seq=sequence, features=features)
 
     def crop(self, window):
@@ -138,9 +149,11 @@ class GraphicRecord(MatplotlibPlottableMixin, BokehPlottableMixin):
                 new_features.append(cropped_feature)
 
         return GraphicRecord(
-            sequence=self.sequence[start - first_index : end - first_index]
-            if self.sequence is not None
-            else None,
+            sequence=(
+                self.sequence[start - first_index : end - first_index]
+                if self.sequence is not None
+                else None
+            ),
             sequence_length=end - start,
             features=new_features,
             feature_level_height=self.feature_level_height,
