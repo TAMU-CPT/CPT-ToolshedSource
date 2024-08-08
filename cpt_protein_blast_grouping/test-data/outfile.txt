@@ -1,0 +1,22 @@
+# Top 20 Hits
+# Name                                             Unique Query Matches      Unique Subject Hits      
+Burkholderia phage Milagro                         47                        48                       
+Burkholderia phage Momento                         41                        45                       
+Burkholderia phage Musica                          39                        42                       
+Burkholderia phage Menos                           39                        40                       
+Burkholderia phage KL3                             38                        39                       
+Burkholderia phage PhiBP82.2                       35                        35                       
+Burkholderia phage PhiBP82.3                       34                        34                       
+Burkholderia phage phiE202                         34                        34                       
+Burkholderia phage phiE094                         34                        34                       
+Burkholderia phage phiX216                         33                        33                       
+Burkholderia phage phiE52237                       33                        33                       
+Burkholderia phage AP3                             33                        33                       
+Burkholderia phage Carl1                           33                        34                       
+Burkholderia phage Mana                            33                        34                       
+Burkholderia phage vB_HM387                        32                        32                       
+Burkholderia phage BEK                             31                        31                       
+Burkholderia phage KS5                             31                        32                       
+Ralstonia phage RsoM1USA                           28                        28                       
+Ralstonia phage RSA1                               28                        29                       
+Burkholderia phage PK23                            26                        27                       
