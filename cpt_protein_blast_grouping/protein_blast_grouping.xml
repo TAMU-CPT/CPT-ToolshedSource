@@ -6,7 +6,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive">
     <![CDATA[
-      $__tool_directory__/protein_blast_grouping.py
+      python $__tool_directory__/protein_blast_grouping.py
       '${blast_in.blast}'
       --hits '$hits'
       --sort '$sort.sortType'
