@@ -42,12 +42,12 @@ class BlastProteinResultParser:
         self, num_hits, sort_key="unique_queries", output_file=sys.stdout
     ):
         top_hits = self.get_top_hits(num_hits, sort_key)
-        print(f"# Top {num_hits} Hits", file=output_file)
         print(
             "Rank\tPhage Name\tUnique Query Matches\tUnique Subject Hits",
             file=output_file,
         )
-        for rank, (organism, data) in enumerate(top_hits):
+        for r, (organism, data) in enumerate(top_hits):
+            rank = r + 1  # 1-based ranking
             print(
                 f"{rank}\t{organism}\t{len(data['unique_queries'])}\t{len(data['unique_hits'])}",
                 file=output_file,
