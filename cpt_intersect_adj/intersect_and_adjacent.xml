@@ -2,16 +2,12 @@
   <description>Outputs nearby top-level GFF features from two GFF3 files</description>
   <macros>
     <import>macros.xml</import>
-
   </macros>
   <requirements>
-    <requirement type="package" version="3.8.13">python</requirement>
-    <requirement type="package" version="1.79">biopython</requirement>
-    <requirement type="package" version="1.2.2">cpt_gffparser</requirement>
     <requirement type="package" version="3.0.2">intervaltree</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
-'$__tool_directory__/intersect_and_adjacent.py'
+python '$__tool_directory__/intersect_and_adjacent.py'
 '$gff3_data_a'
 '$gff3_data_b'
 '$window'
