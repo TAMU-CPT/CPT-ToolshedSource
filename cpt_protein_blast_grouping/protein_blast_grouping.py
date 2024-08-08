@@ -1,5 +1,6 @@
 import argparse
 import re
+import sys
 
 
 class BlastProteinResultParser:
@@ -37,7 +38,9 @@ class BlastProteinResultParser:
         sorted_results = sorted(self.results.items(), key=sort_key, reverse=True)
         return sorted_results[:num_hits]
 
-    def print_results(self, num_hits, sort_key="unique_queries"):
+    def print_results(
+        self, num_hits, sort_key="unique_queries", output_file=sys.stdout
+    ):
         top_hits = self.get_top_hits(num_hits, sort_key)
         print(f"# Top {num_hits} Hits")
         print(
@@ -49,7 +52,8 @@ class BlastProteinResultParser:
             print(
                 "{:<50} {:<25} {:<25}".format(
                     organism, len(data["unique_queries"]), len(data["unique_hits"])
-                )
+                ),
+                file=output_file,
             )
 
 
@@ -62,6 +66,12 @@ def main():
         "--hits", type=int, default=5, help="Number of top hits to display"
     )
     parser.add_argument(
+        "--output",
+        type=argparse.FileType("w"),
+        default="-",
+        help="Output file (default: stdout)",
+    )
+    parser.add_argument(
         "--sort",
         choices=["unique_queries", "unique_hits"],
         default="unique_queries",
@@ -71,7 +81,9 @@ def main():
 
     blast_parser = BlastProteinResultParser(args.blast)
     blast_parser.parse_blast()
-    blast_parser.print_results(args.hits, args.sort)
+    blast_parser.print_results(args.hits, args.sort, args.output)
+
+    args.output.close()
 
 
 if __name__ == "__main__":

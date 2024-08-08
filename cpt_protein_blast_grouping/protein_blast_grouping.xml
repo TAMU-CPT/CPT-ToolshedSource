@@ -6,11 +6,11 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive">
     <![CDATA[
-      '$__tool_directory__/protein_blast_grouping.py'
+      $__tool_directory__/protein_blast_grouping.py
       '${blast_in.blast}'
       --hits '$hits'
       --sort '$sort.sortType'
-      > '$grouping_output'
+      --output '$grouping_output'
     ]]>
   </command>
   <inputs>
@@ -45,13 +45,14 @@
       <output name="grouping_output" file="outfile.txt" lines_diff="1"/>
     </test>
   </tests>
-  <help>
-**What it does**
-* Reads a tab-delimited BLAST output file.
-* Extracts organism names from the subject titles (text in square brackets).
-* Counts unique query proteins that matched each organism and unique hit proteins from each organism.
-* Sorts and displays results based on either unique queries or unique hits.
-* The output is a formatted table showing the top N organisms with the most matches.
+  <help><![CDATA[
+  **What it does**
+  * Reads a tab-delimited BLAST output file.
+  * Extracts organism names from the subject titles (text in square brackets).
+  * Counts unique query proteins that matched each organism and unique hit proteins from each organism.
+  * Sorts and displays results based on either unique queries or unique hits.
+  * The output is a formatted table showing the top N organisms with the most matches.
+  ]]>
 </help>
   <expand macro="citations-2020"/>
 </tool>
