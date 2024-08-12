@@ -268,14 +268,16 @@ if __name__ == "__main__":
         help="Allows features this far away to still be considered 'adjacent'",
     )
     parser.add_argument(
-        "-stranding",
-        action="store_true",
-        help="Only allow adjacency for same-strand features",
+        "stranding",
+        nargs="?",
+        default="",
+        help="Only allow adjacency for same-strand features if set to '-stranding'",
     )
     parser.add_argument("--oa", type=str, default="a_hits_near_b.gff")
     parser.add_argument("--ob", type=str, default="b_hits_near_a.gff")
     args = parser.parse_args()
 
+    stranding = args.stranding == "-stranding"
     b, a = intersect(args.a, args.b, args.window, args.stranding)
 
     with open(args.oa, "w") as handle:

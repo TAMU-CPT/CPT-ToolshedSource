@@ -10,8 +10,8 @@
     python '$__tool_directory__/intersect_and_adjacent.py'
     '$gff3_data_a'
     '$gff3_data_b'
-    '$window'
-    '$stranding'
+    $window
+    $stranding
     --oa '$oa'
     --ob '$ob'
     ]]>
