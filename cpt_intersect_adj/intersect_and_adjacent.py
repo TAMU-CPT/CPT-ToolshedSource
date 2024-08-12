@@ -84,73 +84,40 @@ def intersect(a, b, window, stranding):
             b_pos = []
             tree_a = []
             tree_b = []
-            if stranding == True:
-                for feat in rec_a_i.features:
-                    if feat.type == "remark" or feat.type == "annotation":
-                        continue
-                    if feat.strand > 0:
-                        a_pos.append(
-                            Interval(
-                                int(feat.location.start) - int(window),
-                                int(feat.location.end) + int(window),
-                                feat.id,
-                            )
-                        )
-                    else:
-                        a_neg.append(
-                            Interval(
-                                int(feat.location.start) - int(window),
-                                int(feat.location.end) + int(window),
-                                feat.id,
-                            )
-                        )
 
-                for feat in rec_b_i.features:
-                    if feat.type == "remark" or feat.type == "annotation":
-                        continue
+            for feat in rec_a_i.features:
+                if feat.type == "remark" or feat.type == "annotation":
+                    continue
+                interval = Interval(
+                    int(feat.location.start) - int(window),
+                    int(feat.location.end) + int(window),
+                    feat.id,
+                )
+                if stranding:
                     if feat.strand > 0:
-                        b_pos.append(
-                            Interval(
-                                int(feat.location.start) - int(window),
-                                int(feat.location.end) + int(window),
-                                feat.id,
-                            )
-                        )
+                        a_pos.append(interval)
                     else:
-                        b_neg.append(
-                            Interval(
-                                int(feat.location.start) - int(window),
-                                int(feat.location.end) + int(window),
-                                feat.id,
-                            )
-                        )
+                        a_neg.append(interval)
+                else:
+                    tree_a.append(interval)
 
-            else:
-                for feat in rec_a_i.features:
-                    if feat.type == "remark" or feat.type == "annotation":
-                        continue
-                    tree_a.append(
-                        Interval(
-                            int(feat.location.start) - int(window),
-                            int(feat.location.end) + int(window),
-                            feat.id,
-                        )
-                    )
-                for feat in rec_b_i.features:
-                    if feat.type == "remark" or feat.type == "annotation":
-                        continue
-                    tree_b.append(
-                        Interval(
-                            int(feat.location.start) - int(window),
-                            int(feat.location.end) + int(window),
-                            feat.id,
-                        )
-                    )
+            for feat in rec_b_i.features:
+                if feat.type == "remark" or feat.type == "annotation":
+                    continue
+                interval = Interval(
+                    int(feat.location.start) - int(window),
+                    int(feat.location.end) + int(window),
+                    feat.id,
+                )
+                if stranding:
+                    if feat.strand > 0:
+                        b_pos.append(interval)
+                    else:
+                        b_neg.append(interval)
+                else:
+                    tree_b.append(interval)
+
             if stranding:
-                # builds interval tree from Interval objects of form (start, end, id) for each feature
-                # tree_a = IntervalTree(list(treeFeatures_noRem(rec_a_i.features, window)))
-                # tree_b = IntervalTree(list(treeFeatures_noRem(rec_b_i.features, window)))
-                # else:
                 tree_a_pos = IntervalTree(a_pos)
                 tree_a_neg = IntervalTree(a_neg)
                 tree_b_pos = IntervalTree(b_pos)
@@ -167,61 +134,48 @@ def intersect(a, b, window, stranding):
             rec_b_hits_in_a = []
 
             for feature in rec_a_i.features:
-                # Save each feature in rec_a that overlaps a feature in rec_b
-                # hits = tree_b.find_range((int(feature.location.start), int(feature.location.end)))
-
                 if feature.type == "remark" or feature.type == "annotation":
                     continue
 
-                if stranding == False:
+                if not stranding:
                     hits = tree_b[
                         int(feature.location.start) : int(feature.location.end)
                     ]
-
-                    # feature id is saved in interval result.data, use map to get full feature
                     for hit in hits:
                         rec_a_hits_in_b.append(rec_b_map[hit.data])
-
                 else:
                     if feature.strand > 0:
-                        hits_pos = tree_b_pos[
+                        hits = tree_b_pos[
                             int(feature.location.start) : int(feature.location.end)
                         ]
-                        for hit in hits_pos:
-                            rec_a_hits_in_b.append(rec_b_map[hit.data])
                     else:
-                        hits_neg = tree_b_neg[
+                        hits = tree_b_neg[
                             int(feature.location.start) : int(feature.location.end)
                         ]
-                        for hit in hits_neg:
-                            rec_a_hits_in_b.append(rec_b_map[hit.data])
+                    for hit in hits:
+                        rec_a_hits_in_b.append(rec_b_map[hit.data])
 
             for feature in rec_b_i.features:
                 if feature.type == "remark" or feature.type == "annotation":
                     continue
 
-                if stranding == False:
+                if not stranding:
                     hits = tree_a[
                         int(feature.location.start) : int(feature.location.end)
                     ]
-
-                    # feature id is saved in interval result.data, use map to get full feature
                     for hit in hits:
                         rec_b_hits_in_a.append(rec_a_map[hit.data])
-
                 else:
                     if feature.strand > 0:
-                        hits_pos = tree_a_pos[
+                        hits = tree_a_pos[
                             int(feature.location.start) : int(feature.location.end)
                         ]
-                        for hit in hits_pos:
-                            rec_b_hits_in_a.append(rec_a_map[hit.data])
                     else:
-                        hits_neg = tree_a_neg[
+                        hits = tree_a_neg[
                             int(feature.location.start) : int(feature.location.end)
                         ]
-                        for hit in hits_neg:
-                            rec_b_hits_in_a.append(rec_a_map[hit.data])
+                    for hit in hits:
+                        rec_b_hits_in_a.append(rec_a_map[hit.data])
 
             # Remove duplicate features using sets
             rec_a_out.append(
