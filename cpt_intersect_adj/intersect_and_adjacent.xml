@@ -3,10 +3,9 @@
   <macros>
     <import>macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
-  <requirements>
+  <expand macro="requirements">
     <requirement type="package" version="3.0.2">intervaltree</requirement>
-  </requirements>
+  </expand>
   <command detect_errors="aggressive"><![CDATA[
     python '$__tool_directory__/intersect_and_adjacent.py'
     '$gff3_data_a'
