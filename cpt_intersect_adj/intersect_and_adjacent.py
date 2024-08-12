@@ -130,8 +130,8 @@ def intersect(a, b, window, stranding):
             rec_a_map = {f.id: f for f in rec_a_i.features}
             rec_b_map = {f.id: f for f in rec_b_i.features}
 
-            rec_a_hits_in_b = []
-            rec_b_hits_in_a = []
+            rec_a_hits_in_b = {}
+            rec_b_hits_in_a = {}
 
             for feature in rec_a_i.features:
                 if feature.type == "remark" or feature.type == "annotation":
@@ -142,7 +142,7 @@ def intersect(a, b, window, stranding):
                         int(feature.location.start) : int(feature.location.end)
                     ]
                     for hit in hits:
-                        rec_a_hits_in_b.append(rec_b_map[hit.data])
+                        rec_a_hits_in_b[hit.data] = rec_b_map[hit.data]
                 else:
                     if feature.strand > 0:
                         hits = tree_b_pos[
@@ -153,7 +153,7 @@ def intersect(a, b, window, stranding):
                             int(feature.location.start) : int(feature.location.end)
                         ]
                     for hit in hits:
-                        rec_a_hits_in_b.append(rec_b_map[hit.data])
+                        rec_a_hits_in_b[hit.data] = rec_b_map[hit.data]
 
             for feature in rec_b_i.features:
                 if feature.type == "remark" or feature.type == "annotation":
@@ -164,7 +164,7 @@ def intersect(a, b, window, stranding):
                         int(feature.location.start) : int(feature.location.end)
                     ]
                     for hit in hits:
-                        rec_b_hits_in_a.append(rec_a_map[hit.data])
+                        rec_b_hits_in_a[hit.data] = rec_a_map[hit.data]
                 else:
                     if feature.strand > 0:
                         hits = tree_a_pos[
@@ -175,9 +175,9 @@ def intersect(a, b, window, stranding):
                             int(feature.location.start) : int(feature.location.end)
                         ]
                     for hit in hits:
-                        rec_b_hits_in_a.append(rec_a_map[hit.data])
+                        rec_b_hits_in_a[hit.data] = rec_a_map[hit.data]
 
-            # Remove duplicate features using sets
+            # Sort features by start position
             rec_a_out.append(
                 SeqRecord(
                     rec_a[iterate].seq,
@@ -185,7 +185,9 @@ def intersect(a, b, window, stranding):
                     rec_a[iterate].name,
                     rec_a[iterate].description,
                     rec_a[iterate].dbxrefs,
-                    sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start),
+                    sorted(
+                        rec_a_hits_in_b.values(), key=lambda feat: feat.location.start
+                    ),
                     rec_a[iterate].annotations,
                 )
             )
@@ -196,7 +198,9 @@ def intersect(a, b, window, stranding):
                     rec_b[iterate].name,
                     rec_b[iterate].description,
                     rec_b[iterate].dbxrefs,
-                    sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start),
+                    sorted(
+                        rec_b_hits_in_a.values(), key=lambda feat: feat.location.start
+                    ),
                     rec_b[iterate].annotations,
                 )
             )
