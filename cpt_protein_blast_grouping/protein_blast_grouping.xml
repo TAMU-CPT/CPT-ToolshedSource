@@ -1,0 +1,58 @@
+<tool id="edu.tamu.cpt.blast.protein_grouping" name="Protein Blast Grouping" version="0.0.1">
+  <description>Based on a BLASTp result</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive">
+    <![CDATA[
+      python $__tool_directory__/protein_blast_grouping.py
+      '${blast_in.blast}'
+      --hits '$hits'
+      --sort '$sort.sortType'
+      --output '$grouping_output'
+    ]]>
+  </command>
+  <inputs>
+    <conditional name="blast_in">
+      <param name="blastType" type="select" label="Blastn Input Type">
+        <option value="TSV">Blast Tabular</option>
+      </param>
+      <when value="TSV">
+        <param label="BLASTp Results" name="blast" type="data" format="tsv,tabular"/>
+      </when>
+    </conditional>
+    <param label="Number of results to return" name="hits" type="integer" value="5" min="1" max="30"/>
+    <conditional name="sort">
+      <param name="sortType" type="select" label="Sort by">
+        <option value="unique_queries" selected="true">Unique Queries</option>
+        <option value="unique_hits">Unique Hits</option>
+      </param>
+      <when value="unique_queries"/>
+      <when value="unique_hits"/>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="grouping_output" label="Top BlastP Hits"/>
+  </outputs>
+  <tests>
+    <test>
+      <conditional name="blast_in">
+        <param name="blastType" value="TSV"/>
+        <param name="blast" value="infile.txt"/>
+      </conditional>
+      <param name="hits" value="20"/>
+      <output name="grouping_output" file="outfile.txt" lines_diff="1"/>
+    </test>
+  </tests>
+  <help><![CDATA[
+  **What it does**
+  * Reads a tab-delimited BLAST output file.
+  * Extracts organism names from the subject titles (text in square brackets).
+  * Counts unique query proteins that matched each organism and unique hit proteins from each organism.
+  * Sorts and displays results based on either unique queries or unique hits.
+  * The output is a formatted table showing the top N organisms with the most matches.
+  ]]>
+</help>
+  <expand macro="citations-2020"/>
+</tool>
