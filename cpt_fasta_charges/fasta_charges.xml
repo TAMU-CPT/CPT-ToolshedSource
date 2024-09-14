@@ -4,58 +4,57 @@
         <import>macros.xml</import>
     
     </macros>
-    <expand macro="requirements"/>
-    <command detect_errors="aggressive"><![CDATA[
-'$__tool_directory__/fasta_charges.py'
-'$svg'
-@SEQUENCE@
-
---width '$width'
+    <expand macro="requirements"> </expand>
+<command detect_errors="aggressive">
+<![CDATA[
+$__tool_directory__/fasta_charges.py $svg @SEQUENCE@ --width $width
 
 #if $scheme.cs == "default":
---aa HSQTNCY AVILMPFWG ERDK
---fgColor "#000000" "#000000" "#ffffff"
---bgColor "#ffffff" "#999999" "#000000"
+    --aa HSQTNCY AVILMPFWG ERDK
+    --fgColor "#000000" "#000000" "#ffffff"
+    --bgColor "#ffffff" "#999999" "#000000"
 #elif $scheme.cs == "rb":
---aa KR ED HSQTNCYAVILMPFWG
---fgColor "#ffffff" "#ffffff" "#000000"
---bgColor "#00b0f0" "#fc0000" "#ffffff"
+    --aa KR ED HSQTNCYAVILMPFWG
+    --fgColor "#ffffff" "#ffffff" "#000000"
+    --bgColor "#00b0f0" "#fc0000" "#ffffff"
 #elif $scheme.cs == "rbgb":
---aa KR ED P C HSQTNYAVILMFWG
---fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
---bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"
+    --aa KR ED P C HSQTNYAVILMFWG
+    --fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
+    --bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"
 #else:
-	--aa
-	#for group in '$scheme.groups':
-		"$group.aminoAcids"
-	#end for
-	--fgColor
-	#for group in '$scheme.groups':
-		"$group.fgColour"
-	#end for
-	--bgColor
-	#for group in '$scheme.groups':
-		"$group.bgColour"
-	#end for
+    --aa
+    #for group in $scheme.groups:
+        "$group.aminoAcids"
+    #end for
+    --fgColor
+    #for group in $scheme.groups:
+        "$group.fgColour"
+    #end for
+    --bgColor
+    #for group in $scheme.groups:
+        "$group.bgColour"
+    #end for
 #end if
-
-> $html ]]>
+]]>
 </command>
+
     <inputs>
-        <expand macro="input/fasta/protein"/>
-        <param label="Output format" name="svg" type="select">
-            <option value="">HTML</option>
-            <option value="--svg">SVG</option>
-        </param>
+        <expand macro="input/fasta/protein"></expand>
+        <label for="output-format">Output format</label>
+        <select id="output-format" name="svg">
+            <option value="html">HTML</option>
+            <option value="svg">SVG</option>
+        </select>
         <conditional name="scheme">
-            <param label="Colour scheme" name="cs" type="select">
+            <label for="Colour scheme">Colour scheme</label>
+            <select id="Colour scheme" name="cs">
                 <option value="default">Default hyrophobic/polar/charged</option>
                 <option value="rb">Positives Blue, Negatives Red</option>
                 <option value="rbgb">Positives Blue, Negatives Red, Prolines Green, Cysteines Brown</option>
                 <option value="custom">Custom Colour Scheme</option>
-            </param>
-            <when value="default"/>
-            <when value="rb"/>
+            </select>
+            <when value="default"></when>
+            <when value="rb"></when>
             <when value="custom">
                 <repeat name="groups" title="Colour Group">
                     <param name="aminoAcids" type="text" label="Amino Acids" help="Amino acids to colour a specific colour"/>
@@ -69,7 +68,7 @@
     <outputs>
         <data format="html" name="html">
             <change_format>
-                <when input="svg" value="--svg" format="svg"/>
+                <when input="svg" value="--svg" format="svg"></when>
             </change_format>
         </data>
     </outputs>
@@ -78,7 +77,7 @@
             <param name="sequences" value="prot.fa"/>
             <param name="cs" value="default"/>
             <param name="width" value="120"/>
-            <output name="html" file="charges.html"/>
+            <output name="html" file="charges.html"></output>
         </test>
     </tests>
     <help>
@@ -86,5 +85,5 @@
 
 Colors fasta (protein) sequences based on rules, and displays outputs as HTML.
 </help>
-    <expand macro="citations"/>
+    <expand macro="citations"></expand>
 </tool>
