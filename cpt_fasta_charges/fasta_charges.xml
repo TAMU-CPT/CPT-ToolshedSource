@@ -5,9 +5,12 @@
     
     </macros>
     <expand macro="requirements"> </expand>
-<command detect_errors="aggressive">
-<![CDATA[
-$__tool_directory__/fasta_charges.py $svg @SEQUENCE@ --width $width
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_charges.py 
+$svg 
+@SEQUENCE@ 
+
+--width $width
 
 #if $scheme.cs == "default":
     --aa HSQTNCY AVILMPFWG ERDK
@@ -35,15 +38,13 @@ $__tool_directory__/fasta_charges.py $svg @SEQUENCE@ --width $width
         "$group.bgColour"
     #end for
 #end if
-]]>
-</command>
-
+]]></command>
     <inputs>
         <expand macro="input/fasta/protein"></expand>
         <label for="output-format">Output format</label>
         <select id="output-format" name="svg">
-            <option value="html">HTML</option>
-            <option value="svg">SVG</option>
+            <option value="">HTML</option>
+            <option value="--svg">SVG</option>
         </select>
         <conditional name="scheme">
             <label for="Colour scheme">Colour scheme</label>
