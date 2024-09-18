@@ -4,6 +4,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 from Bio.Data import CodonTable
 import logging
+import re
 
 logging.basicConfig()
 log = logging.getLogger()
@@ -147,7 +148,7 @@ class OrfFinder(object):
             if index % 3 != 0:
                 continue
             n = s[start:index]
-            for (offset, n, t) in self.start_chop_and_trans(n):
+            for offset, n, t in self.start_chop_and_trans(n):
                 if n and len(t) >= self.min_len:
                     yield start + offset, n, t
             start = index
@@ -294,7 +295,7 @@ class MGAFinder(object):
             if index % 3 != 0:
                 continue
             n = s[start:index]
-            for (offset, n, t) in self.start_chop_and_trans(n):
+            for offset, n, t in self.start_chop_and_trans(n):
                 if n and len(t) >= self.min_len:
                     yield start + offset, n, t
             start = index
