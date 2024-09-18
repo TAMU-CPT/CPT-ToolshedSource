@@ -2,9 +2,9 @@
     <description>constructs a putative list of potential i-spanin from an input genomic FASTA</description>
     <macros>
         <import>macros.xml</import>
-    
     </macros>
     <expand macro="requirements">
+        <requirement type="package" version="2019.06.08">regex</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/generate-putative-isp.py'

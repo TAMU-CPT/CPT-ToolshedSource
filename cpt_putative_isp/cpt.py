@@ -4,7 +4,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 from Bio.Data import CodonTable
 import logging
-import re
+import regex as re
 
 logging.basicConfig()
 log = logging.getLogger()
