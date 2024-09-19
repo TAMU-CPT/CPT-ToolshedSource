@@ -6,11 +6,11 @@
     </macros>
     <expand macro="requirements"> </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/fasta_charges.py 
-$svg 
+python '$__tool_directory__/fasta_charges.py'
+'$svg'
 @SEQUENCE@ 
 
---width $width
+--width '$width'
 
 #if $scheme.cs == "default":
     --aa HSQTNCY AVILMPFWG ERDK
