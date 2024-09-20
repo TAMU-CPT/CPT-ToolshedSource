@@ -2,7 +2,6 @@
     <description>With the outputs from the ISP and OSP candidate tools, cull the list down to candidate pairs</description>
     <macros>
         <import>macros.xml</import>
-    
     </macros>
     <requirements>
         <requirement type="package" version="3.9">python</requirement>
