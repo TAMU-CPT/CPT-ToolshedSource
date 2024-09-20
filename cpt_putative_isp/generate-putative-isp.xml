@@ -4,7 +4,7 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
-        <requirement type="package" version="2019.06.08">regex</requirement>
+        <requirement type="package" version="2024.9.11">regex</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/generate-putative-isp.py'
