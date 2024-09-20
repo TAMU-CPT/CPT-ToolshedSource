@@ -2,15 +2,12 @@
 ######### Much of this code is very "blocked", in the sense that one thing happens...then a function happens on the return...then another function...etc...etc...
 
 import argparse
-import os
 import re  # new
-import itertools  # new
-from collections import Counter, OrderedDict
+from collections import Counter
 from spaninFuncs import (
     getDescriptions,
     grabLocs,
     spaninProximity,
-    splitStrands,
     tuple_fasta,
     lineWrapper,
 )
