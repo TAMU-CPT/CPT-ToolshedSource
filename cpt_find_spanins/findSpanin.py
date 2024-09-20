@@ -482,13 +482,13 @@ if __name__ == "__main__":
                         if each_posp[2] in pair_dict["pairs"]["pair_number"].keys():
                             # print('ovl ; +')
                             f.write(
-                                +str(pair_dict["pairs"]["pair_number"][each_posp[2]])
+                                str(pair_dict["pairs"]["pair_number"][each_posp[2]])
                                 + "\n"
                             )
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                +str(pair_dict["pairs"]["pair_number"][each_posp[1]])
+                                str(pair_dict["pairs"]["pair_number"][each_posp[1]])
                                 + "\n"
                             )
         else:
@@ -554,13 +554,13 @@ if __name__ == "__main__":
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                +str(pair_dict["pairs"]["pair_number"][each_posp[2]])
+                                str(pair_dict["pairs"]["pair_number"][each_posp[2]])
                                 + "\n"
                             )
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict["pairs"]["pair_number"].keys():
                             f.write(
-                                +str(pair_dict["pairs"]["pair_number"][each_posp[1]])
+                                str(pair_dict["pairs"]["pair_number"][each_posp[1]])
                                 + "\n"
                             )
         else:
