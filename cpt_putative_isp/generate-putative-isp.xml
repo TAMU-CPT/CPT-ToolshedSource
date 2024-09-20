@@ -3,9 +3,11 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <expand macro="requirements">
+    <requirements>
+        <requirement type="package" version="3.9">python</requirement>
+        <requirement type="package" version="1.84">biopython</requirement>
         <requirement type="package" version="2024.9.11">regex</requirement>
-    </expand>
+    </requirements>
     <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/generate-putative-isp.py'
 '$fasta_file'
