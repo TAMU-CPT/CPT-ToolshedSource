@@ -2,10 +2,12 @@
     <description>With the outputs from the ISP and OSP candidate tools, cull the list down to candidate pairs</description>
     <macros>
         <import>macros.xml</import>
-    
     </macros>
-    <expand macro="requirements">
-    </expand>
+    <requirements>
+        <requirement type="package" version="3.9">python</requirement>
+        <requirement type="package" version="1.84">biopython</requirement>
+        <requirement type="package" version="2024.9.11">regex</requirement>
+    </requirements>
     <command detect_errors="aggressive"><![CDATA[
 python '$__tool_directory__/findSpanin.py'
 '$putative_isp_fasta_file'

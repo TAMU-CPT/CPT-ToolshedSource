@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 import argparse
 from cpt import OrfFinder
-from Bio import SeqIO
-from Bio import Seq
-from CPT_GFFParser import gffParse, gffWrite
 from spaninFuncs import *
 import re
-import os
-import sys
 
 ### Requirement Inputs
 #### INPUT : Genomic FASTA
