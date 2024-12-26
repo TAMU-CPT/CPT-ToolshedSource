@@ -1,15 +1,13 @@
-<tool id="edu.tamu.cpt.genbank.GBKtoFiveCol" name="Genbank to Five Column Format" version="1.0">
+<tool id="edu.tamu.cpt.genbank.GBKtoFiveCol" name="Genbank to Five Column Format" version="1.1">
   <description/>
   <macros>
     <import>macros.xml</import>
-
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-'python $__tool_directory__/gbk_to_five_col.py'
-  "$file"
-
-> "$output"
+python '$__tool_directory__/gbk_to_five_col.py'
+  '$file'
+> '$output'
 
 ]]></command>
   <inputs>
