@@ -7,8 +7,6 @@ PREMISE
 
 import re
 from Bio import SeqIO
-from Bio import Seq
-from collections import OrderedDict
 
 # Not written in OOP for a LITTLE bit of trying to keep the complication down in case adjustments are needed by someone else.
 # Much of the manipulation is string based; so it should be straightforward as well as moderately quick
@@ -519,7 +517,9 @@ if __name__ == "__main__":
         # try:
         try:
             lipo += find_lipobox(pair=each_pair, regex=2)  # , minimum=8)
-        except TypeError:  # catches if something doesnt have the min/max requirements (something is too small)
+        except (
+            TypeError
+        ):  # catches if something doesnt have the min/max requirements (something is too small)
             continue
         # except:
         # continue

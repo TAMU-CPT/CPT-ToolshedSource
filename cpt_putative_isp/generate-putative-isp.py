@@ -5,19 +5,11 @@
 
 import argparse
 from cpt import OrfFinder
-from Bio import SeqIO
-from Bio import Seq
-import re
+import regex as re
 from spaninFuncs import *
-import os
 
-# if __name__ == '__main__':
-# pass
-###############################################################################
 
 if __name__ == "__main__":
-
-    # Common parameters for both ISP / OSP portion of script
 
     parser = argparse.ArgumentParser(
         description="Get putative protein candidates for spanins"
@@ -212,15 +204,9 @@ if __name__ == "__main__":
 
     pairs = tuple_fasta(fasta_file=args.out_isp_prot)
 
-    # print(pairs)
-
     have_tmd = []  # empty candidates list to be passed through the user input criteria
 
-    for (
-        each_pair
-    ) in (
-        pairs
-    ):  # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
+    for each_pair in pairs:
         if len(each_pair[1]) <= args.max_isp:
             try:
                 have_tmd += find_tmd(

@@ -2,10 +2,12 @@
     <description>constructs a putative list of potential o-spanin from an input genomic FASTA</description>
     <macros>
         <import>macros.xml</import>
-    
     </macros>
-    <expand macro="requirements">
-    </expand>
+    <requirements>
+        <requirement type="package" version="3.9">python</requirement>
+        <requirement type="package" version="1.84">biopython</requirement>
+        <requirement type="package" version="2024.9.11">regex</requirement>
+    </requirements>
     <command detect_errors="aggressive"><![CDATA[
 '$__tool_directory__/generate-putative-osp.py'
 '$fasta_file'
