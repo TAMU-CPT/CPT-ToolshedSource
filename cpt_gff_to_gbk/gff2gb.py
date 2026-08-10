@@ -430,6 +430,13 @@ def handle_record(record, transltbl):
     # Update our features
     record.features = fsort(full_feats)
     # Strip off record names that would cause crashes.
+    # Biopython ignores record.name when it is unset/placeholder and falls back
+    # to record.id for the LOCUS line, so resolve that fallback here. Otherwise
+    # the truncation silently does nothing and a long record.id (e.g. a SPAdes
+    # contig name from Apollo) overflows the LOCUS line, producing a file whose
+    # fields are not in the standard GenBank columns.
+    if not record.name or record.name == "<unknown name>":
+        record.name = record.id
     record.name = record.name[0:16]
     return record
 

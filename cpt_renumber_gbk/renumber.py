@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import BIO_FIX_TOPO  # NOQA
 import argparse
 import sys  # noqa
 from Bio import SeqIO
@@ -25,6 +24,12 @@ def renumber_genes(
 
     for gbk_file in gbk_files:
         for record in SeqIO.parse(gbk_file, "genbank"):
+            # Upstream tools can emit LOCUS lines that do not follow the
+            # column-based GenBank layout, in which case Biopython recovers the
+            # molecule type from the sequence type rather than the LOCUS line.
+            # If neither route yields one, SeqIO.write() refuses to emit the
+            # record at all, so fall back to DNA.
+            record.annotations.setdefault("molecule_type", "DNA")
             if string_prefix == "display_id":
                 format_string = record.id + "_%0" + str(leading_zeros) + "d"
             else:

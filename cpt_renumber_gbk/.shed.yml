@@ -1,4 +1,4 @@
 categories: []
-description: cpt_renumber_gbk
-name: cpt_renumber_gbk
+description: A tool for renumbering a series of qualifiers in a genbank
+name: cpt_gbk_renumber
 owner: cpt
