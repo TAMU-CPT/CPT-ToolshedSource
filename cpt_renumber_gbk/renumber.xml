@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber GenBank Genes" version="0.5" profile="16.04">
+<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber GenBank Genes" version="0.6" profile="16.04">
   <description>relabels/renumbers GenBank tags according to rules</description>
   <macros>
     <import>macros.xml</import>
@@ -6,7 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-'python $__tool_directory__/renumber.py'
+python '$__tool_directory__/renumber.py'
   '$file'
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
