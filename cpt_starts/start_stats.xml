@@ -8,7 +8,7 @@
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-'python $__tool_directory__/start_stats.py'
+python '$__tool_directory__/start_stats.py'
 
 @GENOME_SELECTOR@
 '$gff3_data'
