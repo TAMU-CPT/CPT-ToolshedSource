@@ -340,10 +340,6 @@ if __name__ == "__main__":
     translator = CPTTranslator()
     graphic_record = translator.translate_record(genome)
 
-    with open("tmp.svg", "wb") as img:
-        img.truncate(0)
-        img.close()
-
     if (
         args.sz and not args.multiline
     ):  #  if user is wanting to look at a subset region of the genome
@@ -361,9 +357,7 @@ if __name__ == "__main__":
                 y_offset=1,
             )
         ax.set_title(args.title)
-        # Galaxy specific shenanigans
-        tmp_fig = "./tmp.svg"
-        plt.savefig(tmp_fig)
+        plt.savefig(args.out_img, format="svg")
         plt.close()
     elif args.multiline:
         if args.sz:
@@ -379,18 +373,12 @@ if __name__ == "__main__":
             plot_sequence=False,
         )
         # ax.set_title(args.title)
-        tmp_fig = "./tmp.svg"
-        plt.savefig(tmp_fig)
+        plt.savefig(args.out_img, format="svg")
         plt.close()
     else:
         ax, _ = graphic_record.plot(
             figure_width=args.plot_width, annotate_inline=lab_algo
         )
         ax.set_title(args.title)
-        tmp_fig = "./tmp.svg"
-        # Galaxy specific shenanigans
-        plt.savefig(tmp_fig)
+        plt.savefig(args.out_img, format="svg")
         plt.close()
-    with open("tmp.svg", "rb") as img:
-        for line in img:
-            args.out_img.write(line)
