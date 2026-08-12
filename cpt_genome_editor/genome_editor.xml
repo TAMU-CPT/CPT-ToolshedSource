@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff3.genome_editor" name="Genome Editor" version="2.1">
+<tool id="edu.tamu.cpt.gff3.genome_editor" name="Genome Editor" version="2.2">
     <description>allows you to re-arrange a genome</description>
     <macros>
         <import>macros.xml</import>
